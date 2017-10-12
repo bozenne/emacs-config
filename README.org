@@ -1,0 +1,36 @@
+#+Title: My configuration for emacs
+#+LaTeX_CLASS: org-article
+#+LaTeX_HEADER:\author{Brice Ozeene}
+#+OPTIONS: toc:t
+
+* .emacs
+To put at the begining of the files
+#+BEGIN_SRC emacs-lisp :export code :eval ever
+(setq emacs-config "~/emacs-config-BO")
+(load-file (expand-file-name "step1-load-packages.el" emacs-config))
+(load-file (expand-file-name "step2-general-settings.el" emacs-config))
+(load-file (expand-file-name "step3-email.el" emacs-config))
+
+(load-file (expand-file-name "FCT-editing.el" emacs-config))
+(load-file (expand-file-name "FCT-file-manegement.el" emacs-config))
+(load-file (expand-file-name "FCT-R.el" emacs-config))
+(load-file (expand-file-name "FCT-switch-to-OS-explorer.el" emacs-config))
+#+END_SRC
+
+* learning emacs/lips
+https://tuhdo.github.io/index.html
+https://emacsclub.github.io/html/org_tutorial.html
+
+
+* magit
+https://www.masteringemacs.org/article/introduction-magit-emacs-mode-git
+
+init: magit-init
+ stage file: s
+ commit: c-c
+ valid: C-c C-c
+ TAB: show changes in file
+
+git remote add origin https://github.com/bozenne/emacs-config.git
+
+config --global user.name tiago
