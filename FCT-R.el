@@ -1,4 +1,15 @@
 ;;; source files
+
+;;;; package
+(defun brice-ess-packageSource-r ()
+  "Source a package using butils.base"
+  (interactive)
+  (if (eq major-mode 'ess-mode)
+      (let ((x (read-string "Enter a the name of the package:")))
+	(ess-eval-linewise (concat "butils.base:::sourcePackage(\"" x "\", c.code = TRUE)"))
+	(message "works only in R mode buffers")))
+  )
+
 ;;;; cpp file
 (defun brice-ess-source-rcpp ()
   "Source a cpp file using sourceCpp"
