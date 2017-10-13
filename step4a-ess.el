@@ -22,8 +22,7 @@
 (setq ess-use-eldoc nil)
 
 ;; auto completion
-(use-package auto-complete :ensure t)
-;;(use-package auto-complete-config :ensure t)
+;(use-package auto-complete-config :ensure t)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/site-lisp/auto-complete/dict")
 (ac-config-default)
 (auto-complete-mode)

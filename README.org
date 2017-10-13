@@ -3,33 +3,78 @@
 #+LaTeX_HEADER:\author{Brice Ozeene}
 #+OPTIONS: toc:t
 
-* .emacs
-To put at the begining of the files
-#+BEGIN_SRC emacs-lisp :export code :eval ever
-(setq emacs-config "~/emacs-config-BO")
-(load-file (expand-file-name "step1-load-packages.el" emacs-config))
-(load-file (expand-file-name "step2-general-settings.el" emacs-config))
-(load-file (expand-file-name "step3-email.el" emacs-config))
 
-(load-file (expand-file-name "FCT-editing.el" emacs-config))
-(load-file (expand-file-name "FCT-file-manegement.el" emacs-config))
-(load-file (expand-file-name "FCT-R.el" emacs-config))
-(load-file (expand-file-name "FCT-switch-to-OS-explorer.el" emacs-config))
+
+* Installation
+
+Download all files and put them in a directory called *emacs-config*.
+
+Place this directory in the folder containing the *.emacs* file (=~/.= when doing C-x C-f).
+
+Copy the following code at the begining of the .emacs file:
+#+BEGIN_SRC emacs-lisp :export code :eval ever
+(setq path-emacs-config "~/emacs-config")
+(load-file (expand-file-name "step1-load-packages.el" path-emacs-config))
+(load-file (expand-file-name "step2-general-settings.el" path-emacs-config))
+(load-file (expand-file-name "step3-email.el" path-emacs-config))
+(load-file (expand-file-name "step4a-ess.el" path-emacs-config))
+(load-file (expand-file-name "step4b-other-software.el" path-emacs-config))
+(load-file (expand-file-name "step5-org-class.el" path-emacs-config))
+(load-file (expand-file-name "step6-templates.el" path-emacs-config))
+
+(load-file (expand-file-name "FCT-editing.el" path-emacs-config))
+(load-file (expand-file-name "FCT-file-management.el" path-emacs-config))
+(load-file (expand-file-name "FCT-R.el" path-emacs-config))
+(load-file (expand-file-name "FCT-org.el" path-emacs-config))
+(load-file (expand-file-name "FCT-switch-to-OS-explorer.el" path-emacs-config))
+(load-file (expand-file-name "FCT-superman.el" path-emacs-config))
+
+(load-file (expand-file-name "step7-shorcuts.el" path-emacs-config))
 #+END_SRC
 
-* learning emacs/lips
+[Optional] Install the packages that are not automatically downloaded
+when launching emacs.
+
+* Dependencies
+
+=require=:
+- *install packages*: package, use-package
+- *C++ mode*: cc-mode
+- *dired*: dired-x, dired-quick-sort
+- *email*: mu4e
+
+=usep-package=:
+- *general display*: moe-theme, powerline
+- *multicolor parentheses* , rainbow-delimiters
+- *scrolling*: scroll-restore
+- *buffer*: ido, ido-completing-read+
+- *windows*: transpose-frame
+- *add header in files*: header2, header2-snps
+- *restaure from previous session*: recentf
+- *dired*: dired-hacks-utils, dired-sort, dired-narrow, dired-rainbow
+- *shortcut*: yasnippet, auto-yasnippet
+- *completion*: auto-complete, popup-complete, auto-complete-config, ac-R, hippie-exp
+- *R softwre*: ess-site, ess-edit
+- *bibliography*: gscholar-bibtex
+- *version control*: magit, magithub
+- *orgmode*: org, org-bookmark-heading, org-capture, org-agenda, org-clock, org-latex, ox-latex, ox-beamer
+- *stan*: stan-mode, stan-snippets
+- *putty*: tramp
+
+* documentation
+** learning emacs/lips
 https://tuhdo.github.io/index.html
 https://emacsclub.github.io/html/org_tutorial.html
 
 
-* magit
+** magit
 https://www.masteringemacs.org/article/introduction-magit-emacs-mode-git
 
 init: magit-init
- stage file: s
- commit: c-c
- valid: C-c C-c
- TAB: show changes in file
+stage file: s
+commit: c-c
+valid: C-c C-c
+TAB: show changes in file
 
 git remote add origin https://github.com/bozenne/emacs-config.git
 
