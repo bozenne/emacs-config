@@ -16,12 +16,6 @@
 ;; https://www.masteringemacs.org/article/introduction-magit-emacs-mode-git
 ;; https://magit.vc/manual/magit/Getting-started.html
 
-;;; github
-
-(use-package magithub
-  :after magit
-  :ensure t
-  :config (magithub-feature-autoinject t))
 
 ;;; latex
 
