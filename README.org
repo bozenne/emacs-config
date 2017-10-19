@@ -212,9 +212,16 @@ M-x diff-buffer
 | i           |                      | add file to .gitignore             |
 | u           |                      | unstage file                       |
 | k           |                      | delete file                        |
-| c           | git commit -m "text" | make a commit                      |
+| c           | git commit -m "text" | create a temporary commit          |
+| C-c C-c     |                      | valid temporary commit             |
+| C-c C-k     |                      | kill temporary commit              |
+|             | magit-remove-add     | add remote repository              |
+| P           | magit-push-popup     | push commit                        |
+| g           |                      | refress current buffer             |
+| F           |                      | Pull                               |
 
-
+Documentation: http://jr0cket.co.uk/2012/12/driving-git-with-emacs-pure-magic-with.html.html
+               https://github.com/magit/magit/wiki/Cheatsheet
 ** R
 | C-c ' | run chunk line by line |
 | <Re   | r schunk               |
