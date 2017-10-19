@@ -13,12 +13,12 @@ Place this directory in the folder containing the *.emacs* file (=~/.= when doin
 
 Copy the following code at the begining of the .emacs file:
 #+BEGIN_SRC emacs-lisp :export code :eval ever
-(setq path-emacs-config "~/emacs-config")
 (load-file (expand-file-name "step1-load-packages.el" path-emacs-config))
 (load-file (expand-file-name "step2-general-settings.el" path-emacs-config))
 (load-file (expand-file-name "step3-email.el" path-emacs-config))
 (load-file (expand-file-name "step4a-ess.el" path-emacs-config))
-(load-file (expand-file-name "step4b-other-software.el" path-emacs-config))
+(load-file (expand-file-name "step4b-orgmode.el" path-emacs-config))
+(load-file (expand-file-name "step4c-other-software.el" path-emacs-config))
 (load-file (expand-file-name "step5-org-class.el" path-emacs-config))
 (load-file (expand-file-name "step6-templates.el" path-emacs-config))
 

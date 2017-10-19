@@ -232,7 +232,7 @@ Je vous prie d'agréer, Madame, Monsieur, mes salutations distinguées.
 ;;;; latex align
 (add-to-list
  'org-structure-template-alist
- '("Leq" 
+ '("leq" 
 "#+BEGIN_EXPORT latex
 \\begin{align*}
 
