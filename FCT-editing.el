@@ -1,21 +1,3 @@
-;;; comment-or-uncomment-line-or-region
-(defun TAG-comment-or-uncomment-line-or-region (&optional arg)
-  "If region is active comment or uncomment region, see `comment-or-uncomment-region' 
-   URL: 'https://github.com/tagteam/emacs-genome/blob/master/snps/eg-utility-snps.el'
-else comment or uncomment current line. If ARG is non-nil uncomment region or current line."
-  (interactive "P")
-  (if arg
-      (if (region-active-p)
-	  (uncomment-region (region-beginning) (region-end))
-	(uncomment-region (point-at-bol) (point-at-eol))
-	(forward-line))
-    (if (region-active-p)
-	(comment-or-uncomment-region (region-beginning) (region-end))
-      (while (looking-at "^[ \t\n]*$") (forward-line))
-      (comment-or-uncomment-region (point-at-bol) (point-at-eol))
-      (forward-line))))
-
-
 ;;; duplicate-line
 (defun brice-duplicate-line (arg)
   "Duplicate current line, leaving point in lower line.

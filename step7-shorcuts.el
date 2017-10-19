@@ -6,7 +6,7 @@
             (define-key ess-mode-map (kbd "C-c M-p") 'brice-ess-packageSource-r)
 	    (define-key ess-mode-map (kbd "\C-c b") 'brice-ess-browser-r)
 	    (define-key ess-mode-map (kbd "C-M-d") 'ess-roxy-preview-HTML)
-            (define-key ess-mode-map (kbd "C-M-u") 'ess-edit-indent-call-sophisticatedly)
+            (define-key ess-mode-map (kbd "C-M-u") 'genome/ess-edit-indent-call-sophisticatedly)
 
 ))
 
@@ -15,6 +15,7 @@
 (define-key dired-mode-map (kbd "\C-ce") 'dired-sort-extension)
 (define-key dired-mode-map (kbd "\C-cn") 'dired-sort-name)
 (define-key dired-mode-map (kbd "\C-ct") 'dired-sort-time)
+(define-key dired-mode-map (kbd "M-r") 'dired-omit-mode)
 
 ;; edit directly dired buffer
 ;; C-x C-q (dired-toggle-read-only)
@@ -55,6 +56,7 @@
 
 ;;; Buffer
 (global-set-key (kbd "C-x C-b") 'ibuffer)
+(global-set-key (kbd "M-g") 'goto-line)
 
 ;;; Editing files
 
@@ -62,7 +64,7 @@
 (global-set-key (kbd "<f10>") 'undo-only)
 
 ;; comment
-(global-set-key "\M-;" 'TAG-comment-or-uncomment-line-or-region)
+(global-set-key "\M-;" 'genome/comment-or-uncomment-line-or-region)
 
 ;; duplicate a line of text
 (global-set-key (kbd "C-M-y") 'brice-duplicate-line)
@@ -72,11 +74,11 @@
 (global-set-key "\M-i" 'dabbrev-expand)
 
 ;; copy-and-paste 
-(global-set-key "\M-y" 'yank-or-pop)
+(global-set-key "\M-y" 'genome/yank-or-pop)
 (global-set-key "\M-r" 'copy-region-as-kill)
 
 ;; major-mode specific indentation
-(global-set-key "\M-q" 'eg/indent-paragraph)
+(global-set-key "\M-q" 'genome/indent-paragraph)
 ;;(define-key R-minor-mode-map "\M-q" 'eg/indent-paragraph)
 ;;(define-key LaTeX-mode-map "\M-q" 'eg/indent-paragraph)
 
@@ -118,6 +120,8 @@
 	      ;; complete on ess
 	      (add-to-list 'hippie-expand-try-functions-list (lambda (old) (ess-complete-object-name)))
 	      (define-key org-mode-map  "\C-c\C-v" 'brice-browse-this-file)
+	      (define-key org-mode-map (kbd "C-<left>") 'org-table-move-column-left)
+	      (define-key org-mode-map (kbd "C-<right>") 'org-table-move-column-right)
 	      (define-key org-mode-map [(meta k)] 'brice-org-export-to-pdf)
 	      (define-key org-mode-map [(meta j)] 'brice-org-export-to-pdf)
 	      (define-key org-mode-map [(control tab)] 'hide-subtree)
@@ -129,3 +133,6 @@
 ;; org-beamer-export-to-pdf
 ;; org-laltex-export-to-pdf
 ;; org-laltex-export-to-pdf
+
+;;; magit
+(global-set-key (kbd "C-x g") 'magit-status)

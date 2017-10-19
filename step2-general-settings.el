@@ -118,7 +118,6 @@
 ;; ignore uninteresting files in dired
 (require 'dired-x)
 (setq-default dired-omit-files-p t)
-(define-key dired-mode-map (kbd "M-r") 'dired-omit-mode)
 (setq dired-omit-files "^.+~$\\|^.+#$\\|^\\...+$\\|\\.fls$\\|\\.log$\\|\\.nav$\\|\\.out$\\|\\.snm$\\|\\.synctex.gz$\\|\\.fdb_latexmk$\\|\\.tar.gz$")
 ;; ^.+~$ : any file with at least one character ending with ~ (version)
 ;; \\| or
