@@ -4,7 +4,6 @@
 #+OPTIONS: toc:t
 
 
-
 * Installation
 
 Download all files and put them in a directory called *emacs-config*.
@@ -56,9 +55,9 @@ when launching emacs.
 
 | Key binding | name of the command     | effect                                   |
 |-------------+-------------------------+------------------------------------------|
-| M-:         | command eval-expression | evaluate lips code                       |
-|             | eval-region             | evaluate a region of lips code in a file |
-|             | load-file               | source a lips file                       |
+| M-:         | command eval-expression | evaluate lisp code                       |
+|             | eval-region             | evaluate a region of lisp code in a file |
+|             | load-file               | source a lisp file                       |
 
 ** emacs session
 
@@ -116,7 +115,10 @@ when launching emacs.
 
 More key bindings at: https://www.gnu.org/software/emacs/refcards/pdf/dired-ref.pdf
 
-** Moving
+** Editing
+
+*** Move
+
 | unit      | backward | forward | center | begining | end   | other window |
 |-----------+----------+---------+--------+----------+-------+--------------|
 | character | C-b      | C-f     |        |          |       |              |
@@ -133,53 +135,73 @@ More key bindings at: https://www.gnu.org/software/emacs/refcards/pdf/dired-ref.
 |-------------+---------------------+------------|
 | M-g         | goto-line           | go to line |
 
+*** Highlight
+| Key binding | name of the command  | effect                                 |
+|-------------+----------------------+----------------------------------------|
+| M-s h r     | highlight-regexp     | highlight matching regular expressions |
+| M-s h u     | unhighlight-regexp   | remove the highlight                   |
 
-** Selection
+*** Mark
+| Key binding     | name of the command | effect                          |
+|-----------------+---------------------+---------------------------------|
+| M-<SPC>         |                     | start mark and highlight        |
+| M-<SPC> M-<SPC> |                     | start mark without highlight    |
+|                 | mark-word           | mark word                       |
+| M-h             | org-mark-element    | mark paragraph                  |
+| C-x h           | mark-whole-buffer   | mark buffer                     |
+| C-u C-<SPC>     |                     | navigate back to previous marks |
 
-| unit     | all   | before | after | highlight            | unhighlight            |
-|----------+-------+--------+-------+----------------------+------------------------|
-| word     |       | C-r    | C-s   | M-x highlight-regex  | M-x unhighlight-regex  |
-| phrase   |       |        |       | M-x highlight-phrase | M-x unhighlight-phrase |
-| paragrah | M-h   |        |       |                      |                        |
-| buffer   | C-x h |        |       |                      |                        |
+*** Search (within buffer)
+| Key binding | name of the command | effect                                                               |
+|-------------+---------------------+----------------------------------------------------------------------|
+| C-r         | isearch-forward     | search for a regular expression forward                              |
+| C-s         | isearch-backward    | search for a regular expression backward                             |
+| M-p / M-n   |                     | (during) move through previous searched expressions           |
+| M-e         |                     | (during) modify expression to search                          |
+| <RET>       |                     | (during) stop the search                                      |
+| C-u C-<SPC> |                     | (on exit) return at the place before search                          |
+| C-x C-x     |                     | (on exit) highlight the text between the start and end of the search |
 
-| Key binding | name of the command | effect                                    |
-|-------------+---------------------+-------------------------------------------|
-| C-SPC       |                     | marking starts at the point               |
-| M-%         | query-replace       | find and replace expression in the buffer |
-| C-s C-s     |                     | search for most recently searched item    |
-| C-s M-p     |                     | previous item in search history           |
-|             |                     |                                           |
+*** Search and replace (within buffer)
+
+| Key binding | name of the command | effect                                              |
+|-------------+---------------------+-----------------------------------------------------|
+| M-%         | query-replace       | search and replace a regular expression backward    |
+| M-p / M-n   |                     | (during) move through previous searched expressions |
+| ,           |                     | (during) replace and display the result             |
+| n           |                     | (during) next                                       |
+| !           |                     | (during) replace all occurences                     |
+| ^           |                     | (during) go back to previous occurence              |
+| q           |                     | (during) quit                                         |
+
+More key bindings at: https://www.gnu.org/software/emacs/manual/html_node/emacs/Query-Replace.html
+
+*** Delete
+| unit     | all       | backward | forward             |
+|----------+-----------+----------+---------------------|
+| letter   |           | <DEL>    | Delete              |
+| word     |           | M-<DEL>  | M-d                 |
+| line     | C-S-<DEL> |          | C-k                 |
+| sentence |           |          | M-k (kill-sentence) |
+| region   | C-w       |          | M-k                 |
+
+** orgmode
+| Key binding         | name of the command                                                 | effect                |
+|---------------------+---------------------------------------------------------------------+-----------------------|
+| C-c C-e             |                                                                     | insert an environment |
+| C-u C-c C-e         |                                                                     | change an environment |
+| <La                 | header for latex document                                           |                       |
+| <Lb                 | header for beamer document                                          |                       |
+|                     | (remember to do C-c c in the header section to refresh local setup) |                       |
+| M-j                 | export                                                              |                       |
+| M-k                 | debug                                                               |                       |
+| C-c C-v             | view                                                                |                       |
+| C-c C-v             | open document using the default application of the OS               |                       |
+| reformat a paragrah | M-q                                                                 |                       |
+| reduce a paragraph  | C-i                                                                 |                       |
+| set the margin      | C-x f <number>                                                      |                       |
 
 
-C-s C-s search for most recently searched item
-C-s M-p Previous item in search history
-C-s M-n Next iten in search history 
-C-x f L Find among all files in a subfolder
-
-M-% (i.e. M-S-5) for query replace. Then y(yes)/n(skip)/!(do all)/C-G(cancel)
-
-** Delete
-| unit | all     | before | after |
-|------+---------+--------+-------|
-| word |         | M-DEL  | M-d   |
-| line | C-S-DEL |        | C-k   |
-
-** Layout
-| action              | shortcut       |
-|---------------------+----------------|
-| reformat a paragrah | M-q            |
-| reduce a paragraph  | C-i            |
-| set the margin      | C-x f <number> |
-
-** R
-
-|         | Source |
-|---------+--------|
-| M-j     | line   |
-| C-c C-b | buffer |
-| C-c C-l | file   |
-| C-c C-c |        |
 
 ** Bibliography
 Using the *gscholar-bibtex* package, one can type M-x gscholar-bibtex
@@ -190,16 +212,6 @@ M-x diff-buffer
 ** Shortcut
 - M-I autocompletion (type several times to switch between the possibles autocompletion). This is called hippie expand.
 - M-E display the possibilities in a new buffer
-
-** orgmode
-| C-c C-e     | insert an environment                                               |
-| C-u C-c C-e | change an environment                                               |
-| <La         | header for latex document                                           |
-| <Lb         | header for beamer document                                          |
-|             | (remember to do C-c c in the header section to refresh local setup) |
-| M-j         | export                                                              |
-| M-k         | debug                                                               |
-| C-c C-v     | view                                                                |
 
 
 ** magit
@@ -223,16 +235,17 @@ M-x diff-buffer
 Documentation: http://jr0cket.co.uk/2012/12/driving-git-with-emacs-pure-magic-with.html.html
                https://github.com/magit/magit/wiki/Cheatsheet
 ** R
-| C-c ' | run chunk line by line |
-| <Re   | r schunk               |
-| <l    | latex schunk           |
+| C-c '   | run chunk line by line |
+| <Re     | r schunk               |
+| <l      | latex schunk           |
+|         | Source                 |
+|---------+------------------------|
+| M-j     | line                   |
+| C-c C-b | buffer                 |
+| C-c C-l | file                   |
+| C-c C-c |                        |
 
 
-
-** User defined
-
-*** browse
-| C-c C-v | open document using the default application of the OS |
 
 
 * Dependencies
@@ -262,20 +275,11 @@ Documentation: http://jr0cket.co.uk/2012/12/driving-git-with-emacs-pure-magic-wi
 - *putty*: tramp
 
 * Documentation
-** learning emacs/lips
+** learning emacs/lisp
 https://tuhdo.github.io/index.html
 https://emacsclub.github.io/html/org_tutorial.html
-
 
 ** magit
 https://www.masteringemacs.org/article/introduction-magit-emacs-mode-git
 
-init: magit-init
-stage file: s
-commit: c-c
-valid: C-c C-c
-TAB: show changes in file
 
-git remote add origin https://github.com/bozenne/emacs-config.git
-
-config --global user.name tiago

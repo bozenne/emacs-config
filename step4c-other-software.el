@@ -2,6 +2,7 @@
 
 (use-package gscholar-bibtex :ensure t)
 (setq gscholar-bibtex-default-source "Google Scholar")
+
 ;;; C++
 (define-key c++-mode-map (kbd "\M-q") 'indent-region)
 
@@ -9,17 +10,10 @@
 ;; continuous scrolling over pages in doc view
 (setq doc-view-continuous t)
 
-;;; git
-;;(use-package git-emacs :ensure t)
+;;; git and github
 (use-package magit :ensure t)
 
-;; https://www.masteringemacs.org/article/introduction-magit-emacs-mode-git
-;; https://magit.vc/manual/magit/Getting-started.html
-
-
 ;;; latex
-
-
 
 ;;; stan
 (use-package stan-mode :ensure t)
