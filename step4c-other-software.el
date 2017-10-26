@@ -13,6 +13,12 @@
 ;;; git and github
 (use-package magit :ensure t)
 
+(if window-system
+    (setenv "GIT_ASKPASS" "git-gui--askpass")
+  ;; solve issue with magit on windows system when pushing
+  ;; https://github.com/magit/magit/wiki/Pushing-with-Magit-from-Windows
+)
+
 ;;; latex
 
 ;;; stan
