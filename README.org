@@ -12,6 +12,9 @@ Place this directory in the folder containing the *.emacs* file (=~/.= when doin
 
 Copy the following code at the begining of the .emacs file:
 #+BEGIN_SRC emacs-lisp :export code :eval ever
+;;; load automatic config
+(setq user-full-name "my name")
+
 (load-file (expand-file-name "step1-load-packages.el" path-emacs-config))
 (load-file (expand-file-name "step2-general-settings.el" path-emacs-config))
 (load-file (expand-file-name "step3-email.el" path-emacs-config))
@@ -33,6 +36,25 @@ Copy the following code at the begining of the .emacs file:
 
 [Optional] Install the packages that are not automatically downloaded
 when launching emacs.
+
+[Optional] Add the following lines
+#+BEGIN_SRC emacs-lisp :export code :eval ever
+;;; Font size
+(set-face-attribute 'default nil :height 120)
+
+;;; file at startup
+(setq inhibit-startup-screen t) ;; dismiss startup screen
+(find-file "~/todo.org")
+
+(setq
+ user-mail-address "myname@xxx.com"
+ user-full-name  "my name"
+ mu4e-compose-signature
+ (concat
+  "my name\n"
+  "myname@xxx.com\n")
+ )
+#+END_SRC
 
 * Extended commands
 
@@ -245,7 +267,13 @@ Documentation: http://jr0cket.co.uk/2012/12/driving-git-with-emacs-pure-magic-wi
 | C-c C-l | file                   |
 | C-c C-c |                        |
 
+* Configuring email account using Mu4a
 
+First install offlineimap using =sudo apt-get install offlineimap=
+
+Then configure offlineimap by editing/creation =~/.offlineimaprc=
+
+Documentation: https://www.djcbsoftware.nl/code/mu/mu4e/Gmail-configuration.html
 
 
 * Dependencies
@@ -282,4 +310,5 @@ https://emacsclub.github.io/html/org_tutorial.html
 ** magit
 https://www.masteringemacs.org/article/introduction-magit-emacs-mode-git
 
-
+** Using emacs as a project management tool
+http://doc.norang.ca/org-mode.html

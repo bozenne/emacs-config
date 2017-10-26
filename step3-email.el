@@ -4,17 +4,14 @@
 (require 'mu4e)
 ;;(use-package mu4e :ensure t)
 
+;; don't save message to Sent Messages, GMail/IMAP will take care of this
+(setq mu4e-sent-messages-behavior 'delete)
+
+;; allow for updating mail using 'U' in the main view:
+(setq mu4e-get-mail-command "offlineimap")
+
 ;; default
 ;; (setq mu4e-maildir "~/Maildir")
 (setq mu4e-drafts-folder "/[Gmail].Drafts")
 (setq mu4e-sent-folder   "/[Gmail].Sent Mail")
 (setq mu4e-trash-folder  "/[Gmail].Trash")
-
-;; something about ourselves
-(setq
-user-mail-address "brice.ozenne@orange.fr"
-user-full-name  "Brice Ozenne"
-mu4e-compose-signature
-(concat
-"Brice Ozenne\n"
-"brice.ozenne@orange.fr\n"))
