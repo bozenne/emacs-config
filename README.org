@@ -14,6 +14,8 @@ Copy the following code at the begining of the .emacs file:
 ;;; load automatic config
 (setq user-full-name "my name")
 
+(setq path-emacs-config "~/emacs-config")
+(load-file (expand-file-name "step0-introduction.el" path-emacs-config))
 (load-file (expand-file-name "step1-load-packages.el" path-emacs-config))
 (load-file (expand-file-name "step2-general-settings.el" path-emacs-config))
 (load-file (expand-file-name "step3-email.el" path-emacs-config))
@@ -32,6 +34,8 @@ Copy the following code at the begining of the .emacs file:
 
 (load-file (expand-file-name "step7-shorcuts.el" path-emacs-config))
 #+END_SRC
+In the first line, replace ="my name"= by your name
+In the second line, check that ="~/emacs-config"= is where you have put emacs-config.
 
 [Optional] Install the packages that are not automatically downloaded
 when launching emacs.
@@ -64,10 +68,12 @@ when launching emacs.
 | ESC-       | Esc                   | Escape      |
 | DEL-       | <- Backspace          | Backspace   |
 | SPC-       |                       | Space       |
+| TAB-       | Tab                   | Tabulation  |
 | <left>     |                       | arrow left  |
 | <right>    |                       | arrow right |
 | <up>       |                       | arrow up    |
 | <down>     |                       | arrow down  |
+
 
 | Key binding          | name of the command      | effect                                    |
 |----------------------+--------------------------+-------------------------------------------|
@@ -94,6 +100,7 @@ when launching emacs.
 |                     | delete-frame               | delete frame                        |
 |                     | list-packages              | Display a list of packages          |
 |                     | shell                      | open the shell                      |
+|                     | emacs-version              | display the version of emacs        |
 
 ** Buffer
 
@@ -152,19 +159,28 @@ More key bindings at: https://www.gnu.org/software/emacs/refcards/pdf/dired-ref.
 
 *** Switching buffer
 
-| Key binding | name of the command | effect |
-|-------------+---------------------+--------|
-| C-x b       |                     |        |
-| C-x C-b     |                     |        |
+| Key binding | name of the command | effect                              |
+|-------------+---------------------+-------------------------------------|
+| C-x b       | ido-switch-buffer   | switch buffer                       |
+| C-x C-b     | ibuffer             | switch buffer (alternative display) |
 
-*** Switching frame
+*** Switching window/frame
 
-| Key binding | name of the command | effect |
-|-------------+---------------------+--------|
-|             |                     |        |
-| M-o         |                     |        |
-| M-O         |                     |        |
-| M-<left>    |                     |        |
+| Key binding | name of the command | effect                                  |
+|-------------+---------------------+-----------------------------------------|
+| M-o         | other-window        | move to another window (clockwise)      |
+| M-O         |                     | move to another window (anti-clockwise) |
+| M-<left>    | windmove-left       | move to the window on the left          |
+| M-<right>   | windmove-right      | move to the window on the right         |
+| M-<up>      | windmove-up         | move to the window on the up            |
+| M-<down>    | windmove-down       | move to the window on the down          |
+
+*** Folding
+
+| Key binding | name of the command | effect                                                         |
+|-------------+---------------------+----------------------------------------------------------------|
+| <TAB>       | org-cycle           | fold/unfold section                                            |
+| M-<TAB>     | org-shifttab        | cycle between fold all, fold all with sections names, show all |
 
 ** Editing
 
@@ -246,18 +262,17 @@ More key bindings at: https://www.gnu.org/software/emacs/manual/html_node/emacs/
 
 *** General
 
-| Key binding    | name of the command | effect                                                          |
-|----------------+---------------------+-----------------------------------------------------------------|
-| C-c C-e        |                     | Insert an environment                                           |
-| C-u C-c C-e    |                     | Change an environment                                           |
-| C-c c          |                     | Refresh the local setup (must be done in the header section)    |
-| M-j            |                     | export                                                          |
-| M-k            |                     | debug                                                           |
-| C-c C-v        |                     | view                                                            |
-| M-q            |                     | reformat a paragrah                                             |
-| C-i            |                     | reduce a paragraph                                              |
-| C-x f <number> |                     | set the margin                                                  |
-|                | gscholar-bibtex     | Use google scholar to find bibtex citations for a given article |
+| Key binding    | name of the command     | effect                                                          |
+|----------------+-------------------------+-----------------------------------------------------------------|
+| C-c C-e        | org-export-dispatch     | Insert an environment                                           |
+| C-u C-c C-e    |                         | Change an environment                                           |
+| C-c c          |                         | Refresh the local setup (must be done in the header section)    |
+| M-j            | brice-org-export-to-pdf | export                                                          |
+| M-k            |                         | debug                                                           |
+| C-c C-v        | brice-browse-this-file  | view                                                            |
+| M-q            | genome/indent-paragraph | reformat a paragrah                                             |
+| C-x f <number> | set-fill-column         | set the margin when reformating paragraph (default 70)            |
+|                | gscholar-bibtex         | Use google scholar to find bibtex citations for a given article |
 
 *** Escape orgmode
 
@@ -274,10 +289,10 @@ More key bindings at: https://www.gnu.org/software/emacs/manual/html_node/emacs/
 
 *** Table
 
-| Key binding | name of the command | effect                                |
-|-------------+---------------------+---------------------------------------|
-| C-<left>    |                     | move to the left the selected column  |
-| C-<right>   |                     | move to the right the selected column |
+| Key binding | name of the command         | effect                                |
+|-------------+-----------------------------+---------------------------------------|
+| C-<left>    | org-table-move-column-left  | move to the left the selected column  |
+| C-<right>   | org-table-move-column-right | move to the right the selected column |
 
 
 
@@ -285,10 +300,10 @@ More key bindings at: https://www.gnu.org/software/emacs/manual/html_node/emacs/
 
 *** Native
 
-| Key binding | name of the command | effect |
-|-------------+---------------------+--------|
-|             | emacs-version       |        |
-|             | diff-buffer         |        |
+| Key binding | name of the command   | effect                                     |
+|-------------+-----------------------+--------------------------------------------|
+|             |                       |                                            |
+|             | diff-buffer-with-file | Compare buffer with the corresponding file |
 
 *** Magit
 
@@ -311,21 +326,18 @@ More key bindings at: https://www.gnu.org/software/emacs/manual/html_node/emacs/
 Documentation: http://jr0cket.co.uk/2012/12/driving-git-with-emacs-pure-magic-with.html.html
                https://github.com/magit/magit/wiki/Cheatsheet
 ** R
-| Key binding | name of the command | effect                                           |
-|-------------+---------------------+--------------------------------------------------|
-| C-c m       |                     | insert browser and source                        |
-| C-c s       |                     | save file and source file                        |
-| C-c M-p     |                     | source package using butils.base:::packageSource |
-| C-c b       |                     | insert browser                                   |
-| C-M-d       |                     | previous roxygen documentation in web browser    |
-| C-M-u       |                     | emacs-genome indent                              |
-
-
-|---------+------------------------|
-| M-j     | line                   |
-| C-c C-b | buffer                 |
-| C-c C-l | file                   |
-| C-c C-c |                        |
+| Key binding | name of the command                         | effect                                           |
+|-------------+---------------------------------------------+--------------------------------------------------|
+| C-c m       | brice-ess-browser-and-source-r              | insert browser and source                        |
+| C-c s       | brice-ess-source-r                          | save file and source file                        |
+| C-c M-p     | brice-ess-packageSource-r                   | source package using butils.base:::packageSource |
+| C-c b       | brice-ess-browser-r                         | insert browser                                   |
+| C-c C-b     | ess-eval-buffer                             | source buffer                                    |
+| C-c C-l     | ess-load-file                               | source file                                      |
+| M-j         | ess-indent-new-comment-line                 | insert line                                      |
+| C-M-d       | ess-roxy-preview-HTML                       | previous roxygen documentation in web browser    |
+| C-M-u       | genome/ess-edit-indent-call-sophisticatedly | emacs-genome indent                              |
+| C-c C-c     |                                             | interrupt evaluation                        |
 
 * Configuring email account using Mu4a
 

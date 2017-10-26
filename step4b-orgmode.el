@@ -7,6 +7,9 @@
 
 (use-package org-latex) ;; enable new classes 
 (use-package ox-latex) ;; enable new classes 
+(use-package ox-md) ;; communicate with markdown
+(add-to-list 'load-path (expand-file-name "packages/orgmode-accessories" path-emacs-config))
+(require 'ox-ravel)
 (use-package ox-beamer)
 (use-package ox-bibtex)
 
@@ -17,6 +20,7 @@
 (add-to-list 'org-babel-tangle-lang-exts '("R" . "R"))
 
 ;; enable to execute other languages in orgmode
+(if(string-equal system-type "windows-nt")
 (org-babel-do-load-languages
  (quote org-babel-load-languages)
  (quote ((emacs-lisp . t)
@@ -35,7 +39,27 @@
 	 (plantuml . t)
 	 (latex . t)
 	 ))
- )
+)
+(org-babel-do-load-languages
+ (quote org-babel-load-languages)
+ (quote ((emacs-lisp . t)
+         (dot . t)
+	 (calc . t)
+	 (ditaa . t)
+	 (R . t)
+	 (C . t)
+	 (gnuplot . t)
+	 (shell . t)
+	 (ledger . t)
+	 (org . t)
+	 (picolisp . t)
+	 (clojure . t)
+	 (lilypond . t)
+	 (plantuml . t)
+	 (latex . t)
+	 ))
+   )
+)
 
 ;; dont ask confirmation before executing block
 (setq org-confirm-babel-evaluate nil)
