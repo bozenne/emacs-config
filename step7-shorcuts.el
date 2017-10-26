@@ -128,3 +128,6 @@
 
 ;;; magit
 (global-set-key (kbd "C-x g") 'magit-status)
+
+;;; spelling
+(global-set-key (kbd "M-<f8>") 'flyspell-check-next-highlighted-word)

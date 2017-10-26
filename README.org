@@ -34,7 +34,8 @@ Copy the following code at the begining of the .emacs file:
 
 (load-file (expand-file-name "step7-shorcuts.el" path-emacs-config))
 #+END_SRC
-In the first line, replace ="my name"= by your name
+In the first line, replace ="my name"= by your name.
+
 In the second line, check that ="~/emacs-config"= is where you have put emacs-config.
 
 [Optional] Install the packages that are not automatically downloaded
