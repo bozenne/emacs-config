@@ -132,10 +132,6 @@
 ;; sort file by type
 (use-package dired-sort :ensure t)
 
-;; type S in dired and have an hydra interface to sort files
-(require 'dired-quick-sort)
-(dired-quick-sort-setup)
-
 ;; filter files dynamically by type
 (use-package dired-narrow
   :ensure t
