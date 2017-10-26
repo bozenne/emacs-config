@@ -26,7 +26,7 @@
 	 (R . t)
 	 (C . t)
 	 (gnuplot . t)
-	 (shell . t)
+	 (sh . t)
 	 (ledger . t)
 	 (org . t)
 	 (picolisp . t)

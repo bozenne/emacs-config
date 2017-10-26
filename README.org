@@ -3,7 +3,6 @@
 #+LaTeX_HEADER:\author{Brice Ozeene}
 #+OPTIONS: toc:t
 
-
 * Installation
 
 Download all files and put them in a directory called *emacs-config*.
@@ -58,14 +57,17 @@ when launching emacs.
 
 * Extended commands
 
-
-| short name | symbol on the keybord | full name |
-|------------+-----------------------+-----------|
-| C-         | Ctrl                  | Control   |
-| M-         | Alt                   | Meta      |
-| ESC-       | Esc                   | Escape    |
-| DEL-       | <- Backspace          | Backspace |
-| SPC-       |                       | Space     |
+| short name | symbol on the keybord | full name   |
+|------------+-----------------------+-------------|
+| C-         | Ctrl                  | Control     |
+| M-         | Alt                   | Meta        |
+| ESC-       | Esc                   | Escape      |
+| DEL-       | <- Backspace          | Backspace   |
+| SPC-       |                       | Space       |
+| <left>     |                       | arrow left  |
+| <right>    |                       | arrow right |
+| <up>       |                       | arrow up    |
+| <down>     |                       | arrow down  |
 
 | Key binding          | name of the command      | effect                                    |
 |----------------------+--------------------------+-------------------------------------------|
@@ -107,35 +109,62 @@ when launching emacs.
 | C-x 3       |                     | spilt the current window, vertically       |
 |             | revert-buffer       | update buffer with the content of the file |
 
-** dired
+** Internal browser
 
-| Key binding | name of the command              | effect                                    |
-|-------------+----------------------------------+-------------------------------------------|
-| C-x d       | dired                            | launch dired                              |
-| C           |                                  | copy file(s)                              |
-| +           |                                  | create subdirectory                       |
-| D           |                                  | delete marked files                       |
-|             | rgrep                            | find string in all files from a directory |
-| A           | dired-do-find-regexp             | find string in all marked files           |
-| d           |                                  | flag all back-up files                    |
-| ~           |                                  | flag all auto-save files                  |
-| #           |                                  | flag file for deletion                    |
-| M-r         | dired-omit-mode                  | hide unimportant files                    |
-| * .         |                                  | mark all files with a given extension     |
-| m           |                                  | mark file                                 |
-| R           |                                  | rename file(s)                            |
-| Q           | dired-do-find-regexp-and-replace | find and replace in all marked files      |
-|             | find-grep-dired                  | find in files                             |
-|             | find-name-dired                  | find filename                             |
-| e           | dired-sort-extension             | sort files by extension                   |
-| C-c n       | dired-sort-name                  | sort files by name                        |
-| C-c t       | dired-sort-time                  | sort files by time                        |
-| U           |                                  | unmark all files                          |
-| u           |                                  | unmark file                               |
-| g           |                                  | update dired buffer                       |
-| o           |                                  | visit file in another window              |
+*** Dired
+
+| Key binding | name of the command              | effect                                      |
+|-------------+----------------------------------+---------------------------------------------|
+| C-x d       | dired                            | launch dired                                |
+| C           |                                  | copy file(s)                                |
+| +           |                                  | create subdirectory                         |
+| D           |                                  | delete marked files                         |
+|             | rgrep                            | search string in all files from a directory |
+| A           | dired-do-find-regexp             | search string in all marked files           |
+| d           |                                  | flag all back-up files                      |
+| ~           |                                  | flag all auto-save files                    |
+| #           |                                  | flag file for deletion                      |
+| M-r         | dired-omit-mode                  | hide unimportant files                      |
+| * .         |                                  | mark all files with a given extension       |
+| m           |                                  | mark file                                   |
+| R           |                                  | rename file(s)                              |
+| Q           | dired-do-find-regexp-and-replace | search and replace in all marked files      |
+|             | find-grep-dired                  | search in files                             |
+|             | find-name-dired                  | search file by filename                     |
+| e           | dired-sort-extension             | sort files by extension                     |
+| C-c n       | dired-sort-name                  | sort files by name                          |
+| C-c t       | dired-sort-time                  | sort files by time                          |
+| U           |                                  | unmark all files                            |
+| u           |                                  | unmark file                                 |
+| g           |                                  | update dired buffer                         |
+| o           |                                  | visit file in another window                |
+| C-x C-q     | dired-toggle-read-only           | edit dired buffer (C-c C-c)                 |
+| C-c C-c     | wdired-finish-edit               | end edit dired buffer                       |
 
 More key bindings at: https://www.gnu.org/software/emacs/refcards/pdf/dired-ref.pdf
+
+*** Back to OS
+
+| Key binding | name of the command                          | effect                                |
+|-------------+----------------------------------------------+---------------------------------------|
+| F9          | brice-open-directory-with-explorer           | open OS-explorer in current directory |
+| M-F9        | brice-open-file-or-directory-in-external-app | open file with default OS application |
+
+*** Switching buffer
+
+| Key binding | name of the command | effect |
+|-------------+---------------------+--------|
+| C-x b       |                     |        |
+| C-x C-b     |                     |        |
+
+*** Switching frame
+
+| Key binding | name of the command | effect |
+|-------------+---------------------+--------|
+|             |                     |        |
+| M-o         |                     |        |
+| M-O         |                     |        |
+| M-<left>    |                     |        |
 
 ** Editing
 
@@ -207,36 +236,61 @@ More key bindings at: https://www.gnu.org/software/emacs/manual/html_node/emacs/
 | sentence |           |          | M-k (kill-sentence) |
 | region   | C-w       |          | M-k                 |
 
+*** Autocompletion
+| Key binding | name of the command | effect |
+|-------------+---------------------+--------|
+| M-i         | dabbrev-expand      |        |
+| M-e         | hippie-expand       |        |
+
 ** orgmode
-| Key binding         | name of the command                                                 | effect                |
-|---------------------+---------------------------------------------------------------------+-----------------------|
-| C-c C-e             |                                                                     | insert an environment |
-| C-u C-c C-e         |                                                                     | change an environment |
-| <La                 | header for latex document                                           |                       |
-| <Lb                 | header for beamer document                                          |                       |
-|                     | (remember to do C-c c in the header section to refresh local setup) |                       |
-| M-j                 | export                                                              |                       |
-| M-k                 | debug                                                               |                       |
-| C-c C-v             | view                                                                |                       |
-| C-c C-v             | open document using the default application of the OS               |                       |
-| reformat a paragrah | M-q                                                                 |                       |
-| reduce a paragraph  | C-i                                                                 |                       |
-| set the margin      | C-x f <number>                                                      |                       |
+
+*** General
+
+| Key binding    | name of the command | effect                                                          |
+|----------------+---------------------+-----------------------------------------------------------------|
+| C-c C-e        |                     | Insert an environment                                           |
+| C-u C-c C-e    |                     | Change an environment                                           |
+| C-c c          |                     | Refresh the local setup (must be done in the header section)    |
+| M-j            |                     | export                                                          |
+| M-k            |                     | debug                                                           |
+| C-c C-v        |                     | view                                                            |
+| M-q            |                     | reformat a paragrah                                             |
+| C-i            |                     | reduce a paragraph                                              |
+| C-x f <number> |                     | set the margin                                                  |
+|                | gscholar-bibtex     | Use google scholar to find bibtex citations for a given article |
+
+*** Escape orgmode
+
+| Key binding | name of the command | effect                                                       |
+|-------------+---------------------+--------------------------------------------------------------|
+| <L          |                     | Line of latex code                                           |
+| <l          |                     | Block of latex code                                          |
+| <leq        |                     | Environment align*                                           |
+| <La         |                     | Header for latex document                                    |
+| <Lb         |                     | Header for beamer document (remember to refresh local setup) |
+| <Re         |                     | Block of R code                                              |
+| C-c '       |                     | Run R block line by line                                     |
+
+
+*** Table
+
+| Key binding | name of the command | effect                                |
+|-------------+---------------------+---------------------------------------|
+| C-<left>    |                     | move to the left the selected column  |
+| C-<right>   |                     | move to the right the selected column |
 
 
 
-** Bibliography
-Using the *gscholar-bibtex* package, one can type M-x gscholar-bibtex
-to get the bibtex code for a given article.
-** Version
-M-x emacs-version
-M-x diff-buffer
-** Shortcut
-- M-I autocompletion (type several times to switch between the possibles autocompletion). This is called hippie expand.
-- M-E display the possibilities in a new buffer
+** Version control
 
+*** Native
 
-** magit
+| Key binding | name of the command | effect |
+|-------------+---------------------+--------|
+|             | emacs-version       |        |
+|             | diff-buffer         |        |
+
+*** Magit
 
 | Key binding | name of the command  | effect                             |
 |-------------+----------------------+------------------------------------|
@@ -257,10 +311,16 @@ M-x diff-buffer
 Documentation: http://jr0cket.co.uk/2012/12/driving-git-with-emacs-pure-magic-with.html.html
                https://github.com/magit/magit/wiki/Cheatsheet
 ** R
-| C-c '   | run chunk line by line |
-| <Re     | r schunk               |
-| <l      | latex schunk           |
-|         | Source                 |
+| Key binding | name of the command | effect                                           |
+|-------------+---------------------+--------------------------------------------------|
+| C-c m       |                     | insert browser and source                        |
+| C-c s       |                     | save file and source file                        |
+| C-c M-p     |                     | source package using butils.base:::packageSource |
+| C-c b       |                     | insert browser                                   |
+| C-M-d       |                     | previous roxygen documentation in web browser    |
+| C-M-u       |                     | emacs-genome indent                              |
+
+
 |---------+------------------------|
 | M-j     | line                   |
 | C-c C-b | buffer                 |

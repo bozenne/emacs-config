@@ -17,15 +17,7 @@
 (define-key dired-mode-map (kbd "\C-ct") 'dired-sort-time)
 (define-key dired-mode-map (kbd "M-r") 'dired-omit-mode)
 
-;; edit directly dired buffer
-;; C-x C-q (dired-toggle-read-only)
-;; C-c C-c (wdired-finish-edit) 
 
-;; find files
-;; find-name-dired
-
-;; find text in files
-;; regrep
 
 ;;; windows
 ;; move from one window to another
