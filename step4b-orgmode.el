@@ -80,7 +80,7 @@
         ("DELEGATED" . (:foreground "#66004d" :background "#ffccf2" :weight bold)) ;; purple
 	("INACTIVE" . (:foreground "#734d26" :background "#e6ccb3" :weight bold)) ;;brown
 	("SENT" . (:foreground "blue" :background "#6699ff" :weight bold)) ;; blue
-	("BUG" . (:foreground "black" :background "#b3b3b3" :weight bold)) ;; black
+	("TOBRING" . (:foreground "black" :background "#b3b3b3" :weight bold)) ;; black
 	("DONE" . (:foreground "#008000" :background "#99ff99" :weight bold)) ;; green
         )
       )
@@ -88,4 +88,4 @@
 ;; https://www.w3schools.com/colors/colors_picker.asp 
 
 (setq org-todo-keywords
-      '((sequence "TODO" "WAITING" "INPROGRESS" "DELEGATED" "INACTIVE" "SENT" "BUG" "DONE")))
+      '((sequence "TODO" "WAITING" "INPROGRESS" "DELEGATED" "INACTIVE" "SENT" "TOBRING" "DONE")))

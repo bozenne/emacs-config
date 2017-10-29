@@ -288,7 +288,6 @@ Je vous prie d'agréer, Madame, Monsieur, mes salutations distinguées.
 ))
 
 ;;; R code
-
 ;;;; R hide code and result
 (add-to-list
  'org-structure-template-alist
@@ -341,3 +340,13 @@ Je vous prie d'agréer, Madame, Monsieur, mes salutations distinguées.
 
 
 
+
+
+;;; Lips code
+
+(add-to-liste
+ 'org-structure-template-alist
+ '("lisp" 
+"#+BEGIN_SRC emacs-lisp
+
+#+END_SRC"))

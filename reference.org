@@ -1,0 +1,19 @@
+#+Title: Documentation on emacs 
+#+LaTeX_CLASS: org-article
+#+LaTeX_HEADER:\author{Brice Ozeene}
+#+OPTIONS: toc:t
+
+
+* learning emacs/lisp
+https://tuhdo.github.io/index.html
+https://emacsclub.github.io/html/org_tutorial.html
+
+* magit
+https://www.masteringemacs.org/article/introduction-magit-emacs-mode-git
+
+* Using emacs as a project management tool
+http://doc.norang.ca/org-mode.html
+
+
+* mu4a
+Documentation: https://www.djcbsoftware.nl/code/mu/mu4e/Gmail-configuration.html
