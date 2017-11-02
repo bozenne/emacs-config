@@ -3,7 +3,7 @@
 #+LaTeX_HEADER:\author{Brice Ozeene}
 #+OPTIONS: toc:t
 
-* Basics
+* key bindings
 
 | short name | symbol on the keybord | full name   |
 |------------+-----------------------+-------------|
@@ -43,6 +43,7 @@
 | F10 or C-x u or C-/ | undo-only                  | cancel the last action              |
 |                     | delete-frame               | delete frame                        |
 |                     | list-packages              | Display a list of packages          |
+|                     | package-install            | install a given package             |
 |                     | shell                      | open the shell                      |
 |                     | emacs-version              | display the version of emacs        |
 
@@ -76,7 +77,8 @@
 | ~           |                                  | flag all auto-save files                    |
 | #           |                                  | flag file for deletion                      |
 | M-r         | dired-omit-mode                  | hide unimportant files                      |
-| * .         |                                  | mark all files with a given extension       |
+| % m         |                                  | mark all files matching extension           |
+| * .         |                                  | mark all files matching regular expression  |
 | m           |                                  | mark file                                   |
 | R           |                                  | rename file(s)                              |
 | Q           | dired-do-find-regexp-and-replace | search and replace in all marked files      |
@@ -139,10 +141,12 @@ More key bindings at: https://www.gnu.org/software/emacs/refcards/pdf/dired-ref.
 | line      | C-p      | C-n     |        | C-a      | C-e   |              |
 | sentence  | M-a      | (M-e)   |        |          |       |              |
 | paragraph | M-a      |         |        |          |       |              |
+| sexp      | M-C-p    | M-C-n   |        |          |       |              |
 | function  |          |         |        | M-C-a    | M-C-e |              |
 | screen    | C-v      | M-v     | C-l    | M-<      | M->   | C-M-v        |
 | buffer    | M-p      | M-n     |        |          |       |              |
 | window    | M-down   | M-up    |        |          |       | M-o          |
+sexp: balanced group of parentheses.
 
 | Key binding | name of the command | effect     |
 |-------------+---------------------+------------|

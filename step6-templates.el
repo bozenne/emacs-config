@@ -343,8 +343,7 @@ Je vous prie d'agréer, Madame, Monsieur, mes salutations distinguées.
 
 
 ;;; Lips code
-
-(add-to-liste
+(add-to-list
  'org-structure-template-alist
  '("lisp" 
 "#+BEGIN_SRC emacs-lisp

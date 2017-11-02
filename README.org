@@ -60,6 +60,8 @@ when launching emacs (see section dependencies below).
  )
 #+END_SRC
 
+* Key binding
+See the file extendedCommands.org
 * Dependencies
 
 =require=:
