@@ -50,7 +50,7 @@
 (setq brice-org-latex-listing-options-string
       (concat "\\lstset{\n"
 	      "keywordstyle=\\color{blue},\n"
-	      "commentstyle=\\color{red},"
+	      "commentstyle=\\color{red},\n"
 	      "stringstyle=\\color[rgb]{0,.5,0},\n"
                "literate={~}{$\\sim$}{1},\n"
 	      "basicstyle=\\ttfamily\\small,\n"
