@@ -411,16 +411,6 @@ Je vous prie d'agréer, Madame, Monsieur, mes salutations distinguées.
 \\end{align*}
 #+END_EXPORT"))
 
-
-;;;; caption
-(add-to-list
- 'org-structure-template-alist
- '("Lcaption"
-"#+name: fig:1
-#+ATTR_LATEX: :width 0.7\\textwidth
-#+CAPTION:\n"
-))
-
 ;;; R code
 ;;;; R hide code and result
 (add-to-list
@@ -429,15 +419,6 @@ Je vous prie d'agréer, Madame, Monsieur, mes salutations distinguées.
 "#+BEGIN_SRC R :results output raw drawer  :exports none :session *R* :cache no 
 
 #+END_SRC"))
-
-;;;; R export code 
-(add-to-list
- 'org-structure-template-alist
- '("Rc"
-"#+BEGIN_SRC R :exports both :results output :session *R* :cache no
-
-#+END_SRC"	
-))
 
 ;;;; R export code and result (output)
 (add-to-list
@@ -469,12 +450,6 @@ Je vous prie d'agréer, Madame, Monsieur, mes salutations distinguées.
 #+ATTR_LATEX: :width 0.7\\textwidth
 #+CAPTION:\n"
 ))
-
-
-
-
-
-
 
 ;;; Lips code
 

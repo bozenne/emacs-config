@@ -223,16 +223,23 @@ More key bindings at: https://www.gnu.org/software/emacs/manual/html_node/emacs/
 | C-c C-v        | brice-browse-this-file  | view                                                            |
 |                | org-sort                | sort entries (e.g. alphabetic order)                              |
 
-** Escape orgmode
+** Templates
 
 | Key binding | name of the command | effect                                                       |
 |-------------+---------------------+--------------------------------------------------------------|
 | <L          |                     | Line of latex code                                           |
+| <Lh         |                     | Line for the header                                          |
+| <Lf         |                     | Lines for a figure                                           |
 | <l          |                     | Block of latex code                                          |
 | <leq        |                     | Environment align*                                           |
-| <La         |                     | Header for latex document                                    |
+| <Ld         |                     | Header for a default latex document                          |
+| <Lm         |                     | Header for scientific latex document                         |
+| <Ll         |                     | Header for a letter                                          |
 | <Lb         |                     | Header for beamer document (remember to refresh local setup) |
-| <Re         |                     | Block of R code                                              |
+| <Rmd        |                     | Header for markdown document                                 |
+| <Rh         |                     | Block of R code to export figures                            |
+| <Re         |                     | Block of R code to export code and output                    |
+| <lisp       |                     | Block of lisp code                                           |
 | C-c '       |                     | Run R block line by line                                     |
 
 ** Table
