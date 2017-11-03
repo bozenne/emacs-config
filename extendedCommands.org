@@ -1,0 +1,311 @@
+#+Title: Key bindings for the extended  commands
+#+LaTeX_CLASS: org-article
+#+LaTeX_HEADER:\author{Brice Ozeene}
+#+OPTIONS: toc:t
+
+* Basics
+
+| short name | symbol on the keybord | full name   |
+|------------+-----------------------+-------------|
+| C-         | Ctrl                  | Control     |
+| M-         | Alt                   | Meta        |
+| ESC-       | Esc                   | Escape      |
+| DEL-       | <- Backspace          | Backspace   |
+| SPC-       |                       | Space       |
+| TAB-       | Tab                   | Tabulation  |
+| <left>     |                       | arrow left  |
+| <right>    |                       | arrow right |
+| <up>       |                       | arrow up    |
+| <down>     |                       | arrow down  |
+
+
+| Key binding          | name of the command      | effect                                    |
+|----------------------+--------------------------+-------------------------------------------|
+| M-x                  | execute-extended-command | execute command                           |
+| C-u <num> <shortcut> |                          | duplicate by num the effect of a shortcut |
+|                      |                          |                                           |
+
+* lisp code
+
+| Key binding | name of the command     | effect                                   |
+|-------------+-------------------------+------------------------------------------|
+| M-:         | command eval-expression | evaluate lisp code                       |
+|             | eval-region             | evaluate a region of lisp code in a file |
+|             | load-file               | source a lisp file                       |
+
+* emacs session
+
+| Key binding         | name of the command        | effect                              |
+|---------------------+----------------------------+-------------------------------------|
+| C-x C-c             | save-buffers-kill-terminal | end Emacs session                   |
+| C-z                 |                            | Emacs session (temporary)           |
+| C-g                 | keyboard-quit              | interrupt the command being entered |
+| F10 or C-x u or C-/ | undo-only                  | cancel the last action              |
+|                     | delete-frame               | delete frame                        |
+|                     | list-packages              | Display a list of packages          |
+|                     | shell                      | open the shell                      |
+|                     | emacs-version              | display the version of emacs        |
+
+* Buffer
+
+| Key binding | name of the command | effect                                     |
+|-------------+---------------------+--------------------------------------------|
+| C-x C-f     |                     | open/create a file                         |
+| C-x C-s     |                     | save a buffer                              |
+| C-x s       |                     | save all buffers                           |
+| C-x C-b     |                     | list all buffers                           |
+| C-x b       |                     | switch buffer                              |
+| C-x 1       |                     | only keep the current window               |
+| C-x 2       |                     | split the current window, horizontally     |
+| C-x 3       |                     | spilt the current window, vertically       |
+|             | revert-buffer       | update buffer with the content of the file |
+
+* Internal browser
+
+** Dired
+
+| Key binding | name of the command              | effect                                      |
+|-------------+----------------------------------+---------------------------------------------|
+| C-x d       | dired                            | launch dired                                |
+| C           |                                  | copy file(s)                                |
+| +           |                                  | create subdirectory                         |
+| D           |                                  | delete marked files                         |
+|             | rgrep                            | search string in all files from a directory |
+| A           | dired-do-find-regexp             | search string in all marked files           |
+| d           |                                  | flag all back-up files                      |
+| ~           |                                  | flag all auto-save files                    |
+| #           |                                  | flag file for deletion                      |
+| M-r         | dired-omit-mode                  | hide unimportant files                      |
+| * .         |                                  | mark all files with a given extension       |
+| m           |                                  | mark file                                   |
+| R           |                                  | rename file(s)                              |
+| Q           | dired-do-find-regexp-and-replace | search and replace in all marked files      |
+|             | find-grep-dired                  | search in files                             |
+|             | find-name-dired                  | search file by filename                     |
+| e           | dired-sort-extension             | sort files by extension                     |
+| C-c n       | dired-sort-name                  | sort files by name                          |
+| C-c t       | dired-sort-time                  | sort files by time                          |
+| U           |                                  | unmark all files                            |
+| u           |                                  | unmark file                                 |
+| g           |                                  | update dired buffer                         |
+| o           |                                  | visit file in another window                |
+| C-x C-q     | dired-toggle-read-only           | edit dired buffer (C-c C-c)                 |
+| C-c C-c     | wdired-finish-edit               | end edit dired buffer                       |
+| /           | dired-narrow                     | filter files by regexpr                     |
+| ^           | dired-up-directory               | mode to parent directory                    |
+
+More key bindings at: https://www.gnu.org/software/emacs/refcards/pdf/dired-ref.pdf
+
+** Back to OS
+
+| Key binding | name of the command                          | effect                                |
+|-------------+----------------------------------------------+---------------------------------------|
+| F9          | brice-open-directory-with-explorer           | open OS-explorer in current directory |
+| M-F9        | brice-open-file-or-directory-in-external-app | open file with default OS application |
+
+** Switching buffer
+
+| Key binding | name of the command | effect                              |
+|-------------+---------------------+-------------------------------------|
+| C-x b       | ido-switch-buffer   | switch buffer                       |
+| C-x C-b     | ibuffer             | switch buffer (alternative display) |
+
+** Switching window/frame
+
+| Key binding | name of the command | effect                                  |
+|-------------+---------------------+-----------------------------------------|
+| M-o         | other-window        | move to another window (clockwise)      |
+| M-O         |                     | move to another window (anti-clockwise) |
+| M-<left>    | windmove-left       | move to the window on the left          |
+| M-<right>   | windmove-right      | move to the window on the right         |
+| M-<up>      | windmove-up         | move to the window on the up            |
+| M-<down>    | windmove-down       | move to the window on the down          |
+
+** Folding
+
+| Key binding | name of the command | effect                                                         |
+|-------------+---------------------+----------------------------------------------------------------|
+| <TAB>       | org-cycle           | fold/unfold section                                            |
+| M-<TAB>     | org-shifttab        | cycle between fold all, fold all with sections names, show all |
+
+* Editing
+
+** Move
+
+| unit      | backward | forward | center | begining | end   | other window |
+|-----------+----------+---------+--------+----------+-------+--------------|
+| character | C-b      | C-f     |        |          |       |              |
+| word      | M-b      | M-f     |        |          |       |              |
+| line      | C-p      | C-n     |        | C-a      | C-e   |              |
+| sentence  | M-a      | (M-e)   |        |          |       |              |
+| paragraph | M-a      |         |        |          |       |              |
+| function  |          |         |        | M-C-a    | M-C-e |              |
+| screen    | C-v      | M-v     | C-l    | M-<      | M->   | C-M-v        |
+| buffer    | M-p      | M-n     |        |          |       |              |
+| window    | M-down   | M-up    |        |          |       | M-o          |
+
+| Key binding | name of the command | effect     |
+|-------------+---------------------+------------|
+| M-g         | goto-line           | go to line |
+
+** Highlight
+| Key binding | name of the command  | effect                                 |
+|-------------+----------------------+----------------------------------------|
+| M-s h r     | highlight-regexp     | highlight matching regular expressions |
+| M-s h u     | unhighlight-regexp   | remove the highlight                   |
+
+** Mark
+| Key binding     | name of the command | effect                          |
+|-----------------+---------------------+---------------------------------|
+| M-<SPC>         |                     | start mark and highlight        |
+| M-<SPC> M-<SPC> |                     | start mark without highlight    |
+|                 | mark-word           | mark word                       |
+| M-h             | org-mark-element    | mark paragraph                  |
+| C-x h           | mark-whole-buffer   | mark buffer                     |
+| C-u C-<SPC>     |                     | navigate back to previous marks |
+
+** Search (within buffer)
+| Key binding | name of the command | effect                                                               |
+|-------------+---------------------+----------------------------------------------------------------------|
+| C-r         | isearch-forward     | search for a regular expression forward                              |
+| C-s         | isearch-backward    | search for a regular expression backward                             |
+| M-p / M-n   |                     | (during) move through previous searched expressions           |
+| M-e         |                     | (during) modify expression to search                          |
+| <RET>       |                     | (during) stop the search                                      |
+| C-u C-<SPC> |                     | (on exit) return at the place before search                          |
+| C-x C-x     |                     | (on exit) highlight the text between the start and end of the search |
+
+** Search and replace (within buffer)
+
+| Key binding | name of the command | effect                                              |
+|-------------+---------------------+-----------------------------------------------------|
+| M-%         | query-replace       | search and replace a regular expression backward    |
+| M-p / M-n   |                     | (during) move through previous searched expressions |
+| ,           |                     | (during) replace and display the result             |
+| n           |                     | (during) next                                       |
+| !           |                     | (during) replace all occurences                     |
+| ^           |                     | (during) go back to previous occurence              |
+| q           |                     | (during) quit                                         |
+
+More key bindings at: https://www.gnu.org/software/emacs/manual/html_node/emacs/Query-Replace.html
+
+** Delete
+| unit     | all       | backward | forward             |
+|----------+-----------+----------+---------------------|
+| letter   |           | <DEL>    | Delete              |
+| word     |           | M-<DEL>  | M-d                 |
+| line     | C-S-<DEL> |          | C-k                 |
+| sentence |           |          | M-k (kill-sentence) |
+| region   | C-w       |          | M-k                 |
+
+** Autocompletion
+| Key binding | name of the command | effect |
+|-------------+---------------------+--------|
+| M-i         | dabbrev-expand      |        |
+| M-e         | hippie-expand       |        |
+
+* orgmode
+
+** General
+
+| Key binding    | name of the command     | effect                                                          |
+|----------------+-------------------------+-----------------------------------------------------------------|
+| C-u C-c C-e    |                         | Change an environment                                           |
+|                | org-do-demote           | Demote headline by one level (e.g. * -> **)                     |
+| C-c C-e        | org-export-dispatch     | Insert an environment                                           |
+| C-c c          |                         | Refresh the local setup (must be done in the header section)    |
+|                | gscholar-bibtex         | Use google scholar to find bibtex citations for a given article |
+| M-k            |                         | debug                                                           |
+| M-j            | brice-org-export-to-pdf | export                                                          |
+|                | org-do-promote          | promote headline by one level (e.g. ** -> *)                    |
+| M-q            | genome/indent-paragraph | reformat a paragrah                                             |
+| C-x f <number> | set-fill-column         | set the margin when reformating paragraph (default 70)          |
+| C-c C-v        | brice-browse-this-file  | view                                                            |
+|                | org-sort                | sort entries (e.g. alphabetic order)                              |
+
+** Escape orgmode
+
+| Key binding | name of the command | effect                                                       |
+|-------------+---------------------+--------------------------------------------------------------|
+| <L          |                     | Line of latex code                                           |
+| <l          |                     | Block of latex code                                          |
+| <leq        |                     | Environment align*                                           |
+| <La         |                     | Header for latex document                                    |
+| <Lb         |                     | Header for beamer document (remember to refresh local setup) |
+| <Re         |                     | Block of R code                                              |
+| C-c '       |                     | Run R block line by line                                     |
+
+** Table
+
+| Key binding | name of the command         | effect                                |
+|-------------+-----------------------------+---------------------------------------|
+| C-<left>    | org-table-move-column-left  | move to the left the selected column  |
+| C-<right>   | org-table-move-column-right | move to the right the selected column |
+
+* Version control
+
+** Native
+
+| Key binding | name of the command   | effect                                     |
+|-------------+-----------------------+--------------------------------------------|
+|             |                       |                                            |
+|             | diff-buffer-with-file | Compare buffer with the corresponding file |
+
+** Magit
+
+| Key binding | name of the command  | effect                             |
+|-------------+----------------------+------------------------------------|
+|             | magit-init           | start version control in directory |
+| C-x g       | magit-status         | open version control in directory  |
+| s           |                      | stage untracked file               |
+| i           |                      | add file to .gitignore             |
+| u           |                      | unstage file                       |
+| k           |                      | delete file                        |
+| c           | git commit -m "text" | create a temporary commit          |
+| C-c C-c     |                      | valid temporary commit             |
+| C-c C-k     |                      | kill temporary commit              |
+|             | magit-remove-add     | add remote repository              |
+| P           | magit-push-popup     | push commit                        |
+| g           |                      | refress current buffer             |
+| F           |                      | Pull                               |
+
+Documentation: http://jr0cket.co.uk/2012/12/driving-git-with-emacs-pure-magic-with.html.html
+               https://github.com/magit/magit/wiki/Cheatsheet
+* R
+| Key binding | name of the command                         | effect                                           |
+|-------------+---------------------------------------------+--------------------------------------------------|
+| C-c m       | brice-ess-browser-and-source-r              | insert browser and source                        |
+| C-c s       | brice-ess-source-r                          | save file and source file                        |
+| C-c M-p     | brice-ess-packageSource-r                   | source package using butils.base:::packageSource |
+| C-c b       | brice-ess-browser-r                         | insert browser                                   |
+| C-c C-b     | ess-eval-buffer                             | source buffer                                    |
+| C-c C-l     | ess-load-file                               | source file                                      |
+| M-j         | ess-indent-new-comment-line                 | insert line                                      |
+| C-M-d       | ess-roxy-preview-HTML                       | previous roxygen documentation in web browser    |
+| C-M-u       | genome/ess-edit-indent-call-sophisticatedly | emacs-genome indent                              |
+| C-c C-c     |                                             | interrupt evaluation                        |
+
+* Email
+| Key binding | name of the command | effect                         |
+|-------------+---------------------+--------------------------------|
+| C-x m       | compose-mail        | start composing a mail message |
+| C-c C-c     |                     | send email                     |
+
+* Encrypting 
+
+** Files
+| Key binding | name of the command | effect                           |
+|-------------+---------------------+----------------------------------|
+|             | epa-decrypt         | Decrypts the current region/file |
+|             | epa-encrypt         | Encrypts the current region/file |
+
+** Generating keys
+
+| Key binding | shell command                                  | effect                                                  |
+|-------------+------------------------------------------------+---------------------------------------------------------|
+|             | gpg --gen-key                                  | generate a key                                          |
+|             | gpg --list-secret-keys                         | list keys                                               |
+|             | gpg --armor --export-secret-keys XXX > YYY.asc | export key associated with the name XXX to file YYY.asc |
+
+documentation: https://www.masteringemacs.org/article/keeping-secrets-in-emacs-gnupg-auth-sources
+
