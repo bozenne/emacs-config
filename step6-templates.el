@@ -28,7 +28,8 @@
 #+LATEX_HEADER: \\RequirePackage{fancyvrb}
 #+LATEX_HEADER: \\DefineVerbatimEnvironment{verbatim}{Verbatim}{fontsize=\\small,formatcom = {\\color[rgb]{0.5,0,0}}}
 
-#+LATEX_HEADER: \RequirePackage{epstopdf} % to be able to convert .eps to .pdf image files
+** Image
+#+LATEX_HEADER: \\RequirePackage{epstopdf} % to be able to convert .eps to .pdf image files
 
 ** latex command
 #+LaTeX_HEADER: %
@@ -72,6 +73,8 @@
 #+PROPERTY: header-args :session *R*
 #+PROPERTY: header-args :tange yes % extract source code: http://orgmode.org/manual/Extracting-source-code.html
 #+PROPERTY: header-args :eval yes :cache no
+#+LATEX_HEADER: \\RequirePackage{fancyvrb}
+#+LATEX_HEADER: \\DefineVerbatimEnvironment{verbatim}{Verbatim}{fontsize=\\small,formatcom = {\\color[rgb]{0.5,0,0}}}
 
 ** Display 
 #+LATEX_HEADER: \\RequirePackage{colortbl} % arrayrulecolor to mix colors
@@ -416,7 +419,6 @@ Je vous prie d'agréer, Madame, Monsieur, mes salutations distinguées.
 ))
 
 ;;; Lips code
-
 (add-to-list
  'org-structure-template-alist
  '("lisp" 
