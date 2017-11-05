@@ -37,8 +37,6 @@
 	("" "array")
 	;;;; to define macro
 	("" "ifthen")
-	;;;; code
-	("" "listings")
 	;;;; link
 	("" "hyperref") ;; [default orgmode]
 	;;;; bibliography
@@ -52,7 +50,7 @@
 	      "keywordstyle=\\color{blue},\n"
 	      "commentstyle=\\color{red},\n"
 	      "stringstyle=\\color[rgb]{0,.5,0},\n"
-               "literate={~}{$\\sim$}{1},\n"
+              "literate={~}{$\\sim$}{1},\n"
 	      "basicstyle=\\ttfamily\\small,\n"
 	      "columns=fullflexible,\n"
 	      "breaklines=true,\n"        
@@ -68,7 +66,7 @@
 	      "showstringspaces=false,\n"
 	      "xleftmargin=.23in,\n"
 	      "frame=single,\n"
-	      "basewidth={0.5em,0.4em},\n"
+	      "basewidth={0.5em,0.4em}\n"
 	      "}\n"))
 
 (setq brice-org-latex-common-header-string

@@ -25,9 +25,12 @@
 #+PROPERTY: header-args :session *R*
 #+PROPERTY: header-args :tange yes % extract source code: http://orgmode.org/manual/Extracting-source-code.html
 #+PROPERTY: header-args :eval yes :cache no
+#+LATEX_HEADER: \\RequirePackage{fancyvrb}
+#+LATEX_HEADER: \\DefineVerbatimEnvironment{verbatim}{Verbatim}{fontsize=\\small,formatcom = {\\color[rgb]{0.5,0,0}}}
+
 
 ** Image
-#+LATEX_HEADER: \RequirePackage{epstopdf} % to be able to convert .eps to .pdf image files
+#+LATEX_HEADER: \\RequirePackage{epstopdf} % to be able to convert .eps to .pdf image files
 
 ** latex command
 #+LaTeX_HEADER: %
@@ -71,6 +74,8 @@
 #+PROPERTY: header-args :session *R*
 #+PROPERTY: header-args :tange yes % extract source code: http://orgmode.org/manual/Extracting-source-code.html
 #+PROPERTY: header-args :eval yes :cache no
+#+LATEX_HEADER: \\RequirePackage{fancyvrb}
+#+LATEX_HEADER: \\DefineVerbatimEnvironment{verbatim}{Verbatim}{fontsize=\\small,formatcom = {\\color[rgb]{0.5,0,0}}}
 
 ** Display 
 #+LATEX_HEADER: \\RequirePackage{colortbl} % arrayrulecolor to mix colors
@@ -326,43 +331,6 @@ Je vous prie d'agréer, Madame, Monsieur, mes salutations distinguées.
 ;; #+INFOJS_OPT: view:nil toc:nil ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
 
 
-;;;; R markdown
-(add-to-list
- 'org-structure-template-alist
- `("Rmd" ,(concat
-"#+TITLE:
-#+Author: " user-full-name
-"\n\n\n
-* CONFIG :noexport:
-# #+LaTeX_HEADER:\\affil{Department of Biostatistics, University of Copenhagen, Copenhagen, Denmark}
-#+LANGUAGE:  en
-#+LaTeX_CLASS: org-article
-#+OPTIONS:   title:t author:t toc:nil todo:nil 
-#+OPTIONS:   H:3 num:t 
-#+OPTIONS:   TeX:t LaTeX:t
-
-** code
-#+PROPERTY: header-args :session *R*
-#+PROPERTY: header-args :tange yes % extract source code: http://orgmode.org/manual/Extracting-source-code.html
-#+PROPERTY: header-args :eval yes :cache no
-
-** latex packages
-#+LaTeX_HEADER: %
-#+LaTeX_HEADER: %%%% additional packages %%%%
-#+LaTeX_HEADER: %
-#+LaTeX_HEADER:\\usepackage{authblk}
-
-** display
-#+LaTeX_HEADER: %
-#+LaTeX_HEADER: %%%% display options %%%%
-#+LaTeX_HEADER: %
-
-** latex command
-#+LaTeX_HEADER: %
-#+LaTeX_HEADER: %%%% additional latex commands %%%%
-#+LaTeX_HEADER: %
-"
-	  )))
 
 ;;; org shortcut
 
