@@ -1,4 +1,4 @@
-;;; orgmode
+;;; packages
 
 (use-package org)
 (use-package org-capture)
@@ -13,6 +13,7 @@
 (use-package ox-beamer)
 (use-package ox-bibtex)
 
+;;; options
 (setq org-babel-hash-show-time t)
 (setq org-export-babel-evaluate t)
 (add-to-list 'org-babel-default-header-args '(:eval . "never-export"))
@@ -68,10 +69,14 @@
 (eval-after-load 'org
   '(setf org-highlight-latex-and-related '(latex)))
 
+;; ;; tell org to use listings (instead of verbatim) for source code
+(setq org-latex-listings t)
 ;; automatically indent lists and similar structures of Org buffers 
 (setq org-startup-indented t)
 ;; indent code blocks using TAB
 (setq org-src-tab-acts-natively t)
+
+;;;; keywords
 
 (setq org-todo-keyword-faces
       '(
