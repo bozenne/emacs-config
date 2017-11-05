@@ -1,9 +1,9 @@
 ;;; Document class
 
-;;;; Latex science
+;;;; Latex default
 (add-to-list
  'org-structure-template-alist
- `("La" ,(concat
+ `("Ld" ,(concat
 "#+TITLE:
 #+Author: " user-full-name
 "\n\n\n
@@ -15,21 +15,19 @@
 #+OPTIONS:   H:3 num:t 
 #+OPTIONS:   TeX:t LaTeX:t
 
-** code
-#+PROPERTY: header-args :session *R*
-#+PROPERTY: header-args :tange yes % extract source code: http://orgmode.org/manual/Extracting-source-code.html
-#+PROPERTY: header-args :eval yes :cache no
-
 ** latex packages
 #+LaTeX_HEADER: %
 #+LaTeX_HEADER: %%%% additional packages %%%%
 #+LaTeX_HEADER: %
 #+LaTeX_HEADER:\\usepackage{authblk}
 
-** display
-#+LaTeX_HEADER: %
-#+LaTeX_HEADER: %%%% display options %%%%
-#+LaTeX_HEADER: %
+** code
+#+PROPERTY: header-args :session *R*
+#+PROPERTY: header-args :tange yes % extract source code: http://orgmode.org/manual/Extracting-source-code.html
+#+PROPERTY: header-args :eval yes :cache no
+
+** Image
+#+LATEX_HEADER: \RequirePackage{epstopdf} % to be able to convert .eps to .pdf image files
 
 ** latex command
 #+LaTeX_HEADER: %
@@ -37,6 +35,142 @@
 #+LaTeX_HEADER: %
 "
 	  )))
+
+;;;; Latex math
+(add-to-list
+ 'org-structure-template-alist
+ `("Lm" ,(concat
+"#+TITLE:
+#+Author: " user-full-name
+"\n\n\n
+* CONFIG :noexport:
+# #+LaTeX_HEADER:\\affil{Department of Biostatistics, University of Copenhagen, Copenhagen, Denmark}
+#+LANGUAGE:  en
+#+LaTeX_CLASS: org-article
+#+OPTIONS:   title:t author:t toc:t todo:t 
+#+OPTIONS:   H:3 num:t 
+#+OPTIONS:   TeX:t LaTeX:t
+
+** Additional commands
+#+LaTeX_HEADER: %
+#+LaTeX_HEADER: %%%% additional latex commands %%%%
+#+LaTeX_HEADER: %
+
+** Additional packages
+#+LaTeX_HEADER: %
+#+LaTeX_HEADER: %%%% additional packages %%%%
+#+LaTeX_HEADER: %
+#+LaTeX_HEADER:\\usepackage{authblk}
+
+** Algorithm
+#+LATEX_HEADER: \\RequirePackage{amsmath}
+#+LATEX_HEADER: \\RequirePackage{algorithm}
+#+LATEX_HEADER: \\RequirePackage[noend]{algpseudocode}
+
+** Code
+#+PROPERTY: header-args :session *R*
+#+PROPERTY: header-args :tange yes % extract source code: http://orgmode.org/manual/Extracting-source-code.html
+#+PROPERTY: header-args :eval yes :cache no
+
+** Display 
+#+LATEX_HEADER: \\RequirePackage{colortbl} % arrayrulecolor to mix colors
+#+LATEX_HEADER: %% \\input{0_Display.tex}
+
+** Image
+#+LATEX_HEADER: \\RequirePackage{epstopdf} % to be able to convert .eps to .pdf image files
+
+** Math
+#+LATEX_HEADER: \\RequirePackage{ifthen}
+#+LATEX_HEADER: \\RequirePackage{xspace} % space for newcommand macro
+#+LATEX_HEADER: \\RequirePackage{xifthen}
+#+LATEX_HEADER: \\RequirePackage{xargs}
+#+LATEX_HEADER: \\RequirePackage{dsfont}
+#+LATEX_HEADER: \\RequirePackage{amsmath,stmaryrd,graphicx}
+#+LATEX_HEADER: \\RequirePackage{prodint} % product integral symbol (\\PRODI)
+
+*** Template for shortcut
+#+LATEX_HEADER: \\newcommand\\defOperator[7]{%
+#+LATEX_HEADER:	\\ifthenelse{\\isempty{#2}}{
+#+LATEX_HEADER:		\\ifthenelse{\\isempty{#1}}{#7{#3}#4}{#7{#3}#4 \\left#5 #1 \\right#6}
+#+LATEX_HEADER:	}{
+#+LATEX_HEADER:	\\ifthenelse{\\isempty{#1}}{#7{#3}#4_{#2}}{#7{#3}#4_{#1}\\left#5 #2 \\right#6}
+#+LATEX_HEADER: }
+#+LATEX_HEADER: }
+
+#+LATEX_HEADER: \\newcommand\\defUOperator[5]{%
+#+LATEX_HEADER: \\ifthenelse{\\isempty{#1}}{
+#+LATEX_HEADER:		#5\\left#3 #2 \\right#4
+#+LATEX_HEADER: }{
+#+LATEX_HEADER:	\\ifthenelse{\\isempty{#2}}{\\underset{#1}{\\operatornamewithlimits{#5}}}{
+#+LATEX_HEADER:		\\underset{#1}{\\operatornamewithlimits{#5}}\\left#3 #2 \\right#4}
+#+LATEX_HEADER: }
+#+LATEX_HEADER: }
+
+#+LATEX_HEADER: \\newcommand{\\defBoldVar}[2]{	
+#+LATEX_HEADER:	\\ifthenelse{\\equal{#2}{T}}{\\boldsymbol{#1}}{\\mathbf{#1}}
+#+LATEX_HEADER: }
+
+*** Shortcuts
+#+LATEX_HEADER: \\newcommandx\\Cov[2][1=,2=]{\\defOperator{#1}{#2}{C}{ov}{[}{]}{\\mathbb}}
+#+LATEX_HEADER: \\newcommandx\\Esp[2][1=,2=]{\\defOperator{#1}{#2}{E}{}{[}{]}{\\mathbb}}
+#+LATEX_HEADER: \\newcommandx\\Prob[2][1=,2=]{\\defOperator{#1}{#2}{P}{}{[}{]}{\\mathbb}}
+#+LATEX_HEADER: \\newcommandx\\Qrob[2][1=,2=]{\\defOperator{#1}{#2}{Q}{}{[}{]}{\\mathbb}}
+#+LATEX_HEADER: \\newcommandx\\Var[2][1=,2=]{\\defOperator{#1}{#2}{V}{ar}{[}{]}{\\mathbb}}
+
+#+LATEX_HEADER: \\newcommandx\\Binom[2][1=,2=]{\\defOperator{#1}{#2}{B}{}{(}{)}{\\mathcal}}
+#+LATEX_HEADER: \\newcommandx\\Gaus[2][1=,2=]{\\defOperator{#1}{#2}{N}{}{(}{)}{\\mathcal}}
+#+LATEX_HEADER: \\newcommandx\\Wishart[2][1=,2=]{\\defOperator{#1}{#2}{W}{ishart}{(}{)}{\\mathcal}}
+#+LATEX_HEADER: \\newcommandx\\Likelihood[2][1=,2=]{\\defOperator{#1}{#2}{L}{}{(}{)}{\\mathcal}}
+#+LATEX_HEADER: \\newcommandx\\Information[2][1=,2=]{\\defOperator{#1}{#2}{I}{}{(}{)}{\\mathcal}}
+#+LATEX_HEADER: \\newcommandx\\Score[2][1=,2=]{\\defOperator{#1}{#2}{S}{}{(}{)}{\\mathcal}}
+
+#+LATEX_HEADER: \\newcommandx\\Vois[2][1=,2=]{\\defOperator{#1}{#2}{V}{}{(}{)}{\\mathcal}}
+#+LATEX_HEADER: \\newcommandx\\IF[2][1=,2=]{\\defOperator{#1}{#2}{IF}{}{(}{)}{\\mathcal}}
+#+LATEX_HEADER: \\newcommandx\\Ind[1][1=]{\\defOperator{}{#1}{1}{}{(}{)}{\\mathds}}
+
+#+LATEX_HEADER: \\newcommandx\\Max[2][1=,2=]{\\defUOperator{#1}{#2}{(}{)}{min}}
+#+LATEX_HEADER: \\newcommandx\\Min[2][1=,2=]{\\defUOperator{#1}{#2}{(}{)}{max}}
+#+LATEX_HEADER: \\newcommandx\\argMax[2][1=,2=]{\\defUOperator{#1}{#2}{(}{)}{argmax}}
+#+LATEX_HEADER: \\newcommandx\\argMin[2][1=,2=]{\\defUOperator{#1}{#2}{(}{)}{argmin}}
+#+LATEX_HEADER: \\newcommandx\\cvD[2][1=D,2=n \\rightarrow \\infty]{\\xrightarrow[#2]{#1}}
+
+#+LATEX_HEADER: \\newcommandx\\Hypothesis[2][1=,2=]{
+#+LATEX_HEADER:         \\ifthenelse{\\isempty{#1}}{
+#+LATEX_HEADER:         \\mathcal{H}
+#+LATEX_HEADER:         }{
+#+LATEX_HEADER: 	\\ifthenelse{\\isempty{#2}}{
+#+LATEX_HEADER: 		\\mathcal{H}_{#1}
+#+LATEX_HEADER: 	}{
+#+LATEX_HEADER: 	\\mathcal{H}^{(#2)}_{#1}
+#+LATEX_HEADER:         }
+#+LATEX_HEADER:         }
+#+LATEX_HEADER: }
+
+#+LATEX_HEADER: \\newcommandx\\dpartiel[4][1=,2=,3=,4=\\partial]{
+#+LATEX_HEADER: 	\\ifthenelse{\\isempty{#3}}{
+#+LATEX_HEADER: 		\\frac{#4 #1}{#4 #2}
+#+LATEX_HEADER: 	}{
+#+LATEX_HEADER: 	\\left.\\frac{#4 #1}{#4 #2}\\right|_{#3}
+#+LATEX_HEADER: }
+#+LATEX_HEADER: }
+
+#+LATEX_HEADER: \\newcommandx\\dTpartiel[3][1=,2=,3=]{\\dpartiel[#1][#2][#3][d]}
+
+#+LATEX_HEADER: \\newcommandx\\ddpartiel[3][1=,2=,3=]{
+#+LATEX_HEADER: 	\\ifthenelse{\\isempty{#3}}{
+#+LATEX_HEADER: 		\\frac{\\partial^{2} #1}{\\left( \\partial #2\\right)^2}
+#+LATEX_HEADER: 	}{
+#+LATEX_HEADER: 	\\frac{\\partial^2 #1}{\\partial #2\\partial #3}
+#+LATEX_HEADER: }
+#+LATEX_HEADER: } 
+
+#+LATEX_HEADER: \\newcommand\\Real{\\mathbb{R}}
+#+LATEX_HEADER: \\newcommand\\Rational{\\mathbb{Q}}
+#+LATEX_HEADER: \\newcommand\\Natural{\\mathbb{N}}
+#+LATEX_HEADER: \\newcommand\\trans[1]{{#1}^\\intercal}%\\newcommand\\trans[1]{{\\vphantom{#1}}^\\top{#1}}
+#+LATEX_HEADER: \\newcommand{\\independent}{\\mathrel{\\text{\\scalebox{1.5}{$\\perp\\mkern-10mu\\perp$}}}}
+"
+)))
 
 ;;;; Latex letter
 (add-to-list
@@ -277,16 +411,6 @@ Je vous prie d'agréer, Madame, Monsieur, mes salutations distinguées.
 \\end{align*}
 #+END_EXPORT"))
 
-
-;;;; caption
-(add-to-list
- 'org-structure-template-alist
- '("Lcaption"
-"#+name: fig:1
-#+ATTR_LATEX: :width 0.7\\textwidth
-#+CAPTION:\n"
-))
-
 ;;; R code
 ;;;; R hide code and result
 (add-to-list
@@ -295,15 +419,6 @@ Je vous prie d'agréer, Madame, Monsieur, mes salutations distinguées.
 "#+BEGIN_SRC R :results output raw drawer  :exports none :session *R* :cache no 
 
 #+END_SRC"))
-
-;;;; R export code 
-(add-to-list
- 'org-structure-template-alist
- '("Rc"
-"#+BEGIN_SRC R :exports both :results output :session *R* :cache no
-
-#+END_SRC"	
-))
 
 ;;;; R export code and result (output)
 (add-to-list
@@ -335,12 +450,6 @@ Je vous prie d'agréer, Madame, Monsieur, mes salutations distinguées.
 #+ATTR_LATEX: :width 0.7\\textwidth
 #+CAPTION:\n"
 ))
-
-
-
-
-
-
 
 ;;; Lips code
 (add-to-list
