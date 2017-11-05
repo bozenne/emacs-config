@@ -111,10 +111,10 @@
 	  #'(lambda nil
 	      ;; complete on ess
 	      (add-to-list 'hippie-expand-try-functions-list (lambda (old) (ess-complete-object-name)))
-	      (define-key org-mode-map  "\C-c\C-v" 'brice-browse-this-file)
+	      (define-key org-mode-map  "\C-c\C-v" 'brice-org-export-and-open-corresponding-pdf)
 	      (define-key org-mode-map (kbd "C-<left>") 'org-table-move-column-left)
 	      (define-key org-mode-map (kbd "C-<right>") 'org-table-move-column-right)
-	      (define-key org-mode-map [(meta k)] 'brice-org-export-to-pdf)
+	      (define-key org-mode-map [(meta k)] 'brice-org-export-and-open-corresponding-tex)
 	      (define-key org-mode-map [(meta j)] 'brice-org-export-to-pdf)
 	      (define-key org-mode-map [(control tab)] 'hide-subtree)
 	      (define-key org-mode-map [(meta e)] 'hippie-expand)
