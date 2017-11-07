@@ -4,9 +4,14 @@
             (define-key ess-mode-map (kbd "\C-c m") 'brice-ess-browser-and-source-r)
             (define-key ess-mode-map (kbd "\C-c s") 'brice-ess-source-r)
             (define-key ess-mode-map (kbd "C-c M-p") 'brice-ess-packageSource-r)
-	    (define-key ess-mode-map (kbd "\C-c b") 'brice-ess-browser-r)
+	    (define-key ess-mode-map (kbd "\C-c b") 'brice-ess-browser-r)	    
 	    (define-key ess-mode-map (kbd "C-M-d") 'ess-roxy-preview-HTML)
             (define-key ess-mode-map (kbd "C-M-u") 'genome/ess-edit-indent-call-sophisticatedly)
+	    (define-key ess-mode-map "\M-k" 'genome/ess-switch-to-R)
+	    (define-key ess-mode-map "\M-H" 'genome/ess-get-help-R-object)
+	    (define-key ess-mode-map (kbd "\C-c d") 'ess-tracebug)
+	    (define-key ess-mode-map (kbd "\C-c i") 'genome/ess-edit-insert-file-name)  
+	    (define-key ess-mode-map (kbd "\C-c p") 'genome/ess-edit-insert-path)  
 
 ))
 

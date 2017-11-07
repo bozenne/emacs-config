@@ -298,6 +298,124 @@
    Location  : emacs-genome/snps/ess-edit.el"
   (delete-overlay (aref genome/ess-edit-highlight-overlays index)))
 
+;;; genome/ess-switch-to-R
+(defun genome/ess-switch-to-R (&optional arg)
+  "Doc       : Goto the end of the R console with argument ARG erase its contents. See `ess-switch-to-ESS' and `ess-show-buffer' for buffer behaviour.
+   From      : https://github.com/tagteam/emacs-genome (author Thomas Alexander Gerds)
+   Originally: eg-switch-to-R
+   location  : emacs-genome/snps/ess-R-snps.el"
+  (interactive "P")
+  (ess-switch-to-end-of-ESS)
+  (when arg (erase-buffer) (comint-send-input)))
+
+;;; genome/ess-get-help-R-object
+(defun genome/ess-get-help-R-object ()
+  "Doc       : Open the help file of the R object at the cursor point from a script in an external buffer.
+   From      : https://github.com/tagteam/emacs-genome (author Thomas Alexander Gerds)
+   Originally: eg/ess-get-help-R-object
+   location  : emacs-genome/snps/ess-R-snps.el"
+  (interactive)
+  (let ((fun (ess-symbol-at-point)))
+    (ess-switch-to-end-of-ESS)
+    (insert (concat "help(" (symbol-name fun) ")"))
+    (inferior-ess-send-input)))
+
+;;; genome/ess-edit-insert-path
+(defun genome/ess-edit-insert-path (&optional arg)
+  "Doc       : Insert a directory path as a string.
+If ARG is non-nil prompt for directory path else
+use value of `default-directory' which usually is the
+directory in which the current file lives.
+
+If `ess-edit-expand-file-name-relative' is non-nil
+replace absolute path to home directory by '~'.
+   From      : https://github.com/tagteam/emacs-genome (author Thomas Alexander Gerds)
+   Originally: ess-edit-insert-path
+   location  : emacs-genome/snps/ess-edit.el"
+  (interactive "P")
+  (let ((dir (if arg
+		 (read-directory-name "insert directory name: ")
+	       default-directory)))
+    (insert "\""
+	    (genome/ess-edit-expand-file-name dir ) "\"")
+    (backward-char 1)))
+
+;;; genome/ess-edit-insert-file-name
+(defun genome/ess-edit-insert-file-name ()
+  "From      : https://github.com/tagteam/emacs-genome (author Thomas Alexander Gerds)
+   Originally: ess-edit-insert-file-name
+   location  : emacs-genome/snps/ess-edit.el"
+  (interactive)
+  (insert "\"" (genome/ess-edit-expand-file-name (read-file-name "insert filename: ")) "\"")
+  )
+
+;;; genome/ess-edit-insert-path [necessary for genome/ess-edit-insert-path]
+(defcustom ess-edit-expand-file-name-relative t
+  "Controls behaviour of 'ess-edit-insert-path' and 'ess-edit-insert-file-name':
+If 'nil' just call expand-file-name else replace user-home with `~`. This is useful, when
+the code should work on machines with different values of user-home.")
+
+(defun genome/ess-edit-expand-file-name (name)
+  "From      : https://github.com/tagteam/emacs-genome (author Thomas Alexander Gerds)
+   Originally: ess-edit-expand-file-name
+   location  : emacs-genome/snps/ess-edit.el"
+  (let ((ename (expand-file-name name)))
+  (if ess-edit-expand-file-name-relative
+      (genome/ess-edit-replace-in-string ename (expand-file-name "~") "~")
+    ename)))
+
+;;; genome/ess-edit-replace-in-string [necessary for genome/ess-edit-insert-path]
+(defun genome/ess-edit-replace-in-string (string regexp newtext)
+  "Doc       : In STRING, replace all matches for REGEXP with NEWTEXT.
+Hack to get a common function for all Emacsen.  Note that Oort Gnus
+has
+`gnus-replace-in-string', but we don't want to load Gnus.
+   From      : https://github.com/tagteam/emacs-genome (author Thomas Alexander Gerds)
+   Originally: ess-edit-replace-in-string 
+   location  : emacs-genome/snps/ess-edit.el"
+  (cond
+   ;; Emacs 21 and later
+   ((fboundp 'replace-regexp-in-string)
+    (replace-regexp-in-string regexp newtext string))
+   ;; Emacs < 21; XEmacs
+   (t
+    ;; Code duplicated from `subr.el' revision 1.423 of Emacs. Neither
+    ;; `replace-in-string' from XEmacs 21.4.15 nor the Gnus replacement works
+    ;; correctly when an empty string is matched.
+    (let ((rep newtext)
+	  (l (length string))
+	  (start 0) ;; (or start 0) in `subr.el'
+	  fixedcase literal subexp
+	  matches str mb me)
+      (save-match-data
+	(while (and (< start l) (string-match regexp string start))
+	  (setq mb (match-beginning 0)
+		me (match-end 0))
+	  ;; If we matched the empty string, make sure we advance by
+	  one char
+	  (when (= me mb) (setq me (min l (1+ mb))))
+	  ;; Generate a replacement for the matched substring.
+	  ;; Operate only on the substring to minimize string consing.
+	  ;; Set up match data for the substring for replacement;
+	  ;; presumably this is likely to be faster than munging the
+	  ;; match data directly in Lisp.
+	  (string-match regexp (setq str (substring string mb me)))
+	  (setq matches
+		(cons (replace-match (if (stringp rep)
+					 rep
+				       (funcall rep (match-string 0
+								  str)))
+				     fixedcase literal str subexp)
+		      (cons (substring string start mb) ; unmatched
+			    prefix
+			    matches)))
+	  (setq start me))
+	;; Reconstruct a string from the pieces.
+	(setq matches (cons (substring string start l) matches)) ;
+	leftover
+	(apply #'concat (nreverse matches)))))))
+
+
 ;;; genome/org-smart-underscore
 (defun genome/org-smart-underscore ()
   "Doc       : Smart \"_\" key: insert <- if in SRC R block unless in string/comment.

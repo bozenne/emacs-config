@@ -17,6 +17,20 @@
 (setq ess-smart-S-assign-key "_")
 ;;(ess-toggle-underscore nil) 
 
+;;; split window
+(add-hook 'ess-mode-hook
+          (lambda()
+            (setq-local split-width-threshold  9999)
+            ))
+
+;;; help
+;; the help is sent to a new window in html
+;; (setq ess-help-own-frame 'one)
+;; (setq inferior-ess-r-help-command "help(\"%s\", help_type=\"html\")\n")
+
+;;; debuging
+(setq ess-use-tracebug nil)
+
 ;;; auto completion
 ;; prevent help in minibuffer about the arguments of a function (fait ramer la cession)
 (setq ess-use-eldoc nil)
