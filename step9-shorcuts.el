@@ -12,7 +12,6 @@
 	    (define-key ess-mode-map (kbd "\C-c d") 'ess-tracebug)
 	    (define-key ess-mode-map (kbd "\C-c i") 'genome/ess-edit-insert-file-name)  
 	    (define-key ess-mode-map (kbd "\C-c p") 'genome/ess-edit-insert-path)  
-
 ))
 
 ;;; dired
@@ -119,16 +118,18 @@
 	  #'(lambda nil
 	      ;; complete on ess
 	      (add-to-list 'hippie-expand-try-functions-list (lambda (old) (ess-complete-object-name)))
-	      (define-key org-mode-map  "\C-c\C-v" 'brice-org-export-and-open-corresponding-pdf)
 	      (define-key org-mode-map (kbd "C-<left>") 'org-table-move-column-left)
 	      (define-key org-mode-map (kbd "C-<right>") 'org-table-move-column-right)
 	      (define-key org-mode-map [(tab)] 'genome/org-tab)	    
-	      (define-key org-mode-map [(meta k)] 'brice-org-export-and-open-corresponding-tex)
+	      (define-key org-mode-map [(meta k)] 'brice-org-open-corresponding-tex)
+	      (define-key org-mode-map [(meta K)] 'brice-org-export-and-open-corresponding-tex)
 	      (define-key org-mode-map [(meta j)] 'brice-org-export-to-pdf)
+	      (define-key org-mode-map [(meta J)] 'brice-org-export-and-open-corresponding-pdf)
 	      (define-key org-mode-map [(control tab)] 'hide-subtree)
 	      (define-key org-mode-map [(meta e)] 'hippie-expand)
 	      (define-key org-mode-map [(meta control i)] 'genome/org-indent)
-	      (define-key org-mode-map "_" 'genome/org-smart-underscore)	      
+	      (define-key org-mode-map "_" 'genome/org-smart-underscore)
+	      (define-key org-mode-map (kbd "\C-c \C-v c") 'genome/org-babel-clear-all-results)  
 	      ))
 
 ;; org-beamer-export-as-latex

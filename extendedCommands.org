@@ -209,23 +209,23 @@ More key bindings at: https://www.gnu.org/software/emacs/manual/html_node/emacs/
 | M-e         | hippie-expand       |        |
 
 * orgmode
-
 ** General
 
-| Key binding    | name of the command     | effect                                                          |
-|----------------+-------------------------+-----------------------------------------------------------------|
-| C-u C-c C-e    |                         | Change an environment                                           |
-|                | org-do-demote           | Demote headline by one level (e.g. * -> **)                     |
-| C-c C-e        | org-export-dispatch     | Insert an environment                                           |
-| C-c c          |                         | Refresh the local setup (must be done in the header section)    |
-|                | gscholar-bibtex         | Use google scholar to find bibtex citations for a given article |
-| M-k            |                         | debug                                                           |
-| M-j            | brice-org-export-to-pdf | export                                                          |
-|                | org-do-promote          | promote headline by one level (e.g. ** -> *)                    |
-| M-q            | genome/indent-paragraph | reformat a paragrah                                             |
-| C-x f <number> | set-fill-column         | set the margin when reformating paragraph (default 70)          |
-| C-c C-v        | brice-browse-this-file  | view                                                            |
-|                | org-sort                | sort entries (e.g. alphabetic order)                              |
+| Key binding    | name of the command                         | effect                                                          |
+|----------------+---------------------------------------------+-----------------------------------------------------------------|
+| C-u C-c C-e    |                                             | Change an environment                                           |
+|                | org-do-demote                               | Demote headline by one level (e.g. * -> **)                     |
+| C-c C-e        | org-export-dispatch                         | Insert an environment                                           |
+| C-c c          |                                             | Refresh the local setup (must be done in the header section)    |
+|                | gscholar-bibtex                             | Use google scholar to find bibtex citations for a given article |
+| M-k            | brice-org-open-corresponding-tex            | open corresponding latex file                                   |
+| M-K            | brice-org-export-and-open-corresponding-tex | export and open corresponding latex file                        |
+| M-j            | brice-org-export-to-pdf                     | export to pdf                                                   |
+| M-J            | brice-org-export-and-open-corresponding-pdf | export and open corresponding pdf file                          |
+|                | org-do-promote                              | promote headline by one level (e.g. ** -> *)                    |
+| M-q            | genome/indent-paragraph                     | reformat a paragrah                                             |
+| C-x f <number> | set-fill-column                             | set the margin when reformating paragraph (default 70)          |
+|                | org-sort                                    | sort entries (e.g. alphabetic order)                            |
 
 ** Templates
 
@@ -252,6 +252,14 @@ More key bindings at: https://www.gnu.org/software/emacs/manual/html_node/emacs/
 |-------------+-----------------------------+---------------------------------------|
 | C-<left>    | org-table-move-column-left  | move to the left the selected column  |
 | C-<right>   | org-table-move-column-right | move to the right the selected column |
+
+** Code
+
+| Key binding | name of the command                | effect                                              |
+|-------------+------------------------------------+-----------------------------------------------------|
+| C-c C-v b   | org-babel-execute-buffer           | run all code blocks of the buffer                   |
+| C-c C-v s   | org-babel-execute-subtree          | run all code blocks in the header                   |
+| C-c C-v c   | genome/org-babel-clear-all-results | remove the results of all code blocks in the buffer |
 
 * Version control
 
@@ -283,23 +291,23 @@ More key bindings at: https://www.gnu.org/software/emacs/manual/html_node/emacs/
 Documentation: http://jr0cket.co.uk/2012/12/driving-git-with-emacs-pure-magic-with.html.html
                https://github.com/magit/magit/wiki/Cheatsheet
 * R
-| Key binding | name of the command                         | effect                                           |
-|-------------+---------------------------------------------+--------------------------------------------------|
-| C-c m       | brice-ess-browser-and-source-r              | insert browser and source                        |
-| C-c s       | brice-ess-source-r                          | save file and source file                        |
-| C-c M-p     | brice-ess-packageSource-r                   | source package using butils.base:::packageSource |
-| C-c b       | brice-ess-browser-r                         | insert browser                                   |
-| C-c C-b     | ess-eval-buffer                             | source buffer                                    |
-| C-c C-l     | ess-load-file                               | source file                                      |
-| M-j         | ess-indent-new-comment-line                 | insert line                                      |
-| C-M-d       | ess-roxy-preview-HTML                       | previous roxygen documentation in web browser    |
-| C-M-u       | genome/ess-edit-indent-call-sophisticatedly | emacs-genome indent                              |
-| M-k         | genome/ess-switch-to-R                      | switch to R console                              |
-| M-H         | genome/ess-get-help-R-object                | open help of an R function                       |
-| C-c d       | ess-tracebug                                | active/disactivate dynamic traceback             |
-| C-c i       | genome/ess-edit-insert-file-name            | insert path to the R file                        |
-| C-c p       | genome/ess-edit-insert-path                 | insert path to the directory containg the R file |
-| C-c C-c     |                                             | interrupt evaluation                             |
+| Key binding | name of the command                         | effect                                              |
+|-------------+---------------------------------------------+-----------------------------------------------------|
+| C-c m       | brice-ess-browser-and-source-r              | insert browser and source                           |
+| C-c s       | brice-ess-source-r                          | save file and source file                           |
+| C-c M-p     | brice-ess-packageSource-r                   | source package using butils.base:::packageSource    |
+| C-c b       | brice-ess-browser-r                         | insert browser                                      |
+| C-c C-b     | ess-eval-buffer                             | source buffer                                       |
+| C-c C-l     | ess-load-file                               | source file                                         |
+| M-j         | ess-indent-new-comment-line                 | insert line                                         |
+| C-M-d       | ess-roxy-preview-HTML                       | previous roxygen documentation in web browser       |
+| C-M-u       | genome/ess-edit-indent-call-sophisticatedly | emacs-genome indent                                 |
+| M-k         | genome/ess-switch-to-R                      | switch to R console                                 |
+| M-H         | genome/ess-get-help-R-object                | open help of an R function                          |
+| C-c d       | ess-tracebug                                | active/disactivate dynamic traceback                |
+| C-c i       | genome/ess-edit-insert-file-name            | insert path to the R file                           |
+| C-c p       | genome/ess-edit-insert-path                 | insert path to the directory containg the R file    |
+| C-c C-c     |                                             | interrupt evaluation                                |
 
 * Email
 | Key binding | name of the command | effect                         |

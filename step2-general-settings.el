@@ -212,8 +212,10 @@ auto-save-interval 200            ; number of keystrokes between auto-saves (def
 ;;; Reverting files
 
 ;; do not ask whenever it is a pdf file
-(setq revert-without-query (quote (".*.pdf")))
+(setq revert-without-query (quote (".*.pdf" ".*.tex")))
 
+;;; Doc view
+(add-hook 'doc-view-mode-hook 'doc-view-fit-width-to-window)
 ;;; Miscellaneous
 ;; paste: replace region
 (delete-selection-mode 1)
