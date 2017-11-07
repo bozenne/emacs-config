@@ -42,14 +42,12 @@
 (setq TeX-file-extensions
       '("Snw" "Rnw" "nw" "tex" "sty" "cls" "ltx" "texi" "texinfo"))
 (setq reftex-try-all-extensions t)
-;;}}}
-;;{{{ reftex
+
 (autoload 'reftex-mode    "reftex" "RefTeX Minor Mode" t) 
 (autoload 'turn-on-reftex "reftex" "RefTeX Minor Mode" nil) 
 (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
 (setq reftex-plug-into-AUCTeX t)
 (setq reftex-file-extensions '(("Snw" "Rnw" "nw" "tex" ".tex" ".ltx") ("bib" ".bib")))
-
 
 ;;; stan
 (use-package stan-mode :ensure t)

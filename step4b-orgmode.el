@@ -13,7 +13,25 @@
   "Face used for the line delimiting the end of source blocks.")
 
 ;;; packages
-(use-package org)
+;; IMPORTANT NOTE:
+;; this org-plus-contrib seems necessary to obtain correct export 
+;; from orgmode to latex 
+;; i.e. #BEGIN_EXPORT latex do not export \begin{export}
+;;      and <l returns #BEGIN_EXPORT latex and not #BEGIN_LaTeX
+;; I have met issue on windows when installing the package this is why it is put in the config
+;; originally emacs-genome was using the following code:
+;; (use-package org
+;;    :ensure org-plus-contrib ;; ensure org's devel
+;;    :pin org
+;;    :config
+;; )
+(add-to-list 'load-path (expand-file-name "packages/org-plus-contrib" path-emacs-config))
+(use-package org-plus-contrib)
+(org-reload) ;; needed otherwise some functions are missing
+
+(use-package org-snps)
+(use-package org-structure-snps)
+
 (use-package org-capture)
 (use-package org-agenda)
 (use-package org-clock)
