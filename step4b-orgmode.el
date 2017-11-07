@@ -13,28 +13,27 @@
   "Face used for the line delimiting the end of source blocks.")
 
 ;;; packages
-
 (use-package org)
 (use-package org-capture)
 (use-package org-agenda)
 (use-package org-clock)
 
-(use-package org-latex) ;; enable new classes 
-(use-package ox-latex) ;; enable new classes 
-(use-package ox-md) ;; communicate with markdown
-(add-to-list 'load-path (expand-file-name "packages/orgmode-accessories" path-emacs-config))
-(require 'ox-ravel)
+;;;; dynamic reference (e.g. citep:xx)
+(use-package org-ref :ensure t)
+(use-package org-ref-snps)
+
+;;;; enable new class
+(use-package org-latex)
+(use-package ox-latex)
 (use-package ox-beamer)
 (use-package ox-bibtex)
 
-;;; options
-(setq org-babel-hash-show-time t)
-(setq org-export-babel-evaluate t)
-(add-to-list 'org-babel-default-header-args '(:eval . "never-export"))
-(add-to-list 'org-babel-default-header-args '(:tangle . "yes"))
-(add-to-list 'org-babel-tangle-lang-exts '("R" . "R"))
+;;;; export to markdown
+(use-package ox-md)
+(add-to-list 'load-path (expand-file-name "packages/orgmode-accessories" path-emacs-config))
+(require 'ox-ravel)
 
-;; enable to execute other languages in orgmode
+;;; enable to execute languages in orgmode
 (if(string-equal system-type "windows-nt")
 (org-babel-do-load-languages
  (quote org-babel-load-languages)
@@ -76,20 +75,29 @@
    )
 )
 
+;;; options
+(setq org-babel-hash-show-time t)
+(setq org-export-babel-evaluate t)
+(add-to-list 'org-babel-default-header-args '(:eval . "never-export"))
+(add-to-list 'org-babel-default-header-args '(:tangle . "yes"))
+(add-to-list 'org-babel-tangle-lang-exts '("R" . "R"))
+(setq org-export-allow-BIND t)
+
 ;; dont ask confirmation before executing block
 (setq org-confirm-babel-evaluate nil)
 
 ;; highlight latex code in orgmode
-(eval-after-load 'org
-  '(setf org-highlight-latex-and-related '(latex)))
+(setq org-highlight-latex-and-related '(latex script entities))
 
 ;; syntax coloring in SRC blocks
 (setq org-src-fontify-natively t)
 
-;; ;; tell org to use listings (instead of verbatim) for source code
+;; tell org to use listings (instead of verbatim) for source code
 (setq org-latex-listings t)
+
 ;; automatically indent lists and similar structures of Org buffers 
 (setq org-startup-indented t)
+
 ;; indent code blocks using TAB
 (setq org-src-tab-acts-natively t)
 

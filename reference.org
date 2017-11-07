@@ -17,3 +17,8 @@ http://doc.norang.ca/org-mode.html
 
 * mu4a
 Documentation: https://www.djcbsoftware.nl/code/mu/mu4e/Gmail-configuration.html
+
+
+* latex
+https://staff.fnwi.uva.nl/c.dominik/Tools/cdlatex/
+http://orgmode.org/manual/CDLaTeX-mode.html#CDLaTeX-mode
