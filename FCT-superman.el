@@ -296,4 +296,53 @@
    From      : https://github.com/tagteam/emacs-genome (author Thomas Alexander Gerds)
    Originally: ess-edit-unhighlight
    Location  : emacs-genome/snps/ess-edit.el"
-  (delete-overlay (aref ess-edit-highlight-overlays index)))
+  (delete-overlay (aref genome/ess-edit-highlight-overlays index)))
+
+;;; genome/org-smart-underscore
+(defun genome/org-smart-underscore ()
+  "Doc       : Smart \"_\" key: insert <- if in SRC R block unless in string/comment.
+   From      : https://github.com/tagteam/emacs-genome (author Thomas Alexander Gerds)
+   Originally: eg/org-smart-underscore
+   location  : emacs-genome/snps/org-snps.el"
+    (interactive)
+    (if (and
+	 (string= (car (org-babel-get-src-block-info)) "R")
+	 (not (ess-inside-string-or-comment-p (point))))
+      (ess-insert-S-assign)
+      (insert "_")))
+
+;;; genome/org-babel-clear-all-results
+(defun genome/org-babel-clear-all-results ()
+  "Doc       : clear all results from babel-org-mode
+   From      : https://github.com/tagteam/emacs-genome (author Thomas Alexander Gerds)
+   Originally: org-babel-clear-all-results
+   location  : emacs-genome/snps/org-snps.el"  
+  ""
+  (interactive)
+  (org-babel-map-src-blocks nil (org-babel-remove-result)))
+
+;;; genome/org-indent
+(defun genome/org-indent ()
+  "Doc       : context dependent indent
+   From      : https://github.com/tagteam/emacs-genome (author Thomas Alexander Gerds)
+   Originally: eg/org-indent
+   location  : emacs-genome/snps/org-snps.el"
+  (interactive)
+  (if (string= (car (org-babel-get-src-block-info)) "R")
+      ;; (save-excursion
+      (genome/ess-edit-indent-call-sophisticatedly)
+    (eg/org-tab)
+    ;; )
+    (pcomplete)))
+
+
+;;; genome/org-tab
+(defun genome/org-tab ()
+  "Doc       : either indent R code or cycle through sections in orgmode
+   From      : https://github.com/tagteam/emacs-genome (author Thomas Alexander Gerds)
+   Originally: eg/org-tab
+   location  : emacs-genome/snps/org-snps.el"
+  (interactive)
+  (if (string= (car (org-babel-get-src-block-info)) "R")
+      (genome/indent-paragraph)
+    (org-cycle)))

@@ -1,3 +1,17 @@
+;;; Pretty fontification of source code blocks
+;; needs to be defined before requiring Org (http://orgmode.org/worg/org-contrib/babel/examples/fontify-src-code-blocks.html)
+(defface org-block-begin-line
+  '((t (:underline "#A7A6AA" :foreground "#008ED1" :background "#EAEAFF")))
+  "Face used for the line delimiting the begin of source blocks.")
+
+(defface org-block-background
+  '((t (:background "#FFFFEA")))
+  "Face used for the source block background.")
+
+(defface org-block-end-line
+  '((t (:overline "#A7A6AA" :foreground "#008ED1" :background "#EAEAFF")))
+  "Face used for the line delimiting the end of source blocks.")
+
 ;;; packages
 
 (use-package org)
@@ -68,6 +82,9 @@
 ;; highlight latex code in orgmode
 (eval-after-load 'org
   '(setf org-highlight-latex-and-related '(latex)))
+
+;; syntax coloring in SRC blocks
+(setq org-src-fontify-natively t)
 
 ;; ;; tell org to use listings (instead of verbatim) for source code
 (setq org-latex-listings t)
