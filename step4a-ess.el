@@ -13,9 +13,13 @@
 ;; (setq inferior-R-program-name "C:\\Program Files\\R\\R-3.4.0\\bin\\R")
 ;; (add-hook 'ess-R-post-run-hook 'ess-execute-screen-options)
 
-;; _ is <- in 
+;;; _ is <- in 
 (setq ess-smart-S-assign-key "_")
 ;;(ess-toggle-underscore nil) 
+
+
+;;; Do not load data or save envir
+(setq inferior-R-args "--no-restore-history --no-restore-data --no-save ")
 
 ;;; split window
 (add-hook 'ess-mode-hook
@@ -48,3 +52,4 @@
    ac-trigger-key [(TAB)]
    ac-auto-start nil ;; never start ac automatically
    ))
+
