@@ -148,9 +148,11 @@ More key bindings at: https://www.gnu.org/software/emacs/refcards/pdf/dired-ref.
 | window    | M-down   | M-up    |        |          |       | M-o          |
 sexp: balanced group of parentheses.
 
-| Key binding | name of the command | effect     |
-|-------------+---------------------+------------|
-| M-g         | goto-line           | go to line |
+| Key binding | name of the command | effect               |
+|-------------+---------------------+----------------------|
+| M-g         | goto-line           | go to line           |
+| C-o         | open-line           | add empty line below |
+| C-x C-o     |                     | remove line below    |
 
 ** Highlight
 | Key binding | name of the command  | effect                                 |
@@ -218,8 +220,8 @@ More key bindings at: https://www.gnu.org/software/emacs/manual/html_node/emacs/
 | C-c C-e        | org-export-dispatch                         | Insert an environment                                           |
 | C-c c          |                                             | Refresh the local setup (must be done in the header section)    |
 |                | gscholar-bibtex                             | Use google scholar to find bibtex citations for a given article |
-| M-k            | brice-org-open-corresponding-tex            | open corresponding latex file                                   |
-| M-K            | brice-org-export-and-open-corresponding-tex | export and open corresponding latex file                        |
+| M-l            | brice-org-open-corresponding-tex            | open corresponding latex file                                   |
+| M-L            | brice-org-export-and-open-corresponding-tex | export and open corresponding latex file                        |
 | M-j            | brice-org-export-to-pdf                     | export to pdf                                                   |
 | M-J            | brice-org-export-and-open-corresponding-pdf | export and open corresponding pdf file                          |
 |                | org-do-promote                              | promote headline by one level (e.g. ** -> *)                    |
