@@ -20,6 +20,7 @@
 (define-key dired-mode-map (kbd "\C-cn") 'dired-sort-name)
 (define-key dired-mode-map (kbd "\C-ct") 'dired-sort-time)
 (define-key dired-mode-map (kbd "M-r") 'dired-omit-mode)
+(define-key dired-mode-map (kbd "o") 'brice-dired-display-side)
 
 
 

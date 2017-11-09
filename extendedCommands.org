@@ -65,36 +65,36 @@
 
 ** Dired
 
-| Key binding | name of the command              | effect                                      |
-|-------------+----------------------------------+---------------------------------------------|
-| C-x d       | dired                            | launch dired                                |
-| C           |                                  | copy file(s)                                |
-| +           |                                  | create subdirectory                         |
-| D           |                                  | delete marked files                         |
-|             | rgrep                            | search string in all files from a directory |
-| A           | dired-do-find-regexp             | search string in all marked files           |
-| d           |                                  | flag all back-up files                      |
-| ~           |                                  | flag all auto-save files                    |
-| #           |                                  | flag file for deletion                      |
-| M-r         | dired-omit-mode                  | hide unimportant files                      |
-| % m         |                                  | mark all files matching extension           |
-| * .         |                                  | mark all files matching regular expression  |
-| m           |                                  | mark file                                   |
-| R           |                                  | rename file(s)                              |
-| Q           | dired-do-find-regexp-and-replace | search and replace in all marked files      |
-|             | find-grep-dired                  | search in files                             |
-|             | find-name-dired                  | search file by filename                     |
-| e           | dired-sort-extension             | sort files by extension                     |
-| C-c n       | dired-sort-name                  | sort files by name                          |
-| C-c t       | dired-sort-time                  | sort files by time                          |
-| U           |                                  | unmark all files                            |
-| u           |                                  | unmark file                                 |
-| g           |                                  | update dired buffer                         |
-| o           |                                  | visit file in another window                |
-| C-x C-q     | dired-toggle-read-only           | edit dired buffer (C-c C-c)                 |
-| C-c C-c     | wdired-finish-edit               | end edit dired buffer                       |
-| /           | dired-narrow                     | filter files by regexpr                     |
-| ^           | dired-up-directory               | mode to parent directory                    |
+| Key binding | name of the command                | effect                                      |
+|-------------+------------------------------------+---------------------------------------------|
+| C-x d       | dired                              | launch dired                                |
+| C           |                                    | copy file(s)                                |
+| +           |                                    | create subdirectory                         |
+| D           |                                    | delete marked files                         |
+|             | rgrep                              | search string in all files from a directory |
+| A           | dired-do-find-regexp               | search string in all marked files           |
+| d           |                                    | flag all back-up files                      |
+| ~           |                                    | flag all auto-save files                    |
+| #           |                                    | flag file for deletion                      |
+| M-r         | dired-omit-mode                    | hide unimportant files                      |
+| % m         |                                    | mark all files matching extension           |
+| * .         |                                    | mark all files matching regular expression  |
+| m           |                                    | mark file                                   |
+| R           |                                    | rename file(s)                              |
+| Q           | dired-do-find-regexp-and-replace   | search and replace in all marked files      |
+|             | find-grep-dired                    | search in files                             |
+|             | find-name-dired                    | search file by filename                     |
+| e           | dired-sort-extension               | sort files by extension                     |
+| C-c n       | dired-sort-name                    | sort files by name                          |
+| C-c t       | dired-sort-time                    | sort files by time                          |
+| U           |                                    | unmark all files                            |
+| u           |                                    | unmark file                                 |
+| g           |                                    | update dired buffer                         |
+| o           | brice-open-directory-with-explorer | visit file in another window                |
+| C-x C-q     | dired-toggle-read-only             | edit dired buffer (C-c C-c)                 |
+| C-c C-c     | wdired-finish-edit                 | end edit dired buffer                       |
+| /           | dired-narrow                       | filter files by regexpr                     |
+| ^           | dired-up-directory                 | mode to parent directory                    |
 
 More key bindings at: https://www.gnu.org/software/emacs/refcards/pdf/dired-ref.pdf
 

@@ -26,6 +26,7 @@ Copy the following code at the begining of the .emacs file:
 (load-file (expand-file-name "step7-header.el" path-emacs-config))
 (load-file (expand-file-name "step8-folding.el" path-emacs-config))
 
+(load-file (expand-file-name "FCT-dired.el" path-emacs-config))
 (load-file (expand-file-name "FCT-editing.el" path-emacs-config))
 (load-file (expand-file-name "FCT-file-management.el" path-emacs-config))
 (load-file (expand-file-name "FCT-R.el" path-emacs-config))
