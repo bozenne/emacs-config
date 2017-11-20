@@ -108,3 +108,21 @@
                ("\\subsection{%s}" . "\\subsection*{%s}")
                ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
 	       ))
+
+;;;; Rnew-article
+(add-to-list 'org-latex-classes
+	     `("Rnews-article"
+	       ,(concat "\\documentclass{report}\n\n"
+			"[NO-PACKAGES]
+			[NO-DEFAULT-PACKAGES]"
+			"%%%% settings when exporting code %%%% \n\n"
+			"\\usepackage{listings}\n"
+			brice-org-latex-common-header-string
+			"\n"
+			"%%%% packages %%%%%"
+			)
+	       ("\\section{%s}" . "\\section*{%s}")
+	       ("\\subsection{%s}" . "\\subsection*{%s}")
+	       ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+	       ("\\paragraph{%s}" . "\\paragraph*{%s}")
+	       ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))

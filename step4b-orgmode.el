@@ -45,6 +45,13 @@
 (use-package org-ref :ensure t)
 (use-package org-ref-snps)
 
+;;;; figure labels
+;; setting variable org-latex-prefer-user-labels
+;; will make the exporter export
+;; #+NAME: fig:1 and #+LABEL: fig:1
+;; to \label{fig:1} instead of \label{orgparagraph1}
+(setq org-latex-prefer-user-labels t)
+
 ;;;; enable new class
 (use-package org-latex)
 (use-package ox-latex)
