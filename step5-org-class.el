@@ -78,7 +78,7 @@
 (add-to-list 'org-latex-classes
 	     `("org-article"
 	       ,(concat "\\documentclass{article}\n\n"
-			"[NO-DEFAULT-PACKAGES]" ;; [NO-DEFAULT-PACKAGES]"
+			"[NO-DEFAULT-PACKAGES]" 
 			"%%%% settings when exporting code %%%% \n\n"
 			"\\usepackage{listings}\n"
    			brice-org-latex-common-header-string
@@ -96,7 +96,7 @@
 (add-to-list 'org-latex-classes
              `("org-report"
 	       ,(concat "\\documentclass{report}\n\n"
-			"[NO-DEFAULT-PACKAGES]" ;; [NO-DEFAULT-PACKAGES]"
+			"[NO-DEFAULT-PACKAGES]" 
 			"%%%% settings when exporting code %%%% \n\n"
 			"\\usepackage{listings}\n"
    			brice-org-latex-common-header-string
@@ -125,4 +125,24 @@
 	       ("\\subsection{%s}" . "\\subsection*{%s}")
 	       ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
 	       ("\\paragraph{%s}" . "\\paragraph*{%s}")
-	       ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+	       ("\\subparagraph{%s}" . "\\subparagraph*{%s}")
+	       ))
+
+;;;; beamer
+(add-to-list 'org-latex-classes
+	     `("beamer"
+	       ,(concat "\\documentclass{beamer}\n\n"
+			"[NO-DEFAULT-PACKAGES]" 
+			"%%%% settings when exporting code %%%% \n\n"
+			"\\usepackage{listings}\n"
+   			brice-org-latex-common-header-string
+			"\n"
+			"%%%% packages %%%%%"
+		 )	     
+	       ("\\section{%s}" . "\\section*{%s}")
+	       ("\\subsection{%s}" . "\\subsection*{%s}")
+	       ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+	       ("\\paragraph{%s}" . "\\paragraph*{%s}")
+	       ("\\subparagraph{%s}" . "\\subparagraph*{%s}")
+	       ))
+ 
