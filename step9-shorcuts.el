@@ -67,7 +67,7 @@
 (global-set-key (kbd "C-M-y") 'brice-duplicate-line)
 
 ;; expanding text
-(global-set-key "\M-e" 'hippie-expand)
+(global-set-key "\C-ci" 'hippie-expand)
 (global-set-key "\M-i" 'dabbrev-expand)
 
 ;; copy-and-paste 
