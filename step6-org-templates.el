@@ -1,3 +1,5 @@
+;; NOTE: ? is the where the cursor should wind up at the end
+
 ;;; Document class
 
 ;;;; Latex default
@@ -15,23 +17,27 @@
 #+OPTIONS:   H:3 num:t 
 #+OPTIONS:   TeX:t LaTeX:t
 
-** latex packages
+** Latex packages
 #+LaTeX_HEADER: %
 #+LaTeX_HEADER: %%%% additional packages %%%%
 #+LaTeX_HEADER: %
 #+LaTeX_HEADER:\\usepackage{authblk}
 
-** code
+** Code
 #+PROPERTY: header-args :session *R*
 #+PROPERTY: header-args :tange yes % extract source code: http://orgmode.org/manual/Extracting-source-code.html
 #+PROPERTY: header-args :eval yes :cache no
 #+LATEX_HEADER: \\RequirePackage{fancyvrb}
 #+LATEX_HEADER: \\DefineVerbatimEnvironment{verbatim}{Verbatim}{fontsize=\\small,formatcom = {\\color[rgb]{0.5,0,0}}}
 
+** Display
+#+LATEX_HEADER: \\usepackage[hyperref,x11names]{xcolor}
+#+LATEX_HEADER: \\hypersetup{colorlinks=true,urlcolor=SteelBlue4,linkcolor=Firebrick4}
+
 ** Image
 #+LATEX_HEADER: \\RequirePackage{epstopdf} % to be able to convert .eps to .pdf image files
 
-** latex command
+** Latex command
 #+LaTeX_HEADER: %
 #+LaTeX_HEADER: %%%% additional latex commands %%%%
 #+LaTeX_HEADER: %
@@ -77,6 +83,8 @@
 #+LATEX_HEADER: \\DefineVerbatimEnvironment{verbatim}{Verbatim}{fontsize=\\small,formatcom = {\\color[rgb]{0.5,0,0}}}
 
 ** Display 
+#+LATEX_HEADER: \\usepackage[hyperref,x11names]{xcolor}
+#+LATEX_HEADER: \\hypersetup{colorlinks=true,citecolor=ForestGreen,urlcolor=SteelBlue4,filecolor=Firebrick4,linkcolor=Firebrick4}
 #+LATEX_HEADER: \\RequirePackage{colortbl} % arrayrulecolor to mix colors
 #+LATEX_HEADER: %% \\input{0_Display.tex}
 
@@ -237,10 +245,9 @@ Je vous prie d'agréer, Madame, Monsieur, mes salutations distinguées.
 #+LaTeX_HEADER: %
 #+LaTeX_HEADER:\\usepackage{authblk}
 
-** display
-#+LaTeX_HEADER: %
-#+LaTeX_HEADER: %%%% display options %%%%
-#+LaTeX_HEADER: %
+** Display
+#+LATEX_HEADER: \\usepackage[hyperref,x11names]{xcolor}
+#+LATEX_HEADER: \\hypersetup{colorlinks=true,urlcolor=SteelBlue4,linkcolor=Firebrick4}
 
 ** latex command
 #+LaTeX_HEADER: %
@@ -302,23 +309,22 @@ Je vous prie d'agréer, Madame, Monsieur, mes salutations distinguées.
 #+OPTIONS:   H:3 num:t 
 #+OPTIONS:   TeX:t LaTeX:t
 
-** code
+** Code
 #+PROPERTY: header-args :session *R*
 #+PROPERTY: header-args :tange yes % extract source code: http://orgmode.org/manual/Extracting-source-code.html
 #+PROPERTY: header-args :cache no
 
-** latex packages
+** Latex packages
 #+LaTeX_HEADER: %
 #+LaTeX_HEADER: %%%% additional packages %%%%
 #+LaTeX_HEADER: %
 #+LaTeX_HEADER:\\usepackage{authblk}
 
-** display
-#+LaTeX_HEADER: %
-#+LaTeX_HEADER: %%%% display options %%%%
-#+LaTeX_HEADER: %
+** Display
+#+LATEX_HEADER: \\usepackage[hyperref,x11names]{xcolor}
+#+LATEX_HEADER: \\hypersetup{colorlinks=true,urlcolor=SteelBlue4,linkcolor=Firebrick4}
 
-** latex command
+** Latex command
 #+LaTeX_HEADER: %
 #+LaTeX_HEADER: %%%% additional latex commands %%%%
 #+LaTeX_HEADER: %
@@ -332,7 +338,6 @@ Je vous prie d'agréer, Madame, Monsieur, mes salutations distinguées.
 
 
 ;;; org shortcut
-
 ;;;; latex header
 (add-to-list
  'org-structure-template-alist
@@ -377,6 +382,21 @@ Je vous prie d'agréer, Madame, Monsieur, mes salutations distinguées.
 
 \\end{align*}
 #+END_EXPORT"))
+;;;; contact
+(add-to-list
+ 'org-structure-template-alist
+ '("contact" 
+"** ? :TAG: 
+:PROPERTIES:
+:EMAIL1: 
+:TELEPHONE1: 
+:ADRESS1: 
+:WORK: 
+:LEISURE: 
+:WITH: 
+:KIDS: 
+:DATE-OF-BIRTH:
+:END:          "))
 
 ;;; R code
 ;;;; R hide code and result

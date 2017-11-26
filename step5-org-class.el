@@ -28,6 +28,7 @@
 	("" "pdflscape") ;; switch to landscape
 	("" "setspace") ;; to modify the space between lines
 	("" "geometry") ;; define margin of the document
+	("normalem" "ulem") ;; _xx_ in orgmode (underline)
 	;;;; math
 	("" "amssymb") ;; [default orgmode]
 	("" "amsmath") ;; [default orgmode]
@@ -47,27 +48,29 @@
 ;;; additionnal information in the header
 (setq brice-org-latex-listing-options-string
       (concat "\\lstset{\n"
-	      "keywordstyle=\\color{blue},\n"
-	      "commentstyle=\\color{red},\n"
-	      "stringstyle=\\color[rgb]{0,.5,0},\n"
-              "literate={~}{$\\sim$}{1},\n"
-	      "basicstyle=\\ttfamily\\small,\n"
-	      "columns=fullflexible,\n"
-	      "breaklines=true,\n"        
-	      "breakatwhitespace=false,\n"
-	      "numbers=left,\n"
-	      "numberstyle=\\ttfamily\\tiny\\color{gray},\n"
-	      "stepnumber=1,\n"
-	      "numbersep=10pt,\n"
 	      "backgroundcolor=\\color{white},\n"
-	      "tabsize=4,\n"
-              "keepspaces=true,\n"
-	      "showspaces=false,\n"
+	      "basewidth={0.5em,0.4em},\n"
+	      "basicstyle=\\ttfamily\\small,\n"            ;; the size of the fonts that are used for the code  
+	      "breakatwhitespace=false,\n"
+	      "breaklines=true,\n"                         ;; sets automatic line breaking
+	      "columns=fullflexible,\n"
+	      "commentstyle=\\color{red},\n"
+	      "frame=single,\n"                            ;; adds a frame around the code
+	      "keepspaces=true,\n"
+              "keywordstyle=\\color{black},\n"
+	      "literate={~}{$\\sim$}{1},\n"
+	      "numbers=left,\n"
+	      "numbersep=10pt,\n"
+	      "numberstyle=\\ttfamily\\tiny\\color{gray},\n"
+	      "showspaces=false,\n"                        ;; show spaces adding particular underscores
 	      "showstringspaces=false,\n"
+	      "stepnumber=1,\n"
+	      "stringstyle=\\color[rgb]{0,.5,0},\n"        ;; string literal style
+	      "tabsize=4,\n"
 	      "xleftmargin=.23in,\n"
-	      "frame=single,\n"
-	      "basewidth={0.5em,0.4em}\n"
-	      "}\n"))
+	      "emph={anova,apply,class,coef,colnames,colNames,colSums,dim,dcast,for,ggplot,head,if,ifelse,is.na,lapply,list.files,library,logLik,melt,plot,require,rowSums,sapply,setcolorder,setkey,str,summary,tapply},\n" ;; <-,+,-,%*%,*,/,^,(,)
+              "emphstyle=\\color{blue}\n"
+              "}\n"))
 
 (setq brice-org-latex-common-header-string
       (concat brice-org-latex-listing-options-string)
