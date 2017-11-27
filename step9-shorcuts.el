@@ -126,7 +126,7 @@
 	      (define-key org-mode-map [(meta L)] 'brice-org-export-and-open-corresponding-tex)
 	      (define-key org-mode-map [(meta j)] 'brice-org-export-to-pdf)
 	      (define-key org-mode-map [(meta J)] 'brice-org-export-and-open-corresponding-pdf)
-	      (define-key org-mode-map [(meta K)] 'brice-org-open-corresponding-pdf)
+	      (define-key org-mode-map (kbd "\C-c v") 'brice-org-open-corresponding-pdf)
 	      (define-key org-mode-map [(control tab)] 'hide-subtree)
 	      (define-key org-mode-map [(meta e)] 'hippie-expand)
 	      (define-key org-mode-map [(meta control i)] 'genome/org-indent)

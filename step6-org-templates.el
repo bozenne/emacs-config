@@ -1,4 +1,4 @@
-;; NOTE: ? is the where the cursor should wind up at the end
+;; NOTE: ? is the  where the cursor should wind up at the end
 
 ;;; Document class
 
@@ -29,10 +29,6 @@
 #+PROPERTY: header-args :eval yes :cache no
 #+LATEX_HEADER: \\RequirePackage{fancyvrb}
 #+LATEX_HEADER: \\DefineVerbatimEnvironment{verbatim}{Verbatim}{fontsize=\\small,formatcom = {\\color[rgb]{0.5,0,0}}}
-
-** Display
-#+LATEX_HEADER: \\usepackage[hyperref,x11names]{xcolor}
-#+LATEX_HEADER: \\hypersetup{colorlinks=true,urlcolor=SteelBlue4,linkcolor=Firebrick4}
 
 ** Image
 #+LATEX_HEADER: \\RequirePackage{epstopdf} % to be able to convert .eps to .pdf image files
@@ -83,8 +79,6 @@
 #+LATEX_HEADER: \\DefineVerbatimEnvironment{verbatim}{Verbatim}{fontsize=\\small,formatcom = {\\color[rgb]{0.5,0,0}}}
 
 ** Display 
-#+LATEX_HEADER: \\usepackage[hyperref,x11names]{xcolor}
-#+LATEX_HEADER: \\hypersetup{colorlinks=true,citecolor=ForestGreen,urlcolor=SteelBlue4,filecolor=Firebrick4,linkcolor=Firebrick4}
 #+LATEX_HEADER: \\RequirePackage{colortbl} % arrayrulecolor to mix colors
 #+LATEX_HEADER: %% \\input{0_Display.tex}
 
@@ -245,10 +239,6 @@ Je vous prie d'agréer, Madame, Monsieur, mes salutations distinguées.
 #+LaTeX_HEADER: %
 #+LaTeX_HEADER:\\usepackage{authblk}
 
-** Display
-#+LATEX_HEADER: \\usepackage[hyperref,x11names]{xcolor}
-#+LATEX_HEADER: \\hypersetup{colorlinks=true,urlcolor=SteelBlue4,linkcolor=Firebrick4}
-
 ** latex command
 #+LaTeX_HEADER: %
 #+LaTeX_HEADER: %%%% additional latex commands %%%%
@@ -319,10 +309,6 @@ Je vous prie d'agréer, Madame, Monsieur, mes salutations distinguées.
 #+LaTeX_HEADER: %%%% additional packages %%%%
 #+LaTeX_HEADER: %
 #+LaTeX_HEADER:\\usepackage{authblk}
-
-** Display
-#+LATEX_HEADER: \\usepackage[hyperref,x11names]{xcolor}
-#+LATEX_HEADER: \\hypersetup{colorlinks=true,urlcolor=SteelBlue4,linkcolor=Firebrick4}
 
 ** Latex command
 #+LaTeX_HEADER: %
