@@ -62,7 +62,6 @@
 |             | revert-buffer       | update buffer with the content of the file |
 
 * Internal browser
-
 ** Dired
 
 | Key binding | name of the command                | effect                                      |
