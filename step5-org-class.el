@@ -54,7 +54,7 @@
 	      "breakatwhitespace=false,\n"
 	      "breaklines=true,\n"                         ;; sets automatic line breaking
 	      "columns=fullflexible,\n"
-	      "commentstyle=\\color{red},\n"
+	      "commentstyle=\\color[rgb]{0.5,0,0.5},\n"
 	      "frame=single,\n"                            ;; adds a frame around the code
 	      "keepspaces=true,\n"
               "keywordstyle=\\color{black},\n"
@@ -76,6 +76,21 @@
       (concat brice-org-latex-listing-options-string)
 )
 
+;; set-up of hyperref
+
+(setq  org-latex-hyperref-template
+      "\\hypersetup{
+ colorlinks=true,
+ urlcolor=[rgb]{0,0,0.5},
+ linkcolor=[rgb]{0,0,0.5},
+ pdfauthor={%a},
+ pdftitle={%t},
+ pdfkeywords={%k},
+ pdfsubject={%d},
+ pdfcreator={%c},
+ pdflang={%L}
+ }\n"
+ )
 ;;; document class
 ;;;; org-article
 (add-to-list 'org-latex-classes
