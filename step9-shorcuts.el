@@ -10,7 +10,7 @@
 	    (define-key ess-mode-map "\M-k" 'genome/ess-switch-to-R)
 	    (define-key ess-mode-map "\M-H" 'genome/ess-get-help-R-object)
 	    (define-key ess-mode-map (kbd "\C-c d") 'ess-tracebug)
-	    (define-key ess-mode-map (kbd "\C-c i") 'genome/ess-edit-insert-file-name)  
+	    (define-key ess-mode-map (kbd "\C-c P") 'genome/ess-edit-insert-file-name)  
 	    (define-key ess-mode-map (kbd "\C-c p") 'genome/ess-edit-insert-path)  
 ))
 
