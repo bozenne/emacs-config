@@ -71,6 +71,10 @@
 ;;; Moving between open/marked files
 ;;;; Buffers
 
+;; activate winner mode (i.e. restaure previous configurations of the windows)
+(when (fboundp 'winner-mode)
+  (winner-mode 1))
+
 (use-package ido :config (ido-mode 'buffers)
   ;;flexibly match names via fuzzy matching
   (setq ido-enable-flex-matching t)

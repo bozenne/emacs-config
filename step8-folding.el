@@ -1,11 +1,11 @@
 ;;; start files with folding 
 (setq org-startup-folded "content")
 
-;; (use-package folding :ensure t) 
-;; (folding-mode-add-find-file-hook)
-;; (add-hook 'LaTeX-mode-hook 'folding-mode) 
-;; (add-hook 'ess-mode-hook 'folding-mode) 
-;; (folding-add-to-marks-list 'ess-mode "## {{{ " "## }}}" nil t)
+(use-package folding :ensure t) 
+(folding-mode-add-find-file-hook)
+(add-hook 'LaTeX-mode-hook 'folding-mode) 
+(add-hook 'ess-mode-hook 'folding-mode) 
+(folding-add-to-marks-list 'ess-mode "## {{{ " "## }}}" nil t)
 
 ;; ;; http://orgmode.org/worg/org-tutorials/org-outside-org.html
 (defvar outline-minor-mode-prefix "\M-#")

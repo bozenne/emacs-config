@@ -3,6 +3,12 @@
 #+LaTeX_HEADER:\author{Brice Ozeene}
 #+OPTIONS: toc:t
 
+* TODO  :noexport:
+folding
+C-c C-a latex
+
+markdown polymode
+
 * Installation
 
 Download all files and put them in a directory called *emacs-config*.
@@ -64,6 +70,9 @@ when launching emacs (see section dependencies below).
 
 * Key binding
 See the file extendedCommands.org
+
+
+
 * Dependencies
 
 =require=:
