@@ -36,3 +36,10 @@
   ;; put the point in the lowest line and return
   (next-line arg)
   )
+
+;;: brice-flyspell-check-next-highlighted-word
+(defun brice-flyspell-check-next-highlighted-word ()
+  "Custom function to spell check next highlighted word"
+  (interactive)
+  (flyspell-goto-next-error)
+  (ispell-word))

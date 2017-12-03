@@ -483,3 +483,97 @@ has
 	    (insert "\n"))
 	  (insert "\n")
 	  (insert (cadr marks))))))
+;;; genome/mark-line
+(defun genome/mark-line (arg)
+  "Doc       : Push the mark in line. 
+               The place mark goes is the same place \\[forward-line] would move to with the same argument.
+   From      : https://github.com/tagteam/emacs-genome (author Thomas Alexander Gerds)
+   Originally: mark-line
+   location  : emacs-genome/snps/eg-utility-snps.el"
+  (interactive "p")
+  (beginning-of-line)  
+  (push-mark
+   (save-excursion
+     (end-of-line arg)
+     (point))
+   nil t))
+
+;;; genome/latex-save-and-run
+(defun genome/latex-save-and-run ()
+  "Doc       : Efficiently combine two actions:
+                (1) save the current buffer
+                (2) run the TeX-command-master.
+   From      : https://github.com/tagteam/emacs-genome (author Thomas Alexander Gerds)
+   Originally: eg/latex-save-and-run
+   location  : emacs-genome/snps/latex-snps.el"
+  (interactive)
+  (save-buffer)
+  (TeX-command-master))
+
+
+;;; genome/ess-edit-insert-vector
+(unless (fboundp 'ess-get-process)
+  (fset 'ess-get-process 'get-ess-process))
+
+(defun genome/ess-edit-insert-vector (&optional vec)
+  "Doc       : Convenient way to create a vector
+   From      : https://github.com/tagteam/emacs-genome (author Thomas Alexander Gerds)
+   Originally: ess-edit-insert-vector
+   location  : emacs-genome/snps/ess-edit.el"
+  (interactive)
+  (let ((vec (or vec (read-string "vector: ")))
+	(tbuffer (get-buffer-create " *ess-insert*"))
+	(proc (ess-get-process
+	       (cond (ess-local-process-name)
+		    ((eq (length ess-process-name-list) 1)
+		     (caar ess-process-name-list))
+		    (t (completing-read "Choose ess process: "
+					     ess-process-name-list)))))
+	string)
+    (save-excursion
+      (set-buffer tbuffer)
+      (ess-command (concat "as.list(" vec ")" "\n") tbuffer
+		   nil nil nil proc)
+      (setq string (genome/ess-edit-replace-in-string
+		    (genome/ess-edit-replace-in-string
+		     (genome/ess-edit-replace-in-string
+		      (genome/ess-edit-buffer-string tbuffer)
+		      "^\\[[0-9]\\] \\|^\\[+[0-9]+\\]+\n\\|^\n" "")
+		     "\n$" "")
+		    "\n+" ",")))
+    (insert "c(" string ")")))
+
+;;; genome/ess-edit-buffer-string [necessary for genome/ess-edit-insert-path]
+(defun genome/ess-edit-buffer-string (buffer)
+  "Doc       : 
+   From      : https://github.com/tagteam/emacs-genome (author Thomas Alexander Gerds)
+   Originally: ess-edit-buffer-string
+   location  : emacs-genome/snps/ess-edit.el"
+  (save-excursion (set-buffer buffer)
+		  (buffer-substring (point-min) (point-max))))
+
+;;; genome/winner-cycle
+(defun genome/winner-cycle (&optional backward)
+  "Doc       : 
+   From      : https://github.com/tagteam/emacs-genome (author Thomas Alexander Gerds)
+   Originally: winner-cycle
+   location  : emacs-genome/snps/eg-utility-snps.el"
+  (interactive)
+  (let ((n (ring-length winner-pending-undo-ring)))
+   (if backward 
+       (setq winner-undo-counter (max 1 (1- winner-undo-counter)))
+     (setq winner-undo-counter (min n (1+ winner-undo-counter))))
+  (winner-set (ring-ref winner-pending-undo-ring winner-undo-counter))
+  (message "Winner undo ring (%d / %d)"
+	   winner-undo-counter
+	   (1- (ring-length winner-pending-undo-ring)))))
+
+;;; genome/winner-cycle-backwards
+(defun winner-cycle-backwards ()
+  "Doc       : 
+   From      : https://github.com/tagteam/emacs-genome (author Thomas Alexander Gerds)
+   Originally: winner-cycle-backwards
+   location  : emacs-genome/snps/eg-utility-snps.el"
+  (interactive)
+  (genome/winner-cycle t))
+>>>>>>> 07cfa60f834c71b1333930dea9dbb77c8a572fc6

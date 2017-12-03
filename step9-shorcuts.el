@@ -11,7 +11,8 @@
 	    (define-key ess-mode-map "\M-H" 'genome/ess-get-help-R-object)
 	    (define-key ess-mode-map (kbd "\C-c d") 'ess-tracebug)
 	    (define-key ess-mode-map (kbd "\C-c P") 'genome/ess-edit-insert-file-name)  
-	    (define-key ess-mode-map (kbd "\C-c p") 'genome/ess-edit-insert-path)  
+	    (define-key ess-mode-map (kbd "\C-c p") 'genome/ess-edit-insert-path)
+	    (define-key ess-mode-map (kbd "\C-c v") 'genome/ess-edit-insert-vector)
 ))
 
 ;;; dired
@@ -24,7 +25,12 @@
 
 
 
-;;; windows
+;;; windows cycling
+(global-set-key "\M-o" 'other-window)          ; move to next window clockwise
+(global-set-key "\M-O" '(lambda ()(interactive) (other-window -1))) ; move to next window anti-clockwise
+(global-set-key [(f8)] 'winner-undo)
+(global-set-key [(meta f8)] 'genome/winner-cycle)
+(global-set-key [(shift f8)] 'genome/winner-cycle-backwards)
 ;; move from one window to another
 (global-set-key (kbd "M-<left>")  'windmove-left)
 (global-set-key (kbd "M-<right>") 'windmove-right)
@@ -41,10 +47,6 @@
 	    (local-set-key (kbd "M-<down>")  'windmove-down)
 	    )
 )
-
-;; window cycling
-(global-set-key "\M-o" 'other-window)          ; move to next window clockwise
-(global-set-key "\M-O" '(lambda ()(interactive) (other-window -1))) ; move to next window anti-clockwise
 
 ;; open a windows explorer at the path of the current buffer
 (global-set-key (kbd "<f9>") 'brice-open-directory-with-explorer)
@@ -82,8 +84,8 @@
 (global-set-key "\M-Q" '(lambda () (interactive) (mark-paragraph) (fill-region-as-paragraph (region-beginning) (region-end))))
 
 ;; marking text
-(global-set-key "\M-l" 'mark-line)
-(global-set-key "\M-\C-l" 'mark-end-of-line)
+(global-set-key "\M-l" 'genome/mark-line)
+
 
 ;;; folding
 ;;;; package outshine
@@ -140,9 +142,25 @@
 ;; org-beamer-export-to-pdf
 ;; org-laltex-export-to-pdf
 ;; org-laltex-export-to-pdf
+;;; Auctex
+(add-hook 'LaTeX-mode-hook
+	  '(lambda ()
+	     (define-key LaTeX-mode-map "\M-j" 'genome/latex-save-and-run)))
+
 
 ;;; magit
 (global-set-key (kbd "C-x g") 'magit-status)
 
 ;;; spelling
-(global-set-key (kbd "M-<f8>") 'flyspell-check-next-highlighted-word)
+(global-set-key (kbd "<f7>") 'ispell-word)
+(global-set-key (kbd "M-<f7>") 'brice-flyspell-check-next-highlighted-word)
+
+
+;; ispell
+(dolist (mode '(emacs-lisp-mode-hook
+                inferior-lisp-mode-hook))
+  (add-hook mode '(lambda () (flyspell-prog-mode)))
+  )
+
+
+
