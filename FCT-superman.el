@@ -576,4 +576,4 @@ has
    location  : emacs-genome/snps/eg-utility-snps.el"
   (interactive)
   (genome/winner-cycle t))
->>>>>>> 07cfa60f834c71b1333930dea9dbb77c8a572fc6
+

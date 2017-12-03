@@ -4,7 +4,8 @@
 ;;; folding package
 
 (use-package folding :ensure t)
-(use-package folding-dwim :ensure t)
+(use-package fold-dwim-org :ensure t)
+(fold-dwim-org/minor-mode 1) ;; activate dwim
 
 (folding-add-to-marks-list 'mediawiki-mode "<!-- {{{" "<!-- }}}" t)
 (folding-add-to-marks-list 'ess-mode "## {{{" "## }}}" t)
@@ -28,7 +29,7 @@
 (add-hook 'ledger-mode-hook 'outline-minor-mode)
 (add-hook 'message-mode-hook 'outline-minor-mode)
 
-;; (use-package outline-magic :ensure t) 
+(use-package outline-magic :ensure t) 
 ;; ;; ;; https://stat.ethz.ch/pipermail/ess-help/2007-June/004140.html
 ;; ;; ;; (add-hook 'ess-mode-hook
 ;; ;; ;; 	  '(lambda ()

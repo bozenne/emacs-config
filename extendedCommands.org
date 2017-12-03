@@ -3,8 +3,9 @@
 #+LaTeX_HEADER:\author{Brice Ozeene}
 #+OPTIONS: toc:t
 
-* key bindings
+* Basics
 
+** Short names for the key bindings
 | short name | symbol on the keybord | full name   |
 |------------+-----------------------+-------------|
 | C-         | Ctrl                  | Control     |
@@ -18,6 +19,7 @@
 | <up>       |                       | arrow up    |
 | <down>     |                       | arrow down  |
 
+** Calling a lips function by its name
 
 | Key binding          | name of the command      | effect                                    |
 |----------------------+--------------------------+-------------------------------------------|
@@ -25,7 +27,7 @@
 | C-u <num> <shortcut> |                          | duplicate by num the effect of a shortcut |
 |                      |                          |                                           |
 
-* lisp code
+** Executing lips code
 
 | Key binding | name of the command     | effect                                   |
 |-------------+-------------------------+------------------------------------------|
@@ -33,7 +35,14 @@
 |             | eval-region             | evaluate a region of lisp code in a file |
 |             | load-file               | source a lisp file                       |
 
-* emacs session
+** Getting help
+
+| Key binding | name of the command | effect                                                    |
+|-------------+---------------------+-----------------------------------------------------------|
+| C-h k       | describe-key        | find the documentation of a function from its key binding |
+| C-h f       | describe-function   | find the documentation of a function form its name        |
+
+* Emacs session
 
 | Key binding         | name of the command        | effect                              |
 |---------------------+----------------------------+-------------------------------------|
@@ -47,11 +56,10 @@
 |                     | shell                      | open the shell                      |
 |                     | emacs-version              | display the version of emacs        |
 
-* Buffer
+** Buffer
 
 | Key binding | name of the command | effect                                     |
 |-------------+---------------------+--------------------------------------------|
-| C-x C-f     |                     | open/create a file                         |
 | C-x C-s     |                     | save a buffer                              |
 | C-x s       |                     | save all buffers                           |
 | C-x C-b     |                     | list all buffers                           |
@@ -59,12 +67,52 @@
 | C-x 1       |                     | only keep the current window               |
 | C-x 2       |                     | split the current window, horizontally     |
 | C-x 3       |                     | spilt the current window, vertically       |
+| C-x 5 2     |                     | create a new frame                         |
 |             | revert-buffer       | update buffer with the content of the file |
+| C-x b       | ido-switch-buffer   | switch buffer                              |
+| C-x C-b     | ibuffer             | switch buffer (alternative display)        |
 
-* Internal browser
-:PROPERTIES:
-:ID:       86e8fe9e-f3a7-41e9-adbc-5bbe6d35b047
-:END:
+** Switching window/frame
+
+| Key binding | name of the command | effect                                         |
+|-------------+---------------------+------------------------------------------------|
+| M-o         | other-window        | move to another window (clockwise)             |
+| M-O         |                     | move to another window (anti-clockwise)        |
+| M-m         | other-frame         | move to another frame                          |
+| M-<left>    | windmove-left       | move to the window on the left                 |
+| M-<right>   | windmove-right      | move to the window on the right                |
+| M-<up>      | windmove-up         | move to the window on the up                   |
+| M-<down>    | windmove-down       | move to the window on the down                 |
+| F8          | winner-undo         | switch back to an earlier window configuration |
+** Folding
+
+*** folding package
+| Key binding | name of the command | effect                                          |
+|-------------+---------------------+-------------------------------------------------|
+| F12         | folding-mode        | fold/unfold all sections                        |
+| M-<F12>     | fold-dwim-toggle    | fold/unfold specific section                    |
+|             | insert-fold         | insert folding according to the folding package |
+
+*** outshine package
+| Key binding | name of the command | effect                                                         |
+|-------------+---------------------+----------------------------------------------------------------|
+| <TAB>       | org-cycle           | fold/unfold section                                            |
+| M-<TAB>     | org-shifttab        | cycle between fold all, fold all with sections names, show all |
+
+* File manager
+
+| Key binding | name of the command | effect             |
+|-------------+---------------------+--------------------|
+| C-x C-f     |                     | open/create a file |
+
+** Bookmark
+
+| Key binding | name of the command | effect             |
+|-------------+---------------------+--------------------|
+| C-x r b     | bookmark-jump       | jump to bookmark   |
+| C-x r m     | bookmark-set        | create bookmark    |
+| C-x r l     | bookmark-bmenu-list | list all bookmarks |
+
 ** Dired
 
 | Key binding | name of the command                | effect                                      |
@@ -107,33 +155,7 @@ More key bindings at: https://www.gnu.org/software/emacs/refcards/pdf/dired-ref.
 | F9          | brice-open-directory-with-explorer           | open OS-explorer in current directory |
 | M-F9        | brice-open-file-or-directory-in-external-app | open file with default OS application |
 
-** Switching buffer
-
-| Key binding | name of the command | effect                              |
-|-------------+---------------------+-------------------------------------|
-| C-x b       | ido-switch-buffer   | switch buffer                       |
-| C-x C-b     | ibuffer             | switch buffer (alternative display) |
-
-** Switching window/frame
-
-| Key binding | name of the command | effect                                  |
-|-------------+---------------------+-----------------------------------------|
-| M-o         | other-window        | move to another window (clockwise)      |
-| M-O         |                     | move to another window (anti-clockwise) |
-| M-<left>    | windmove-left       | move to the window on the left          |
-| M-<right>   | windmove-right      | move to the window on the right         |
-| M-<up>      | windmove-up         | move to the window on the up            |
-| M-<down>    | windmove-down       | move to the window on the down          |
-
-** Folding
-
-| Key binding | name of the command | effect                                                         |
-|-------------+---------------------+----------------------------------------------------------------|
-| <TAB>       | org-cycle           | fold/unfold section                                            |
-| M-<TAB>     | org-shifttab        | cycle between fold all, fold all with sections names, show all |
-
 * Editing
-
 ** Move
 
 | unit      | backward | forward | center | begining | end   | other window |
@@ -157,22 +179,24 @@ sexp: balanced group of parentheses.
 | C-x C-o     |                     | remove line below    |
 
 ** Highlight
-| Key binding | name of the command  | effect                                 |
-|-------------+----------------------+----------------------------------------|
-| M-s h r     | highlight-regexp     | highlight matching regular expressions |
-| M-s h u     | unhighlight-regexp   | remove the highlight                   |
 
-** Mark
-| Key binding     | name of the command | effect                          |
-|-----------------+---------------------+---------------------------------|
-| M-<SPC>         |                     | start mark and highlight        |
-| M-<SPC> M-<SPC> |                     | start mark without highlight    |
-|                 | mark-word           | mark word                       |
-| M-h             | org-mark-element    | mark paragraph                  |
-| C-x h           | mark-whole-buffer   | mark buffer                     |
-| C-u C-<SPC>     |                     | navigate back to previous marks |
+General:
+| Key binding     | name of the command | effect                                 |
+|-----------------+---------------------+----------------------------------------|
+| M-<SPC>         |                     | start mark and highlight               |
+| M-<SPC> M-<SPC> |                     | start mark without highlight           |
+| C-u C-<SPC>     |                     | navigate back to previous marks        |
 
-** Search (within buffer)
+Specifics:
+| unit               | highlight | (name of the command) | unhighlight | name of the command  |
+|--------------------+-----------+-----------------------+-------------+----------------------|
+| word               |           | (mark-word)           |             |                      |
+| regular expression | M-s h r   | (highlight-regexp)    | M-s h u     | (unhighlight-regexp) |
+| line               | M-l       | (genome/mark-line)    |             |                      |
+| paragraph          | M-h       | (org-mar-element)     |             |                      |
+| buffer             | C-x h     | (mark-whole-buffer)   |             |                      |
+
+** Search 
 | Key binding | name of the command | effect                                                               |
 |-------------+---------------------+----------------------------------------------------------------------|
 | C-r         | isearch-forward     | search for a regular expression forward                              |
@@ -183,7 +207,7 @@ sexp: balanced group of parentheses.
 | C-u C-<SPC> |                     | (on exit) return at the place before search                          |
 | C-x C-x     |                     | (on exit) highlight the text between the start and end of the search |
 
-** Search and replace (within buffer)
+** Search and replace 
 
 | Key binding | name of the command | effect                                              |
 |-------------+---------------------+-----------------------------------------------------|
@@ -210,7 +234,28 @@ More key bindings at: https://www.gnu.org/software/emacs/manual/html_node/emacs/
 | Key binding | name of the command | effect |
 |-------------+---------------------+--------|
 | M-i         | dabbrev-expand      |        |
-| M-e         | hippie-expand       |        |
+| C-c i       | hippie-expand       |        |
+
+** Case conversion
+
+| Key binding | name of the command | effect                       |
+|-------------+---------------------+------------------------------|
+|             | downcase-word       | convert word to lower case   |
+| M-u         | upcase-word         | convert word to upper case   |
+| M-c         | capitalize-word     | capitalize word              |
+|             | downcase-region     | convert region to lower case |
+|             | upcase-region       | convert region to upper case |
+
+** Spell checking
+
+| Key binding | name of the command                        | effect                                    |
+|-------------+--------------------------------------------+-------------------------------------------|
+|             | ispell-change-dictionnary / is-di          | change the language of the spell checking |
+| F7          | ispell-buffer                              | check the spelling in the current buffer  |
+|             | ispell-word                                | check the spelling of the word            |
+|             | ispell-region                              | check the spelling of the region          |
+| M-F7        | brice-flyspell-check-next-highlighted-word | go to the next spelling mistake           |
+| M-F7        | flyspell-mode                              | check spelling on the fly                 |
 
 * orgmode
 ** General
@@ -222,14 +267,20 @@ More key bindings at: https://www.gnu.org/software/emacs/manual/html_node/emacs/
 | C-c C-e        | org-export-dispatch                         | Insert an environment                                           |
 | C-c c          |                                             | Refresh the local setup (must be done in the header section)    |
 |                | gscholar-bibtex                             | Use google scholar to find bibtex citations for a given article |
-| M-l            | brice-org-open-corresponding-tex            | open corresponding latex file                                   |
-| M-L            | brice-org-export-and-open-corresponding-tex | export and open corresponding latex file                        |
-| M-j            | brice-org-export-to-pdf                     | export to pdf                                                   |
-| M-J            | brice-org-export-and-open-corresponding-pdf | export and open corresponding pdf file                          |
 |                | org-do-promote                              | promote headline by one level (e.g. ** -> *)                    |
 | M-q            | genome/indent-paragraph                     | reformat a paragrah                                             |
 | C-x f <number> | set-fill-column                             | set the margin when reformating paragraph (default 70)          |
 |                | org-sort                                    | sort entries (e.g. alphabetic order)                            |
+
+** Exporting to latex/pdf
+| Key binding | name of the command                         | effect                                   |
+|-------------+---------------------------------------------+------------------------------------------|
+| M-l         | brice-org-open-corresponding-tex            | open corresponding latex file            |
+| M-L         | brice-org-export-and-open-corresponding-tex | export and open corresponding latex file |
+| M-j         | brice-org-export-to-pdf                     | export to pdf                            |
+| M-J         | brice-org-export-and-open-corresponding-pdf | export and open corresponding pdf file   |
+| C-c v       | brice-org-open-corresponding-pdf            | open corresponding pdf                   |
+|             |                                             |                                          |
 
 ** Templates
 
@@ -279,6 +330,7 @@ More key bindings at: https://www.gnu.org/software/emacs/manual/html_node/emacs/
 | Key binding | name of the command  | effect                             |
 |-------------+----------------------+------------------------------------|
 |             | magit-init           | start version control in directory |
+|             | magit-clone          | import a repository from Github    |
 | C-x g       | magit-status         | open version control in directory  |
 | s           |                      | stage untracked file               |
 | i           |                      | add file to .gitignore             |

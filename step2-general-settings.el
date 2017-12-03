@@ -159,31 +159,6 @@
   "Dired pdf file extensions")
 (dired-rainbow-define pdf "#ACE1AF" dired-pdf-file-extensions)
 
-;;; Spelling
-
-;; (add-hook 'LaTeX-mode-hook '(flyspell-mode t))
-;; (use-package langtool :ensure t) 
-;; (setq langtool-language-tool-jar "C:\\LanguageTool-3.7\\languagetool-commandline.jar"
-;;       langtool-mother-tongue "fr"
-;;       langtool-disabled-rules '("WHITESPACE_RULE"
-;;                                 "EN_UNPAIRED_BRACKETS"
-;;                                 "COMMA_PARENTHESIS_WHITESPACE"
-;;                                 "EN_QUOTES"))
-
-;; commands langtool-check-buffer and langtool-correct-buffer
-
-;; ispell
-(dolist (mode '(emacs-lisp-mode-hook
-                inferior-lisp-mode-hook))
-  (add-hook mode '(lambda () (flyspell-prog-mode)))
-  )
-(global-set-key (kbd "<f8>") 'ispell-word)
-(defun flyspell-check-next-highlighted-word ()
-  "Custom function to spell check next highlighted word"
-  (interactive)
-  (flyspell-goto-next-error)
-  (ispell-word))
-
 ;;; Completion
 
 (use-package hippie-exp :commands hippie-expand)

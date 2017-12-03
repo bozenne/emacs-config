@@ -152,7 +152,7 @@
 (global-set-key (kbd "C-x g") 'magit-status)
 
 ;;; spelling
-(global-set-key (kbd "<f7>") 'ispell-word)
+(global-set-key (kbd "<f7>") 'ispell-buffer)
 (global-set-key (kbd "M-<f7>") 'brice-flyspell-check-next-highlighted-word)
 
 

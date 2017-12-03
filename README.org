@@ -4,7 +4,6 @@
 #+OPTIONS: toc:t
 
 * TODO  :noexport:
-folding
 C-c C-a latex
 
 markdown polymode
@@ -31,6 +30,7 @@ Copy the following code at the begining of the .emacs file:
 (load-file (expand-file-name "step6-org-templates.el" path-emacs-config))
 (load-file (expand-file-name "step7-header.el" path-emacs-config))
 (load-file (expand-file-name "step8-folding.el" path-emacs-config))
+(load-file (expand-file-name "step9-spellChecking.el" path-emacs-config))
 
 (load-file (expand-file-name "FCT-dired.el" path-emacs-config))
 (load-file (expand-file-name "FCT-editing.el" path-emacs-config))
@@ -40,7 +40,7 @@ Copy the following code at the begining of the .emacs file:
 (load-file (expand-file-name "FCT-switch-to-OS-explorer.el" path-emacs-config))
 (load-file (expand-file-name "FCT-superman.el" path-emacs-config))
 
-(load-file (expand-file-name "step9-shorcuts.el" path-emacs-config))
+(load-file (expand-file-name "step10-shorcuts.el" path-emacs-config))
 #+END_SRC
 In the first line, replace ="my name"= by your name.
 
