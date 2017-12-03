@@ -64,6 +64,7 @@ when launching emacs (see section dependencies below).
 
 * Key binding
 See the file extendedCommands.org
+
 * Dependencies
 
 =require=:
@@ -90,3 +91,8 @@ See the file extendedCommands.org
 - *stan*: stan-mode, stan-snippets
 - *putty*: tramp
 
+* Credit
+
+A major part of configuration comes from [[https://github.com/tagteam/emacs-genome][emacs-genome]] (thanks
+thomas!!!). In particular all the functions contained in the file
+=FCT-superman.el= are directly copied from emacs-genome.

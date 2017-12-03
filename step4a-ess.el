@@ -35,6 +35,13 @@
 ;;; debuging
 (setq ess-use-tracebug nil)
 
+;;; indent
+(add-hook 'ess-mode-hook
+          (lambda()
+            (setq ess-fancy-comments nil)
+            ))
+
+
 ;;; auto completion
 ;; prevent help in minibuffer about the arguments of a function (fait ramer la cession)
 (setq ess-use-eldoc nil)

@@ -62,6 +62,9 @@
 |             | revert-buffer       | update buffer with the content of the file |
 
 * Internal browser
+:PROPERTIES:
+:ID:       86e8fe9e-f3a7-41e9-adbc-5bbe6d35b047
+:END:
 ** Dired
 
 | Key binding | name of the command                | effect                                      |
