@@ -465,6 +465,24 @@ has
       (genome/indent-paragraph)
     (org-cycle)))
 
+;;; genome/insert-folds
+(defun genome/insert-folds ()
+  "Doc       : insert folding tags in a file
+   From      : https://github.com/tagteam/emacs-genome (author Thomas Alexander Gerds)
+   Originally: insert-folds
+   location  : emacs-genome/snps/folding-snps.el"
+  (interactive)
+  (let ((beg (if (region-active-p) (region-beginning) (point)))
+	(marks (cdr (assoc major-mode folding-mode-marks-alist))))
+    (if marks
+	(save-excursion
+	  (goto-char beg)
+	  (insert (car marks) " ")
+	  (if (region-active-p)
+	      (goto-char (region-end))
+	    (insert "\n"))
+	  (insert "\n")
+	  (insert (cadr marks))))))
 ;;; genome/mark-line
 (defun genome/mark-line (arg)
   "Doc       : Push the mark in line. 
@@ -558,3 +576,4 @@ has
    location  : emacs-genome/snps/eg-utility-snps.el"
   (interactive)
   (genome/winner-cycle t))
+
