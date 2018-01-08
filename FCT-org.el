@@ -16,14 +16,14 @@
     (org-latex-export-to-latex))
   )
 ;;; export to R
-(defun brice-extractSRCorgmode ()
+(defun brice-extractRchunk ()
   "Extact R code chunks from a org file and put them into a R file"
   (interactive)
   (let ((file-name (buffer-file-name)))
   (let ((x (read-string "Org file:")))
     (if(string= "" x)	
-	(ess-eval-linewise (concat "butils:::extractSRCorgmode(\"" file-name "\", overwrite = TRUE)"))
-      (ess-eval-linewise (concat "butils:::extractSRCorgmode(\"" x "\", overwrite = TRUE)"))
+	(ess-eval-linewise (concat "butils:::extractRchunk(\"" file-name "\", overwrite = TRUE)"))
+      (ess-eval-linewise (concat "butils:::extractRchunk(\"" x "\", overwrite = TRUE)"))
       )
     ))
   )

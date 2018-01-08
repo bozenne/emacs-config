@@ -24,6 +24,8 @@
 	("" "longtable") ;; default orgmode
 	("" "multirow") ;; merge rows in table
 	("" "multicol") ;; merge columns in table
+	;;;; track change
+	("" "changes") ;; NOTE: must be loaded before ulem
         ;;;; display
 	("" "pdflscape") ;; switch to landscape
 	("" "setspace") ;; to modify the space between lines
