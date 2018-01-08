@@ -23,6 +23,37 @@
 (use-package tex-site :ensure auctex)
 (use-package latex-snps)
 
+;;;; enable automatic latex compilation when saving
+(add-hook 'LaTeX-mode-hook
+	  '(lambda ()
+	     (add-to-list 'TeX-command-list '("make" "latexmk -f %t" TeX-run-TeX  nil "nil") t)
+	     (add-to-list 'TeX-command-list '("make-dvi" "latexmk -pvc -dvi -f %t" TeX-run-TeX  nil "nil") t)
+	     (add-to-list 'TeX-command-list '("make-ps"  "latexmk -pvc -ps -f %t" TeX-run-TeX  nil "nil") t)
+	     (add-to-list 'TeX-command-list '("make-pdf" "latexmk -pvc -pdf -f %t" TeX-run-TeX  nil "nil") t)
+	     (add-to-list 'TeX-command-list '("make-ps2pdf" "latexmk -pvc -pdfps -f %t" TeX-run-TeX  nil "nil") t)
+	     (add-to-list 'TeX-command-list '("make-dvi-landscape" "latexmk -pvc -l -dvi -f %t" TeX-run-TeX  nil "nil") t)
+	     (add-to-list 'TeX-command-list '("make-ps-landscape" "latexmk  -pvc -l -ps -f %t" TeX-run-TeX  nil "nil") t)
+	     (add-to-list 'TeX-command-list '("make-pdf-landscape" "latexmk -pvc -l -pdf -f %t" TeX-run-TeX  nil "nil") t)
+	     (add-to-list 'TeX-command-list '("make-ps2pdf-landscape" "latexmk -pvc -l -pdfps -f %t" TeX-run-TeX  nil "nil") t)))
+
+;;;; predictive completion (cannot install!)
+;; should be make and make install in the console when being in the predictve repository
+;; but I get avl-tree.el:678:1:Warning: the function ‘gv--defsetter’ might not be defined at runtime.
+;; In toplevel form:
+;; completion-ui-dynamic.el:31:1:Error: Wrong type argument: listp, cons
+;; Makefile:149 : la recette pour la cible « completion-ui-dynamic.elc » a échouée
+;; make: *** [completion-ui-dynamic.elc] Erreur 1
+
+;; (use-package predictive)
+;; (autoload 'predictive-mode "predictive" "predictive" t)
+;; (set-default 'predictive-auto-add-to-dict t)
+
+;; (setq predictive-main-dict 'rpg-dictionary
+;;       predictive-auto-learn t
+;;       predictive-add-to-dict-ask nil
+;;       predictive-use-auto-learn-cache nil
+;;       predictive-which-dict t)
+
 ;; ;;;; LaTeX mode hook
 ;; (add-hook 'LaTeX-mode-hook
 ;; 	  '(lambda ()

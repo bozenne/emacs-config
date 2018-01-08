@@ -28,6 +28,7 @@
 (add-hook 'ess-mode-hook 'outline-minor-mode)
 (add-hook 'ledger-mode-hook 'outline-minor-mode)
 (add-hook 'message-mode-hook 'outline-minor-mode)
+(add-hook 'c++-mode-hook 'outline-minor-mode)
 
 (use-package outline-magic :ensure t) 
 ;; ;; ;; https://stat.ethz.ch/pipermail/ess-help/2007-June/004140.html
