@@ -15,7 +15,7 @@
 	    (define-key ess-mode-map (kbd "\C-c v") 'genome/ess-edit-insert-vector)
 ))
 
-;;; dired
+;;; Dired, file management
 (define-key dired-mode-map (kbd "e") 'dired-sort-extension)
 (define-key dired-mode-map (kbd "\C-ce") 'dired-sort-extension)
 (define-key dired-mode-map (kbd "\C-cn") 'dired-sort-name)
@@ -23,6 +23,7 @@
 (define-key dired-mode-map (kbd "M-r") 'dired-omit-mode)
 (define-key dired-mode-map (kbd "o") 'brice-dired-display-side)
 
+(global-set-key (kbd "C-M-ø") 'lgrep)
 
 
 ;;; windows cycling
