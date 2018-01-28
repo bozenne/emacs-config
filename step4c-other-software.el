@@ -20,6 +20,7 @@
 )
 
 ;;; latex
+(use-package latex)
 (use-package tex-site :ensure auctex)
 (use-package latex-snps)
 

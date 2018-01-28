@@ -431,3 +431,36 @@ Je vous prie d'agréer, Madame, Monsieur, mes salutations distinguées.
 "#+BEGIN_SRC emacs-lisp
 
 #+END_SRC"))
+
+;;; Agenda template
+
+(add-to-list
+ 'org-structure-template-alist
+ '("event" 
+   "* Event
+   :PROPERTIES:
+   :on:
+   :with:
+   :END:"
+   ))
+
+(add-to-list
+ 'org-structure-template-alist
+ '("meeting" 
+   "* Meeting
+   :PROPERTIES:
+   :on:
+   :with:
+   :END:"
+   ))
+
+ (add-to-list
+ 'org-structure-template-alist
+ '("task" 
+   "* Task
+   :PROPERTIES:
+   :on:
+   :with:
+   :END:"
+   ))
+

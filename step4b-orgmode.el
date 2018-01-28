@@ -37,7 +37,6 @@
 (use-package org-snps)
 (use-package org-structure-snps)
 
-(use-package org-capture)
 (use-package org-agenda)
 (use-package org-clock)
 
@@ -47,7 +46,7 @@
 
 ;;;; figure labels
 ;; setting variable org-latex-prefer-user-labels
-;; will make the exporter export
+;; will mâle the exporter export
 ;; #+NAME: fig:1 and #+LABEL: fig:1
 ;; to \label{fig:1} instead of \label{orgparagraph1}
 (setq org-latex-prefer-user-labels t)
@@ -105,6 +104,80 @@
    )
 )
 
+;;; keywords
+
+
+(setq org-todo-keyword-faces
+      '(
+        ("TOBRING" . (:foreground "#cc0000" :background "#ffb3b3" :weight bold)) ;; red
+        ("TOSEND" . (:foreground "#cc0000" :background "#ffb3b3" :weight bold)) ;; red
+        ("TODO" . (:foreground "#cc0000" :background "#ffb3b3" :weight bold)) ;; red
+
+	("WAITING" . (:foreground "#666600" :background "#ffffcc" :weight bold)) ;; yellow
+        ("INPROGRESS" . (:foreground "#cc3300" :background "#ffcc66" :weight bold)) ;; orange
+        ("DELEGATED" . (:foreground "#66004d" :background "#ffccf2" :weight bold)) ;; purple
+	("INACTIVE" . (:foreground "#734d26" :background "#e6ccb3" :weight bold)) ;;brown
+
+	("SENT" . (:foreground "blue" :background "#6699ff" :weight bold)) ;; blue
+	("DONE" . (:foreground "#008000" :background "#99ff99" :weight bold)) ;; green
+
+	("TASK" . (:foreground "#000000" :background "#b3b3b3" :weight bold)) ;; black
+	("EVENT" . (:foreground "#000000" :background "#b3b3b3" :weight bold)) ;; black
+	("METTING" . (:foreground "#000000" :background "#b3b3b3" :weight bold)) ;; black
+        )
+      )
+;; colors
+;; https://www.w3schools.com/colors/colors_picker.asp 
+
+;; NOTE: the keywords needs to be written in org-todo-keywords to be active
+(setq org-todo-keywords
+      '((sequence "TODO" "WAITING" "INPROGRESS" "DELEGATED" "INACTIVE" "DONE")
+	(sequence "TOBRING" "DONE")
+	(sequence "TOSEND" "SENT" "DONE")
+	(sequence "TASK")
+	(sequence "EVENT")
+	(sequence "MEETING")
+	))
+
+(setq org-tags-exclude-from-inheritance '("prj")
+      org-stuck-projects '("+prj/DONE"
+                           ("TODO" "TASK") ()))
+
+;;; manage tasks
+
+(require 'org-secretary)
+
+;; If you want to keep track of stuck projects you should tag your
+;; projects with :prj:, and define:
+
+(setq org-tags-exclude-from-inheritance '("prj")
+      org-stuck-projects '("+prj/-MAYBE-DONE"
+                           ("TODO" "TASK") ()))
+
+;; Define a tag that marks TASK entries as yours:
+
+(setq org-sec-me user-full-name)
+
+;; Finally, you add the special views to your org-agenda-custom-commands:
+
+(setq org-agenda-custom-commands
+      '(("h" "Work todos" tags-todo
+         "-personal-doat={.+}-dowith={.+}/!-TASK"
+         ((org-agenda-todo-ignore-scheduled t)))
+        ("H" "All work todos" tags-todo "-personal/!-TASK-MAYBE"
+         ((org-agenda-todo-ignore-scheduled nil)))
+        ("A" "Work todos with doat or dowith" tags-todo
+         "-personal+doat={.+}|dowith={.+}/!-TASK"
+         ((org-agenda-todo-ignore-scheduled nil)))
+        ("j" "TODO dowith and TASK with"
+         ((org-sec-with-view "TODO dowith")
+          (org-sec-where-view "TODO doat")
+          (org-sec-assigned-with-view "TASK with")
+          (org-sec-stuck-with-view "STUCK with")))
+        ("J" "Interactive TODO dowith and TASK with"
+         ((org-sec-who-view "TODO dowith"))))
+      )
+
 ;;; options
 (setq org-babel-hash-show-time t)
 (setq org-export-babel-evaluate t)
@@ -131,21 +204,3 @@
 ;; indent code blocks using TAB
 (setq org-src-tab-acts-natively t)
 
-;;;; keywords
-
-(setq org-todo-keyword-faces
-      '(
-        ("WAITING" . (:foreground "#666600" :background "#ffffcc" :weight bold)) ;; yellow
-        ("INPROGRESS" . (:foreground "#cc3300" :background "#ffcc66" :weight bold)) ;; orange
-        ("DELEGATED" . (:foreground "#66004d" :background "#ffccf2" :weight bold)) ;; purple
-	("INACTIVE" . (:foreground "#734d26" :background "#e6ccb3" :weight bold)) ;;brown
-	("SENT" . (:foreground "blue" :background "#6699ff" :weight bold)) ;; blue
-	("TOBRING" . (:foreground "black" :background "#b3b3b3" :weight bold)) ;; black
-	("DONE" . (:foreground "#008000" :background "#99ff99" :weight bold)) ;; green
-        )
-      )
-;; colors
-;; https://www.w3schools.com/colors/colors_picker.asp 
-
-(setq org-todo-keywords
-      '((sequence "TODO" "WAITING" "INPROGRESS" "DELEGATED" "INACTIVE" "SENT" "TOBRING" "DONE")))
