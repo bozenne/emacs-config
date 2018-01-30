@@ -66,3 +66,14 @@
   (brice-org-export-to-pdf)
   (brice-org-open-corresponding-pdf)
 )
+
+(defun brice-org-open-corresponding-preview (&optional arg)
+  "Open preview of the file file"
+  (interactive "p")
+  (let ((target (concat (file-name-sans-extension (buffer-file-name)) ".tex")))
+     (if (file-exists-p target)
+	 (org-open-file target)
+       (message (concat "No such file: " target)))
+     )
+  (TeX-view)
+)
