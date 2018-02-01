@@ -65,6 +65,7 @@
 
 ;; comment
 (global-set-key "\M-;" 'genome/comment-or-uncomment-line-or-region)
+(global-set-key (kbd "\C-c ;") 'brice-comment-symbol)
 
 ;; duplicate a line of text
 (global-set-key (kbd "C-M-y") 'brice-duplicate-line)
@@ -86,6 +87,9 @@
 
 ;; marking text
 (global-set-key "\M-l" 'genome/mark-line)
+
+;; comments
+;; (setq comment-start "% ")
 
 ;;; folding
 ;;;; package outshine

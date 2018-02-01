@@ -231,6 +231,12 @@ More key bindings at: https://www.gnu.org/software/emacs/manual/html_node/emacs/
 | sentence |           |          | M-k (kill-sentence) |
 | region   | C-w       |          | M-k                 |
 
+** Comment
+| Key binding | name of the command                        | effect                              |
+|-------------+--------------------------------------------+-------------------------------------|
+| M-;         | genome/comment-or-uncomment-line-or-region | comment or uncomment line or region |
+| C-c ;       | brice-comment-symbol                       | change the comment symbol           |
+
 ** Autocompletion
 | Key binding | name of the command | effect |
 |-------------+---------------------+--------|
