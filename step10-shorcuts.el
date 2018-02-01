@@ -87,7 +87,6 @@
 ;; marking text
 (global-set-key "\M-l" 'genome/mark-line)
 
-
 ;;; folding
 ;;;; package outshine
 (global-set-key (kbd "<backtab>") 'outshine-cycle-buffer)

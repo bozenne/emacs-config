@@ -197,15 +197,16 @@ Specifics:
 | buffer             | C-x h     | (mark-whole-buffer)   |             |                      |
 
 ** Search 
-| Key binding | name of the command | effect                                                               |
-|-------------+---------------------+----------------------------------------------------------------------|
-| C-r         | isearch-forward     | search for a regular expression forward                              |
-| C-s         | isearch-backward    | search for a regular expression backward                             |
-| M-p / M-n   |                     | (during) move through previous searched expressions           |
-| M-e         |                     | (during) modify expression to search                          |
-| <RET>       |                     | (during) stop the search                                      |
-| C-u C-<SPC> |                     | (on exit) return at the place before search                          |
-| C-x C-x     |                     | (on exit) highlight the text between the start and end of the search |
+| Key binding | name of the command     | effect                                                               |
+|-------------+-------------------------+----------------------------------------------------------------------|
+| C-r         | isearch-forward         | search for a regular expression forward                              |
+| C-s         | isearch-backward        | search for a regular expression backward                             |
+| M-p / M-n   |                         | (during) move through previous searched expressions                  |
+| M-e         |                         | (during) modify expression to search                                 |
+| <RET>       |                         | (during) stop the search                                             |
+| C-u C-<SPC> |                         | (on exit) return at the place before search                          |
+| C-x C-x     |                         | (on exit) highlight the text between the start and end of the search |
+|             | toggle-case-fold-search | turn on/off case sensitive search                                    |
 
 ** Search and replace 
 

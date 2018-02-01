@@ -28,7 +28,7 @@
 #+LaTeX_HEADER: %
 #+LaTeX_HEADER: %%%% additional packages %%%%
 #+LaTeX_HEADER: %
-#+LaTeX_HEADER:\\usepackage{authblk}
+#+LaTeX_HEADER:\\usepackage{authblk} % enable several affiliations (clash with beamer)
 
 ** Code
 #+PROPERTY: header-args :session *R*
@@ -289,7 +289,6 @@ Je vous prie d'agréer, Madame, Monsieur, mes salutations distinguées.
 #+LaTeX_HEADER: %
 #+LaTeX_HEADER: %%%% additional packages %%%%
 #+LaTeX_HEADER: %
-#+LaTeX_HEADER:\\usepackage{authblk}
 
 ** Code
 #+PROPERTY: header-args :session *R*
