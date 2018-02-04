@@ -37,9 +37,17 @@
   (next-line arg)
   )
 
-;;: brice-flyspell-check-next-highlighted-word
+;;; brice-flyspell-check-next-highlighted-word
 (defun brice-flyspell-check-next-highlighted-word ()
   "Custom function to spell check next highlighted word"
   (interactive)
   (flyspell-goto-next-error)
   (ispell-word))
+
+;;; brice-comment-symbol
+(defun brice-comment-symbol ()
+  "Change the comment symbol"
+  (interactive)
+  (let ((x (read-string "new comment character:")))
+    (setq comment-start x))
+  )

@@ -8,12 +8,19 @@
  `("Ld" ,(concat
 "#+TITLE:
 #+Author: " user-full-name
-"\n\n\n
+"\n\n
+
+## * References
+## bibliographystyle:apalike
+## [[bibliography:bibliography.bib]]
+
+\n\n
+
 * CONFIG :noexport:
 # #+LaTeX_HEADER:\\affil{Department of Biostatistics, University of Copenhagen, Copenhagen, Denmark}
 #+LANGUAGE:  en
 #+LaTeX_CLASS: org-article
-#+OPTIONS:   title:t author:t toc:t todo:t 
+#+OPTIONS:   title:t author:t toc:t todo:nil
 #+OPTIONS:   H:3 num:t 
 #+OPTIONS:   TeX:t LaTeX:t
 
@@ -21,7 +28,7 @@
 #+LaTeX_HEADER: %
 #+LaTeX_HEADER: %%%% additional packages %%%%
 #+LaTeX_HEADER: %
-#+LaTeX_HEADER:\\usepackage{authblk}
+#+LaTeX_HEADER:\\usepackage{authblk} % enable several affiliations (clash with beamer)
 
 ** Code
 #+PROPERTY: header-args :session *R*
@@ -44,39 +51,11 @@
 (add-to-list
  'org-structure-template-alist
  `("Lm" ,(concat
-"#+TITLE:
-#+Author: " user-full-name
-"\n\n\n
-* CONFIG :noexport:
-# #+LaTeX_HEADER:\\affil{Department of Biostatistics, University of Copenhagen, Copenhagen, Denmark}
-#+LANGUAGE:  en
-#+LaTeX_CLASS: org-article
-#+OPTIONS:   title:t author:t toc:t todo:t 
-#+OPTIONS:   H:3 num:t 
-#+OPTIONS:   TeX:t LaTeX:t
-
-** Additional commands
-#+LaTeX_HEADER: %
-#+LaTeX_HEADER: %%%% additional latex commands %%%%
-#+LaTeX_HEADER: %
-
-** Additional packages
-#+LaTeX_HEADER: %
-#+LaTeX_HEADER: %%%% additional packages %%%%
-#+LaTeX_HEADER: %
-#+LaTeX_HEADER:\\usepackage{authblk}
-
+"
 ** Algorithm
 #+LATEX_HEADER: \\RequirePackage{amsmath}
 #+LATEX_HEADER: \\RequirePackage{algorithm}
 #+LATEX_HEADER: \\RequirePackage[noend]{algpseudocode}
-
-** Code
-#+PROPERTY: header-args :session *R*
-#+PROPERTY: header-args :tange yes % extract source code: http://orgmode.org/manual/Extracting-source-code.html
-#+PROPERTY: header-args :eval yes :cache no
-#+LATEX_HEADER: \\RequirePackage{fancyvrb}
-#+LATEX_HEADER: \\DefineVerbatimEnvironment{verbatim}{Verbatim}{fontsize=\\small,formatcom = {\\color[rgb]{0.5,0,0}}}
 
 ** Display 
 #+LATEX_HEADER: \\RequirePackage{colortbl} % arrayrulecolor to mix colors
@@ -283,6 +262,16 @@ Je vous prie d'agréer, Madame, Monsieur, mes salutations distinguées.
 ** Part I\n
 *** First slide\n
 \n\n
+
+## ** References
+## :PROPERTIES:
+## :BEAMER_OPT: fragile,allowframebreaks
+## :END:  
+## bibliographystyle:apalike
+## [[bibliography:bibliography.bib]]
+
+\n\n
+
 * CONFIG :noexport:
 # #+LaTeX_HEADER:\\affil{Department of Biostatistics, University of Copenhagen, Copenhagen, Denmark}
 #+LANGUAGE:  en
@@ -292,28 +281,33 @@ Je vous prie d'agréer, Madame, Monsieur, mes salutations distinguées.
 #+LaTeX_HEADER: \\subtitle{}
 #+LaTeX_HEADER: \\setbeamertemplate{footline}[frame number]
 #+LaTeX_HEADER: \\setbeamertemplate{navigation symbols}{}
-#+LATEX_HEADER: \\RequirePackage{fancyvrb}
-#+LATEX_HEADER: \\DefineVerbatimEnvironment{verbatim}{Verbatim}{fontsize=\\small,formatcom = {\\color[rgb]{0.5,0,0}}}
-
-#+OPTIONS:   title:t author:t toc:t todo:t 
+#+OPTIONS:   title:t author:t toc:nil todo:nil
 #+OPTIONS:   H:3 num:t 
 #+OPTIONS:   TeX:t LaTeX:t
-
-** Code
-#+PROPERTY: header-args :session *R*
-#+PROPERTY: header-args :tange yes % extract source code: http://orgmode.org/manual/Extracting-source-code.html
-#+PROPERTY: header-args :cache no
 
 ** Latex packages
 #+LaTeX_HEADER: %
 #+LaTeX_HEADER: %%%% additional packages %%%%
 #+LaTeX_HEADER: %
-#+LaTeX_HEADER:\\usepackage{authblk}
+
+** Code
+#+PROPERTY: header-args :session *R*
+#+PROPERTY: header-args :tange yes % extract source code: http://orgmode.org/manual/Extracting-source-code.html
+#+PROPERTY: header-args :cache no
+#+LATEX_HEADER: \\RequirePackage{fancyvrb}
+#+LATEX_HEADER: \\DefineVerbatimEnvironment{verbatim}{Verbatim}{fontsize=\\small,formatcom = {\\color[rgb]{0.5,0,0}}}
 
 ** Latex command
 #+LaTeX_HEADER: %
 #+LaTeX_HEADER: %%%% additional latex commands %%%%
 #+LaTeX_HEADER: %
+#+LATEX_HEADER: \newcommand{\backupbegin}{
+#+LATEX_HEADER:   \newcounter{finalframe}
+#+LATEX_HEADER:   \setcounter{finalframe}{\value{framenumber}}
+#+LATEX_HEADER: }
+#+LATEX_HEADER: \newcommand{\backupend}{
+#+LATEX_HEADER:   \setcounter{framenumber}{\value{finalframe}}
+#+LATEX_HEADER:}
 "
 )))
 

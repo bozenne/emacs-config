@@ -65,6 +65,7 @@
 
 ;; comment
 (global-set-key "\M-;" 'genome/comment-or-uncomment-line-or-region)
+(global-set-key (kbd "\C-c ;") 'brice-comment-symbol)
 
 ;; duplicate a line of text
 (global-set-key (kbd "C-M-y") 'brice-duplicate-line)
@@ -87,6 +88,8 @@
 ;; marking text
 (global-set-key "\M-l" 'genome/mark-line)
 
+;; comments
+;; (setq comment-start "% ")
 
 ;;; folding
 ;;;; package outshine
@@ -125,8 +128,7 @@
 	      (define-key org-mode-map (kbd "C-<left>") 'org-table-move-column-left)
 	      (define-key org-mode-map (kbd "C-<right>") 'org-table-move-column-right)
 	      (define-key org-mode-map [(tab)] 'genome/org-tab)	    
-	      (define-key org-mode-map [(meta l)] 'brice-org-open-corresponding-tex)
-	      (define-key org-mode-map [(meta L)] 'brice-org-export-and-open-corresponding-tex)
+	      (define-key org-mode-map [(meta L)] 'brice-org-open-corresponding-tex)
 	      (define-key org-mode-map [(meta j)] 'brice-org-export-to-pdf)
 	      (define-key org-mode-map [(meta J)] 'brice-org-export-and-open-corresponding-pdf)
 	      (define-key org-mode-map (kbd "\C-c v") 'brice-org-open-corresponding-pdf)
@@ -138,11 +140,6 @@
 	      (define-key org-mode-map (kbd "\C-c \C-v c") 'genome/org-babel-clear-all-results)  
 	      ))
 
-;; org-beamer-export-as-latex
-;; org-beamer-export-to-latex
-;; org-beamer-export-to-pdf
-;; org-laltex-export-to-pdf
-;; org-laltex-export-to-pdf
 ;;; Auctex
 (add-hook 'LaTeX-mode-hook
 	  '(lambda ()
