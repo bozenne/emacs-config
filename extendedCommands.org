@@ -158,18 +158,18 @@ More key bindings at: https://www.gnu.org/software/emacs/refcards/pdf/dired-ref.
 * Editing
 ** Move
 
-| unit      | backward | forward | center | begining | end   | other window |
-|-----------+----------+---------+--------+----------+-------+--------------|
-| character | C-b      | C-f     |        |          |       |              |
-| word      | M-b      | M-f     |        |          |       |              |
-| line      | C-p      | C-n     |        | C-a      | C-e   |              |
-| sentence  | M-a      | (M-e)   |        |          |       |              |
-| paragraph | M-a      |         |        |          |       |              |
-| sexp      | M-C-p    | M-C-n   |        |          |       |              |
-| function  |          |         |        | M-C-a    | M-C-e |              |
-| screen    | C-v      | M-v     | C-l    | M-<      | M->   | C-M-v        |
-| buffer    | M-p      | M-n     |        |          |       |              |
-| window    | M-down   | M-up    |        |          |       | M-o          |
+| unit      | backward | forward | center | begining | end            | other window |
+|-----------+----------+---------+--------+----------+----------------+--------------|
+| character | C-b      | C-f     |        |          |                |              |
+| word      | M-b      | M-f     |        |          |                |              |
+| line      | C-p      | C-n     |        | C-a      | C-e            |              |
+| sentence  | M-a      | (M-e)   |        |          |                |              |
+| paragraph | M-a      |         |        |          |                |              |
+| sexp      | M-C-p    | M-C-n   |        |          |                |              |
+| function  |          |         |        | M-C-a    | M-C-e or M-C-z |              |
+| screen    | C-v      | M-v     | C-l    | M-<      | M->            | C-M-v        |
+| buffer    | M-p      | M-n     |        |          |                |              |
+| window    | M-down   | M-up    |        |          |                | M-o          |
 sexp: balanced group of parentheses.
 
 | Key binding | name of the command | effect               |
@@ -221,6 +221,13 @@ Specifics:
 | q           |                     | (during) quit                                         |
 
 More key bindings at: https://www.gnu.org/software/emacs/manual/html_node/emacs/Query-Replace.html
+** Copy
+| Key binding | name of the command            | effect                                               |
+|-------------+--------------------------------+------------------------------------------------------|
+| C-M-y       | brice-duplicate-line-or-region | Duplicate the current line or the highlighted region |
+| C-M-l       | brice-copy-line                | copy line                                            |
+| C-w         | kill-region                    | cut highlighted region                               |
+| M-w         | kill-ring-save                 | copy highlighted region                              |
 
 ** Delete
 | unit     | all       | backward | forward             |

@@ -13,6 +13,7 @@
 	    (define-key ess-mode-map (kbd "\C-c P") 'genome/ess-edit-insert-file-name)  
 	    (define-key ess-mode-map (kbd "\C-c p") 'genome/ess-edit-insert-path)
 	    (define-key ess-mode-map (kbd "\C-c v") 'genome/ess-edit-insert-vector)
+	    (define-key ess-mode-map (kbd "C-M-z") 'ess-goto-end-of-function-or-para)
 ))
 
 ;;; Dired, file management
@@ -68,7 +69,7 @@
 (global-set-key (kbd "\C-c ;") 'brice-comment-symbol)
 
 ;; duplicate a line of text
-(global-set-key (kbd "C-M-y") 'brice-duplicate-line)
+(global-set-key (kbd "C-M-y") 'brice-duplicate-line-or-region)
 
 ;; expanding text
 (global-set-key "\C-ci" 'hippie-expand)
@@ -87,9 +88,14 @@
 
 ;; marking text
 (global-set-key "\M-l" 'genome/mark-line)
+(global-set-key (kbd "C-M-l") 'brice-copy-line)
 
-;; comments
-;; (setq comment-start "% ")
+;; go to the end of a function
+(global-set-key (kbd "C-M-z") 'end-of-defun)
+
+;; use count-words instead of count-words-region as it works on buffer
+;; if no region is selected
+(global-set-key (kbd "M-=") 'count-words)
 
 ;;; folding
 ;;;; package outshine
