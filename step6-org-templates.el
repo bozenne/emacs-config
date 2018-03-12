@@ -285,6 +285,9 @@ Je vous prie d'agréer, Madame, Monsieur, mes salutations distinguées.
 #+OPTIONS:   H:3 num:t 
 #+OPTIONS:   TeX:t LaTeX:t
 
+** theme
+#+BEAMER_THEME: Singapore [height=20pt]
+
 ** Latex packages
 #+LaTeX_HEADER: %
 #+LaTeX_HEADER: %%%% additional packages %%%%
@@ -301,12 +304,12 @@ Je vous prie d'agréer, Madame, Monsieur, mes salutations distinguées.
 #+LaTeX_HEADER: %
 #+LaTeX_HEADER: %%%% additional latex commands %%%%
 #+LaTeX_HEADER: %
-#+LATEX_HEADER: \newcommand{\backupbegin}{
-#+LATEX_HEADER:   \newcounter{finalframe}
-#+LATEX_HEADER:   \setcounter{finalframe}{\value{framenumber}}
+#+LATEX_HEADER: \\newcommand{\\backupbegin}{
+#+LATEX_HEADER:   \\newcounter{finalframe}
+#+LATEX_HEADER:   \\setcounter{finalframe}{\\value{framenumber}}
 #+LATEX_HEADER: }
-#+LATEX_HEADER: \newcommand{\backupend}{
-#+LATEX_HEADER:   \setcounter{framenumber}{\value{finalframe}}
+#+LATEX_HEADER: \\newcommand{\\backupend}{
+#+LATEX_HEADER:   \\setcounter{framenumber}{\\value{finalframe}}
 #+LATEX_HEADER:}
 "
 )))

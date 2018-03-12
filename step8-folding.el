@@ -32,12 +32,20 @@
 
 (use-package outline-magic :ensure t) 
 ;; ;; ;; https://stat.ethz.ch/pipermail/ess-help/2007-June/004140.html
-;; ;; ;; (add-hook 'ess-mode-hook
-;; ;; ;; 	  '(lambda ()
-;; ;; ;; 	     (outline-minor-mode)
-;; ;; ;; 	     (setq outline-regexp "### [*]\\{1,8\\} ")
-;; ;; ;; 	     (defun outline-level
-;; ;; ;; 		 (lambda () (interactive) (cond ((looking-at "^### ") 1)((looking-at "^### ") 2)((looking-at "^###") 3) (t 1000)))
+;; (add-hook 'ess-mode-hook
+;; 	  '(lambda ()
+;; 	     (outline-minor-mode)
+;; 	     (setq outline-regexp "### [*]\\{1,8\\} ")
+;; 	     (defun outline-level
+;; 		 (lambda () (interactive) (cond ((looking-at "^### ") 1)((looking-at "^### ") 2)((looking-at "^###") 3) (t 1000)))
 
-;; ;; ;; 	       )
-;; ;; ;; 	     ))
+;; 	       )
+;; 	     ))
+;; (add-hook 'ess-mode-hook
+;; 	    '(lambda ()
+;; 	       (outline-minor-mode)
+;; 	       (setq outline-regexp "\\(^#\\{4,5\\} \\)\\|\\(^[a-zA-Z0-9_\.]+ ?<- ?function(.*{\\)")
+;; 	       (defun outline-level
+;; 		 (lambda () (interactive) (cond ((looking-at "^##### ") 1)((looking-at "^#### ") 2)((looking-at "^[a-zA-Z0-9_\.]+ ?<- ?function(.*{") 3) (t 1000)))
+
+;; 	       )))
