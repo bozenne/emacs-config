@@ -86,7 +86,6 @@
 (add-hook 'stan-mode-hook '(lambda () (yas-minor-mode)))
 
 ;;; Unison
-
 ;(custom-set-variables' (superman-unison-cmd "unison"))
 ;(custom-set-variables' (superman-unison-switches "\"-ignore \"Regex .*(~|te?mp|rda)$\" -ignore \"Regex ^(\\.|#).*\""))
 
