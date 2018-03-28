@@ -24,18 +24,17 @@
 #+OPTIONS:   H:3 num:t 
 #+OPTIONS:   TeX:t LaTeX:t
 
-** Latex packages
-#+LaTeX_HEADER: %
-#+LaTeX_HEADER: %%%% additional packages %%%%
-#+LaTeX_HEADER: %
-#+LaTeX_HEADER:\\usepackage{authblk} % enable several affiliations (clash with beamer)
-
 ** Code
 #+PROPERTY: header-args :session *R*
 #+PROPERTY: header-args :tange yes % extract source code: http://orgmode.org/manual/Extracting-source-code.html
 #+PROPERTY: header-args :eval yes :cache no
 #+LATEX_HEADER: \\RequirePackage{fancyvrb}
 #+LATEX_HEADER: \\DefineVerbatimEnvironment{verbatim}{Verbatim}{fontsize=\\small,formatcom = {\\color[rgb]{0.5,0,0}}}
+
+** Display 
+#+LATEX_HEADER: \\RequirePackage{colortbl} % arrayrulecolor to mix colors
+#+LATEX_HEADER: \\RequirePackage{setspace} % to modify the space between lines - incompatible with footnote in beamer
+#+LaTeX_HEADER:\\usepackage{authblk} % enable several affiliations (clash with beamer)
 
 ** Image
 #+LATEX_HEADER: \\RequirePackage{epstopdf} % to be able to convert .eps to .pdf image files
@@ -57,13 +56,6 @@
 #+LATEX_HEADER: \\RequirePackage{algorithm}
 #+LATEX_HEADER: \\RequirePackage[noend]{algpseudocode}
 
-** Display 
-#+LATEX_HEADER: \\RequirePackage{colortbl} % arrayrulecolor to mix colors
-#+LATEX_HEADER: %% \\input{0_Display.tex}
-
-** Image
-#+LATEX_HEADER: \\RequirePackage{epstopdf} % to be able to convert .eps to .pdf image files
-
 ** Math
 #+LATEX_HEADER: \\RequirePackage{ifthen}
 #+LATEX_HEADER: \\RequirePackage{xspace} % space for newcommand macro
@@ -72,6 +64,11 @@
 #+LATEX_HEADER: \\RequirePackage{dsfont}
 #+LATEX_HEADER: \\RequirePackage{amsmath,stmaryrd,graphicx}
 #+LATEX_HEADER: \\RequirePackage{prodint} % product integral symbol (\\PRODI)
+
+# ## lemma
+#+LaTeX_HEADER: \RequirePackage{amsthm}
+#+LaTeX_HEADER: \newtheorem{theorem}{Theorem}
+#+LaTeX_HEADER: \newtheorem{lemma}[theorem]{Lemma}
 
 *** Template for shortcut
 #+LATEX_HEADER: \\newcommand\\defOperator[7]{%
@@ -96,6 +93,8 @@
 #+LATEX_HEADER: }
 
 *** Shortcuts
+
+**** Probability
 #+LATEX_HEADER: \\newcommandx\\Cov[2][1=,2=]{\\defOperator{#1}{#2}{C}{ov}{[}{]}{\\mathbb}}
 #+LATEX_HEADER: \\newcommandx\\Esp[2][1=,2=]{\\defOperator{#1}{#2}{E}{}{[}{]}{\\mathbb}}
 #+LATEX_HEADER: \\newcommandx\\Prob[2][1=,2=]{\\defOperator{#1}{#2}{P}{}{[}{]}{\\mathbb}}
@@ -105,10 +104,12 @@
 #+LATEX_HEADER: \\newcommandx\\Binom[2][1=,2=]{\\defOperator{#1}{#2}{B}{}{(}{)}{\\mathcal}}
 #+LATEX_HEADER: \\newcommandx\\Gaus[2][1=,2=]{\\defOperator{#1}{#2}{N}{}{(}{)}{\\mathcal}}
 #+LATEX_HEADER: \\newcommandx\\Wishart[2][1=,2=]{\\defOperator{#1}{#2}{W}{ishart}{(}{)}{\\mathcal}}
+
 #+LATEX_HEADER: \\newcommandx\\Likelihood[2][1=,2=]{\\defOperator{#1}{#2}{L}{}{(}{)}{\\mathcal}}
 #+LATEX_HEADER: \\newcommandx\\Information[2][1=,2=]{\\defOperator{#1}{#2}{I}{}{(}{)}{\\mathcal}}
 #+LATEX_HEADER: \\newcommandx\\Score[2][1=,2=]{\\defOperator{#1}{#2}{S}{}{(}{)}{\\mathcal}}
 
+**** Operators
 #+LATEX_HEADER: \\newcommandx\\Vois[2][1=,2=]{\\defOperator{#1}{#2}{V}{}{(}{)}{\\mathcal}}
 #+LATEX_HEADER: \\newcommandx\\IF[2][1=,2=]{\\defOperator{#1}{#2}{IF}{}{(}{)}{\\mathcal}}
 #+LATEX_HEADER: \\newcommandx\\Ind[1][1=]{\\defOperator{}{#1}{1}{}{(}{)}{\\mathds}}
@@ -131,7 +132,7 @@
 #+LATEX_HEADER:         }
 #+LATEX_HEADER: }
 
-#+LATEX_HEADER: \\newcommandx\\dpartiel[4][1=,2=,3=,4=\\partial]{
+#+LATEX_HEADER: \\newcommandx\\dpartial[4][1=,2=,3=,4=\\partial]{
 #+LATEX_HEADER: 	\\ifthenelse{\\isempty{#3}}{
 #+LATEX_HEADER: 		\\frac{#4 #1}{#4 #2}
 #+LATEX_HEADER: 	}{
@@ -139,9 +140,9 @@
 #+LATEX_HEADER: }
 #+LATEX_HEADER: }
 
-#+LATEX_HEADER: \\newcommandx\\dTpartiel[3][1=,2=,3=]{\\dpartiel[#1][#2][#3][d]}
+#+LATEX_HEADER: \\newcommandx\\dTpartial[3][1=,2=,3=]{\\dpartial[#1][#2][#3][d]}
 
-#+LATEX_HEADER: \\newcommandx\\ddpartiel[3][1=,2=,3=]{
+#+LATEX_HEADER: \\newcommandx\\ddpartial[3][1=,2=,3=]{
 #+LATEX_HEADER: 	\\ifthenelse{\\isempty{#3}}{
 #+LATEX_HEADER: 		\\frac{\\partial^{2} #1}{\\left( \\partial #2\\right)^2}
 #+LATEX_HEADER: 	}{
@@ -149,11 +150,15 @@
 #+LATEX_HEADER: }
 #+LATEX_HEADER: } 
 
+**** General math
 #+LATEX_HEADER: \\newcommand\\Real{\\mathbb{R}}
 #+LATEX_HEADER: \\newcommand\\Rational{\\mathbb{Q}}
 #+LATEX_HEADER: \\newcommand\\Natural{\\mathbb{N}}
 #+LATEX_HEADER: \\newcommand\\trans[1]{{#1}^\\intercal}%\\newcommand\\trans[1]{{\\vphantom{#1}}^\\top{#1}}
 #+LATEX_HEADER: \\newcommand{\\independent}{\\mathrel{\\text{\\scalebox{1.5}{$\\perp\\mkern-10mu\\perp$}}}}
+#+LaTeX_HEADER: \newcommand\half{\frac{1}{2}}
+#+LaTeX_HEADER: \newcommand\normMax[1]{\left|\left|#1\right|\right|_{max}}
+#+LaTeX_HEADER: \newcommand\normTwo[1]{\left|\left|#1\right|\right|_{2}}
 "
 )))
 
@@ -285,11 +290,6 @@ Je vous prie d'agréer, Madame, Monsieur, mes salutations distinguées.
 #+OPTIONS:   H:3 num:t 
 #+OPTIONS:   TeX:t LaTeX:t
 
-** Latex packages
-#+LaTeX_HEADER: %
-#+LaTeX_HEADER: %%%% additional packages %%%%
-#+LaTeX_HEADER: %
-
 ** Code
 #+PROPERTY: header-args :session *R*
 #+PROPERTY: header-args :tange yes % extract source code: http://orgmode.org/manual/Extracting-source-code.html
@@ -297,17 +297,33 @@ Je vous prie d'agréer, Madame, Monsieur, mes salutations distinguées.
 #+LATEX_HEADER: \\RequirePackage{fancyvrb}
 #+LATEX_HEADER: \\DefineVerbatimEnvironment{verbatim}{Verbatim}{fontsize=\\small,formatcom = {\\color[rgb]{0.5,0,0}}}
 
+** Display 
+#+LATEX_HEADER: \\RequirePackage{colortbl} % arrayrulecolor to mix colors
+
+** Image
+#+LATEX_HEADER: \\RequirePackage{epstopdf} % to be able to convert .eps to .pdf image files
+
 ** Latex command
 #+LaTeX_HEADER: %
 #+LaTeX_HEADER: %%%% additional latex commands %%%%
 #+LaTeX_HEADER: %
-#+LATEX_HEADER: \newcommand{\backupbegin}{
-#+LATEX_HEADER:   \newcounter{finalframe}
-#+LATEX_HEADER:   \setcounter{finalframe}{\value{framenumber}}
+*** Backup slides
+#+LATEX_HEADER: \\newcommand{\\backupbegin}{
+#+LATEX_HEADER:   \\newcounter{finalframe}
+#+LATEX_HEADER:   \\setcounter{finalframe}{\\value{framenumber}}
 #+LATEX_HEADER: }
-#+LATEX_HEADER: \newcommand{\backupend}{
-#+LATEX_HEADER:   \setcounter{framenumber}{\value{finalframe}}
+#+LATEX_HEADER: \\newcommand{\\backupend}{
+#+LATEX_HEADER:   \\setcounter{framenumber}{\\value{finalframe}}
 #+LATEX_HEADER:}
+*** Footnotes
+#+LaTeX_HEADER: \\RequirePackage{hanging}
+#+LaTeX_HEADER: \\setbeamertemplate{footnote}{%
+#+LaTeX_HEADER:   \\hangpara{2em}{1}%
+#+LaTeX_HEADER:   \\makebox[2em][l]{\\insertfootnotemark}\\footnotesize\\insertfootnotetext\\par%
+#+LaTeX_HEADER: } 
+
+** Theme
+#+BEAMER_THEME: Singapore [height=20pt]
 "
 )))
 

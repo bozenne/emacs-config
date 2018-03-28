@@ -15,7 +15,6 @@
 	("" "grffile") ;; [default orgmode]
 	("" "wrapfig") ;; [default orgmode]
 	("" "capt-of") ;; [default orgmode]
-	("" "rotating")
 	("" "caption") ;; newlines in graphices
 	("" "rotating") ;; rotate figures
 	;;;; titles
@@ -27,8 +26,7 @@
 	;;;; track change
 	("" "changes") ;; NOTE: must be loaded before ulem
         ;;;; display
-	("" "pdflscape") ;; switch to landscape
-	("" "setspace") ;; to modify the space between lines
+	("" "pdflscape") ;; switch to landscape	
 	("" "geometry") ;; define margin of the document
 	("normalem" "ulem") ;; _xx_ in orgmode (underline)
 	;;;; math

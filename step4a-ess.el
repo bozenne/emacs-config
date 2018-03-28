@@ -39,7 +39,7 @@
 ;;; indent
 (add-hook 'ess-mode-hook
           (lambda()
-            (setq ess-fancy-comments nil)
+            (setq ess-fancy-comments t)
             ))
 
 
