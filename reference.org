@@ -11,9 +11,12 @@ https://emacsclub.github.io/html/org_tutorial.html
 * magit
 https://www.masteringemacs.org/article/introduction-magit-emacs-mode-git
 
-* Using emacs as a project management tool
+* Using emacs as an agenda / project management tool
 http://doc.norang.ca/org-mode.html
-
+http://juanreyero.com/article/emacs/org-teams.html#MissingReference
+https://orgmode.org/worg/org-tutorials/orgtutorial_dto.html
+https://blog.aaronbieber.com/2016/09/24/an-agenda-for-life-with-org-mode.html
+http://cachestocaches.com/2016/9/my-workflow-org-agenda/
 
 * mu4a
 Documentation: https://www.djcbsoftware.nl/code/mu/mu4e/Gmail-configuration.html

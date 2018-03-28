@@ -54,19 +54,15 @@ when launching emacs (see section dependencies below).
 ;;; Font size
 (set-face-attribute 'default nil :height 120)
 
-;;; file at startup
+;;; File at startup
 (setq inhibit-startup-screen t) ;; dismiss startup screen
 (find-file "~/todo.org")
 
-(setq
- user-mail-address "myname@xxx.com"
- user-full-name  "my name"
- mu4e-compose-signature
- (concat
-  "my name\n"
-  "myname@xxx.com\n")
- )
+;;; Agenda
+(setq org-agenda-files (list "~/todo.org")
 #+END_SRC
+where =~/todo.org= is the path to an existing org file used to list
+tasks.
 
 * Key binding
 See the file extendedCommands.org
