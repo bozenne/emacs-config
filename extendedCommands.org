@@ -25,7 +25,6 @@
 |----------------------+--------------------------+-------------------------------------------|
 | M-x                  | execute-extended-command | execute command                           |
 | C-u <num> <shortcut> |                          | duplicate by num the effect of a shortcut |
-|                      |                          |                                           |
 
 ** Executing lips code
 
@@ -271,7 +270,12 @@ More key bindings at: https://www.gnu.org/software/emacs/manual/html_node/emacs/
 |             | ispell-region                              | check the spelling of the region          |
 | M-F7        | brice-flyspell-check-next-highlighted-word | go to the next spelling mistake           |
 | M-F7        | flyspell-mode                              | check spelling on the fly                 |
-
+** Keyboard macro
+| Key binding | name of the command       | effect                |
+|-------------+---------------------------+-----------------------|
+| C-x (       | kmacro-start-macro        | starts keyboard macro |
+| C-x )       | kmacro-end-macro          | end keyboard macro    |
+| C-x e       | kmacro-end-and-call-macro | run keyboard macro    |
 * Orgmode
 ** General
 
