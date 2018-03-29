@@ -1,7 +1,4 @@
 (add-to-list 'load-path (expand-file-name "packages/header2" path-emacs-config))
-(use-package header2
-  :config (use-package header2-snps))
-
 
 ;;; copied from emacs-genome
 (add-hook 'write-file-hooks 'auto-update-file-header)

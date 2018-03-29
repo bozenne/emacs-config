@@ -11,6 +11,11 @@
   (add-hook mode '(lambda () (flyspell-prog-mode)))
   )
 
+;;;;; color for spell checking on demand
+(custom-set-faces
+ '(flyspell-incorrect ((t (:background nil :bold t :underline t))))
+ )
+
 ;; (setq ispell-dictionary-alist
 ;;  '(("english"  
 ;;   "[A-Za-z]" "[^A-Za-z]" "[---']" nil "-B")

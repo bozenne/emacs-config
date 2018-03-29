@@ -2,7 +2,6 @@
 ;;; general
 
 (use-package ess-site  :ensure ess)
-(use-package ess-edit)
 (setq-default ess-ask-for-ess-directory nil)
 (setq-default ess-directory (concat (getenv "HOME") "/R/"))
 (setq-default ess-history-directory (concat (getenv "HOME") "/R/"))
@@ -54,10 +53,5 @@
 (auto-complete-mode)
 (ac-set-trigger-key "TAB") ;; completion mode triggered by TAB
 
-(use-package ac-R
-  :config
-  (setq
-   ac-trigger-key [(TAB)]
-   ac-auto-start nil ;; never start ac automatically
-   ))
+
 

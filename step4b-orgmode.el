@@ -34,15 +34,11 @@
   ;; rest of my config
   )
 
-(use-package org-snps)
-(use-package org-structure-snps)
-
 (use-package org-agenda)
 (use-package org-clock)
 
 ;;;; dynamic reference (e.g. citep:xx)
 (use-package org-ref :ensure t)
-(use-package org-ref-snps)
 
 ;;;; figure labels
 ;; setting variable org-latex-prefer-user-labels
@@ -52,7 +48,6 @@
 (setq org-latex-prefer-user-labels t)
 
 ;;;; enable new class
-(use-package org-latex)
 (use-package ox-latex)
 (use-package ox-beamer)
 (use-package ox-bibtex)

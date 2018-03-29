@@ -1,3 +1,6 @@
+;;; google
+(google-this-mode 1)
+
 ;;; bibliography
 
 (use-package gscholar-bibtex :ensure t)
@@ -22,7 +25,6 @@
 ;;; latex
 (use-package latex)
 (use-package tex-site :ensure auctex)
-(use-package latex-snps)
 
 ;;;; enable automatic latex compilation when saving
 (add-hook 'LaTeX-mode-hook

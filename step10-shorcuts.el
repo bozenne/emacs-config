@@ -14,6 +14,7 @@
 	    (define-key ess-mode-map (kbd "\C-c p") 'genome/ess-edit-insert-path)
 	    (define-key ess-mode-map (kbd "\C-c v") 'genome/ess-edit-insert-vector)
 	    (define-key ess-mode-map (kbd "C-M-z") 'ess-goto-end-of-function-or-para)
+	    (define-key ess-mode-map (kbd "M-<right>") 'windmove-right)
 ))
 
 ;;; Dired, file management
