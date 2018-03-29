@@ -64,10 +64,14 @@ when launching emacs (see section dependencies below).
 where =~/todo.org= is the path to an existing org file used to list
 tasks.
 
+If you want to fully benefit from the functionnalities of orgmode
+(e.g. export document to pdf) you need to install latex (e.g. see
+https://miktex.org/) and a pdf viewer (e.g. see https://okular.kde.org/).
+
 * Key binding
 See the file extendedCommands.org
 
-* Dependencies
+* Dependencies :noexport:
 
 =require=:
 - *install packages*: package, use-package
