@@ -1,6 +1,7 @@
-(add-to-list 'load-path (expand-file-name "packages/header2" path-emacs-config))
+;;; load package
+(use-package header2 :ensure t)
 
-;;; copied from emacs-genome
+;;; configure package as in emacs-genome
 (add-hook 'write-file-hooks 'auto-update-file-header)
 (autoload 'auto-make-header "header2")
 ;;(add-hook 'emacs-lisp-mode-hook 'auto-make-header)
@@ -61,4 +62,3 @@
                          header-code
                          header-eof
                          ))
-
