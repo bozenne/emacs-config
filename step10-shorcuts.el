@@ -98,6 +98,12 @@
 ;; if no region is selected
 (global-set-key (kbd "M-=") 'count-words)
 
+;; insert current time
+(global-set-key "\C-ct" 'brice-current-time)
+
+;;; Google
+(global-set-key (kbd "\C-c g") 'google-this)
+
 ;;; folding
 ;;;; package outshine
 (global-set-key (kbd "<backtab>") 'outshine-cycle-buffer)
