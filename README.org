@@ -10,6 +10,8 @@ markdown polymode
 
 * Installation
 
+** basic version
+
 Download all files and put them in a directory called *emacs-config*.
 
 Place this directory in the folder containing the *.emacs* file (=~/.= when doing C-x C-f).
@@ -49,53 +51,161 @@ In the second line, check that ="~/emacs-config"= is where you have put emacs-co
 Install the packages that are not automatically downloaded
 when launching emacs (see section dependencies below).
 
-[Optional] Add the following lines
+** [Optional] Customization
+
+Set the font size to 120 by adding the following line
 #+BEGIN_SRC emacs-lisp :export code :eval ever
 ;;; Font size
 (set-face-attribute 'default nil :height 120)
+#+END_SRC
 
+Display the file =~/todo.org= when starting emacs instead of the
+default emacs startup screen:
+#+BEGIN_SRC emacs-lisp :export code :eval ever
 ;;; File at startup
 (setq inhibit-startup-screen t) ;; dismiss startup screen
 (find-file "~/todo.org")
+#+END_SRC
 
+Transfert to the agenda elements in =~/todo.org=:
+#+BEGIN_SRC emacs-lisp :export code :eval ever
 ;;; Agenda
 (setq org-agenda-files (list "~/todo.org")
 #+END_SRC
-where =~/todo.org= is the path to an existing org file used to list
-tasks.
+
+** [Optional] Generate and open .pdf documents
 
 If you want to fully benefit from the functionnalities of orgmode
-(e.g. export document to pdf) you need to install latex (e.g. see
-https://miktex.org/) and a pdf viewer (e.g. see https://okular.kde.org/).
+(e.g. export document to pdf) you need to install:
+- latex (e.g. see https://miktex.org/) 
+- a pdf viewer (e.g. see https://okular.kde.org/).
 
+** [Optional] Emails
+
+*WARNING*: before trying anything, save all important emails outside the
+mailbox in case that the synchronisation does not work properly.
+#+BEGIN_SRC emacs-lisp :export code :eval ever
+;;; send email
+#+END_SRC
+
+**** Receiving
+Install offlineimap using =sudo apt-get install offlineimap= in the
+shell.
+
+Then create a file =~/.offlineimaprc= to indicate from which adress
+email should be imported:
+#+BEGIN_SRC emacs-lisp :export code :eval ever
+[general]
+accounts = Gmail
+maxsyncaccounts = 3
+pythonfile = ~/.offlineimap.py
+
+[Account Gmail]
+localrepository = localGmail
+remoterepository = remoteGmail
+autorefresh = 10
+
+[Repository localGmail]
+type = Maildir
+localfolders = ~/Maildir/Gmail
+
+[Repository remoteGmail]
+type = Gmail
+remoteuser = myadress@gmail.com
+remotepasseval = get_password_emacs("imap.gmail.com", "myadress.com", "993")
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+auth_mechanisms = PLAIN
+folderfilter = lambda foldername: foldername not in ['[Gmail]/All Mail', '[Gmail]/Starred', '[Gmail]/Important']
+realdelete = no
+#+END_SRC
+
+For the password, create a file =.offlineimap.py= containing:
+#+BEGIN_SRC python :export code :eval ever
+#!/usr/bin/python
+import re, os
+
+def get_password_emacs(machine, login, port):
+    s = "machine %s login %s port %s password ([^ ]*)\n" % (machine, login, port)
+    p = re.compile(s)
+    authinfo = os.popen("gpg --quiet --passphrase anotherPassword --decrypt ~/.authinfo.gpg").read()#
+#    authinfo = os.popen("gpg --quiet --no-tty --decrypt ~/.authinfo.gpg").read()
+    return p.search(authinfo).group(1)
+#+END_SRC
+and a file =~/.authinfo.gpg= containing:
+#+BEGIN_SRC emacs-lisp :export code :eval ever
+machine imap.gmail.com login myadress@gmail.com port 993 password myGmailPassword
+machine smtp.gmail.com login myadress@gmail.com port 587 password myGmailPassword
+#+END_SRC
+
+Then run =offlineimap=.
+
+Then install mu using in the shell:
+- =git clone https://github.com/djcb/mu.git=
+- =sudo apt-get install libtool=
+- =cd mu=
+- =mu/$ autoreconf -i && ./configure && make=
+Normally =mu index= should run and import emails.
+
+Finally add to the =~/.emacs=:
+#+BEGIN_SRC emacs-lisp :export code :eval ever
+;;;; receive email
+;; location of the mails
+(setq mu4e-maildir (expand-file-name "~/Maildir"))
+
+;; mail box
+(setq mu4e-account-alist
+      '(("Gmail"
+         ;; Under each account, set the account-specific variables you want.
+         (mu4e-sent-messages-behavior delete)
+         (mu4e-sent-folder "/Gmail/[Gmail].Sent Mail")
+         (mu4e-drafts-folder "/Gmail/[Gmail].Drafts")
+         (mu4e-trash-folder "/Gmail/[Gmail].Trash")
+         (user-mail-address "myadress@gmail.com")
+         (user-full-name "My Name"))
+       	)
+      )
+
+;; setup some handy shortcuts
+(setq mu4e-maildir-shortcuts
+      '(("/Gmail/INBOX" . ?i)
+	("/Gmail/ProjectA" . ?a))
+)
+
+;; signature
+(setq
+ mu4e-compose-signature
+ (concat
+  "My Name \n"
+  "myadress@gmail.com\n")
+ )
+#+END_SRC
+
+**** Sending
+Create a file =~/.authinfo.gpg= to indicate from which adress emails
+can be sent:
+#+BEGIN_SRC emacs-lisp :export code :eval ever
+machine imap.gmail.com login myadress@gmail.com port 993 password myGmailPassword
+machine smtp.gmail.com login myadress@gmail.com port 587 password myGmailPassword
+#+END_SRC
+and add in the =.emacs=:
+#+BEGIN_SRC emacs-lisp :export code :eval ever
+;;;; send email
+(require 'smtpmail)
+
+(setq message-send-mail-function 'smtpmail-send-it
+     starttls-use-gnutls t
+     smtpmail-starttls-credentials
+     '(("smtp.gmail.com" 587 nil nil))
+     smtpmail-auth-credentials
+     (expand-file-name "~/.authinfo.gpg")
+     smtpmail-default-smtp-server "smtp.gmail.com"
+     smtpmail-smtp-server "smtp.gmail.com"
+     smtpmail-smtp-service 587
+     smtpmail-debug-info t)
+#+END_SRC
 * Key binding
 See the file extendedCommands.org
 
-* Dependencies :noexport:
-
-=require=:
-- *install packages*: package, use-package
-- *C++ mode*: cc-mode
-- *dired*: dired-x, dired-quick-sort
-- *email*: mu4e
-
-=usep-package=:
-- *general display*: moe-theme, powerline
-- *multicolor parentheses* , rainbow-delimiters
-- *scrolling*: scroll-restore
-- *buffer*: ido, ido-completing-read+
-- *windows*: transpose-frame
-- *add header in files*: header2, header2-snps
-- *restaure from previous session*: recentf
-- *dired*: dired-hacks-utils, dired-sort, dired-narrow, dired-rainbow
-- *shortcut*: yasnippet, auto-yasnippet
-- *completion*: auto-complete, popup-complete, auto-complete-config, ac-R, hippie-exp
-- *R softwre*: ess-site, ess-edit
-- *bibliography*: gscholar-bibtex
-- *version control*: magit, magithub
-- *orgmode*: org, org-bookmark-heading, org-capture, org-agenda, org-clock, org-latex, ox-latex, ox-beamer
-- *stan*: stan-mode, stan-snippets
-- *putty*: tramp
 
 * Credit
 

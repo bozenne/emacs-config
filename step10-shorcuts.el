@@ -15,7 +15,13 @@
 	    (define-key ess-mode-map (kbd "\C-c v") 'genome/ess-edit-insert-vector)
 	    (define-key ess-mode-map (kbd "C-M-z") 'ess-goto-end-of-function-or-para)
 	    (define-key ess-mode-map (kbd "M-<right>") 'windmove-right)
-))
+	    ))
+;;; Rcpp
+(add-hook 'c++-mode-hook
+ (lambda ()
+   (define-key c++-mode-map (kbd "\C-c s") 'brice-ess-source-rcpp)
+   (define-key c++-mode-map (kbd "\M-q") 'indent-region)
+   ))
 
 ;;; Dired, file management
 (define-key dired-mode-map (kbd "e") 'dired-sort-extension)

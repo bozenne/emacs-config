@@ -2,12 +2,11 @@
 (google-this-mode 1)
 
 ;;; bibliography
-
 (use-package gscholar-bibtex :ensure t)
 (setq gscholar-bibtex-default-source "Google Scholar")
 
 ;;; C++
-(define-key c++-mode-map (kbd "\M-q") 'indent-region)
+(use-package cc-mode :ensure t)
 
 ;;; docview
 ;; continuous scrolling over pages in doc view

@@ -66,9 +66,9 @@
 #+LATEX_HEADER: \\RequirePackage{prodint} % product integral symbol (\\PRODI)
 
 # ## lemma
-#+LaTeX_HEADER: \RequirePackage{amsthm}
-#+LaTeX_HEADER: \newtheorem{theorem}{Theorem}
-#+LaTeX_HEADER: \newtheorem{lemma}[theorem]{Lemma}
+#+LaTeX_HEADER: \\RequirePackage{amsthm}
+#+LaTeX_HEADER: \\newtheorem{theorem}{Theorem}
+#+LaTeX_HEADER: \\newtheorem{lemma}[theorem]{Lemma}
 
 *** Template for shortcut
 #+LATEX_HEADER: \\newcommand\\defOperator[7]{%
@@ -156,9 +156,9 @@
 #+LATEX_HEADER: \\newcommand\\Natural{\\mathbb{N}}
 #+LATEX_HEADER: \\newcommand\\trans[1]{{#1}^\\intercal}%\\newcommand\\trans[1]{{\\vphantom{#1}}^\\top{#1}}
 #+LATEX_HEADER: \\newcommand{\\independent}{\\mathrel{\\text{\\scalebox{1.5}{$\\perp\\mkern-10mu\\perp$}}}}
-#+LaTeX_HEADER: \newcommand\half{\frac{1}{2}}
-#+LaTeX_HEADER: \newcommand\normMax[1]{\left|\left|#1\right|\right|_{max}}
-#+LaTeX_HEADER: \newcommand\normTwo[1]{\left|\left|#1\right|\right|_{2}}
+#+LaTeX_HEADER: \\newcommand\\half{\\frac{1}{2}}
+#+LaTeX_HEADER: \\newcommand\\normMax[1]{\\left|\\left|#1\\right|\\right|_{max}}
+#+LaTeX_HEADER: \\newcommand\\normTwo[1]{\\left|\\left|#1\\right|\\right|_{2}}
 "
 )))
 
