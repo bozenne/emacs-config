@@ -136,7 +136,7 @@
 #+LATEX_HEADER: 	\\ifthenelse{\\isempty{#3}}{
 #+LATEX_HEADER: 		\\frac{#4 #1}{#4 #2}
 #+LATEX_HEADER: 	}{
-#+LATEX_HEADER: 	\\left.\\frac{#4 #1}{#4 #2}\\right|_{#3}
+#+LATEX_HEADER: 	\\left.\\frac{#4 #1}{#4 #2}\\right\\rvert_{#3}
 #+LATEX_HEADER: }
 #+LATEX_HEADER: }
 
@@ -337,7 +337,7 @@ Je vous prie d'agréer, Madame, Monsieur, mes salutations distinguées.
 ;;;; latex header
 (add-to-list
  'org-structure-template-alist
- '("Lh" "#+LaTeX_HEADER:"))
+ '("Lh" "#+LaTeX_HEADER:?"))
 
 (add-to-list
  'org-structure-template-alist
@@ -375,8 +375,15 @@ Je vous prie d'agréer, Madame, Monsieur, mes salutations distinguées.
  '("leq" 
 "#+BEGIN_EXPORT latex
 \\begin{align*}
-
+?
 \\end{align*}
+#+END_EXPORT"))
+;;;; latex one line formula
+(add-to-list
+ 'org-structure-template-alist
+ '("leqO" 
+"#+BEGIN_EXPORT latex
+\\[ ? \\]
 #+END_EXPORT"))
 ;;;; contact
 (add-to-list
