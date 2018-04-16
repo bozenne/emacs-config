@@ -20,7 +20,52 @@ http://cachestocaches.com/2016/9/my-workflow-org-agenda/
 
 * mu4a
 Documentation: https://www.djcbsoftware.nl/code/mu/mu4e/Gmail-configuration.html
+http://tonyballantyne.com/tech/sending-email-from-emacs/
 
+[general]
+accounts = Gmail, Orange
+maxsyncaccounts = 3
+pythonfile = ~/.offlineimap.py 
+
+[Account Gmail]
+localrepository = localGmail
+remoterepository = remoteGmail
+autorefresh = 1
+postsynchook = mu index --maildir ~/Maildir
+status_backend = sqlite
+
+[Repository localGmail]
+type = Maildir
+localfolders = ~/Maildir/Gmail
+
+[Repository remoteGmail]
+type = Gmail
+remoteuser = brice.xperia@gmail.com
+remotepasseval = get_password_emacs("imap.gmail.com", "brice.xperia@gmail.com", "993")
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+auth_mechanisms = PLAIN
+folderfilter = lambda foldername: foldername not in ['[Gmail]/All Mail', '[Gmail]/Starred', '[Gmail]/Important']
+realdelete = no
+
+[Account Orange]
+localrepository = localOrange
+remoterepository = remoteOrange
+autorefresh = 10
+postsynchook = mu index --maildir ~/Maildir
+status_backend = sqlite
+
+[Repository localOrange]
+type = Maildir
+localfolders = ~/Maildir/Orange
+
+[Repository remoteOrange]
+type = IMAP
+remotehost = imap.orange.fr
+remoteuser = brice.ozenne@orange.fr
+remotepasseval = get_password_emacs("imap.orange.fr", "brice.ozenne@orange.fr", "993")
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+auth_mechanisms = PLAIN
+realdelete = no
 
 * latex
 https://staff.fnwi.uva.nl/c.dominik/Tools/cdlatex/

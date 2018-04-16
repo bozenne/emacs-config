@@ -83,9 +83,9 @@
 #+LATEX_HEADER: \\RequirePackage{prodint} % product integral symbol (\\PRODI)
 
 # ## lemma
-#+LaTeX_HEADER: \RequirePackage{amsthm}
-#+LaTeX_HEADER: \newtheorem{theorem}{Theorem}
-#+LaTeX_HEADER: \newtheorem{lemma}[theorem]{Lemma}
+#+LaTeX_HEADER: \\RequirePackage{amsthm}
+#+LaTeX_HEADER: \\newtheorem{theorem}{Theorem}
+#+LaTeX_HEADER: \\newtheorem{lemma}[theorem]{Lemma}
 
 *** Template for shortcut
 #+LATEX_HEADER: \\newcommand\\defOperator[7]{%
@@ -112,11 +112,11 @@
 *** Shortcuts
 
 **** Probability
-#+LATEX_HEADER: \\newcommandx\\Cov[2][1=,2=]{\\defOperator{#1}{#2}{C}{ov}{[}{]}{\\mathbb}}
-#+LATEX_HEADER: \\newcommandx\\Esp[2][1=,2=]{\\defOperator{#1}{#2}{E}{}{[}{]}{\\mathbb}}
-#+LATEX_HEADER: \\newcommandx\\Prob[2][1=,2=]{\\defOperator{#1}{#2}{P}{}{[}{]}{\\mathbb}}
-#+LATEX_HEADER: \\newcommandx\\Qrob[2][1=,2=]{\\defOperator{#1}{#2}{Q}{}{[}{]}{\\mathbb}}
-#+LATEX_HEADER: \\newcommandx\\Var[2][1=,2=]{\\defOperator{#1}{#2}{V}{ar}{[}{]}{\\mathbb}}
+#+LATEX_HEADER: \\newcommandx\\Cov[2][1=,2=]{\\defOperator{#1}{#2}{C}{ov}{\\lbrack}{\\rbrack}{\\mathbb}}
+#+LATEX_HEADER: \\newcommandx\\Esp[2][1=,2=]{\\defOperator{#1}{#2}{E}{}{\\lbrack}{\\rbrack}{\\mathbb}}
+#+LATEX_HEADER: \\newcommandx\\Prob[2][1=,2=]{\\defOperator{#1}{#2}{P}{}{\\lbrack}{\\rbrack}{\\mathbb}}
+#+LATEX_HEADER: \\newcommandx\\Qrob[2][1=,2=]{\\defOperator{#1}{#2}{Q}{}{\\lbrack}{\\rbrack}{\\mathbb}}
+#+LATEX_HEADER: \\newcommandx\\Var[2][1=,2=]{\\defOperator{#1}{#2}{V}{ar}{\\lbrack}{\\rbrack}{\\mathbb}}
 
 #+LATEX_HEADER: \\newcommandx\\Binom[2][1=,2=]{\\defOperator{#1}{#2}{B}{}{(}{)}{\\mathcal}}
 #+LATEX_HEADER: \\newcommandx\\Gaus[2][1=,2=]{\\defOperator{#1}{#2}{N}{}{(}{)}{\\mathcal}}
@@ -153,7 +153,7 @@
 #+LATEX_HEADER: 	\\ifthenelse{\\isempty{#3}}{
 #+LATEX_HEADER: 		\\frac{#4 #1}{#4 #2}
 #+LATEX_HEADER: 	}{
-#+LATEX_HEADER: 	\\left.\\frac{#4 #1}{#4 #2}\\right|_{#3}
+#+LATEX_HEADER: 	\\left.\\frac{#4 #1}{#4 #2}\\right\\rvert_{#3}
 #+LATEX_HEADER: }
 #+LATEX_HEADER: }
 
@@ -173,9 +173,9 @@
 #+LATEX_HEADER: \\newcommand\\Natural{\\mathbb{N}}
 #+LATEX_HEADER: \\newcommand\\trans[1]{{#1}^\\intercal}%\\newcommand\\trans[1]{{\\vphantom{#1}}^\\top{#1}}
 #+LATEX_HEADER: \\newcommand{\\independent}{\\mathrel{\\text{\\scalebox{1.5}{$\\perp\\mkern-10mu\\perp$}}}}
-#+LaTeX_HEADER: \newcommand\half{\frac{1}{2}}
-#+LaTeX_HEADER: \newcommand\normMax[1]{\left|\left|#1\right|\right|_{max}}
-#+LaTeX_HEADER: \newcommand\normTwo[1]{\left|\left|#1\right|\right|_{2}}
+#+LaTeX_HEADER: \\newcommand\\half{\\frac{1}{2}}
+#+LaTeX_HEADER: \\newcommand\\normMax[1]{\\left|\\left|#1\\right|\\right|_{max}}
+#+LaTeX_HEADER: \\newcommand\\normTwo[1]{\\left|\\left|#1\\right|\\right|_{2}}
 "
 )))
 
@@ -354,7 +354,7 @@ Je vous prie d'agréer, Madame, Monsieur, mes salutations distinguées.
 ;;;; latex header
 (add-to-list
  'org-structure-template-alist
- '("Lh" "#+LaTeX_HEADER:"))
+ '("Lh" "#+LaTeX_HEADER:?"))
 
 (add-to-list
  'org-structure-template-alist
@@ -392,8 +392,15 @@ Je vous prie d'agréer, Madame, Monsieur, mes salutations distinguées.
  '("leq" 
 "#+BEGIN_EXPORT latex
 \\begin{align*}
-
+?
 \\end{align*}
+#+END_EXPORT"))
+;;;; latex one line formula
+(add-to-list
+ 'org-structure-template-alist
+ '("leqO" 
+"#+BEGIN_EXPORT latex
+\\[ ? \\]
 #+END_EXPORT"))
 ;;;; contact
 (add-to-list
