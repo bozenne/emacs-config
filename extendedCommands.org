@@ -366,6 +366,7 @@ More key bindings at: https://www.gnu.org/software/emacs/manual/html_node/emacs/
 | P           | magit-push-popup     | push commit                        |
 | g           |                      | refress current buffer             |
 | F           |                      | Pull                               |
+| y           |                      | show branches (use k to delete)    |
 
 Documentation: http://jr0cket.co.uk/2012/12/driving-git-with-emacs-pure-magic-with.html.html
                https://github.com/magit/magit/wiki/Cheatsheet

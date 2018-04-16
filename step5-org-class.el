@@ -147,6 +147,24 @@
 	       ("\\subparagraph{%s}" . "\\subparagraph*{%s}")
 	       ))
 
+;;;; jrss article
+(add-to-list 'org-latex-classes
+             `("jrss-article"
+	       ,(concat
+		 "\\documentclass[article]{statsoc}\n\n"
+		 "[NO-DEFAULT-PACKAGES]" 
+		 "%%%% settings when exporting code %%%% \n\n"
+		 "\\usepackage{listings}\n"
+		 brice-org-latex-common-header-string
+		 "\n"
+		 "%%%% packages %%%%%"
+		 )
+	       ("\\section{%s}" . "\\section*{%s}")
+	       ("\\subsection{%s}" . "\\subsection*{%s}")
+	       ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+	       ("\\paragraph{%s}" . "\\paragraph*{%s}")
+	       ("\\subparagraph{%s}" . "\\subparagraph*{%s}")
+	       ))
 ;;;; beamer
 (add-to-list 'org-latex-classes
 	     `("beamer"
@@ -157,7 +175,7 @@
    			brice-org-latex-common-header-string
 			"\n"
 			"%%%% packages %%%%%"
-		 )	     
+			)	     
 	       ("\\section{%s}" . "\\section*{%s}")
 	       ("\\subsection{%s}" . "\\subsection*{%s}")
 	       ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
