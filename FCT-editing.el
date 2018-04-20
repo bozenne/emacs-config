@@ -69,3 +69,12 @@
    From: https://www.emacswiki.org/emacs/CopyingWholeLines"
   (interactive)                 ; permit invocation in minibuffer
   (insert (format-time-string "%D %-I:%M %p")))
+;;; brice-flyspell-save-word
+(defun brice-flyspell-save-word ()
+  "Doc: do not correct this word but save it in the dictionary'. 
+   From: https://stackoverflow.com/questions/22107182/in-emacs-flyspell-mode-how-to-add-new-word-to-dictionary"
+  (interactive)
+  (let ((current-location (point))
+         (word (flyspell-get-word)))
+    (when (consp word)    
+      (flyspell-do-correct 'save nil (car word) current-location (cadr word) (caddr word) current-location))))

@@ -172,6 +172,13 @@
 (global-set-key (kbd "<f7>") 'ispell-buffer)
 (global-set-key (kbd "M-<f7>") 'brice-flyspell-check-next-highlighted-word)
 
+(global-set-key (kbd "\C-cf") 'flyspell-region)
+;; (global-set-key (kbd "\C-cf") '(lambda ()
+;; 				 (interactive)
+;; 				 (let (pp mark-paragraph)
+;; 				   (flyspell-region pp)
+;; 				   ))
+;; 		)
 
 ;; ispell
 (dolist (mode '(emacs-lisp-mode-hook

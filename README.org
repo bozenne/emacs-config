@@ -49,7 +49,7 @@ In the first line, replace ="my name"= by your name.
 In the second line, check that ="~/emacs-config"= is where you have put emacs-config.
 
 Install the packages that are not automatically downloaded
-when launching emacs (see section dependencies below).
+when launching emacs (e.g. using =list-packages=).
 
 ** [Optional] Customization
 

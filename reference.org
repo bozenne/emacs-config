@@ -71,6 +71,8 @@ realdelete = no
 https://staff.fnwi.uva.nl/c.dominik/Tools/cdlatex/
 http://orgmode.org/manual/CDLaTeX-mode.html#CDLaTeX-mode
 
+* flyspell
+http://www.delorie.com/gnu/docs/emacs/emacs_109.html
 * markdown
 
 https://jblevins.org/projects/markdown-mode/
