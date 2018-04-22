@@ -45,6 +45,23 @@
 #+LaTeX_HEADER: %
 "
 	  )))
+;;;; Latex trackchange
+(add-to-list
+ 'org-structure-template-alist
+ `("Lchange" ,(concat
+"
+** TRACK CHANGE
+#+LaTeX_HEADER:\definechangesauthor[name={Brice}, color=orange]{Brice}
+#+LaTeX_HEADER:\setremarkmarkup{(#2)}
+#+LaTeX_HEADER:\colorlet{Changes@Color}{orange} % change default color
+
+## Example
+## This is \added[id=Brice]{new} text.
+## This is \deleted[id=Brice]{unnecessary}text.
+## This is \replaced[id=Brice]{nice}{bad} text.
+
+\n")))
+
 
 ;;;; Latex math
 (add-to-list

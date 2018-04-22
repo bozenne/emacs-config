@@ -1,4 +1,4 @@
-;;; Spelling
+;;; flyspell
 
 ;;;; enable spell checking on fly
 (dolist (hook '(text-mode-hook))
@@ -11,10 +11,14 @@
   (add-hook mode '(lambda () (flyspell-prog-mode)))
   )
 
-;;;;; color for spell checking on demand
+;; color for spell checking on demand
 (custom-set-faces
- '(flyspell-incorrect ((t (:background nil :bold t :underline t))))
+ '(flyspell-incorrect ((t (:foreground "#99ff99" :background nil :bold t :underline t))))
  )
+
+;;;; ignore text
+(set (make-variable-buffer-local 'ispell-parser) 'tex)
+
 
 ;; (setq ispell-dictionary-alist
 ;;  '(("english"  
@@ -45,6 +49,23 @@
  ;; ("french-sml" "[[:alpha:]]" "[^[:alpha:]]" "['.-]" t ("-d" "fr_FR-40") nil utf-8)
  ;; ...)
 
-;; skip regions with org code or code chunk
+;;; ispell
+;;;; latex
+(add-to-list 'ispell-skip-region-alist '("citep:" . " "))
+(add-to-list 'ispell-skip-region-alist '("citet:" . " "))
+(add-to-list 'ispell-skip-region-alist '("bibliographystyle:" . " "))
+(add-to-list 'ispell-skip-region-alist '("bibliography:" . " "))
+(add-to-list 'ispell-skip-region-alist '("bigskip"))
+(add-to-list 'ispell-skip-region-alist '("maketitle"))
+
+
+;;;; orgmode
+(add-to-list 'ispell-skip-region-alist '("TODO"))
+(add-to-list 'ispell-skip-region-alist '(":noexport:"))
+(add-to-list 'ispell-skip-region-alist '("#\\+LaTeX:"))
+(add-to-list 'ispell-skip-region-alist '("#\\+LANGUAGE:" . "\n"))
+(add-to-list 'ispell-skip-region-alist '("#\\+LATEX_HEADER:" . "\n"))
 (add-to-list 'ispell-skip-region-alist '(":\\(PROPERTIES\\|LOGBOOK\\):" . ":END:"))
 (add-to-list 'ispell-skip-region-alist '("#\\+BEGIN_SRC" . "#\\+END_SRC"))
+(add-to-list 'ispell-skip-region-alist '("=" . "="))
+(add-to-list 'ispell-skip-region-alist '("\\[\\[" . "\\]\\]"))

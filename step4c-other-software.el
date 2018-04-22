@@ -1,4 +1,5 @@
 ;;; google
+(use-package google-this :ensure t)
 (google-this-mode 1)
 
 ;;; bibliography

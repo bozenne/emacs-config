@@ -366,6 +366,7 @@ More key bindings at: https://www.gnu.org/software/emacs/manual/html_node/emacs/
 | P           | magit-push-popup     | push commit                        |
 | g           |                      | refress current buffer             |
 | F           |                      | Pull                               |
+| y           |                      | show branches (use k to delete)    |
 
 Documentation: http://jr0cket.co.uk/2012/12/driving-git-with-emacs-pure-magic-with.html.html
                https://github.com/magit/magit/wiki/Cheatsheet
@@ -388,6 +389,7 @@ Documentation: http://jr0cket.co.uk/2012/12/driving-git-with-emacs-pure-magic-wi
 | C-c p       | genome/ess-edit-insert-path                 | insert path to the directory containg the R file |
 | C-c C-c     |                                             | interrupt evaluation                             |
 | C-c C-up    |                                             | Run code above the cursor                        |
+| C-c M-o     |                                             | comint-clear-buffer                              |
 
 * Email
 | Key binding | name of the command | effect                         |
