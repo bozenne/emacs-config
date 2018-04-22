@@ -1,4 +1,4 @@
-#+Title: Key bindings for the extended  commands
+#+Title: Key bindings for the extended commands
 #+LaTeX_CLASS: org-article
 #+LaTeX_HEADER:\author{Brice Ozeene}
 #+OPTIONS: toc:t
