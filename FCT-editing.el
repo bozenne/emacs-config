@@ -78,3 +78,11 @@
          (word (flyspell-get-word)))
     (when (consp word)    
       (flyspell-do-correct 'save nil (car word) current-location (cadr word) (caddr word) current-location))))
+
+;;; brice-beginning-of-line
+(defun brice-beginning-of-line ()
+  "Doc: go to beginning-of-line first and to indentation on the next hit'. 
+   From: https://www.emacswiki.org/emacs/BackToIndentationOrBeginning"
+   (interactive) 
+   (if (bolp) (back-to-indentation) (beginning-of-line))
+   )
