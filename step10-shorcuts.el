@@ -10,12 +10,14 @@
 	    (define-key ess-mode-map "\M-k" 'genome/ess-switch-to-R)
 	    (define-key ess-mode-map "\M-H" 'genome/ess-get-help-R-object)
 	    (define-key ess-mode-map (kbd "\C-c d") 'ess-tracebug)
+	    (define-key ess-mode-map (kbd "\C-c r") 'ess-switch-process)
 	    (define-key ess-mode-map (kbd "\C-c P") 'genome/ess-edit-insert-file-name)  
 	    (define-key ess-mode-map (kbd "\C-c p") 'genome/ess-edit-insert-path)
 	    (define-key ess-mode-map (kbd "\C-c v") 'genome/ess-edit-insert-vector)
 	    (define-key ess-mode-map (kbd "C-M-z") 'ess-goto-end-of-function-or-para)
 	    (define-key ess-mode-map (kbd "M-<right>") 'windmove-right)
-	    ))
+	    )
+	  )
 ;;; Rcpp
 (add-hook 'c++-mode-hook
  (lambda ()
