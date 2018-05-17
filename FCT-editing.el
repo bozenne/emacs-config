@@ -78,3 +78,12 @@
          (word (flyspell-get-word)))
     (when (consp word)    
       (flyspell-do-correct 'save nil (car word) current-location (cadr word) (caddr word) current-location))))
+
+;;; brice-sort-lines-nocase
+(defun brice-sort-lines-nocase ()
+   "Doc: case insensitive alternative to sort lines
+   From: https://stackoverflow.com/questions/20967818/emacs-function-to-case-insensitive-sort-lines" 
+  (interactive)
+  (let ((sort-fold-case t))
+    (call-interactively 'sort-lines))
+  )

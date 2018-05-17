@@ -10,10 +10,11 @@
 #+Author: " user-full-name
 "\n\n
 
-## * References
-## bibliographystyle:apalike
-## [[bibliography:bibliography.bib]]
+# * References
+# bibliographystyle:apalike
+# [[bibliography:bibliography.bib]]
 
+# @@latex:any arbitrary LaTeX code@@
 \n\n
 
 * CONFIG :noexport:
