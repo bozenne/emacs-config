@@ -109,6 +109,9 @@
 ;; insert current time
 (global-set-key "\C-ct" 'brice-current-time)
 
+;; undo
+(global-set-key (kbd "C-a") 'brice-beginning-of-line)
+
 ;;; Google
 (global-set-key (kbd "\C-c g") 'google-this)
 

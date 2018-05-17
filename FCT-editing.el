@@ -87,3 +87,11 @@
   (let ((sort-fold-case t))
     (call-interactively 'sort-lines))
   )
+
+;;; brice-beginning-of-line
+(defun brice-beginning-of-line ()
+  "Doc: go to beginning-of-line first and to indentation on the next hit'. 
+   From: https://www.emacswiki.org/emacs/BackToIndentationOrBeginning"
+   (interactive) 
+   (if (bolp) (back-to-indentation) (beginning-of-line))
+   )
