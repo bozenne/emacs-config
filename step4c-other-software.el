@@ -83,6 +83,9 @@
 ;; (setq reftex-plug-into-AUCTeX t)
 ;; (setq reftex-file-extensions '(("Snw" "Rnw" "nw" "tex" ".tex" ".ltx") ("bib" ".bib")))
 
+;;;; latex diff
+(use-package latexdiff :ensure t)
+
 ;;; stan
 (use-package stan-mode :ensure t)
 (use-package stan-snippets :ensure t)

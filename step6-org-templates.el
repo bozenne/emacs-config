@@ -188,7 +188,7 @@
 #+LaTeX: \\onehalfspacing
 #+LaTeX: \\pagestyle{empty}
 
-# ### distinataire
+# ### destinataire
 #+BEGIN_EXPORT latex
 \\begin{raggedright}
 % adresse du destinataire
@@ -269,6 +269,16 @@ Je vous prie d'agréer, Madame, Monsieur, mes salutations distinguées.
 }
 #+END_EXPORT"
 )))
+
+
+;;;; Latex graph
+(add-to-list
+ 'org-structure-template-alist
+ `("Lg" ,(concat
+"
+#+ATTR_LaTeX: :width 1\\textwidth :placement [!h]
+[[./figures/]]
+\n")))
 
 
 ;;;; Beamer
@@ -403,6 +413,18 @@ Je vous prie d'agréer, Madame, Monsieur, mes salutations distinguées.
 "#+BEGIN_EXPORT latex
 \\[ ? \\]
 #+END_EXPORT"))
+;;;; latex columns
+(add-to-list
+ 'org-structure-template-alist
+ '("lcol" 
+"#+LaTeX: \\begin{columns}
+#+LaTeX: \\begin{column}{0.45\\columnwidth}
+?
+#+LaTeX: \\end{column}
+#+LaTeX: \\begin{column}{0.45\\columnwidth}
+
+#+LaTeX: \\end{column}
+#+LaTeX: \\end{columns}"))
 ;;;; contact
 (add-to-list
  'org-structure-template-alist
@@ -450,7 +472,7 @@ Je vous prie d'agréer, Madame, Monsieur, mes salutations distinguées.
 (add-to-list
  'org-structure-template-alist
  '("Rg"
-"#+BEGIN_SRC R :results graphics :file %file :exports results :session *R* :cache yes
+"#+BEGIN_SRC R :results graphics :file %file :exports results :session *R* :cache no
 
 #+END_SRC
 

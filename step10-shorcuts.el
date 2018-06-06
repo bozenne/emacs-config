@@ -109,7 +109,7 @@
 ;; insert current time
 (global-set-key "\C-ct" 'brice-current-time)
 
-;; undo
+;; move to the beginning of the line
 (global-set-key (kbd "C-a") 'brice-beginning-of-line)
 
 ;;; Google
