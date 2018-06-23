@@ -38,7 +38,7 @@
   (if (eq major-mode 'ess-mode)
       (let ((x (read-string "Enter a condition:")))
 	(if(string= "" x)
-	    (insert (concat "browser()"))
+	  (insert (concat "browser()"))
 	  (insert (concat "if(" x "){browser()}"))
 	  ))
     (message "works only in R mode buffers")
@@ -54,3 +54,52 @@
     )
   )
 
+
+;;; display object
+(defun brice-ess-head-object ()
+  "Display the first lines of an R object"
+  (interactive)
+  (if (eq major-mode 'ess-mode)
+      (if (region-active-p)
+	  (let ((x (buffer-substring (region-beginning) (region-end))))
+	    (ess-eval-linewise (concat "head(" x ")")))
+   	   (let ((x (read-string "Enter a the name of the object:")))
+	     (ess-eval-linewise (concat "head(" x ")")))
+	)
+    ))
+  
+
+(defun brice-ess-dim-object ()
+  "Display the dimension of an R object"
+  (interactive)
+      (if (region-active-p)
+	  (let ((x (buffer-substring (region-beginning) (region-end))))
+	    (ess-eval-linewise (concat "butils::DIM(" x ")")))
+   	   (let ((x (read-string "Enter a the name of the object:")))
+	     (ess-eval-linewise (concat "butils::DIM(" x ")")))
+     ))
+
+;;; shortcut
+(defun brice-ess-ggplot ()
+  "Initialize ggplot"
+  (interactive)
+  (if (eq major-mode 'ess-mode)
+      (let ((x (buffer-substring (region-beginning) (region-end))))
+	(insert (concat "gg <- ggplot2(" x ", aes())")))
+    (let ((x (read-string "Enter a the name of the dataset:")))
+      (insert (concat "gg <- ggplot2(" x ", aes())")))
+    )
+  )
+
+(defun brice-ess-clone ()
+  "Duplicate left hand side and right hand side"
+  (interactive)
+  (if (eq major-mode 'ess-mode)
+      (let ((x (buffer-substring (region-beginning) (region-end))))
+	(next-line)
+	(insert (concat x " <- " x " + "))
+	)
+    (let ((x (read-string "Enter a the name of the object:")))
+      (insert (concat x " <- " x " + ")))
+    )
+  )

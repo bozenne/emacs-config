@@ -472,7 +472,10 @@ Je vous prie d'agréer, Madame, Monsieur, mes salutations distinguées.
 (add-to-list
  'org-structure-template-alist
  '("Rg"
-"#+BEGIN_SRC R :results graphics :file %file :exports results :session *R* :cache no
+"   
+# see https://orgmode.org/worg/org-contrib/babel/languages/ob-doc-R.html for more arguments
+# #+header: :width 4 :height 4 :R-dev-args bg="lightgrey" 
+#+BEGIN_SRC R :results graphics :file %file :exports results :session *R* :cache no
 
 #+END_SRC
 

@@ -1,3 +1,4 @@
+
 ;;; google
 (use-package google-this :ensure t)
 (google-this-mode 1)
@@ -12,6 +13,13 @@
 ;;; docview
 ;; continuous scrolling over pages in doc view
 (setq doc-view-continuous t)
+;; ;;; polymode (rmarkdown in r)
+;; (require 'poly-R)
+;; (require 'poly-markdown)
+;; (add-to-list 'auto-mode-alist '("\\.md" . poly-markdown-mode))
+;; (add-to-list 'auto-mode-alist '("\\.Snw" . poly-noweb+r-mode))
+;; (add-to-list 'auto-mode-alist '("\\.Rnw" . poly-noweb+r-mode))
+;; (add-to-list 'auto-mode-alist '("\\.Rmd" . poly-markdown+r-mode))
 
 ;;; git and github
 (use-package magit :ensure t)

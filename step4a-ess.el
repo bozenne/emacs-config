@@ -43,15 +43,23 @@
 
 
 ;;; auto completion
-;; prevent help in minibuffer about the arguments of a function (fait ramer la cession)
-(setq ess-use-eldoc nil)
-
-;; auto completion
-;(use-package auto-complete-config :ensure t)
+(use-package auto-complete-config :ensure t)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/site-lisp/auto-complete/dict")
-(ac-config-default)
-(auto-complete-mode)
-(ac-set-trigger-key "TAB") ;; completion mode triggered by TAB
+(setq
+  ac-auto-start t
+  ac-auto-show-menu 0.5
+  ac-show-menu-immediately-on-auto-complete t
+  ac-delay 0
+  ac-dwim t
+  ac-dwim-enable t
+  ac-use-comphist t)
+;; (ac-config-default)
+;; (setq company-auto-complete 'company-explicit-action-p)
+;; (define-key ac-mode-map (kbd "TAB") nil)
+;; (define-key ac-completing-map (kbd "TAB") nil)
+;; (define-key ac-completing-map [tab] nil)
+;; (auto-complete-mode)
+;; (ac-set-trigger-key "TAB") ;; completion mode triggered by TAB
 
 
 
