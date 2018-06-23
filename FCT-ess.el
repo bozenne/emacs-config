@@ -94,8 +94,6 @@
   "Initialize ggplot"
   (interactive)
   (if (eq major-mode 'ess-mode)
-      (let ((x (buffer-substring (region-beginning) (region-end))))
-	(insert (concat "gg <- ggplot2(" x ", aes())")))
     (let ((x (read-string "Enter a the name of the dataset:")))
       (insert (concat "gg <- ggplot2(" x ", aes())")))
     )
