@@ -392,6 +392,11 @@ Documentation: http://jr0cket.co.uk/2012/12/driving-git-with-emacs-pure-magic-wi
 | C-c C-c     |                                             | interrupt evaluation                             |
 | C-c C-up    |                                             | Run code above the cursor                        |
 | C-c M-o     |                                             | comint-clear-buffer                              |
+| C-c D       | brice-ess-dim-object                        | do dim(object)                                   |
+| C-c h       | brice-ess-head-object                       | do head(object)                                  |
+| C-c n       | brice-ess-names-object                      | do names(object)                                 |
+| C-c 2       | brice-ess-ggplot                            | template for ggplot                              |
+| C-c c       | brice-ess-clone                             | duplicate code next line (gg <- gg +)            |
 
 * Email
 | Key binding | name of the command | effect                         |

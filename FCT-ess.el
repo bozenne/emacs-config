@@ -79,6 +79,16 @@
 	     (ess-eval-linewise (concat "butils::DIM(" x ")")))
      ))
 
+(defun brice-ess-names-object ()
+  "Display the dimension of an R object"
+  (interactive)
+      (if (region-active-p)
+	  (let ((x (buffer-substring (region-beginning) (region-end))))
+	    (ess-eval-linewise (concat "butils::NAMES(" x ")")))
+   	   (let ((x (read-string "Enter a the name of the object:")))
+	     (ess-eval-linewise (concat "butils::NAMES(" x ")")))
+     ))
+
 ;;; shortcut
 (defun brice-ess-ggplot ()
   "Initialize ggplot"

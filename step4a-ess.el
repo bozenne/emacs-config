@@ -42,18 +42,37 @@
             ))
 
 
-;;; auto completion
-(use-package auto-complete-config :ensure t)
+;;; auto completion (alternative: companie mode)
+;; documentation: https://github.com/auto-complete/auto-complete/blob/master/doc/manual.md#ac-trigger-commands
+(use-package auto-complete :ensure t)
+(ac-config-default)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/site-lisp/auto-complete/dict")
-(setq
-  ac-auto-start t
-  ac-auto-show-menu 0.5
-  ac-show-menu-immediately-on-auto-complete t
-  ac-delay 0
-  ac-dwim t
+
+;; Stop automatic completion
+;; (setq ac-auto-start nil)
+
+;; Not to show completion menu automatically
+(setq ac-auto-show-menu nil) ;; no show
+;; (setq ac-auto-show-menu 1) ;, wait 1s
+
+;; Start completion using TAB
+(ac-set-trigger-key "TAB")
+
+;; bind RET to original and TAB to finish completion
+(define-key ac-completing-map "\t" 'ac-complete)
+(define-key ac-completing-map "\r" nil)
+
+;; Whether or not to expand a common part of whole candidates.
+(setq ac-expand-on-auto-complete t)
+
+;; (setq
+  ;; ac-auto-start t
+  ;; ac-auto-show-menu 0.5
+  ;; ac-show-menu-immediately-on-auto-complete t
+  ;; ac-delay 0
+  ;; ac-dwim t
   ac-dwim-enable t
-  ac-use-comphist t)
-;; (ac-config-default)
+  ;; ac-use-comphist t)
 ;; (setq company-auto-complete 'company-explicit-action-p)
 ;; (define-key ac-mode-map (kbd "TAB") nil)
 ;; (define-key ac-completing-map (kbd "TAB") nil)

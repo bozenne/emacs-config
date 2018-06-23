@@ -5,6 +5,7 @@
             (define-key ess-mode-map (kbd "\C-c s") 'brice-ess-source-r)
             (define-key ess-mode-map (kbd "\C-c D") 'brice-ess-dim-object)
             (define-key ess-mode-map (kbd "\C-c h") 'brice-ess-head-object)
+            (define-key ess-mode-map (kbd "\C-c n") 'brice-ess-names-object)
             (define-key ess-mode-map (kbd "\C-c c") 'brice-ess-clone)
             (define-key ess-mode-map (kbd "\C-c 2") 'brice-ess-ggplot)
             (define-key ess-mode-map (kbd "C-c M-p") 'brice-ess-packageSource-r)
