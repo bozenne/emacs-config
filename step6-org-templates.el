@@ -21,14 +21,15 @@
 # #+LaTeX_HEADER:\\affil{Department of Biostatistics, University of Copenhagen, Copenhagen, Denmark}
 #+LANGUAGE:  en
 #+LaTeX_CLASS: org-article
-#+OPTIONS:   title:t author:t toc:t todo:nil
+#+LaTeX_CLASS_OPTIONS: [12pt]
+#+OPTIONS:   title:t author:t toc:nil todo:nil
 #+OPTIONS:   H:3 num:t 
 #+OPTIONS:   TeX:t LaTeX:t
 
 ** Code
 #+PROPERTY: header-args :session *R*
 #+PROPERTY: header-args :tange yes % extract source code: http://orgmode.org/manual/Extracting-source-code.html
-#+PROPERTY: header-args :eval yes :cache no
+#+PROPERTY: header-args :cache no ## :eval yes
 #+LATEX_HEADER: \\RequirePackage{fancyvrb}
 #+LATEX_HEADER: \\DefineVerbatimEnvironment{verbatim}{Verbatim}{fontsize=\\small,formatcom = {\\color[rgb]{0.5,0,0}}}
 
@@ -36,7 +37,8 @@
 #+LATEX_HEADER: \\RequirePackage{colortbl} % arrayrulecolor to mix colors
 #+LATEX_HEADER: \\RequirePackage{setspace} % to modify the space between lines - incompatible with footnote in beamer
 #+LaTeX_HEADER:\\usepackage{authblk} % enable several affiliations (clash with beamer)
-
+#+LaTeX_HEADER:\\renewcommand{\\baselinestretch}{1.1} ## line spacing
+#+LATEX_HEADER:\\geometry{top=1cm} ## margin
 ** Image
 #+LATEX_HEADER: \\RequirePackage{epstopdf} % to be able to convert .eps to .pdf image files
 
