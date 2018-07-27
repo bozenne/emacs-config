@@ -37,8 +37,8 @@
 #+LATEX_HEADER: \\RequirePackage{colortbl} % arrayrulecolor to mix colors
 #+LATEX_HEADER: \\RequirePackage{setspace} % to modify the space between lines - incompatible with footnote in beamer
 #+LaTeX_HEADER:\\usepackage{authblk} % enable several affiliations (clash with beamer)
-#+LaTeX_HEADER:\\renewcommand{\\baselinestretch}{1.1} ## line spacing
-#+LATEX_HEADER:\\geometry{top=1cm} ## margin
+#+LaTeX_HEADER:\\renewcommand{\\baselinestretch}{1.1}
+#+LATEX_HEADER:\\geometry{top=1cm}
 ** Image
 #+LATEX_HEADER: \\RequirePackage{epstopdf} % to be able to convert .eps to .pdf image files
 
@@ -486,6 +486,9 @@ Je vous prie d'agréer, Madame, Monsieur, mes salutations distinguées.
 #+CAPTION:\n"
 ))
 
+;;;; R change font size in one block
+;; #+LaTeX: \lstset{basicstyle=\tiny}
+;; #+LaTeX: \verbatimfont{\tiny}
 ;;; Lips code
 (add-to-list
  'org-structure-template-alist

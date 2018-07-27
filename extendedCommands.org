@@ -425,3 +425,9 @@ Documentation: http://jr0cket.co.uk/2012/12/driving-git-with-emacs-pure-magic-wi
 
 documentation: https://www.masteringemacs.org/article/keeping-secrets-in-emacs-gnupg-auth-sources
 
+
+* Photo 
+| Key binding | name of the command    | effect                                                                |
+|-------------+------------------------+-----------------------------------------------------------------------|
+|             | brice-photo-raw-to-png | After opening the shell and being in the appropriate folde            |
+|             |                        | Generate a command to convert all files to another format using ufraw |

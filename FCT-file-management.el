@@ -28,3 +28,20 @@
           (delete-file filename)
           (message "Deleted file %s" filename)
           (kill-buffer))))))
+
+;;; photo-raw-to-png
+(defun brice-photo-raw-to-png ()
+  "Convert raw file to readable files"
+  (interactive)
+  (if (eq major-mode 'shell-mode)
+      (let ((formatIn (read-string "Enter an input format:" "*.raw")))
+	(let ((formatOut (read-string "Enter an output format:" "png")))
+	  	(if(string= "jpeg" formatOut)
+		    (let ((compression (read-string "Enter a quality factor [0-100]:" "85")))
+		      (insert (concat "ufraw-batch " formatIn " --silent --out-type=" formatOut " --compression=" compression))
+		     )
+		      (insert (concat "ufraw-batch " formatIn " --silent --out-type=" formatOut))		  
+		      )
+		))
+    ))
+
