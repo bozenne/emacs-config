@@ -10,7 +10,6 @@
 #+Author: " user-full-name
 "\n\n
 
-# * References
 # bibliographystyle:apalike
 # [[bibliography:bibliography.bib]]
 # help: https://gking.harvard.edu/files/natnotes2.pdf
@@ -477,7 +476,7 @@ Je vous prie d'agréer, Madame, Monsieur, mes salutations distinguées.
  '("Rg"
 "   
 # see https://orgmode.org/worg/org-contrib/babel/languages/ob-doc-R.html for more arguments
-# #+header: :width 4 :height 4 :R-dev-args bg="lightgrey" 
+# #+header: :width 4 :height 4 :R-dev-args bg=\"lightgrey\" 
 #+BEGIN_SRC R :results graphics :file %file :exports results :session *R* :cache no
 
 #+END_SRC

@@ -350,24 +350,24 @@ More key bindings at: https://www.gnu.org/software/emacs/manual/html_node/emacs/
 
 ** Magit
 
-| Key binding | name of the command  | effect                             |
-|-------------+----------------------+------------------------------------|
-|             | magit-init           | start version control in directory |
-|             | magit-clone          | import a repository from Github    |
-| C-x g       | magit-status         | open version control in directory  |
-| s           |                      | stage untracked file               |
-| i           |                      | add file to .gitignore             |
-| u           |                      | unstage file                       |
-| k           |                      | delete file                        |
-| c           | git commit -m "text" | create a temporary commit          |
-| C-c C-c     |                      | valid temporary commit             |
-| C-c C-k     |                      | kill temporary commit              |
-|             | magit-remove-add     | add remote repository              |
-| P           | magit-push-popup     | push commit                        |
-| g           |                      | refress current buffer             |
-| F           |                      | Pull                               |
-| y           |                      | show branches (use k to delete)    |
-| c a C-c C-c |                      | Change commit name                 |
+| Key binding         | name of the command  | effect                             |
+|---------------------+----------------------+------------------------------------|
+|                     | magit-init           | start version control in directory |
+|                     | magit-clone          | import a repository from Github    |
+| C-x g               | magit-status         | open version control in directory  |
+| s                   |                      | stage untracked file               |
+| i                   |                      | add file to .gitignore             |
+| u                   |                      | unstage file                       |
+| k                   |                      | delete file                        |
+| c                   | git commit -m "text" | create a temporary commit          |
+| C-c C-c             |                      | valid temporary commit             |
+| C-c C-k             |                      | kill temporary commit              |
+|                     | magit-remove-add     | add remote repository              |
+| P                   | magit-push-popup     | push commit                        |
+| g                   |                      | refress current buffer             |
+| F                   |                      | Pull                               |
+| y                   |                      | show branches (use k to delete)    |
+| c, a, edit, C-c C-c |                      | Change commit name                 |
 
 Documentation: http://jr0cket.co.uk/2012/12/driving-git-with-emacs-pure-magic-with.html.html
                https://github.com/magit/magit/wiki/Cheatsheet

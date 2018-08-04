@@ -199,3 +199,9 @@
 ;; indent code blocks using TAB
 (setq org-src-tab-acts-natively t)
 
+
+;;; link with latex
+;; https://github.com/jkitchin/org-ref/blob/master/org-ref.org (section latex export)
+(setq org-latex-pdf-process (list "latexmk -shell-escape -bibtex -f -pdf %f"))
+
+
