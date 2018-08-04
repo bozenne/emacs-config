@@ -35,6 +35,7 @@
   (interactive)
   (if (eq major-mode 'shell-mode)
       (let ((formatIn (read-string "Enter an input format:" "*.raw")))
+	(let ((eraseRaw (read-string "Remove input files at the end [true/false]:" "false")))
 	(let ((formatOut (read-string "Enter an output format:" "png")))
 	  	(if(string= "jpeg" formatOut)
 		    (let ((compression (read-string "Enter a quality factor [0-100]:" "85")))
@@ -42,6 +43,9 @@
 		     )
 		      (insert (concat "ufraw-batch " formatIn " --silent --out-type=" formatOut))		  
 		      )
-		))
+	  	(if(string= "true" eraseRaw)
+		    (insert (concat "\n rm " formatIn))
+		  )
+	  )))
     ))
 

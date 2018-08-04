@@ -13,6 +13,7 @@
 # * References
 # bibliographystyle:apalike
 # [[bibliography:bibliography.bib]]
+# help: https://gking.harvard.edu/files/natnotes2.pdf
 
 # @@latex:any arbitrary LaTeX code@@
 \n\n
