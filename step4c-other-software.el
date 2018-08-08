@@ -118,3 +118,7 @@
 ;; disconnect: exit
 ;; C-x C-f /remotehost:Biostat_Bayes
 
+
+;;; python
+(use-package elpy :ensure t)
+(use-package py-autopep8 :ensure t)

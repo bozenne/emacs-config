@@ -30,6 +30,14 @@
    (define-key c++-mode-map (kbd "\M-q") 'indent-region)
    ))
 
+;;; Python
+(add-hook 'python-mode-hook
+          (lambda () 
+            (define-key python-mode-map (kbd "<C-return>") 'python-shell-send-region)
+	    )
+	  )
+
+
 ;;; Dired, file management
 (define-key dired-mode-map (kbd "e") 'dired-sort-extension)
 (define-key dired-mode-map (kbd "\C-ce") 'dired-sort-extension)
