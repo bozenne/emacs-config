@@ -2,6 +2,86 @@
 
 ;;; Document class
 
+;;;; Beamer
+(add-to-list
+ 'org-structure-template-alist
+ `("Lb" ,(concat
+"#+TITLE:
+#+Author: " user-full-name
+"\n#+Latex_header:\\institute{}
+#+DATE: 
+#+EMAIL:" user-mail-address
+"\n\n
+* Introduction\n
+** Part I\n
+*** First slide\n
+\n\n
+
+## ** References
+## :PROPERTIES:
+## :BEAMER_OPT: fragile,allowframebreaks
+## :END:  
+## bibliographystyle:apalike
+## [[bibliography:bibliography.bib]]
+
+\n\n
+
+* CONFIG :noexport:
+# #+LaTeX_HEADER:\\affil{Department of Biostatistics, University of Copenhagen, Copenhagen, Denmark}
+#+LANGUAGE:  en
+#+startup: beamer
+#+LaTeX_CLASS: beamer
+#+LaTeX_class_options: [table] 
+#+LaTeX_HEADER: \\subtitle{}
+#+LaTeX_HEADER: \\setbeamertemplate{footline}[frame number]
+#+LaTeX_HEADER: \\setbeamertemplate{navigation symbols}{}
+#+OPTIONS:   title:t author:t toc:nil todo:nil
+#+OPTIONS:   H:3 num:t 
+#+OPTIONS:   TeX:t LaTeX:t
+
+** Code
+#+PROPERTY: header-args :session *R*
+#+PROPERTY: header-args :tange yes % extract source code: http://orgmode.org/manual/Extracting-source-code.html
+#+PROPERTY: header-args :cache no
+#+LATEX_HEADER: \\RequirePackage{fancyvrb}
+#+LATEX_HEADER: \\DefineVerbatimEnvironment{verbatim}{Verbatim}{fontsize=\\small,formatcom = {\\color[rgb]{0.5,0,0}}}
+
+** Display 
+#+LATEX_HEADER: \\RequirePackage{colortbl} % arrayrulecolor to mix colors
+
+** Image
+#+LATEX_HEADER: \\RequirePackage{epstopdf} % to be able to convert .eps to .pdf image files
+
+** Latex command
+#+LaTeX_HEADER: %
+#+LaTeX_HEADER: %%%% additional latex commands %%%%
+#+LaTeX_HEADER: %
+*** Backup slides
+#+LATEX_HEADER: \\newcommand{\\backupbegin}{
+#+LATEX_HEADER:   \\newcounter{finalframe}
+#+LATEX_HEADER:   \\setcounter{finalframe}{\\value{framenumber}}
+#+LATEX_HEADER: }
+#+LATEX_HEADER: \\newcommand{\\backupend}{
+#+LATEX_HEADER:   \\setcounter{framenumber}{\\value{finalframe}}
+#+LATEX_HEADER:}
+*** Footnotes
+#+LaTeX_HEADER: \\RequirePackage{hanging}
+#+LaTeX_HEADER: \\setbeamertemplate{footnote}{%
+#+LaTeX_HEADER:   \\hangpara{2em}{1}%
+#+LaTeX_HEADER:   \\makebox[2em][l]{\\insertfootnotemark}\\footnotesize\\insertfootnotetext\\par%
+#+LaTeX_HEADER: } 
+
+** Theme
+#+BEAMER_THEME: Singapore [height=20pt]
+"
+)))
+
+;; "\n#+OPTIONS: H:3 num:t toc:nil \\n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
+;; #+OPTIONS: TeX:t LaTeX:t skip:nil d:t todo:t pri:nil tags:not-in-toc
+;; #+INFOJS_OPT: view:nil toc:nil ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
+
+
+
 ;;;; Latex default
 (add-to-list
  'org-structure-template-alist
@@ -46,25 +126,7 @@
 #+LaTeX_HEADER: %%%% additional latex commands %%%%
 #+LaTeX_HEADER: %
 "
-	  )))
-;;;; Latex trackchange
-(add-to-list
- 'org-structure-template-alist
- `("Lchange" ,(concat
-"
-** TRACK CHANGE
-#+LaTeX_HEADER:\definechangesauthor[name={Brice}, color=orange]{Brice}
-#+LaTeX_HEADER:\setremarkmarkup{(#2)}
-#+LaTeX_HEADER:\colorlet{Changes@Color}{orange} % change default color
-
-## Example
-## This is \added[id=Brice]{new} text.
-## This is \deleted[id=Brice]{unnecessary}text.
-## This is \replaced[id=Brice]{nice}{bad} text.
-
-\n")))
-
-
+)))
 ;;;; Latex math
 (add-to-list
  'org-structure-template-alist
@@ -272,62 +334,72 @@ Je vous prie d'agréer, Madame, Monsieur, mes salutations distinguées.
 )))
 
 
-;;;; Latex graph
+;;;; Latex tikz
 (add-to-list
  'org-structure-template-alist
- `("Lg" ,(concat
-"
-#+ATTR_LaTeX: :width 1\\textwidth :placement [!h]
-[[./figures/]]
-\n")))
-
-
-;;;; Beamer
-(add-to-list
- 'org-structure-template-alist
- `("Lb" ,(concat
+ `("Ltikz" ,(concat
 "#+TITLE:
-#+Author: " user-full-name
-"\n#+Latex_header:\\institute{}
-#+DATE: 
-#+EMAIL:" user-mail-address
-"\n\n
-* Introduction\n
-** Part I\n
-*** First slide\n
-\n\n
+#+Author: Brice Ozenne
 
-## ** References
-## :PROPERTIES:
-## :BEAMER_OPT: fragile,allowframebreaks
-## :END:  
-## bibliographystyle:apalike
-## [[bibliography:bibliography.bib]]
+#+BEGIN_EXPORT latex
+\\begin{preview}
+\\begin{tikzpicture}[auto]
+% endogenous variables
+		\\tikzstyle{every node} = [NodeData, draw=\\darkblue]
+			\\node (Y1) at (-5, 3) {$Region_1$};
+			\\node (Y2) at (-5, 0) {$Region_2$};
+			\\node (Y3) at (-5, -3) {$Region_3$};
+% latent variables
+		\\tikzstyle{every node} = [NodeLV]
+			\\node (eta)[minimum size=2cm] at (0, 0) [draw]{\\Large $\\eta_{5HT4}$};
 
-\n\n
+% exogeneous variable
+		\\tikzstyle{every node} = [NodeData=green, draw=\\darkgreen]
+			\\node (X1) at (5, 1.5) {Age};
+			\\node (X2) at (5, -1.5) {Gene 1};
+
+% loading
+         	\\tikzstyle{every node} = [,]
+                \\foreach \\to/\\from/\\legend in {Y1/eta/1, Y2/eta/1, Y3/eta/1, eta/X1/}	
+                \\draw [GrayArrow] (\\from) -- node[LegendArrow]{\\Large \\legend} (\\to);
+% regression
+                \\foreach \\to/\\from/\\legend in {eta/X2/$\\gamma_1$}	
+                \\draw [BlackArrow, dashed] (\\from) -- node[LegendArrow]{\\Large \\legend} (\\to);
+% intercept
+                \\draw [GrayArrow] (-6.5, 2.6) -- node[LegendArrow, below]{\\Large $0$} (-5.7, 2.6);
+                \\draw [BlackArrow, dashed] (-6.5, -0.4) -- node[LegendArrow, below]{\\Large $\\nu_2$} (-5.7, -0.4);
+%                \\draw [GrayArrow] (-6.5, -3.4) -- node[LegendArrow, below]{} (-5.7, -3.4);
+
+% variance
+\\draw [GrayArrow,stealth-stealth] (Y1.north) arc [radius=0.5, start angle=10, end angle = 250]  node[midway, above]{\\Large $\\sigma^2$};
+\\draw [GrayArrow,stealth-stealth] (Y2.north) arc [radius=0.5, start angle=10, end angle = 250]  node[midway, above]{\\Large $\\sigma^2$};
+\\draw [GrayArrow,stealth-stealth] (Y3.north) arc [radius=0.5, start angle=10, end angle = 250]  node[midway, above]{\\Large $\\sigma^2$};
+\\end{tikzpicture}
+\\end{preview}
+#+END_EXPORT
 
 * CONFIG :noexport:
 # #+LaTeX_HEADER:\\affil{Department of Biostatistics, University of Copenhagen, Copenhagen, Denmark}
 #+LANGUAGE:  en
-#+startup: beamer
-#+LaTeX_CLASS: beamer
-#+LaTeX_class_options: [table] 
-#+LaTeX_HEADER: \\subtitle{}
-#+LaTeX_HEADER: \\setbeamertemplate{footline}[frame number]
-#+LaTeX_HEADER: \\setbeamertemplate{navigation symbols}{}
-#+OPTIONS:   title:t author:t toc:nil todo:nil
+#+LaTeX_CLASS: org-article
+#+OPTIONS:   title:t author:t toc:nil todo:t 
 #+OPTIONS:   H:3 num:t 
 #+OPTIONS:   TeX:t LaTeX:t
+
+** Latex packages
+#+LaTeX_HEADER: %
+#+LaTeX_HEADER: %%%% additional packages %%%%
+#+LaTeX_HEADER: %
+#+LaTeX_HEADER:\\usepackage{authblk}
+#+LaTeX_HEADER:\\usepackage[pdftex,active,tightpage]{preview} % to get standalone diagram
+#+LaTeX_HEADER:%\\setlength\\PreviewBorder{2mm} % use to add a border around the image
 
 ** Code
 #+PROPERTY: header-args :session *R*
 #+PROPERTY: header-args :tange yes % extract source code: http://orgmode.org/manual/Extracting-source-code.html
-#+PROPERTY: header-args :cache no
+#+PROPERTY: header-args :eval yes :cache no
 #+LATEX_HEADER: \\RequirePackage{fancyvrb}
 #+LATEX_HEADER: \\DefineVerbatimEnvironment{verbatim}{Verbatim}{fontsize=\\small,formatcom = {\\color[rgb]{0.5,0,0}}}
-
-** Display 
-#+LATEX_HEADER: \\RequirePackage{colortbl} % arrayrulecolor to mix colors
 
 ** Image
 #+LATEX_HEADER: \\RequirePackage{epstopdf} % to be able to convert .eps to .pdf image files
@@ -336,48 +408,72 @@ Je vous prie d'agréer, Madame, Monsieur, mes salutations distinguées.
 #+LaTeX_HEADER: %
 #+LaTeX_HEADER: %%%% additional latex commands %%%%
 #+LaTeX_HEADER: %
-*** Backup slides
-#+LATEX_HEADER: \\newcommand{\\backupbegin}{
-#+LATEX_HEADER:   \\newcounter{finalframe}
-#+LATEX_HEADER:   \\setcounter{finalframe}{\\value{framenumber}}
-#+LATEX_HEADER: }
-#+LATEX_HEADER: \\newcommand{\\backupend}{
-#+LATEX_HEADER:   \\setcounter{framenumber}{\\value{finalframe}}
-#+LATEX_HEADER:}
-*** Footnotes
-#+LaTeX_HEADER: \\RequirePackage{hanging}
-#+LaTeX_HEADER: \\setbeamertemplate{footnote}{%
-#+LaTeX_HEADER:   \\hangpara{2em}{1}%
-#+LaTeX_HEADER:   \\makebox[2em][l]{\\insertfootnotemark}\\footnotesize\\insertfootnotetext\\par%
-#+LaTeX_HEADER: } 
+#+LaTeX_HEADER: \\newcommand{\\lightblue}{blue!50!white}
+#+LaTeX_HEADER: \\newcommand{\\darkblue}{blue!80!black}
+#+LaTeX_HEADER: \\newcommand{\\darkgreen}{green!50!black}
+#+LaTeX_HEADER: \\newcommand{\\darkred}{red!50!black}
+#+LaTeX_HEADER: \\definecolor{gray}{gray}{0.5}
 
-** Theme
-#+BEAMER_THEME: Singapore [height=20pt]
-"
+** Tikz 
+#+LATEX_HEADER: \\RequirePackage{tikz}
+#+LATEX_HEADER: \\RequirePackage{tkz-euclide} % for working with euclidean grids
+#+LATEX_HEADER: \\usetikzlibrary{arrows} % various types of arrows
+#+LATEX_HEADER: \\usetikzlibrary{shapes} % various shapes for nodes
+#+LATEX_HEADER: \\usetikzlibrary{positioning} % relative positionning of nodes
+#+LATEX_HEADER: \\usetikzlibrary{shadows}
+#+LATEX_HEADER: \\usetikzlibrary{backgrounds,fit,calc}
+
+#+LATEX_HEADER: \\tikzset{YellowArrow/.style={line width=2pt, ->,  >=latex, yellow}}
+#+LATEX_HEADER: \\tikzset{GrayArrow/.style={line width=2pt, ->,  >=latex, gray}}
+#+LATEX_HEADER: \\tikzset{BlackArrow/.style={line width=2pt, ->,  >=latex, black}}
+#+LATEX_HEADER: \\tikzset{DoubleBlackArrow/.style={line width=2pt, <->,  >=latex, black}}
+#+LATEX_HEADER: \\tikzset{BlueArrow/.style={line width=2pt, ->,  >=latex, \\darkblue}}
+#+LATEX_HEADER: \\tikzset{BlueCov/.style={line width=2pt, <->,  >=latex, \\darkblue}}
+#+LATEX_HEADER: \\tikzset{RedArrow/.style={line width=2pt,->,  >=latex, \\darkred}}
+#+LATEX_HEADER: \\tikzset{GreenArrow/.style={line width=2pt,->,  >=latex, \\darkgreen}}
+#+LATEX_HEADER: \\tikzset{LegendArrow/.style={midway,#1,scale=1.25},
+#+LATEX_HEADER:     	LegendArrow/.default={above}}
+#+LATEX_HEADER: \\tikzset{NodeLV/.style={circle, fill=blue!30, very thick, fill=red!30, draw=\\darkred}}
+#+LATEX_HEADER: \\tikzset{NodeData/.style={rectangle, minimum width=1cm,minimum height=1cm, rounded corners=2pt,  very thick, fill=#1!30,draw=#1},
+#+LATEX_HEADER: 	NodeData/.default={blue}}"
 )))
 
-;; "\n#+OPTIONS: H:3 num:t toc:nil \\n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
-;; #+OPTIONS: TeX:t LaTeX:t skip:nil d:t todo:t pri:nil tags:not-in-toc
-;; #+INFOJS_OPT: view:nil toc:nil ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
+;;;; Latex trackchange
+(add-to-list
+ 'org-structure-template-alist
+ `("Lchange" ,(concat
+"
+** TRACK CHANGE
+#+LaTeX_HEADER:\\definechangesauthor[name={Brice}, color=orange]{Brice}
+#+LaTeX_HEADER:\\setremarkmarkup{(#2)}
+#+LaTeX_HEADER:\\colorlet{Changes@Color}{orange} % change default color
 
+## Example
+## This is \\added[id=Brice]{new} text.
+## This is \\deleted[id=Brice]{unnecessary}text.
+## This is \\replaced[id=Brice]{nice}{bad} text.
+
+\n")))
 
 
 ;;; org shortcut
-;;;; latex header
+;;;; agenda contact
 (add-to-list
  'org-structure-template-alist
- '("Lh" "#+LaTeX_HEADER:?"))
+ '("contact" 
+"** ? :TAG: 
+:PROPERTIES:
+:EMAIL1: 
+:TELEPHONE1: 
+:ADRESS1: 
+:WORK: 
+:LEISURE: 
+:WITH: 
+:KIDS: 
+:DATE-OF-BIRTH:
+:END:          "))
 
-(add-to-list
- 'org-structure-template-alist
- '("Lf"
-"#+name: fig:1
-#+ATTR_LATEX: :width 0.7\\textwidth
-#+CAPTION:\n"
-))
-
-
-;;;; Two column slides
+;;;; Beamer: column slides
 (add-to-list
  'org-structure-template-alist
  '("Bc" "
@@ -398,7 +494,7 @@ Je vous prie d'agréer, Madame, Monsieur, mes salutations distinguées.
     :END:
     "))
 
-;;;; latex align
+;;;; Latex: align
 (add-to-list
  'org-structure-template-alist
  '("leq" 
@@ -407,14 +503,7 @@ Je vous prie d'agréer, Madame, Monsieur, mes salutations distinguées.
 ?
 \\end{align*}
 #+END_EXPORT"))
-;;;; latex one line formula
-(add-to-list
- 'org-structure-template-alist
- '("leqO" 
-"#+BEGIN_EXPORT latex
-\\[ ? \\]
-#+END_EXPORT"))
-;;;; latex columns
+;;;; Latex: columns
 (add-to-list
  'org-structure-template-alist
  '("lcol" 
@@ -426,22 +515,29 @@ Je vous prie d'agréer, Madame, Monsieur, mes salutations distinguées.
 
 #+LaTeX: \\end{column}
 #+LaTeX: \\end{columns}"))
-;;;; contact
+;;;; Latex: header
 (add-to-list
  'org-structure-template-alist
- '("contact" 
-"** ? :TAG: 
-:PROPERTIES:
-:EMAIL1: 
-:TELEPHONE1: 
-:ADRESS1: 
-:WORK: 
-:LEISURE: 
-:WITH: 
-:KIDS: 
-:DATE-OF-BIRTH:
-:END:          "))
+ '("Lh" "#+LaTeX_HEADER:?"))
+;;;; Latex: image
+(add-to-list
+ 'org-structure-template-alist
+ `("Li" ,(concat
+"
+#+ATTR_LaTeX: :width 1\\textwidth :placement [!h]
+[[./figures/?]]
 
+#+name: fig:1
+#+ATTR_LATEX: :width 0.7\\textwidth
+#+CAPTION:"
+)))
+;;;; Latex: one line formula
+(add-to-list
+ 'org-structure-template-alist
+ '("leqO" 
+"#+BEGIN_EXPORT latex
+\\[ ? \\]
+#+END_EXPORT"))
 ;;; R code
 ;;;; R hide code and result
 (add-to-list

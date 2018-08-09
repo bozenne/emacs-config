@@ -348,6 +348,9 @@ More key bindings at: https://www.gnu.org/software/emacs/manual/html_node/emacs/
 |             |                       |                                            |
 |             | diff-buffer-with-file | Compare buffer with the corresponding file |
 
+Do latex diff after opening the shell:
+- latexdiff draft.tex revision.tex > diff.tex
+
 ** Magit
 
 | Key binding         | name of the command  | effect                             |
