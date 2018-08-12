@@ -1,43 +1,3 @@
-;;; R
-(add-hook 'ess-mode-hook
-          (lambda () 
-            (define-key ess-mode-map (kbd "\C-c m") 'brice-ess-browser-and-source-r)
-            (define-key ess-mode-map (kbd "\C-c s") 'brice-ess-source-r)
-            (define-key ess-mode-map (kbd "\C-c D") 'brice-ess-dim-object)
-            (define-key ess-mode-map (kbd "\C-c h") 'brice-ess-head-object)
-            (define-key ess-mode-map (kbd "\C-c n") 'brice-ess-names-object)
-            (define-key ess-mode-map (kbd "\C-c c") 'brice-ess-clone)
-            (define-key ess-mode-map (kbd "\C-c 2") 'brice-ess-ggplot)
-            (define-key ess-mode-map (kbd "C-c M-p") 'brice-ess-packageSource-r)
-	    (define-key ess-mode-map (kbd "\C-c b") 'brice-ess-browser-r)	    
-	    (define-key ess-mode-map (kbd "C-M-d") 'ess-roxy-preview-HTML)
-            (define-key ess-mode-map (kbd "C-M-u") 'genome/ess-edit-indent-call-sophisticatedly)
-	    (define-key ess-mode-map "\M-k" 'genome/ess-switch-to-R)
-	    (define-key ess-mode-map "\M-H" 'genome/ess-get-help-R-object)
-	    (define-key ess-mode-map (kbd "\C-c d") 'ess-tracebug)
-	    (define-key ess-mode-map (kbd "\C-c r") 'ess-switch-process)
-	    (define-key ess-mode-map (kbd "\C-c P") 'genome/ess-edit-insert-file-name)  
-	    (define-key ess-mode-map (kbd "\C-c p") 'genome/ess-edit-insert-path)
-	    (define-key ess-mode-map (kbd "\C-c v") 'genome/ess-edit-insert-vector)
-	    (define-key ess-mode-map (kbd "C-M-z") 'ess-goto-end-of-function-or-para)
-	    (define-key ess-mode-map (kbd "M-<right>") 'windmove-right)
-	    )
-	  )
-;;; Rcpp
-(add-hook 'c++-mode-hook
- (lambda ()
-   (define-key c++-mode-map (kbd "\C-c s") 'brice-ess-source-rcpp)
-   (define-key c++-mode-map (kbd "\M-q") 'indent-region)
-   ))
-
-;;; Python
-(add-hook 'python-mode-hook
-          (lambda () 
-            (define-key python-mode-map (kbd "<C-return>") 'python-shell-send-region)
-	    )
-	  )
-
-
 ;;; Dired, file management
 (define-key dired-mode-map (kbd "e") 'dired-sort-extension)
 (define-key dired-mode-map (kbd "\C-ce") 'dired-sort-extension)
@@ -148,6 +108,48 @@
 ;;;; package folding
 (global-set-key [(f12)] 'folding-mode)
 (global-set-key [(meta f12)] 'fold-dwim-toggle)
+
+
+;;; R
+(add-hook 'ess-mode-hook
+          (lambda () 
+            (define-key ess-mode-map (kbd "\C-c m") 'brice-ess-browser-and-source-r)
+            (define-key ess-mode-map (kbd "\C-c s") 'brice-ess-source-r)
+            (define-key ess-mode-map (kbd "\C-c D") 'brice-ess-dim-object)
+            (define-key ess-mode-map (kbd "\C-c h") 'brice-ess-head-object)
+            (define-key ess-mode-map (kbd "\C-c n") 'brice-ess-names-object)
+            (define-key ess-mode-map (kbd "\C-c c") 'brice-ess-clone)
+            (define-key ess-mode-map (kbd "\C-c 2") 'brice-ess-ggplot)
+            (define-key ess-mode-map (kbd "C-c M-p") 'brice-ess-packageSource-r)
+	    (define-key ess-mode-map (kbd "\C-c b") 'brice-ess-browser-r)	    
+	    (define-key ess-mode-map (kbd "C-M-d") 'ess-roxy-preview-HTML)
+            (define-key ess-mode-map (kbd "C-M-u") 'genome/ess-edit-indent-call-sophisticatedly)
+	    (define-key ess-mode-map "\M-k" 'genome/ess-switch-to-R)
+	    (define-key ess-mode-map "\M-H" 'genome/ess-get-help-R-object)
+	    (define-key ess-mode-map (kbd "\C-c d") 'ess-tracebug)
+	    (define-key ess-mode-map (kbd "\C-c r") 'ess-switch-process)
+	    (define-key ess-mode-map (kbd "\C-c P") 'genome/ess-edit-insert-file-name)  
+	    (define-key ess-mode-map (kbd "\C-c p") 'genome/ess-edit-insert-path)
+	    (define-key ess-mode-map (kbd "\C-c v") 'genome/ess-edit-insert-vector)
+	    (define-key ess-mode-map (kbd "C-M-z") 'ess-goto-end-of-function-or-para)
+	    (define-key ess-mode-map (kbd "M-<right>") 'windmove-right)
+	    )
+	  )
+;;; Rcpp
+(add-hook 'c++-mode-hook
+ (lambda ()
+   (define-key c++-mode-map (kbd "\C-c s") 'brice-ess-source-rcpp)
+   ;; (define-key c++-mode-map (kbd "\M-q") 'indent-region)
+   ))
+
+;;; Python
+(add-hook 'python-mode-hook
+          (lambda () 
+            (define-key python-mode-map (kbd "<C-return>") 'brice-python-shell-send-region)
+   	    (define-key python-mode-map "\M-k" 'brice-python-switch-to-py)
+	    )
+	  )
+;; python -m pip install matplotlib.mlab
 
 
 ;;; orgmode

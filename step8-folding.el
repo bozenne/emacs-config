@@ -27,6 +27,7 @@
 (add-hook 'ledger-mode-hook 'outline-minor-mode)
 (add-hook 'message-mode-hook 'outline-minor-mode)
 (add-hook 'c++-mode-hook 'outline-minor-mode)
+(add-hook 'pyton-mode-hook 'outline-minor-mode)
 
 (use-package outline-magic :ensure t) 
 

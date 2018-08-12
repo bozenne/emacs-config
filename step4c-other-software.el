@@ -108,6 +108,7 @@
 (use-package tramp :ensure t)
 (setq tramp-default-method "plink")
 
+
 ;; http://etherealmind.com/putty-command-line/
 ;; putty.exe -load Biostat_Bayes
 ;; ok but open a new window outside emacs.
@@ -120,5 +121,16 @@
 
 
 ;;; python
+(setq
+ python-shell-interpreter "ipython"
+ python-shell-interpreter-args "-i")
+
 (use-package elpy :ensure t)
 (use-package py-autopep8 :ensure t)
+
+(setq jedi:setup-keys t)
+(setq jedi:complete-on-dot t)
+(add-hook 'python-mode-hook 'jedi:setup)
+
+(require 'py-autopep8)
+(add-hook 'python-mode-hook 'py-autopep8-enable-on-save)
