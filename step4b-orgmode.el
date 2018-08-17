@@ -199,6 +199,9 @@
 ;; indent code blocks using TAB
 (setq org-src-tab-acts-natively t)
 
+;; enable to ignore heading when exporting
+(require 'ox-extra)
+(ox-extras-activate '(ignore-headlines))
 
 ;;; link with latex
 ;; https://github.com/jkitchin/org-ref/blob/master/org-ref.org (section latex export)
