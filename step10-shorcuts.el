@@ -12,8 +12,8 @@
 	    (define-key ess-mode-map (kbd "\C-c b") 'brice-ess-browser-r)	    
 	    (define-key ess-mode-map (kbd "C-M-d") 'ess-roxy-preview-HTML)
             (define-key ess-mode-map (kbd "C-M-u") 'genome/ess-edit-indent-call-sophisticatedly)
-	    (define-key ess-mode-map "\M-k" 'genome/ess-switch-to-R)
-	    (define-key ess-mode-map "\M-H" 'genome/ess-get-help-R-object)
+	    (define-key ess-mode-map [(meta s)] 'genome/ess-switch-to-R)
+	    (define-key ess-mode-map [(meta H)] 'genome/ess-get-help-R-object)
 	    (define-key ess-mode-map (kbd "\C-c d") 'ess-tracebug)
 	    (define-key ess-mode-map (kbd "\C-c r") 'ess-switch-process)
 	    (define-key ess-mode-map (kbd "\C-c P") 'genome/ess-edit-insert-file-name)  
@@ -23,12 +23,19 @@
 	    (define-key ess-mode-map (kbd "M-<right>") 'windmove-right)
 	    )
 	  )
+
+(add-hook 'inferior-ess-mode-hook
+	  (lambda ()
+	    (define-key inferior-ess-mode-map [(meta r)] 'ess-switch-to-inferior-or-script-buffer)
+	    )
+	  )
+
 ;;; Rcpp
 (add-hook 'c++-mode-hook
- (lambda ()
-   (define-key c++-mode-map (kbd "\C-c s") 'brice-ess-source-rcpp)
-   (define-key c++-mode-map (kbd "\M-q") 'indent-region)
-   ))
+	  (lambda ()
+	    (define-key c++-mode-map (kbd "\C-c s") 'brice-ess-source-rcpp)
+	    (define-key c++-mode-map (kbd "\M-q") 'indent-region)
+	    ))
 
 ;;; Python
 (add-hook 'python-mode-hook
@@ -173,7 +180,8 @@
 	      (define-key org-mode-map [(meta e)] 'hippie-expand)
 	      (define-key org-mode-map [(meta control i)] 'genome/org-indent)
 	      (define-key org-mode-map "_" 'genome/org-smart-underscore)
-	      (define-key org-mode-map [(meta k)] 'genome/ess-switch-to-R)
+	      (define-key org-mode-map [(meta s)] 'genome/ess-switch-to-R)
+	      (define-key org-mode-map [(meta r)] 'ess-switch-to-inferior-or-script-buffer)
 	      (define-key org-mode-map (kbd "\C-c \C-v c") 'genome/org-babel-clear-all-results)  
 	      ))
 

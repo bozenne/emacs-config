@@ -537,13 +537,20 @@ Je vous prie d'agréer, Madame, Monsieur, mes salutations distinguées.
  'org-structure-template-alist
  `("Li" ,(concat
 "
+#+name: fig:1
 #+ATTR_LaTeX: :width 1\\textwidth :placement [!h]
+#+CAPTION:
 [[./figures/?]]
 
-#+name: fig:1
-#+ATTR_LATEX: :width 0.7\\textwidth
-#+CAPTION:"
+"
 )))
+;;;; Latex: caption
+(add-to-list
+ 'org-structure-template-alist
+ `("Lc" ,(concat
+"#+CAPTION:?"
+)))
+
 ;;;; Latex: one line formula
 (add-to-list
  'org-structure-template-alist
