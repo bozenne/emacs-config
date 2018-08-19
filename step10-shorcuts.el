@@ -129,8 +129,8 @@
 	    (define-key ess-mode-map (kbd "\C-c b") 'brice-ess-browser-r)	    
 	    (define-key ess-mode-map (kbd "C-M-d") 'ess-roxy-preview-HTML)
             (define-key ess-mode-map (kbd "C-M-u") 'genome/ess-edit-indent-call-sophisticatedly)
-	    (define-key ess-mode-map "\M-k" 'genome/ess-switch-to-R)
-	    (define-key ess-mode-map "\M-H" 'genome/ess-get-help-R-object)
+	    (define-key ess-mode-map (kbd "M-æ") 'genome/ess-switch-to-R)
+	    (define-key ess-mode-map (kbd "M-æ") 'genome/ess-get-help-R-object)
 	    (define-key ess-mode-map (kbd "\C-c d") 'ess-tracebug)
 	    (define-key ess-mode-map (kbd "\C-c r") 'ess-switch-process)
 	    (define-key ess-mode-map (kbd "\C-c P") 'genome/ess-edit-insert-file-name)  
@@ -140,6 +140,12 @@
 	    (define-key ess-mode-map (kbd "M-<right>") 'windmove-right)
 	    )
 	  )
+
+ (add-hook 'inferior-ess-mode-hook
+ 	  (lambda ()
+ 	    (define-key inferior-ess-mode-map (kbd "M-æ") 'ess-switch-to-inferior-or-script-buffer)
+ 	    )
+ 	  )
 ;;; Rcpp
 (add-hook 'c++-mode-hook
  (lambda ()
@@ -151,7 +157,7 @@
 (add-hook 'python-mode-hook
           (lambda () 
             (define-key python-mode-map (kbd "<C-return>") 'brice-python-shell-send-region)
-   	    (define-key python-mode-map "\M-k" 'brice-python-switch-to-py)
+   	    (define-key python-mode-map (kbd "M-æ") 'brice-python-switch-to-py)
     	    (define-key python-mode-map "\M-H" 'elpy-doc)
 	    )
 	  )
@@ -167,7 +173,7 @@
 (setq org-cycle-emulate-tab nil)
 
 (add-hook 'org-mode-hook
-	  #'(lambda nil
+	   '(lambda ()
 	      ;; complete on ess
 	      (add-to-list 'hippie-expand-try-functions-list (lambda (old) (ess-complete-object-name)))
 	      (define-key org-mode-map (kbd "C-<left>") 'org-table-move-column-left)
@@ -181,7 +187,7 @@
 	      (define-key org-mode-map [(meta e)] 'hippie-expand)
 	      (define-key org-mode-map [(meta control i)] 'genome/org-indent)
 	      (define-key org-mode-map "_" 'genome/org-smart-underscore)
-	      (define-key org-mode-map [(meta k)] 'genome/ess-switch-to-R)
+	      (define-key org-mode-map (kbd "M-æ") 'genome/ess-switch-to-R)
 	      (define-key org-mode-map (kbd "\C-c \C-v c") 'genome/org-babel-clear-all-results)  
 	      ))
 

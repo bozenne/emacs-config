@@ -14,8 +14,8 @@
 	("" "graphicx") ;; [default orgmode]
 	("" "grffile") ;; [default orgmode]
 	("" "wrapfig") ;; [default orgmode]
-	("" "capt-of") ;; [default orgmode]
-	("" "caption") ;; newlines in graphices
+;;	("" "capt-of") ;; [default orgmode] - NOT COMPATIBLE WITH biometrical
+;;      ("" "caption") ;; newlines in graphics  - NOT COMPATIBLE WITH biometrical
 	("" "rotating") ;; rotate figures
 	;;;; titles
 ;;	("" "titlesec") ;; modify titles - NOT COMPATIBLE WITH BEAMER
@@ -128,6 +128,21 @@
                ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
 	       ))
 
+;;;; biometrical
+(add-to-list 'org-latex-classes
+	     `("biometrical-journal"
+	       ,(concat "\\documentclass[bimj,fleqn]{w-art}\n\n"
+			"[NO-DEFAULT-PACKAGES]"
+			"%%%% settings when exporting code %%%% \n\n"
+			"\\usepackage{listings}\n"
+			"%%%% packages %%%%%"
+			)
+	       ("\\section{%s}" . "\\section*{%s}")
+	       ("\\subsection{%s}" . "\\subsection*{%s}")
+	       ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+	       ("\\paragraph{%s}" . "\\paragraph*{%s}")
+	       ("\\subparagraph{%s}" . "\\subparagraph*{%s}")
+	       ))
 ;;;; Rnew-article
 (add-to-list 'org-latex-classes
 	     `("Rnews-article"

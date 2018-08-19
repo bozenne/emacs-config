@@ -51,11 +51,17 @@
 
 ** Image
 #+LATEX_HEADER: \\RequirePackage{epstopdf} % to be able to convert .eps to .pdf image files
+#+LATEX_HEADER: \\RequirePackage{capt-of} % 
+#+LATEX_HEADER: \\RequirePackage{caption} % newlines in graphics
+
+** Notations
+#+LATEX_HEADER: \\newcommand\\Rlogo{\\textbf{\\textsf{R}}}
 
 ** Latex command
 #+LaTeX_HEADER: %
 #+LaTeX_HEADER: %%%% additional latex commands %%%%
 #+LaTeX_HEADER: %
+
 *** Backup slides
 #+LATEX_HEADER: \\newcommand{\\backupbegin}{
 #+LATEX_HEADER:   \\newcounter{finalframe}
@@ -119,8 +125,14 @@
 #+LaTeX_HEADER:\\usepackage{authblk} % enable several affiliations (clash with beamer)
 #+LaTeX_HEADER:\\renewcommand{\\baselinestretch}{1.1}
 #+LATEX_HEADER:\\geometry{top=1cm}
+
+** Notations
+#+LATEX_HEADER: \\newcommand\\Rlogo{\\textbf{\\textsf{R}}}
+
 ** Image
 #+LATEX_HEADER: \\RequirePackage{epstopdf} % to be able to convert .eps to .pdf image files
+#+LATEX_HEADER: \\RequirePackage{capt-of} % 
+#+LATEX_HEADER: \\RequirePackage{caption} % newlines in graphics
 
 ** Latex command
 #+LaTeX_HEADER: %
@@ -525,13 +537,20 @@ Je vous prie d'agréer, Madame, Monsieur, mes salutations distinguées.
  'org-structure-template-alist
  `("Li" ,(concat
 "
+#+name: fig:1
 #+ATTR_LaTeX: :width 1\\textwidth :placement [!h]
+#+CAPTION:
 [[./figures/?]]
 
-#+name: fig:1
-#+ATTR_LATEX: :width 0.7\\textwidth
-#+CAPTION:"
+"
 )))
+;;;; Latex: caption
+(add-to-list
+ 'org-structure-template-alist
+ `("Lc" ,(concat
+"#+CAPTION:?"
+)))
+
 ;;;; Latex: one line formula
 (add-to-list
  'org-structure-template-alist
