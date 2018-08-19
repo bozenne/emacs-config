@@ -102,6 +102,11 @@
             (local-set-key "\M-p" 'outline-previous-visible-heading)
 	    )
 	  )
+(add-hook 'python-mode-hook 
+          (lambda ()
+            (local-set-key (kbd "<backtab>") 'outshine-cycle-buffer)
+	    )
+	  )
 
 
 
@@ -147,6 +152,7 @@
           (lambda () 
             (define-key python-mode-map (kbd "<C-return>") 'brice-python-shell-send-region)
    	    (define-key python-mode-map "\M-k" 'brice-python-switch-to-py)
+    	    (define-key python-mode-map "\M-H" 'elpy-doc)
 	    )
 	  )
 ;; python -m pip install matplotlib.mlab

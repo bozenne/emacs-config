@@ -10,7 +10,7 @@
 (folding-add-to-marks-list 'latex-mode "% {{{" "% }}}" t)
 (folding-add-to-marks-list 'c-mode "// {{{" "// }}}" t)
 (folding-add-to-marks-list 'muse-mode "; {{{" "; }}}" t)
-(folding-add-to-marks-list 'ESS-mode "# {{{" "# }}}" nil t)
+(folding-add-to-marks-list 'python-mode "# {{{" "# }}}" nil t)
 (folding-add-to-marks-list 'css-mode "/* {{{ */" "/* }}} */" nil t)
 
 ;;; outline/outshine package
@@ -27,21 +27,21 @@
 (add-hook 'ledger-mode-hook 'outline-minor-mode)
 (add-hook 'message-mode-hook 'outline-minor-mode)
 (add-hook 'c++-mode-hook 'outline-minor-mode)
-(add-hook 'pyton-mode-hook 'outline-minor-mode)
+(add-hook 'python-mode-hook 'outline-minor-mode)
 
 (use-package outline-magic :ensure t) 
 
 ;; (add-hook 'ess-mode-hook
-;;       '(lambda ()
-;;          (auto-complete-mode nil)
-;;          (outline-minor-mode 1)
-;;          (setq outline-regexp "\\(^#\\{4,6\\}\\)\\|\\(^[a-zA-Z0-9_\.]+ ?<- ?function(.*{\\)")
-;;          (setq outline-heading-alist
-;;            '(("###" . 1) ("###" . 2) ("###" . 3)
-;;              ("^[a-zA-Z0-9_\.]+ ?<- ?function(.*{" .4)))))
+;; '(lambda ()
+;; (auto-complete-mode nil)
+;; (outline-minor-mode 1)
+;; (setq outline-regexp "\\(^#\\{4,6\\}\\)\\|\\(^[a-zA-Z0-9_\.]+ ?<- ?function(.*{\\)")
+;; (setq outline-heading-alist
+;; '(("###" . 1) ("###" . 2) ("###" . 3)
+;; ("^[a-zA-Z0-9_\.]+ ?<- ?function(.*{" .4)))))
 
 
-;;; possible solution
+;; possible solution
 ;; ;; add 
 ;; ;; ### Local Variables:
 ;; ;; ### eval: (orgstruct-mode 1)
