@@ -85,6 +85,12 @@
 ;; move to the beginning of the line
 (global-set-key (kbd "C-a") 'brice-beginning-of-line)
 
+;; move to the beginning of the line
+(global-set-key (kbd "C-c o") 'iedit-mode)
+
+;;; Snippet
+(define-key yas-minor-mode-map (kbd "C-c k") 'yas-expand)
+
 ;;; Google
 (global-set-key (kbd "\C-c g") 'google-this)
 

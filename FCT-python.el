@@ -20,36 +20,33 @@
   (interactive "p")
     (setq currentBuffer (format (buffer-name)))
   
-  ;; create a python console
-  (if (eq (python-shell-get-process) 'nil)
-      (run-python python-shell-interpreter nil nil)
-    )
-
-  ;; if no selected region, mark the region to be evaluated
-  (let (codeRegion)
+  ;; identify start and end of the region
+  ;; if no selected region, use the region to current line
+  ;; if a selected region, unmark it
+  (let (codeRegion start end)
     (if(not (region-active-p))
 	(progn
-    	  (let (start end)
-    	    (setq start (line-beginning-position))
-    	    (setq end (line-end-position))
-    	    (goto-char start)
-    	    (push-mark end)
-    	    (setq mark-active t)
-	    )
+    	  (setq start (line-beginning-position))
+    	  (setq end (line-end-position))
    	  )
+      (progn
+	(setq start (region-beginning))
+    	(setq end (region-end))
+	(setq mark-active nil)
+	)
       )
 
-    ;; 
-    
-    ;; save region, unmark it and go to next line
-    ;; (setq codeRegion (buffer-substring (region-beginning) (region-end)))
-    (setq codeRegion (buffer-substring (region-beginning) (region-end)))
-    (setq mark-active nil)
+    ;; save region and go to next line
+    (setq codeRegion (buffer-substring start end))
     (forward-line)
 
-    
+    ;; create a python console
+    (if (eq (python-shell-get-process) 'nil)
+	(run-python python-shell-interpreter nil nil)
+      )
+
     ;; run code 
-    (let (start end lineStart lineEnd diff)
+    (let (start end lineStart lineEnd)
       ;; move to console
       (python-shell-switch-to-shell)
       (setq start (line-beginning-position))
@@ -73,7 +70,7 @@
       	    	  (indent-rigidly-left-to-tab-stop start end)
 	    	  )
 	      (progn
-	    	;; when only one line
+	    	;; when only one line remove the indentation (if any)
 		(back-to-indentation)
 	    	(setq end (point))
 		(if(not (= end start))
