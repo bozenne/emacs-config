@@ -123,9 +123,16 @@
 (use-package elpy :ensure t)
 (use-package py-autopep8 :ensure t)
 
-(setq-default default-tab-width 4)
+;; (setq-default py-shell-name "ipython")
+;; (setq-default py-which-bufname "IPython")
+;; ; use the wx backend, for both mayavi and matplotlib
+;; (setq py-python-command-args
+;;   '("--gui=wx" "--pylab=wx" "-colors" "Linux"))
+;; (setq py-force-py-shell-name-p t)
 
-(setq jedi:setup-keys t)
+(setq-default default-tab-width 4) ;; indentation
+
+(setq jedi:setup-keys t) ;; completion
 (setq jedi:complete-on-dot t)
 (add-hook 'python-mode-hook 'jedi:setup)
 (add-hook 'ein:connect-mode-hook 'ein:jedi-setup)

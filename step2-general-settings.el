@@ -171,6 +171,7 @@
 (yas-global-mode 1)
 (use-package auto-yasnippet :ensure t)
 (use-package yasnippet-snippets :ensure t)
+;; (use-package r-autoyas :ensure t)
 (setq yas-snippet-dirs
       '(expand-file-name "packages/yasnippet-ess/ess-mode" path-emacs-config)
       )

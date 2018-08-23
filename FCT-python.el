@@ -16,7 +16,8 @@
 ;;;; brice-python-shell-send-region
 (defun brice-python-shell-send-region (arg)
   "Send the selected python code - or the current line when no selected regions
-   to the python console (create one if necessary)"
+   to the python console (create one if necessary)
+   Does not support blank lines or comments in functions or class"
   (interactive "p")
     (setq currentBuffer (format (buffer-name)))
   
