@@ -1,4 +1,3 @@
-
 ;;; google
 (use-package google-this :ensure t)
 (google-this-mode 1)
@@ -121,12 +120,10 @@
 
 
 ;;; python
-(setq
- python-shell-interpreter "ipython"
- python-shell-interpreter-args "-i")
-
 (use-package elpy :ensure t)
 (use-package py-autopep8 :ensure t)
+
+(setq-default default-tab-width 4)
 
 (setq jedi:setup-keys t)
 (setq jedi:complete-on-dot t)
@@ -135,3 +132,7 @@
 
 (require 'py-autopep8)
 (add-hook 'python-mode-hook 'py-autopep8-enable-on-save)
+
+
+;; (with-eval-after-load "python"
+  ;; (define-key python-mode-map (kbd "DEL") nil))

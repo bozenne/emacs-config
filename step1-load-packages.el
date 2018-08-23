@@ -12,7 +12,6 @@
 
 ;;; Prevent initialising twice
 (setq package-enable-at-startup nil)  
-(package-initialize)
 
 ;;; To use the nice command use-package :ensure t when loading packages
 ;; install package if necessary

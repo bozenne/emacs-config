@@ -25,7 +25,7 @@
       (run-python python-shell-interpreter nil nil)
     )
 
-  ;; identify the region to be evaluated
+  ;; if no selected region, mark the region to be evaluated
   (let (codeRegion)
     (if(not (region-active-p))
 	(progn
@@ -35,23 +35,64 @@
     	    (goto-char start)
     	    (push-mark end)
     	    (setq mark-active t)
-	    (setq codeRegion (buffer-substring (region-beginning) (region-end)))
-	    (setq mark-active nil)
-	    (forward-line)
 	    )
    	  )
-      (progn (setq codeRegion (buffer-substring (region-beginning) (region-end))) )
       )
 
-    ;; send code to the console
+    ;; 
+    
+    ;; save region, unmark it and go to next line
+    ;; (setq codeRegion (buffer-substring (region-beginning) (region-end)))
+    (setq codeRegion (buffer-substring (region-beginning) (region-end)))
+    (setq mark-active nil)
+    (forward-line)
+
+    
+    ;; run code 
+    (let (start end lineStart lineEnd diff)
+      ;; move to console
       (python-shell-switch-to-shell)
-      (insert codeRegion)
-      (comint-send-input)
+      (setq start (line-beginning-position))
+      (setq lineStart (count-lines 1 (point)))
 
-   ;; come back
-      (switch-to-buffer-other-window  currentBuffer)	  
+      ;; send code to the console
+      (insert codeRegion)
+      (setq end (line-end-position))
+      (setq lineEnd (count-lines 1 (point)))
+      ;; (message "%S" (list "end:" end "/" lineEnd))
+      
+      ;; if there is any text remove indentation
+      (if(not (= end start))
+      	  (progn
+
+	    (if (not (= lineEnd lineStart))
+	    	;; not this if should not be necessary
+	    	;; but indent-rigidly-left-to-tab-stop seems to bug for one line
+	    	(progn
+	    	  ;; when more than one line
+      	    	  (indent-rigidly-left-to-tab-stop start end)
+	    	  )
+	      (progn
+	    	;; when only one line
+		(back-to-indentation)
+	    	(setq end (point))
+		(if(not (= end start))
+		    (delete-rectangle start end)
+		  )
+		)
+	      )
+      	    )
+      	)
+      ;; execute
+      (comint-send-input)
       )
+
+    ;; come back
+    (switch-to-buffer-other-window  currentBuffer)	  
+    )
   )
+;; https://emacs.stackexchange.com/questions/34966/copy-region-without-leading-indentation
+;; elpy--region-without-indentation
 
 ;;;; brice-python-install-package
 (defun brice-python-install-package ()
