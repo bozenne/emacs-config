@@ -9,6 +9,9 @@
 ;;; C++
 (use-package cc-mode :ensure t)
 
+;; make the .h in c++ instead of c mode
+(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
+
 ;;; docview
 ;; continuous scrolling over pages in doc view
 (setq doc-view-continuous t)

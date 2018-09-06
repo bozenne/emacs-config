@@ -4,7 +4,7 @@
   (interactive "p")
   (if org-beamer-mode
       (org-beamer-export-to-pdf)
-    (org-latex-export-to-pdf))
+      (org-latex-export-to-pdf))
   )
 
 ;;; export to latex
@@ -13,7 +13,7 @@
   (interactive "p")
   (if org-beamer-mode
       (org-beamer-export-to-latex)
-    (org-latex-export-to-latex))
+      (org-latex-export-to-latex))
   )
 ;;; export to R
 (defun brice-extractRchunk ()
