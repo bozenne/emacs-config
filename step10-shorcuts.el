@@ -120,7 +120,6 @@
 (global-set-key [(f12)] 'folding-mode)
 (global-set-key [(meta f12)] 'fold-dwim-toggle)
 
-
 ;;; R
 (add-hook 'ess-mode-hook
           (lambda () 
@@ -132,31 +131,31 @@
             (define-key ess-mode-map (kbd "\C-c c") 'brice-ess-clone)
             (define-key ess-mode-map (kbd "\C-c 2") 'brice-ess-ggplot)
             (define-key ess-mode-map (kbd "C-c M-p") 'brice-ess-packageSource-r)
-	    (define-key ess-mode-map (kbd "\C-c b") 'brice-ess-browser-r)	    
-	    (define-key ess-mode-map (kbd "C-M-d") 'ess-roxy-preview-HTML)
+			(define-key ess-mode-map (kbd "\C-c b") 'brice-ess-browser-r)	    
+			(define-key ess-mode-map (kbd "C-M-d") 'ess-roxy-preview-HTML)
             (define-key ess-mode-map (kbd "C-M-u") 'genome/ess-edit-indent-call-sophisticatedly)
-	    (define-key ess-mode-map (kbd "M-æ") 'genome/ess-switch-to-R)
-	    (define-key ess-mode-map (kbd "M-æ") 'genome/ess-get-help-R-object)
-	    (define-key ess-mode-map (kbd "\C-c d") 'ess-tracebug)
-	    (define-key ess-mode-map (kbd "\C-c r") 'ess-switch-process)
-	    (define-key ess-mode-map (kbd "\C-c P") 'genome/ess-edit-insert-file-name)  
-	    (define-key ess-mode-map (kbd "\C-c p") 'genome/ess-edit-insert-path)
-	    (define-key ess-mode-map (kbd "\C-c v") 'genome/ess-edit-insert-vector)
-	    (define-key ess-mode-map (kbd "C-M-z") 'ess-goto-end-of-function-or-para)
-	    (define-key ess-mode-map (kbd "M-<right>") 'windmove-right)
-	    )
-	  )
+			(define-key ess-mode-map (kbd "M-æ") 'genome/ess-switch-to-R)
+			(define-key ess-mode-map (kbd "M-H") 'genome/ess-get-help-R-object)
+			(define-key ess-mode-map (kbd "\C-c d") 'ess-tracebug)
+			(define-key ess-mode-map (kbd "\C-c r") 'ess-switch-process)
+			(define-key ess-mode-map (kbd "\C-c P") 'genome/ess-edit-insert-file-name)  
+			(define-key ess-mode-map (kbd "\C-c p") 'genome/ess-edit-insert-path)
+			(define-key ess-mode-map (kbd "\C-c v") 'genome/ess-edit-insert-vector)
+			(define-key ess-mode-map (kbd "C-M-z") 'ess-goto-end-of-function-or-para)
+			(define-key ess-mode-map (kbd "M-<right>") 'windmove-right)
+			)
+		  )
 
  (add-hook 'inferior-ess-mode-hook
  	  (lambda ()
  	    (define-key inferior-ess-mode-map (kbd "M-æ") 'ess-switch-to-inferior-or-script-buffer)
  	    )
  	  )
-;;; Rcpp
+;;; C++
 (add-hook 'c++-mode-hook
  (lambda ()
    (define-key c++-mode-map (kbd "\C-c s") 'brice-ess-source-rcpp)
-   ;; (define-key c++-mode-map (kbd "\M-q") 'indent-region)
+   (define-key c++-mode-map (kbd "M-q") 'indent-region)
    ))
 
 ;;; Python
@@ -179,28 +178,30 @@
 (setq org-cycle-emulate-tab nil)
 
 (add-hook 'org-mode-hook
-	   '(lambda ()
-	      ;; complete on ess
-	      (add-to-list 'hippie-expand-try-functions-list (lambda (old) (ess-complete-object-name)))
-	      (define-key org-mode-map (kbd "C-<left>") 'org-table-move-column-left)
-	      (define-key org-mode-map (kbd "C-<right>") 'org-table-move-column-right)
-	      (define-key org-mode-map [(tab)] 'genome/org-tab)	    
-	      (define-key org-mode-map [(meta L)] 'brice-org-open-corresponding-tex)
-	      (define-key org-mode-map [(meta j)] 'brice-org-export-to-pdf)
-	      (define-key org-mode-map [(meta J)] 'brice-org-export-and-open-corresponding-pdf)
-	      (define-key org-mode-map (kbd "\C-c v") 'brice-org-open-corresponding-pdf)
-	      (define-key org-mode-map [(control tab)] 'hide-subtree)
-	      (define-key org-mode-map [(meta e)] 'hippie-expand)
-	      (define-key org-mode-map [(meta control i)] 'genome/org-indent)
-	      (define-key org-mode-map "_" 'genome/org-smart-underscore)
-	      (define-key org-mode-map (kbd "M-æ") 'genome/ess-switch-to-R)
-	      (define-key org-mode-map (kbd "\C-c \C-v c") 'genome/org-babel-clear-all-results)  
-	      ))
+		  '(lambda ()
+			 ;; complete on ess
+			 (add-to-list 'hippie-expand-try-functions-list (lambda (old) (ess-complete-object-name)))
+			 (define-key org-mode-map (kbd "C-<left>") 'org-table-move-column-left)
+			 (define-key org-mode-map (kbd "C-<right>") 'org-table-move-column-right)
+			 (define-key org-mode-map [(tab)] 'genome/org-tab)	    
+			 (define-key org-mode-map [(meta L)] 'brice-org-open-corresponding-tex)
+			 (define-key org-mode-map [(meta j)] 'brice-org-export-to-pdf)
+			 (define-key org-mode-map [(meta J)] 'brice-org-export-and-open-corresponding-pdf)
+			 (define-key org-mode-map (kbd "\C-c v") 'brice-org-open-corresponding-preview)
+			 (define-key org-mode-map (kbd "\C-c V") 'brice-org-open-corresponding-pdf)
+			 (define-key org-mode-map [(control tab)] 'hide-subtree)
+			 (define-key org-mode-map [(meta e)] 'hippie-expand)
+			 (define-key org-mode-map [(meta control i)] 'genome/org-indent)
+			 (define-key org-mode-map "_" 'genome/org-smart-underscore)
+			 (define-key org-mode-map (kbd "M-æ") 'genome/ess-switch-to-R)
+			 (define-key org-mode-map (kbd "\C-c \C-v c") 'genome/org-babel-clear-all-results)  
+			 ))
+
 
 ;;; Auctex
 (add-hook 'LaTeX-mode-hook
-	  '(lambda ()
-	     (define-key LaTeX-mode-map "\M-j" 'genome/latex-save-and-run)))
+		  '(lambda ()
+			 (define-key LaTeX-mode-map "\M-j" 'genome/latex-save-and-run)))
 
 
 ;;; magit
