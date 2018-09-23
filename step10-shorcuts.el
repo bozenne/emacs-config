@@ -85,8 +85,12 @@
 ;; move to the beginning of the line
 (global-set-key (kbd "C-a") 'brice-beginning-of-line)
 
-;; move to the beginning of the line
+;; iedit mode
 (global-set-key (kbd "C-c o") 'iedit-mode)
+
+;; transport regular expression  m()=g(2)
+(global-set-key (kbd "\C-x \C-t") 'transpose-sexps)
+
 
 ;;; Snippet
 (define-key yas-minor-mode-map (kbd "C-c k") 'yas-expand)

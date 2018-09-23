@@ -23,8 +23,31 @@
   (if (eq major-mode 'c++-mode)
       (let ((file-name (buffer-file-name)))
 	(save-buffer)
-	(ess-eval-linewise (concat "Rcpp::sourceCpp(\"" file-name "\")")))
-    (message "works only with .cpp files")))
+	(if (string= (file-name-extension file-name) "cpp") 
+	    (ess-eval-linewise (concat "Rcpp::sourceCpp(\"" file-name "\")"))
+	  (progn
+	    (message "searchfile")
+	    (setq bufferContent (buffer-substring-no-properties 1 (point-max)))
+	    ( if(s-contains? "// :cppFile:{" bufferContent)
+		(progn
+		  (setq lsResSearch (s-match-strings-all "{\\([^}]+\\)}" bufferContent))
+		  (setq fileName (nth 1 (nth 0 lsResSearch)))
+		  (setq path default-directory)
+		  (ess-eval-linewise (concat "Rcpp::sourceCpp(file.path(\"" path "\", \"" fileName "\"))"))
+		  )
+	      (message "Non .cpp file detected: add tag \"// :cppFile:{\" to indicate to the compiler what is the .cpp file")
+	      ))
+	  )
+	)
+    (message "works only with files whose major mode is c++mode"))
+  )
+
+;; (s-match ":cppFile: * :end:" "// :cppFile:FCT_buyseTest.cpp :end: xx")
+;; (s-match-strings-all "{\\([^}]+\\)}" "// :cppFile:{FCT_buyseTest.cpp}:end: xx")
+;; (match-string "{\\([^}]+\\)}" "// :cppFile:{FCT_buyseTest.cpp}:end: xx")
+
+
+
 
 ;;;; r file
 (defun brice-ess-source-r ()
