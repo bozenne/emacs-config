@@ -51,7 +51,7 @@
 #$ -o output/" filename "/   # Direct output to subdirectory
 #$ -e output/" filename "/   # Direct output to subdirectory
 
-R CMD BATCH BATCH_" filename ".R output/" filename "/$JOB_NAME-I-$SGE_TASK_ID.Rout
+R CMD BATCH BATCH_" filename ".R output/" filename "/$JOB_NAME-I-$SGE_TASK_ID.Rout --no-restore --no-save
 
 ## go to directory    ## cd " currentPath "
 ## clean outputs      ## rm -r ./output/" filename "/*

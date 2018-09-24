@@ -146,17 +146,18 @@
 			)
 		  )
 
- (add-hook 'inferior-ess-mode-hook
- 	  (lambda ()
- 	    (define-key inferior-ess-mode-map (kbd "M-æ") 'ess-switch-to-inferior-or-script-buffer)
- 	    )
- 	  )
+(add-hook 'inferior-ess-mode-hook
+		  (lambda ()
+			(define-key inferior-ess-mode-map (kbd "M-æ") 'ess-switch-to-inferior-or-script-buffer)
+			)
+		  )
 ;;; C++
 (add-hook 'c++-mode-hook
- (lambda ()
-   (define-key c++-mode-map (kbd "\C-c s") 'brice-ess-source-rcpp)
-   (define-key c++-mode-map (kbd "M-q") 'indent-region)
-   ))
+		  (lambda ()
+			(define-key c++-mode-map (kbd "\C-c s") 'brice-ess-source-rcpp)
+			(define-key c++-mode-map (kbd "M-æ") 'genome/ess-switch-to-R)
+			(define-key c++-mode-map (kbd "M-q") 'indent-region)
+			))
 
 ;;; Python
 (add-hook 'python-mode-hook
