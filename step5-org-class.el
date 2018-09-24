@@ -111,6 +111,14 @@
 	       ("\\subparagraph{%s}" . "\\subparagraph*{%s}")
 	       ))
 
+;;;; image
+(add-to-list 'org-latex-classes
+	     `("standalone"
+	       ,(concat "\\documentclass{standalone}\n\n"
+			"[NO-DEFAULT-PACKAGES]" 
+		 )
+	       ))
+
 ;;;; report
 (add-to-list 'org-latex-classes
              `("org-report"

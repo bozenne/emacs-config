@@ -392,30 +392,17 @@ Je vous prie d'agréer, Madame, Monsieur, mes salutations distinguées.
 #+END_EXPORT
 
 * CONFIG :noexport:
-# #+LaTeX_HEADER:\\affil{Department of Biostatistics, University of Copenhagen, Copenhagen, Denmark}
 #+LANGUAGE:  en
 #+LaTeX_CLASS: org-article
 #+OPTIONS:   title:t author:t toc:nil todo:t 
-#+OPTIONS:   H:3 num:t 
 #+OPTIONS:   TeX:t LaTeX:t
 
 ** Latex packages
 #+LaTeX_HEADER: %
 #+LaTeX_HEADER: %%%% additional packages %%%%
 #+LaTeX_HEADER: %
-#+LaTeX_HEADER:\\usepackage{authblk}
 #+LaTeX_HEADER:\\usepackage[pdftex,active,tightpage]{preview} % to get standalone diagram
 #+LaTeX_HEADER:%\\setlength\\PreviewBorder{2mm} % use to add a border around the image
-
-** Code
-#+PROPERTY: header-args :session *R*
-#+PROPERTY: header-args :tange yes % extract source code: http://orgmode.org/manual/Extracting-source-code.html
-#+PROPERTY: header-args :eval yes :cache no
-#+LATEX_HEADER: \\RequirePackage{fancyvrb}
-#+LATEX_HEADER: \\DefineVerbatimEnvironment{verbatim}{Verbatim}{fontsize=\\small,formatcom = {\\color[rgb]{0.5,0,0}}}
-
-** Image
-#+LATEX_HEADER: \\RequirePackage{epstopdf} % to be able to convert .eps to .pdf image files
 
 ** Latex command
 #+LaTeX_HEADER: %
