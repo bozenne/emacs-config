@@ -8,7 +8,10 @@
  `("Lb" ,(concat
 "#+TITLE:
 #+Author: " user-full-name
-"\n#+Latex_header:\\institute{}
+"\n # #+LaTeX_HEADER: \\institute{
+# #+LaTeX_HEADER: \\textsuperscript{1} Neurobiology Research Unit, University Hospital of Copenhagen, Rigshospitalet.
+# #+LaTeX_HEADER: \and \\textsuperscript{2} Section of Biostatistics, Department of Public Health, University of Copenhagen.
+# #+LaTeX_HEADER: }
 #+DATE: 
 #+EMAIL:" user-mail-address
 "\n\n
@@ -27,7 +30,6 @@
 \n\n
 
 * CONFIG :noexport:
-# #+LaTeX_HEADER:\\affil{Department of Biostatistics, University of Copenhagen, Copenhagen, Denmark}
 #+LANGUAGE:  en
 #+startup: beamer
 #+LaTeX_CLASS: beamer
@@ -55,7 +57,8 @@
 #+LATEX_HEADER: \\RequirePackage{caption} % newlines in graphics
 
 ** Notations
-#+LATEX_HEADER: \\newcommand\\Rlogo{\\textbf{\\textsf{R}}}
+#+LATEX_HEADER: \\RequirePackage{xspace} % 
+#+LATEX_HEADER: \\newcommand\\Rlogo{\\textbf{\\textsf{R}}\\xspace} % 
 
 ** Latex command
 #+LaTeX_HEADER: %
@@ -127,7 +130,8 @@
 #+LATEX_HEADER:\\geometry{top=1cm}
 
 ** Notations
-#+LATEX_HEADER: \\newcommand\\Rlogo{\\textbf{\\textsf{R}}}
+#+LATEX_HEADER: \\RequirePackage{xspace} % 
+#+LATEX_HEADER: \\newcommand\\Rlogo{\\textbf{\\textsf{R}}\\xspace} % 
 
 ** Image
 #+LATEX_HEADER: \\RequirePackage{epstopdf} % to be able to convert .eps to .pdf image files
@@ -152,7 +156,6 @@
 
 ** Math
 #+LATEX_HEADER: \\RequirePackage{ifthen}
-#+LATEX_HEADER: \\RequirePackage{xspace} % space for newcommand macro
 #+LATEX_HEADER: \\RequirePackage{xifthen}
 #+LATEX_HEADER: \\RequirePackage{xargs}
 #+LATEX_HEADER: \\RequirePackage{dsfont}
