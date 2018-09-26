@@ -20,15 +20,6 @@
 *** First slide\n
 \n\n
 
-## ** References
-## :PROPERTIES:
-## :BEAMER_OPT: fragile,allowframebreaks
-## :END:  
-## bibliographystyle:apalike
-## [[bibliography:bibliography.bib]]
-
-\n\n
-
 * CONFIG :noexport:
 #+LANGUAGE:  en
 #+startup: beamer
@@ -50,6 +41,15 @@
 
 ** Display 
 #+LATEX_HEADER: \\RequirePackage{colortbl} % arrayrulecolor to mix colors
+
+** Lists
+
+# # fix bug with beamer when specifying options for itemize
+# #  https://tex.stackexchange.com/questions/24371/does-enumitem-conflict-with-beamer-for-lists/24491#24491
+# #+LaTeX_HEADER: \\usepackage{enumitem}
+# #+LaTeX_HEADER: \\setitemize{label=\\usebeamerfont*{itemize item}%
+# #+LaTeX_HEADER: \\usebeamercolor[fg]{itemize item}
+# #+LaTeX_HEADER: \\usebeamertemplate{itemize item}}
 
 ** Image
 #+LATEX_HEADER: \\RequirePackage{epstopdf} % to be able to convert .eps to .pdf image files
@@ -73,6 +73,7 @@
 #+LATEX_HEADER: \\newcommand{\\backupend}{
 #+LATEX_HEADER:   \\setcounter{framenumber}{\\value{finalframe}}
 #+LATEX_HEADER:}
+
 *** Footnotes
 #+LaTeX_HEADER: \\RequirePackage{hanging}
 #+LaTeX_HEADER: \\setbeamertemplate{footnote}{%
@@ -84,12 +85,6 @@
 #+BEAMER_THEME: Singapore [height=20pt]
 "
 )))
-
-;; "\n#+OPTIONS: H:3 num:t toc:nil \\n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
-;; #+OPTIONS: TeX:t LaTeX:t skip:nil d:t todo:t pri:nil tags:not-in-toc
-;; #+INFOJS_OPT: view:nil toc:nil ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
-
-
 
 ;;;; Latex default
 (add-to-list
@@ -548,6 +543,39 @@ Je vous prie d'agréer, Madame, Monsieur, mes salutations distinguées.
 "#+BEGIN_EXPORT latex
 \\[ ? \\]
 #+END_EXPORT"))
+;;;; Latex: bibliography
+(add-to-list
+ 'org-structure-template-alist
+ '("LbBiblio" 
+"* References
+:PROPERTIES:
+:BEAMER_OPT: fragile,allowframebreaks
+:END:  
+#+BEGIN_EXPORT latex
+\begingroup
+\renewcommand{\section}[2]{}
+#+END_EXPORT
+bibliographystyle:apalike
+[[bibliography:bibliography.bib]]
+#+BEGIN_EXPORT latex
+\endgroup
+#+END_EXPORT
+"))
+
+(add-to-list
+ 'org-structure-template-alist
+ '("LdBiblio" 
+"* References
+#+BEGIN_EXPORT latex
+\begingroup
+\renewcommand{\section}[2]{}
+#+END_EXPORT
+bibliographystyle:apalike
+[[bibliography:bibliography.bib]]
+#+BEGIN_EXPORT latex
+\endgroup
+#+END_EXPORT
+"))
 ;;; R code
 ;;;; R hide code and result
 (add-to-list
@@ -592,8 +620,16 @@ Je vous prie d'agréer, Madame, Monsieur, mes salutations distinguées.
 ))
 
 ;;;; R change font size in one block
+
+;; R code
 ;; #+LaTeX: \lstset{basicstyle=\tiny}
+;; #+LaTeX: {
+;; #+ATTR_LATEX: :options basicstyle=\ttfamily\scriptsize
+;; #+LaTeX: }
+
+;; R output
 ;; #+LaTeX: \verbatimfont{\tiny}
+
 ;;; Lips code
 (add-to-list
  'org-structure-template-alist
