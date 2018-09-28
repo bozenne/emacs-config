@@ -34,7 +34,7 @@
 
 ** Code
 #+PROPERTY: header-args :session *R*
-#+PROPERTY: header-args :tange yes % extract source code: http://orgmode.org/manual/Extracting-source-code.html
+#+PROPERTY: header-args :tangle yes % extract source code: http://orgmode.org/manual/Extracting-source-code.html
 #+PROPERTY: header-args :cache no
 #+LATEX_HEADER: \\RequirePackage{fancyvrb}
 #+LATEX_HEADER: \\DefineVerbatimEnvironment{verbatim}{Verbatim}{fontsize=\\small,formatcom = {\\color[rgb]{0.5,0,0}}}
@@ -112,7 +112,7 @@
 
 ** Code
 #+PROPERTY: header-args :session *R*
-#+PROPERTY: header-args :tange yes % extract source code: http://orgmode.org/manual/Extracting-source-code.html
+#+PROPERTY: header-args :tangle yes % extract source code: http://orgmode.org/manual/Extracting-source-code.html
 #+PROPERTY: header-args :cache no ## :eval yes
 #+LATEX_HEADER: \\RequirePackage{fancyvrb}
 #+LATEX_HEADER: \\DefineVerbatimEnvironment{verbatim}{Verbatim}{fontsize=\\small,formatcom = {\\color[rgb]{0.5,0,0}}}
@@ -306,7 +306,7 @@ Je vous prie d'agréer, Madame, Monsieur, mes salutations distinguées.
 
 ** code
 #+PROPERTY: header-args :session *R*
-#+PROPERTY: header-args :tange yes % extract source code: http://orgmode.org/manual/Extracting-source-code.html
+#+PROPERTY: header-args :tangle yes % extract source code: http://orgmode.org/manual/Extracting-source-code.html
 #+PROPERTY: header-args :cache no
 
 ** latex packages
