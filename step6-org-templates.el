@@ -33,9 +33,15 @@
 #+OPTIONS:   TeX:t LaTeX:t
 
 ** Code
-#+PROPERTY: header-args :session *R*
-#+PROPERTY: header-args :tangle yes % extract source code: http://orgmode.org/manual/Extracting-source-code.html
-#+PROPERTY: header-args :cache no
+# Documentation at https://org-babel.readthedocs.io/en/latest/header-args/#results
+# :tangle (yes/no/filename) extract source code with org-babel-tangle-file, see http://orgmode.org/manual/Extracting-source-code.html 
+# :cache (yes/no)
+# :eval (yes/no/never)
+# :results (value/output/silent/graphics/raw/latex)
+# :export (code/results/none/both)
+#+PROPERTY: header-args :session *R* :tangle yes :cache no :eval no ## extra argument need to be on the same line as :session *R*
+
+# Code display:
 #+LATEX_HEADER: \\RequirePackage{fancyvrb}
 #+LATEX_HEADER: \\DefineVerbatimEnvironment{verbatim}{Verbatim}{fontsize=\\small,formatcom = {\\color[rgb]{0.5,0,0}}}
 
@@ -111,9 +117,15 @@
 #+OPTIONS:   TeX:t LaTeX:t
 
 ** Code
-#+PROPERTY: header-args :session *R*
-#+PROPERTY: header-args :tangle yes % extract source code: http://orgmode.org/manual/Extracting-source-code.html
-#+PROPERTY: header-args :cache no ## :eval yes
+# Documentation at https://org-babel.readthedocs.io/en/latest/header-args/#results
+# :tangle (yes/no/filename) extract source code with org-babel-tangle-file, see http://orgmode.org/manual/Extracting-source-code.html 
+# :cache (yes/no)
+# :eval (yes/no/never)
+# :results (value/output/silent/graphics/raw/latex)
+# :export (code/results/none/both)
+#+PROPERTY: header-args :session *R* :tangle yes :cache no :eval no ## extra argument need to be on the same line as :session *R*
+
+# Code display:
 #+LATEX_HEADER: \\RequirePackage{fancyvrb}
 #+LATEX_HEADER: \\DefineVerbatimEnvironment{verbatim}{Verbatim}{fontsize=\\small,formatcom = {\\color[rgb]{0.5,0,0}}}
 
@@ -303,11 +315,6 @@ Je vous prie d'agréer, Madame, Monsieur, mes salutations distinguées.
 #+OPTIONS:   title:nil author:nil toc:nil todo:nil
 #+OPTIONS:   H:3 num:t 
 #+OPTIONS:   TeX:t LaTeX:t
-
-** code
-#+PROPERTY: header-args :session *R*
-#+PROPERTY: header-args :tangle yes % extract source code: http://orgmode.org/manual/Extracting-source-code.html
-#+PROPERTY: header-args :cache no
 
 ** latex packages
 #+LaTeX_HEADER: %

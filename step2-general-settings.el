@@ -172,9 +172,9 @@
 (use-package auto-yasnippet :ensure t)
 (use-package yasnippet-snippets :ensure t)
 ;; (use-package r-autoyas :ensure t)
-(setq yas-snippet-dirs
-      '(expand-file-name "packages/yasnippet-ess/ess-mode" path-emacs-config)
-      )
+;; (setq yas-snippet-dirs
+;;       '(expand-file-name "packages/yasnippet-ess/ess-mode" path-emacs-config)
+;;       )
 
 ;;; Back up files
 ;; https://stackoverflow.com/questions/151945/how-do-i-control-how-emacs-makes-backup-files

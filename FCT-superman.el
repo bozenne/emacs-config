@@ -349,7 +349,7 @@ replace absolute path to home directory by '~'.
   (insert "\"" (genome/ess-edit-expand-file-name (read-file-name "insert filename: ")) "\"")
   )
 
-;;; genome/ess-edit-insert-path [necessary for genome/ess-edit-insert-path]
+;;; genome/ess-edit-expand-file-name [necessary for genome/ess-edit-insert-path]
 (defcustom ess-edit-expand-file-name-relative t
   "Controls behaviour of 'ess-edit-insert-path' and 'ess-edit-insert-file-name':
 If 'nil' just call expand-file-name else replace user-home with `~`. This is useful, when
