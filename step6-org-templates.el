@@ -10,7 +10,7 @@
 #+Author: " user-full-name
 "\n # #+LaTeX_HEADER: \\institute{
 # #+LaTeX_HEADER: \\textsuperscript{1} Neurobiology Research Unit, University Hospital of Copenhagen, Rigshospitalet.
-# #+LaTeX_HEADER: \and \\textsuperscript{2} Section of Biostatistics, Department of Public Health, University of Copenhagen.
+# #+LaTeX_HEADER: \\and \\textsuperscript{2} Section of Biostatistics, Department of Public Health, University of Copenhagen.
 # #+LaTeX_HEADER: }
 #+DATE: 
 #+EMAIL:" user-mail-address
@@ -32,6 +32,16 @@
 #+OPTIONS:   H:3 num:t 
 #+OPTIONS:   TeX:t LaTeX:t
 
+** Latex command
+#+LATEX_HEADER: \\RequirePackage{ifthen}
+#+LATEX_HEADER: \\RequirePackage{xifthen}
+#+LATEX_HEADER: \\RequirePackage{xargs}
+#+LATEX_HEADER: \\RequirePackage{xspace}
+
+#+LATEX_HEADER: \\newcommand\\Rlogo{\\textbf{\\textsf{R}}\\xspace} % 
+
+** Notations
+
 ** Code
 # Documentation at https://org-babel.readthedocs.io/en/latest/header-args/#results
 # :tangle (yes/no/filename) extract source code with org-babel-tangle-file, see http://orgmode.org/manual/Extracting-source-code.html 
@@ -39,17 +49,21 @@
 # :eval (yes/no/never)
 # :results (value/output/silent/graphics/raw/latex)
 # :export (code/results/none/both)
-#+PROPERTY: header-args :session *R* :tangle yes :cache no :eval no ## extra argument need to be on the same line as :session *R*
+#+PROPERTY: header-args :session *R* :tangle yes :cache no ## extra argument need to be on the same line as :session *R*
 
 # Code display:
 #+LATEX_HEADER: \\RequirePackage{fancyvrb}
 #+LATEX_HEADER: \\DefineVerbatimEnvironment{verbatim}{Verbatim}{fontsize=\\small,formatcom = {\\color[rgb]{0.5,0,0}}}
 
+# ## change font size input
+# ## #+ATTR_LATEX: :options basicstyle=\\ttfamily\\scriptsize
+# ## change font size output
+# ## \\RecustomVerbatimEnvironment{verbatim}{Verbatim}{fontsize=\\tiny,formatcom = {\\color[rgb]{0.5,0,0}}}
+
 ** Display 
 #+LATEX_HEADER: \\RequirePackage{colortbl} % arrayrulecolor to mix colors
 
 ** Lists
-
 # # fix bug with beamer when specifying options for itemize
 # #  https://tex.stackexchange.com/questions/24371/does-enumitem-conflict-with-beamer-for-lists/24491#24491
 # #+LaTeX_HEADER: \\usepackage{enumitem}
@@ -61,15 +75,6 @@
 #+LATEX_HEADER: \\RequirePackage{epstopdf} % to be able to convert .eps to .pdf image files
 #+LATEX_HEADER: \\RequirePackage{capt-of} % 
 #+LATEX_HEADER: \\RequirePackage{caption} % newlines in graphics
-
-** Notations
-#+LATEX_HEADER: \\RequirePackage{xspace} % 
-#+LATEX_HEADER: \\newcommand\\Rlogo{\\textbf{\\textsf{R}}\\xspace} % 
-
-** Latex command
-#+LaTeX_HEADER: %
-#+LaTeX_HEADER: %%%% additional latex commands %%%%
-#+LaTeX_HEADER: %
 
 *** Backup slides
 #+LATEX_HEADER: \\newcommand{\\backupbegin}{
@@ -116,6 +121,16 @@
 #+OPTIONS:   H:3 num:t 
 #+OPTIONS:   TeX:t LaTeX:t
 
+** Latex command
+#+LATEX_HEADER: \\RequirePackage{ifthen}
+#+LATEX_HEADER: \\RequirePackage{xifthen}
+#+LATEX_HEADER: \\RequirePackage{xargs}
+#+LATEX_HEADER: \\RequirePackage{xspace}
+
+#+LATEX_HEADER: \\newcommand\\Rlogo{\\textbf{\\textsf{R}}\\xspace} % 
+
+** Notations
+
 ** Code
 # Documentation at https://org-babel.readthedocs.io/en/latest/header-args/#results
 # :tangle (yes/no/filename) extract source code with org-babel-tangle-file, see http://orgmode.org/manual/Extracting-source-code.html 
@@ -123,11 +138,16 @@
 # :eval (yes/no/never)
 # :results (value/output/silent/graphics/raw/latex)
 # :export (code/results/none/both)
-#+PROPERTY: header-args :session *R* :tangle yes :cache no :eval no ## extra argument need to be on the same line as :session *R*
+#+PROPERTY: header-args :session *R* :tangle yes :cache no ## extra argument need to be on the same line as :session *R*
 
 # Code display:
 #+LATEX_HEADER: \\RequirePackage{fancyvrb}
 #+LATEX_HEADER: \\DefineVerbatimEnvironment{verbatim}{Verbatim}{fontsize=\\small,formatcom = {\\color[rgb]{0.5,0,0}}}
+
+# ## change font size input
+# ## #+ATTR_LATEX: :options basicstyle=\\ttfamily\\scriptsize
+# ## change font size output
+# ## \\RecustomVerbatimEnvironment{verbatim}{Verbatim}{fontsize=\\tiny,formatcom = {\\color[rgb]{0.5,0,0}}}
 
 ** Display 
 #+LATEX_HEADER: \\RequirePackage{colortbl} % arrayrulecolor to mix colors
@@ -136,19 +156,10 @@
 #+LaTeX_HEADER:\\renewcommand{\\baselinestretch}{1.1}
 #+LATEX_HEADER:\\geometry{top=1cm}
 
-** Notations
-#+LATEX_HEADER: \\RequirePackage{xspace} % 
-#+LATEX_HEADER: \\newcommand\\Rlogo{\\textbf{\\textsf{R}}\\xspace} % 
-
 ** Image
 #+LATEX_HEADER: \\RequirePackage{epstopdf} % to be able to convert .eps to .pdf image files
 #+LATEX_HEADER: \\RequirePackage{capt-of} % 
 #+LATEX_HEADER: \\RequirePackage{caption} % newlines in graphics
-
-** Latex command
-#+LaTeX_HEADER: %
-#+LaTeX_HEADER: %%%% additional latex commands %%%%
-#+LaTeX_HEADER: %
 "
 )))
 ;;;; Latex math
@@ -162,17 +173,14 @@
 #+LATEX_HEADER: \\RequirePackage[noend]{algpseudocode}
 
 ** Math
-#+LATEX_HEADER: \\RequirePackage{ifthen}
-#+LATEX_HEADER: \\RequirePackage{xifthen}
-#+LATEX_HEADER: \\RequirePackage{xargs}
 #+LATEX_HEADER: \\RequirePackage{dsfont}
 #+LATEX_HEADER: \\RequirePackage{amsmath,stmaryrd,graphicx}
 #+LATEX_HEADER: \\RequirePackage{prodint} % product integral symbol (\\PRODI)
 
 # ## lemma
-#+LaTeX_HEADER: \\RequirePackage{amsthm}
-#+LaTeX_HEADER: \\newtheorem{theorem}{Theorem}
-#+LaTeX_HEADER: \\newtheorem{lemma}[theorem]{Lemma}
+# #+LaTeX_HEADER: \\RequirePackage{amsthm}
+# #+LaTeX_HEADER: \\newtheorem{theorem}{Theorem}
+# #+LaTeX_HEADER: \\newtheorem{lemma}[theorem]{Lemma}
 
 *** Template for shortcut
 #+LATEX_HEADER: \\newcommand\\defOperator[7]{%
@@ -625,17 +633,6 @@ bibliographystyle:apalike
 #+ATTR_LATEX: :width 0.7\\textwidth
 #+CAPTION:\n"
 ))
-
-;;;; R change font size in one block
-
-;; R code
-;; #+LaTeX: \lstset{basicstyle=\tiny}
-;; #+LaTeX: {
-;; #+ATTR_LATEX: :options basicstyle=\ttfamily\scriptsize
-;; #+LaTeX: }
-
-;; R output
-;; #+LaTeX: \verbatimfont{\tiny}
 
 ;;; Lips code
 (add-to-list
