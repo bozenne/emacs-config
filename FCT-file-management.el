@@ -64,11 +64,19 @@ R CMD BATCH BATCH_" filename ".R output/" filename "/$JOB_NAME-I-$SGE_TASK_ID.Ro
 ## submission output  ## Your job-array xxxxx.x-xxx:x (" filename ") has been submitted
 ## submission time    ## xx/xx/xx x:xx 
 
-## documentation      ## https://ifsv.sund.ku.dk/biostat/biostatwiki/index.php/IT:Cluster
-                      ## http://bayes/ganglia : current load and history can be monitored graphically at
-                      ## qstat -f -u \*        : view the cluster queue type (the first column shows the job id)
-                      ## qstat -j 1034        : show details of a job (or job array) with job id 1034 type     
-                      ## qdel 1034            : delete the job with job id 1034 from the queue type
+## documentation      ## https://ifsv.sund.ku.dk/biostat/biostatwiki/index.php/IT:Cluster : biostat wiki about the cluster
+                      ## http://gridscheduler.sourceforge.net/htmlman/manuals.html : grid engine manual 
+                      ## http://bayes/ganglia                                      : current load and history of the cluster
+
+## commands           ## qstat         : view jobs of the user
+                      ## qstat -u \*   : view jobs of all users (the first column shows the job id)
+                      ## qstat -j 1034 : show details of a job (or job array) with job id 1034 type     
+                      ## qdel 1034     : delete the job with job id 1034 from the queue type
+                      ## finger login  : get the name corresponding to the login
+
+## status             ## qw : quewing
+                      ##  r : running
+                      ## dr : dual state (r)unning and being (d)eleted
 ") nil filenameExt)
 				))))))))
   )

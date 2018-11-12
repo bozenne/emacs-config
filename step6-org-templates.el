@@ -448,15 +448,17 @@ Je vous prie d'agréer, Madame, Monsieur, mes salutations distinguées.
  'org-structure-template-alist
  `("Lchange" ,(concat
 "
-** TRACK CHANGE
+** Track change
 #+LaTeX_HEADER:\\definechangesauthor[name={Brice}, color=orange]{Brice}
-#+LaTeX_HEADER:\\setremarkmarkup{(#2)}
 #+LaTeX_HEADER:\\colorlet{Changes@Color}{orange} % change default color
+#+LaTeX_HEADER:\\setauthormarkup{} % change what is displayed when specifying id
+#+LaTeX_HEADER:\\setremarkmarkup{\\footnote{\\textcolor{Changes@Color#1}{Remark from #1: #2}}} % change what is displayed when specifying remark
 
-## Example
-## This is \\added[id=Brice]{new} text.
-## This is \\deleted[id=Brice]{unnecessary}text.
-## This is \\replaced[id=Brice]{nice}{bad} text.
+
+# # Example
+# # This is \\added[id=Brice]{new} text.
+# # This is \\deleted[id=Brice]{unnecessary}text.
+# # This is \\replaced[id=Brice]{nice}{bad} text.
 
 \n")))
 
