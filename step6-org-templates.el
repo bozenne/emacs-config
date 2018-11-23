@@ -123,10 +123,6 @@ bibliographystyle:apalike
 #+Author: " user-full-name
 "\n\n
 
-# bibliographystyle:apalike
-# [[bibliography:bibliography.bib]]
-# help: https://gking.harvard.edu/files/natnotes2.pdf
-
 # @@latex:any arbitrary LaTeX code@@
 \n\n
 
@@ -586,30 +582,25 @@ Je vous prie d'agréer, Madame, Monsieur, mes salutations distinguées.
 :PROPERTIES:
 :BEAMER_OPT: fragile,allowframebreaks
 :END:  
-#+BEGIN_EXPORT latex
-\begingroup
-\renewcommand{\section}[2]{}
-#+END_EXPORT
+
+#+LaTeX: \\begingroup
+#+LaTeX: \\renewcommand{\\section}[2]{}
 bibliographystyle:apalike
 [[bibliography:bibliography.bib]]
-#+BEGIN_EXPORT latex
-\endgroup
-#+END_EXPORT
+# help: https://gking.harvard.edu/files/natnotes2.pdf
+#+LaTeX: \\endgroup
 "))
 
 (add-to-list
  'org-structure-template-alist
  '("LdBiblio" 
 "* References
-#+BEGIN_EXPORT latex
-\begingroup
-\renewcommand{\section}[2]{}
-#+END_EXPORT
+#+LaTeX: \\begingroup
+#+LaTeX: \\renewcommand{\\section}[2]{}
 bibliographystyle:apalike
 [[bibliography:bibliography.bib]]
-#+BEGIN_EXPORT latex
-\endgroup
-#+END_EXPORT
+# help: https://gking.harvard.edu/files/natnotes2.pdf
+#+LaTeX: \\endgroup
 "))
 ;;; R code
 ;;;; R hide code and result
