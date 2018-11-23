@@ -20,6 +20,24 @@
 *** First slide\n
 \n\n
 
+* Reference :noexport:
+
+*** Reference
+:PROPERTIES:
+:BEAMER_OPT: fragile,allowframebreaks
+:END:  
+
+#+BEGIN_EXPORT latex
+\\begingroup
+\\renewcommand{\\section}[2]{}
+#+END_EXPORT
+bibliographystyle:apalike
+[[bibliography:bibliography.bib]] 
+#+BEGIN_EXPORT latex
+\\endgroup
+#+END_EXPORT
+
+
 * CONFIG :noexport:
 #+LANGUAGE:  en
 #+startup: beamer
