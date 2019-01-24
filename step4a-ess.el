@@ -43,6 +43,8 @@
             (setq ess-fancy-comments t)
             ))
 
+;;; eldoc (display arguments in the minibuffer)
+(setq ess-use-eldoc nil) ;; disable eldoc because it slows down emacs too much
 
 ;;; auto completion (alternative: companie mode)
 ;; documentation: https://github.com/auto-complete/auto-complete/blob/master/doc/manual.md#ac-trigger-commands
@@ -54,9 +56,12 @@
 (setq ac-auto-start nil)
 
 ;; Not to show completion menu automatically
-(define-key ac-mode-map (kbd "TAB") 'auto-complete)
+(define-key ac-mode-map [C-tab] 'auto-complete)
 (define-key ac-completing-map [return] 'nil)
-(setq ac-quick-help-delay 0.1)
+(setq ac-quick-help-delay 2)
+
+
+
 ;; (setq ac-auto-show-menu nil) ;; no show
 ;; (setq ac-auto-show-menu 1) ;, wait 1s
 
