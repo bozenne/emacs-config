@@ -196,6 +196,7 @@ auto-save-interval 200            ; number of keystrokes between auto-saves (def
 
 ;;; Doc view
 (add-hook 'doc-view-mode-hook 'doc-view-fit-width-to-window)
+
 ;;; Miscellaneous
 ;; paste: replace region
 (delete-selection-mode 1)

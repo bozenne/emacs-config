@@ -81,6 +81,25 @@ bibliographystyle:apalike
 ** Display 
 #+LATEX_HEADER: \\RequirePackage{colortbl} % arrayrulecolor to mix colors
 
+# ## valid and cross symbols
+#+LaTeX_HEADER: \\RequirePackage{pifont}
+#+LaTeX_HEADER: \\RequirePackage{relsize}
+#+LaTeX_HEADER: \\newcommand{\\Cross}{{\\raisebox{-0.5ex}%
+#+LaTeX_HEADER:		{\\relsize{1.5}\\ding{56}}}\\hspace{1pt} }
+#+LaTeX_HEADER: \\newcommand{\\Valid}{{\\raisebox{-0.5ex}%
+#+LaTeX_HEADER:		{\\relsize{1.5}\\ding{52}}}\\hspace{1pt} }
+#+LaTeX_HEADER: \\newcommand{\\CrossR}{ \\textcolor{red}{\\Cross} }
+#+LaTeX_HEADER: \\newcommand{\\ValidV}{ \\textcolor{green}{\\Valid} }
+
+# ## warning symbol
+#+LaTeX_HEADER: \\usepackage{stackengine}
+#+LaTeX_HEADER: \\usepackage{scalerel}
+#+LaTeX_HEADER: \\newcommand\\Warning[1][3ex]{%
+#+LaTeX_HEADER:   \\renewcommand\\stacktype{L}%
+#+LaTeX_HEADER:   \\scaleto{\\stackon[1.3pt]{\\color{red}$\\triangle$}{\\tiny\\bfseries !}}{#1}%
+#+LaTeX_HEADER:   \\xspace
+#+LaTeX_HEADER: }
+
 ** Lists
 # # fix bug with beamer when specifying options for itemize
 # #  https://tex.stackexchange.com/questions/24371/does-enumitem-conflict-with-beamer-for-lists/24491#24491

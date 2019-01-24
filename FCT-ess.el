@@ -96,7 +96,25 @@
   )
 )
 
-  
+;;;; imenu
+(defun brice-jump-to-function ()
+  "Jump to function definition"
+  (interactive)
+  (if (region-active-p)
+	  (let ((x (buffer-substring (region-beginning) (region-end))))
+	    (defun defaultArg ()
+		  ;; (insert x)
+		  (insert (concat x " /Functions"))		  
+		  )
+		(minibuffer-with-setup-hook
+			'defaultArg
+		  (call-interactively #'imenu-anywhere))
+		(minibuffer-keyboard-quit)
+		)
+	((imenu-anywhere)
+	 )
+	)
+  )
 
 ;;; display object
 (defun brice-ess-head-object ()

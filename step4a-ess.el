@@ -31,9 +31,11 @@
 ;; the help is sent to a new window in html
 ;; (setq ess-help-own-frame 'one)
 ;; (setq inferior-ess-r-help-command "help(\"%s\", help_type=\"html\")\n")
-
 ;;; debuging
 (setq ess-use-tracebug nil)
+
+;;; find function
+(use-package imenu-anywhere :ensure t)
 
 ;;; indent
 (add-hook 'ess-mode-hook
@@ -44,26 +46,29 @@
 
 ;;; auto completion (alternative: companie mode)
 ;; documentation: https://github.com/auto-complete/auto-complete/blob/master/doc/manual.md#ac-trigger-commands
-(use-package auto-complete :ensure t)
+(use-package auto-complete :ensure t :config (ac-flyspell-workaround))
 (ac-config-default)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/site-lisp/auto-complete/dict")
 
 ;; Stop automatic completion
-;; (setq ac-auto-start nil)
+(setq ac-auto-start nil)
 
 ;; Not to show completion menu automatically
-(setq ac-auto-show-menu nil) ;; no show
+(define-key ac-mode-map (kbd "TAB") 'auto-complete)
+(define-key ac-completing-map [return] 'nil)
+(setq ac-quick-help-delay 0.1)
+;; (setq ac-auto-show-menu nil) ;; no show
 ;; (setq ac-auto-show-menu 1) ;, wait 1s
 
 ;; Start completion using TAB
-(ac-set-trigger-key "TAB")
+;; (ac-set-trigger-key "TAB")
 
 ;; bind RET to original and TAB to finish completion
-(define-key ac-completing-map "\t" 'ac-complete)
-(define-key ac-completing-map "\r" nil)
+;; (define-key ac-completing-map "\t" 'ac-complete)
+;; (define-key ac-completing-map "\r" nil)
 
 ;; Whether or not to expand a common part of whole candidates.
-(setq ac-expand-on-auto-complete t)
+;; (setq ac-expand-on-auto-complete t)
 
 ;; (setq
   ;; ac-auto-start t
@@ -71,7 +76,7 @@
   ;; ac-show-menu-immediately-on-auto-complete t
   ;; ac-delay 0
   ;; ac-dwim t
-  ac-dwim-enable t
+  ;; ac-dwim-enable t
   ;; ac-use-comphist t)
 ;; (setq company-auto-complete 'company-explicit-action-p)
 ;; (define-key ac-mode-map (kbd "TAB") nil)

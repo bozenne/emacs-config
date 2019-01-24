@@ -375,31 +375,34 @@ Do latex diff after opening the shell:
 Documentation: http://jr0cket.co.uk/2012/12/driving-git-with-emacs-pure-magic-with.html.html
                https://github.com/magit/magit/wiki/Cheatsheet
 * R
-| Key binding | name of the command                         | effect                                           |
-|-------------+---------------------------------------------+--------------------------------------------------|
-| C-c m       | brice-ess-browser-and-source-r              | insert browser and source                        |
-| C-c s       | brice-ess-source-r                          | save file and source file                        |
-| C-c M-p     | brice-ess-packageSource-r                   | source package using butils.base:::packageSource |
-| C-c b       | brice-ess-browser-r                         | insert browser                                   |
-| C-c C-b     | ess-eval-buffer                             | source buffer                                    |
-| C-c C-l     | ess-load-file                               | source file                                      |
-| C-c r       | ess-switch-process                          | switch to another R session                      |
-| M-j         | ess-indent-new-comment-line                 | insert line                                      |
-| C-M-d       | ess-roxy-preview-HTML                       | previous roxygen documentation in web browser    |
-| C-M-u       | genome/ess-edit-indent-call-sophisticatedly | emacs-genome indent                              |
-| M-k         | genome/ess-switch-to-R                      | switch to R console                              |
-| M-H         | genome/ess-get-help-R-object                | open help of an R function                       |
-| C-c d       | ess-tracebug                                | active/disactivate dynamic traceback             |
-| C-c i       | genome/ess-edit-insert-file-name            | insert path to the R file                        |
-| C-c p       | genome/ess-edit-insert-path                 | insert path to the directory containg the R file |
-| C-c C-c     |                                             | interrupt evaluation                             |
-| C-c C-up    |                                             | Run code above the cursor                        |
-| C-c M-o     |                                             | comint-clear-buffer                              |
-| C-c D       | brice-ess-dim-object                        | do dim(object)                                   |
-| C-c h       | brice-ess-head-object                       | do head(object)                                  |
-| C-c n       | brice-ess-names-object                      | do names(object)                                 |
-| C-c 2       | brice-ess-ggplot                            | template for ggplot                              |
-| C-c c       | brice-ess-clone                             | duplicate code next line (gg <- gg +)            |
+| Key binding | name of the command                         | effect                                                       |
+|-------------+---------------------------------------------+--------------------------------------------------------------|
+| C-c m       | brice-ess-browser-and-source-r              | insert browser and source                                    |
+| C-c s       | brice-ess-source-r                          | save file and source file                                    |
+| C-c M-p     | brice-ess-packageSource-r                   | source package using butils.base:::packageSource             |
+| C-c b       | brice-ess-browser-r                         | insert browser                                               |
+| C-c C-b     | ess-eval-buffer                             | source buffer                                                |
+| C-c C-l     | ess-load-file                               | source file                                                  |
+| C-c C-f     | ess-eval-function                           | evaluate function                                            |
+| C-c r       | ess-switch-process                          | switch to another R session                                  |
+| M-j         | ess-indent-new-comment-line                 | insert line                                                  |
+| C-M-d       | ess-roxy-preview-HTML                       | previous roxygen documentation in web browser                |
+| C-M-u       | genome/ess-edit-indent-call-sophisticatedly | emacs-genome indent                                          |
+| M-k         | genome/ess-switch-to-R                      | switch to R console                                          |
+| M-H         | genome/ess-get-help-R-object                | open help of an R function                                   |
+| C-c d       | ess-tracebug                                | active/disactivate dynamic traceback                         |
+| C-c i       | genome/ess-edit-insert-file-name            | insert path to the R file                                    |
+| C-c p       | genome/ess-edit-insert-path                 | insert path to the directory containg the R file             |
+| C-c C-c     |                                             | interrupt evaluation                                         |
+| C-c C-up    |                                             | Run code above the cursor                                    |
+| C-c M-o     |                                             | comint-clear-buffer                                          |
+| C-c D       | brice-ess-dim-object                        | do dim(object)                                               |
+| C-c h       | brice-ess-head-object                       | do head(object)                                              |
+| C-c n       | brice-ess-names-object                      | do names(object)                                             |
+| C-c 2       | brice-ess-ggplot                            | template for ggplot                                          |
+| C-c c       | brice-ess-clone                             | duplicate code next line (gg <- gg +)                        |
+|             | ess-dump-object-into-edit-buffer            | open a new buffer and put the definition of the object in it |
+| c-c j       | brice-jump-to-function                      | jump to the function definition                              |
 
 * Email
 | Key binding | name of the command | effect                         |
