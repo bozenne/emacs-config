@@ -46,20 +46,30 @@
 ;;; eldoc (display arguments in the minibuffer)
 (setq ess-use-eldoc nil) ;; disable eldoc because it slows down emacs too much
 
-;;; auto completion (alternative: companie mode)
+;;; companie mode (alternative: auto completion)
+(use-package company :ensure t)
+(setq tab-always-indent 'complete)
+
+(setq company-idle-delay 1
+      company-show-numbers nil
+      company-minimum-prefix-length 2
+      company-tooltip-flip-when-above t)
+
+(global-set-key [C-tab] #'company-complete)
+(global-company-mode)
+
 ;; documentation: https://github.com/auto-complete/auto-complete/blob/master/doc/manual.md#ac-trigger-commands
-(use-package auto-complete :ensure t :config (ac-flyspell-workaround))
-(ac-config-default)
-(add-to-list 'ac-dictionary-directories "~/.emacs.d/site-lisp/auto-complete/dict")
+;; (use-package auto-complete :ensure t :config (ac-flyspell-workaround))
+;; (ac-config-default)
+;; (add-to-list 'ac-dictionary-directories "~/.emacs.d/site-lisp/auto-complete/dict")
 
 ;; Stop automatic completion
-(setq ac-auto-start nil)
+;; (setq ac-auto-start nil)
 
 ;; Not to show completion menu automatically
-(define-key ac-mode-map [C-tab] 'auto-complete)
-(define-key ac-completing-map [return] 'nil)
-(setq ac-quick-help-delay 2)
-
+;; (define-key ac-mode-map [C-tab] 'auto-complete)
+;; (define-key ac-completing-map [return] 'nil)
+;; (setq ac-quick-help-delay 2)
 
 
 ;; (setq ac-auto-show-menu nil) ;; no show
