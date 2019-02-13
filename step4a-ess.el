@@ -47,6 +47,9 @@
 (setq ess-use-eldoc nil) ;; disable eldoc because it slows down emacs too much
 
 ;;; companie mode (alternative: auto completion)
+
+(setq ess-use-auto-complete t)
+
 (use-package company :ensure t)
 (setq tab-always-indent 'complete)
 

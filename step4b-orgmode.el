@@ -207,4 +207,7 @@
 ;; https://github.com/jkitchin/org-ref/blob/master/org-ref.org (section latex export)
 (setq org-latex-pdf-process (list "latexmk -shell-escape -bibtex -f -pdf %f"))
 
+;; file that are automatically removed at the end of the compilation
+(setq org-latex-logfiles-extensions (quote ("bbl" "bcf" "blg" "soc" "fdb_latexmk" "fls" "figlist" "idx" "nav" "out" "ptc" "run.xml")))
+
 

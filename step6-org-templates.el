@@ -621,6 +621,13 @@ bibliographystyle:apalike
 # help: https://gking.harvard.edu/files/natnotes2.pdf
 #+LaTeX: \\endgroup
 "))
+;;;; Latex: reference external document
+(add-to-list
+ 'org-structure-template-alist
+ '("Lxr" 
+"#+LaTeX_HEADER:\\usepackage{xr} %% read the .aux of the external file
+#+LaTeX_HEADER: \\externaldocument[prefix-]{mydocWithoutExtension}
+"))
 ;;; R code
 ;;;; R hide code and result
 (add-to-list
