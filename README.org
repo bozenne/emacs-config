@@ -3,11 +3,6 @@
 #+LaTeX_HEADER:\author{Brice Ozeene}
 #+OPTIONS: toc:t
 
-* TODO  :noexport:
-C-c C-a latex
-
-markdown polymode
-
 * Installation
 
 ** basic version
