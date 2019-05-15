@@ -107,6 +107,8 @@
   :commands recentf-open-files)
 (recentf-mode 1)
 
+;;; Search
+
 ;;; Dired
 ;; Collection of useful dired additions [does not seems to work]
 ;; (use-package dired-hacks-utils :ensure t)

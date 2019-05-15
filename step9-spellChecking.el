@@ -66,6 +66,27 @@
 (add-to-list 'ispell-skip-region-alist '("#\\+LANGUAGE:" . "\n"))
 (add-to-list 'ispell-skip-region-alist '("#\\+LATEX_HEADER:" . "\n"))
 (add-to-list 'ispell-skip-region-alist '(":\\(PROPERTIES\\|LOGBOOK\\):" . ":END:"))
-(add-to-list 'ispell-skip-region-alist '("#\\+BEGIN_SRC" . "#\\+END_SRC"))
+
+;; (add-to-list 'ispell-skip-region-alist '("\\$\\$" . "\\$\\$"))
+;; (add-to-list 'ispell-skip-region-alist '("\\\\\(" . "\\\\\)"))
+;; (add-to-list 'ispell-skip-region-alist '("\\\\\[" . "\\\\\]"))
+
+;; Never ispell org source blocks:
+(add-to-list 'ispell-skip-region-alist '("^#\\+begin_src ". "#\\+end_src$"))
+;; Never ispell org source blocks defined in upper case:
+(add-to-list 'ispell-skip-region-alist '("^#\\+BEGIN_SRC ". "#\\+END_SRC$"))
+;; Never ispell org example blocks:
+(add-to-list 'ispell-skip-region-alist '("^#\\+begin_example ". "#\\+end_example$"))
+(add-to-list 'ispell-skip-region-alist '("^#\\+BEGIN_EXAMPLE ". "#\\+END_EXAMPLE$"))
+;; Properties block in org do not need to be ispelled
+(add-to-list 'ispell-skip-region-alist '("\:PROPERTIES\:$" . "\:END\:$"))
+;; Footnoes in org that have http links that are line breaked should not be ispelled:
+(add-to-list 'ispell-skip-region-alist '("^http" . "\\]"))
+;; Verbatim regions in org mode should not be ispelled:
 (add-to-list 'ispell-skip-region-alist '("=" . "="))
-(add-to-list 'ispell-skip-region-alist '("\\[\\[" . "\\]\\]"))
+
+
+;; (eval-after-load "ispell"
+  ;; '(let ((list (car ispell-tex-skip-alists)))
+     ;; (add-to-list 'list '("\\$" . "\\$"))
+     ;; (setcar ispell-tex-skip-alists list)))

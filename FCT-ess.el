@@ -208,3 +208,35 @@
       ))
   )
   )
+
+;;; data manipulation
+(defun brice-col-2-vector ()
+  "Convert a column of data into an R vector ggplot"
+  (interactive)
+  (if (or (eq major-mode 'ess-mode)  (eq major-mode 'inferior-ess-mode))	  
+	  (progn
+		(let (start end nlines)
+		  (setq start(region-beginning))
+		  (setq end (region-end))
+		  (setq nlines (count-words start end))	 ;; number of rows
+		  (goto-char start)
+		  ;; (print nlines)
+		  (insert "c(")
+		  (end-of-line)
+		  (dotimes (i (- nlines 1))
+		  	  (progn
+		  		(insert ",")
+		  		(forward-line)
+		  		(end-of-line)
+		  		)
+		  	)
+		  (insert ")")
+
+		  (goto-char start)
+		  (forward-char)
+		  (genome/ess-edit-indent-call-sophisticatedly)
+		  )
+		)
+	)
+  )
+  

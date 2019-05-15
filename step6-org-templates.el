@@ -50,11 +50,15 @@ bibliographystyle:apalike
 #+OPTIONS:   H:3 num:t 
 #+OPTIONS:   TeX:t LaTeX:t
 
+#+LATEX_HEADER: %
+#+LATEX_HEADER: %%%% specifications %%%%
+#+LATEX_HEADER: %
+
 ** Latex command
-#+LATEX_HEADER: \\RequirePackage{ifthen}
-#+LATEX_HEADER: \\RequirePackage{xifthen}
-#+LATEX_HEADER: \\RequirePackage{xargs}
-#+LATEX_HEADER: \\RequirePackage{xspace}
+#+LATEX_HEADER: \\usepackage{ifthen}
+#+LATEX_HEADER: \\usepackage{xifthen}
+#+LATEX_HEADER: \\usepackage{xargs}
+#+LATEX_HEADER: \\usepackage{xspace}
 
 #+LATEX_HEADER: \\newcommand\\Rlogo{\\textbf{\\textsf{R}}\\xspace} % 
 
@@ -154,11 +158,15 @@ bibliographystyle:apalike
 #+OPTIONS:   H:3 num:t 
 #+OPTIONS:   TeX:t LaTeX:t
 
+#+LATEX_HEADER: %
+#+LATEX_HEADER: %%%% specifications %%%%
+#+LATEX_HEADER: %
+
 ** Latex command
-#+LATEX_HEADER: \\RequirePackage{ifthen}
-#+LATEX_HEADER: \\RequirePackage{xifthen}
-#+LATEX_HEADER: \\RequirePackage{xargs}
-#+LATEX_HEADER: \\RequirePackage{xspace}
+#+LATEX_HEADER: \\usepackage{ifthen}
+#+LATEX_HEADER: \\usepackage{xifthen}
+#+LATEX_HEADER: \\usepackage{xargs}
+#+LATEX_HEADER: \\usepackage{xspace}
 
 #+LATEX_HEADER: \\newcommand\\Rlogo{\\textbf{\\textsf{R}}\\xspace} % 
 
@@ -551,6 +559,7 @@ Je vous prie d'agréer, Madame, Monsieur, mes salutations distinguées.
 ?
 \\end{align*}
 #+END_EXPORT"))
+
 ;;;; Latex: columns
 (add-to-list
  'org-structure-template-alist
@@ -563,10 +572,12 @@ Je vous prie d'agréer, Madame, Monsieur, mes salutations distinguées.
 
 #+LaTeX: \\end{column}
 #+LaTeX: \\end{columns}"))
+
 ;;;; Latex: header
 (add-to-list
  'org-structure-template-alist
  '("Lh" "#+LaTeX_HEADER:?"))
+
 ;;;; Latex: image
 (add-to-list
  'org-structure-template-alist
@@ -579,6 +590,7 @@ Je vous prie d'agréer, Madame, Monsieur, mes salutations distinguées.
 
 "
 )))
+
 ;;;; Latex: caption
 (add-to-list
  'org-structure-template-alist
@@ -593,6 +605,7 @@ Je vous prie d'agréer, Madame, Monsieur, mes salutations distinguées.
 "#+BEGIN_EXPORT latex
 \\[ ? \\]
 #+END_EXPORT"))
+
 ;;;; Latex: bibliography
 (add-to-list
  'org-structure-template-alist
@@ -621,6 +634,7 @@ bibliographystyle:apalike
 # help: https://gking.harvard.edu/files/natnotes2.pdf
 #+LaTeX: \\endgroup
 "))
+
 ;;;; Latex: reference external document
 (add-to-list
  'org-structure-template-alist
@@ -628,6 +642,20 @@ bibliographystyle:apalike
 "#+LaTeX_HEADER:\\usepackage{xr} %% read the .aux of the external file
 #+LaTeX_HEADER: \\externaldocument[prefix-]{mydocWithoutExtension}
 "))
+;;;; Latex: box
+(add-to-list
+ 'org-structure-template-alist
+ '("Lbox" 
+"#+LaTeX_HEADER: \\setbeamercolor{uppercol}{fg=black,bg=blue!35}
+#+LaTeX_HEADER: \\setbeamercolor{lowercol}{fg=black,bg=blue!10}
+\\begin{beamerboxesrounded}[upper=uppercol,lower=lowercol,shadow=true]
+{boxtitle} 
+boxcontent
+\\end{beamerboxesrounded}
+
+"))
+
+
 ;;; R code
 ;;;; R hide code and result
 (add-to-list

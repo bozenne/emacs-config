@@ -34,7 +34,6 @@
 	("" "amsmath") ;; [default orgmode]
 	("" "amsfonts")
 	("" "dsfont")
-	("" "textcomp") ;; [default orgmode]
 	("" "array")
 	;;;; to define macro
 	("" "ifthen")
@@ -175,11 +174,8 @@
              `("jrss-article"
 	       ,(concat
 		 "\\documentclass[article]{statsoc}\n\n"
-		 "[NO-DEFAULT-PACKAGES]" 
-		 "%%%% settings when exporting code %%%% \n\n"
-		 "\\usepackage{listings}\n"
-		 brice-org-latex-common-header-string
-		 "\n"
+		 "[NO-DEFAULT-PACKAGES]"
+		 "[NO-PACKAGES]"
 		 "%%%% packages %%%%%"
 		 )
 	       ("\\section{%s}" . "\\section*{%s}")
