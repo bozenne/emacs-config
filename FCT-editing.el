@@ -95,3 +95,4 @@
    (interactive) 
    (if (bolp) (back-to-indentation) (beginning-of-line))
    )
+

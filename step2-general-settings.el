@@ -68,6 +68,10 @@
 (use-package scroll-restore :ensure t)
 (scroll-restore-mode 1)
 
+;;;; Moving text
+(use-package move-text :ensure t)
+(move-text-default-bindings)
+
 ;;; Moving between open/marked files
 ;;;; Buffers
 

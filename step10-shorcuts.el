@@ -83,14 +83,17 @@
 (global-set-key "\C-ct" 'brice-current-time)
 
 ;; move to the beginning of the line
-(global-set-key (kbd "C-a") 'brice-beginning-of-line)
+(global-set-key (kbd "\C-a") 'brice-beginning-of-line)
 
 ;; iedit mode
-(global-set-key (kbd "C-c o") 'iedit-mode)
+(global-set-key (kbd "\C-c o") 'iedit-mode)
 
 ;; transport regular expression  m()=g(2)
 (global-set-key (kbd "\C-x \C-t") 'transpose-sexps)
 
+;; move text up
+(global-set-key (kbd "\C-U") 'move-text-up)
+(global-set-key (kbd "\C-D") 'move-text-down)
 
 ;;; Snippet
 (define-key yas-minor-mode-map (kbd "C-c k") 'yas-expand)
