@@ -92,8 +92,10 @@
 (global-set-key (kbd "\C-x \C-t") 'transpose-sexps)
 
 ;; move text up
-(global-set-key (kbd "\C-U") 'move-text-up)
-(global-set-key (kbd "\C-D") 'move-text-down)
+;; (global-set-key (kbd "\C-\S-u") 'move-text-up)
+(global-set-key "\C-d" 'delete-char)
+(global-set-key (kbd "C-S-d") 'move-text-down)
+(global-set-key (kbd "C-S-u") 'move-text-up)
 
 ;;; Snippet
 (define-key yas-minor-mode-map (kbd "C-c k") 'yas-expand)
