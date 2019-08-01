@@ -13,8 +13,25 @@
   (interactive "p")
   (if org-beamer-mode
       (org-beamer-export-to-latex)
-      (org-latex-export-to-latex))
+	(org-latex-export-to-latex))
   )
+(defun brice-org-run-latexmk ()
+  "Open eshell and run latexmk on current org file"
+  (interactive)
+  (if (eq major-mode 'org-mode)
+      (let ((filename (concat (file-name-sans-extension (buffer-file-name)) ".tex")))
+		(let ((currentBuffer (buffer-name)))		
+		  (progn (eshell))
+		  (insert (concat "latexmk -pvc " filename " -pdf -view=none"))
+		  (eshell-send-input)
+		  (switch-to-buffer  currentBuffer)
+		  )
+		)(message "works only with files whose major mode is org-mode"))
+  ;; (let (texfile (buffer-file-name))
+  ;; (progn (comint-send-input))
+  ;; )
+  )
+
 ;;; export to R
 (defun brice-extractRchunk ()
   "Extact R code chunks from a org file and put them into a R file"
