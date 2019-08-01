@@ -1,0 +1,12 @@
+(defun brice-run-latexmk ()
+  "Open shell and run latexmk on current file"
+  (interactive)
+  (if (eq major-mode 'latex-mode)
+      (let ((filename (buffer-file-name)))		
+		(progn (eshell))
+		(insert (concat "latexmk -pvc " filename " -pdf"))
+		))
+  ;; (let (texfile (buffer-file-name))
+  ;; (progn (comint-send-input))
+  ;; )
+  )
