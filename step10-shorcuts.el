@@ -91,6 +91,9 @@
 ;; transport regular expression  m()=g(2)
 (global-set-key (kbd "\C-x \C-t") 'transpose-sexps)
 
+;; delete end of line
+(global-set-key (kbd "C-S-e") 'kill-line)
+
 ;; move text up
 ;; (global-set-key (kbd "\C-\S-u") 'move-text-up)
 (global-set-key "\C-d" 'delete-char)
@@ -195,13 +198,13 @@
 			 (define-key org-mode-map (kbd "C-<left>") 'org-table-move-column-left)
 			 (define-key org-mode-map (kbd "C-<right>") 'org-table-move-column-right)
 			 (define-key org-mode-map [(tab)] 'genome/org-tab)	    
-			 (define-key org-mode-map [(meta L)] 'brice-org-open-corresponding-tex)
+			 (define-key org-mode-map [(meta H)] 'brice-org-open-corresponding-tex)
 			 (define-key org-mode-map [(meta j)] 'brice-org-export-to-pdf)
 			 (define-key org-mode-map [(meta J)] 'brice-org-export-and-open-corresponding-pdf)
+			 (define-key org-mode-map [(meta L)] 'brice-org-export-to-latex)
 			 (define-key org-mode-map (kbd "\C-c v") 'brice-org-open-corresponding-preview)
 			 (define-key org-mode-map (kbd "\C-c V") 'brice-org-open-corresponding-pdf)
 			 (define-key org-mode-map [(control tab)] 'hide-subtree)
-			 (define-key org-mode-map [(meta e)] 'hippie-expand)
 			 (define-key org-mode-map [(meta control i)] 'genome/org-indent)
 			 (define-key org-mode-map "_" 'genome/org-smart-underscore)
 			 (define-key org-mode-map (kbd "M-æ") 'genome/ess-switch-to-R)

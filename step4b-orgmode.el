@@ -203,11 +203,15 @@
 (require 'ox-extra)
 (ox-extras-activate '(ignore-headlines))
 
+
 ;;; link with latex
 ;; https://github.com/jkitchin/org-ref/blob/master/org-ref.org (section latex export)
 (setq org-latex-pdf-process (list "latexmk -shell-escape -bibtex -f -pdf %f"))
 
 ;; file that are automatically removed at the end of the compilation
-(setq org-latex-logfiles-extensions (quote ("bbl" "bcf" "blg" "soc" "fdb_latexmk" "fls" "figlist" "idx" "nav" "out" "ptc" "run.xml")))
+;; do not remove .bbl because needed when submitting latex files to arXiv
+;; do not remove .aux  because needed when using the xr package to refer to external tex file
+(setq org-latex-logfiles-extensions (quote ("bcf" "blg" "soc" "fdb_latexmk" "fff" "fls" "figlist" "idx" "lof" "nav" "out" "ptc" "run.xml")))
+
 
 
