@@ -21,7 +21,7 @@
   (if (eq major-mode 'org-mode)
       (let ((filename (concat (file-name-sans-extension (buffer-file-name)) ".tex")))
 		(let ((currentBuffer (buffer-name)))		
-		  (progn (eshell))
+		  (progn (eshell 'N))
 		  (insert (concat "latexmk -pvc " filename " -pdf -view=none"))
 		  (eshell-send-input)
 		  (switch-to-buffer  currentBuffer)

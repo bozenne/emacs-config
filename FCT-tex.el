@@ -4,7 +4,7 @@
   (if (eq major-mode 'latex-mode)
       (let ((filename (buffer-file-name)))		
 		(let ((currentBuffer (buffer-name)))		
-		  (progn (eshell))
+		  (progn (eshell 'N))
 		  (insert (concat "latexmk -pvc " filename " -pdf -view=none"))
 		  (eshell-send-input)
 		  (switch-to-buffer  currentBuffer)
