@@ -19,3 +19,27 @@
 
 ;;; Send email
 (require 'smtpmail)
+(require 'org-mu4e)
+;; (require 'org-mime)			
+
+;; http://pragmaticemacs.com/emacs/use-org-mode-tables-and-structures-in-emails-and-elsewhere/
+;; use org structures and tables in message mode
+(add-hook 'message-mode-hook 'turn-on-orgtbl)
+(add-hook 'message-mode-hook 'turn-on-orgstruct++)
+
+
+;; ;; via orgmode
+;; ;; https://kitchingroup.cheme.cmu.edu/blog/2016/10/29/Sending-html-emails-from-org-mode-with-org-mime/
+;; (defun mu4e-compose-org-mail ()
+;;  (interactive)
+;;  (mu4e-compose-new)
+;;  (org-mu4e-compose-org-mode))
+
+;; (defun htmlize-and-send ()
+;;   "When in an org-mu4e-compose-org-mode message, htmlize and send it."
+;;   (interactive)
+;;   (when (member 'org~mu4e-mime-switch-headers-or-body post-command-hook)
+;;     (org-mime-htmlize) 
+;;     (message-send-and-exit)))
+
+;; (add-hook 'org-ctrl-c-ctrl-c-hook 'htmlize-and-send t)
