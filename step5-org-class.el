@@ -150,6 +150,22 @@
 	       ("\\paragraph{%s}" . "\\paragraph*{%s}")
 	       ("\\subparagraph{%s}" . "\\subparagraph*{%s}")
 	       ))
+;;;; jrssc
+(add-to-list 'org-latex-classes
+	     `("jrssc-journal"
+	       ,(concat "\\documentclass[mathtime]{statsoc}\n\n"
+			"[NO-DEFAULT-PACKAGES]"
+			"%%%% settings when exporting code %%%% \n\n"
+			"\\usepackage{listings}\n"
+			"%%%% packages %%%%%"
+			)
+	       ("\\section{%s}" . "\\section*{%s}")
+	       ("\\subsection{%s}" . "\\subsection*{%s}")
+	       ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+	       ("\\paragraph{%s}" . "\\paragraph*{%s}")
+	       ("\\subparagraph{%s}" . "\\subparagraph*{%s}")
+	       ))
+
 ;;;; Rnew-article
 (add-to-list 'org-latex-classes
 	     `("Rnews-article"

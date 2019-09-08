@@ -193,7 +193,6 @@ bibliographystyle:apalike
 ** Display 
 #+LATEX_HEADER: \\RequirePackage{colortbl} % arrayrulecolor to mix colors
 #+LATEX_HEADER: \\RequirePackage{setspace} % to modify the space between lines - incompatible with footnote in beamer
-#+LaTeX_HEADER:\\usepackage{authblk} % enable several affiliations (clash with beamer)
 #+LaTeX_HEADER:\\renewcommand{\\baselinestretch}{1.1}
 #+LATEX_HEADER:\\geometry{top=1cm}
 
@@ -203,6 +202,7 @@ bibliographystyle:apalike
 #+LATEX_HEADER: \\RequirePackage{caption} % newlines in graphics
 "
 )))
+;;;; Referee report
 ;;;; Latex math
 (add-to-list
  'org-structure-template-alist
@@ -369,7 +369,6 @@ Je vous prie d'agréer, Madame, Monsieur, mes salutations distinguées.
 #+LaTeX_HEADER: %
 #+LaTeX_HEADER: %%%% additional packages %%%%
 #+LaTeX_HEADER: %
-#+LaTeX_HEADER:\\usepackage{authblk}
 
 ** latex command
 #+LaTeX_HEADER: %
@@ -654,6 +653,20 @@ boxcontent
 \\end{beamerboxesrounded}
 
 "))
+
+;;;; Latex: affiliations
+(add-to-list
+ 'org-structure-template-alist
+ '("affiliations" 
+"#+AUTHOR:
+#+LATEX_HEADER:\\usepackage{authblk} % enable several affiliations (clash with beamer)
+#+LaTeX_HEADER:\\author[1,2]{Author A}
+#+LaTeX_HEADER:\\author[1]{Author B}
+#+LaTeX_HEADER:\\author[2]{Author C}
+#+LaTeX_HEADER:\\affil[1]{Affiliation A}
+#+LaTeX_HEADER:\\affil[2]{Affiliation B}
+"))
+
 
 
 ;;; R code

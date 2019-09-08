@@ -33,6 +33,7 @@ Copy the following code at the begining of the .emacs file:
 (load-file (expand-file-name "FCT-editing.el" path-emacs-config))
 (load-file (expand-file-name "FCT-file-management.el" path-emacs-config))
 (load-file (expand-file-name "FCT-ess.el" path-emacs-config))
+(load-file (expand-file-name "FCT-tex.el" path-emacs-config))
 (load-file (expand-file-name "FCT-python.el" path-emacs-config))
 (load-file (expand-file-name "FCT-org.el" path-emacs-config))
 (load-file (expand-file-name "FCT-switch-to-OS-explorer.el" path-emacs-config))

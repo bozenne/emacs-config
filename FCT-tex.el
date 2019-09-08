@@ -1,0 +1,17 @@
+(defun brice-tex-run-latexmk ()
+  "Open eshell and run latexmk on current latex file"
+  (interactive)
+  (if (eq major-mode 'latex-mode)
+      (let ((filename (buffer-file-name)))		
+		(let ((currentBuffer (buffer-name)))		
+		  (progn (eshell 'N))
+		  (insert (concat "latexmk -pvc " filename " -pdf -view=none"))
+		  (eshell-send-input)
+		  (switch-to-buffer  currentBuffer)
+		  )
+		)(message "works only with files whose major mode is latex-mode"))
+  ;; (let (texfile (buffer-file-name))
+  ;; (progn (comint-send-input))
+  ;; )
+  )
+

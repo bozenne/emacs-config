@@ -1,4 +1,4 @@
-;;; * brice-dired-display-side
+;;; brice-dired-display-side
 ;; https://emacs.stackexchange.com/questions/15117/how-to-use-o-to-open-from-dired-ibuffer-into-another-frame
 (defun brice-dired-display-side ()
 "Doc : display the file indicated in dired in another window.
@@ -12,7 +12,7 @@
       (brice-display-side buffer nil)
     ))
 
-;;; * brice-display-side [necessary for brice-dired-display-side]
+;;; brice-display-side [necessary for brice-dired-display-side]
 (defun brice-display-side (buffer alist)
   (let (
 	(window
@@ -38,3 +38,4 @@
 ;;     (window--display-buffer buffer window 'window alist display-buffer-mark-dedicated)
 ;;     window))
   
+
