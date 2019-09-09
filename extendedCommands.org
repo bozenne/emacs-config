@@ -41,6 +41,9 @@
 | C-h k       | describe-key        | find the documentation of a function from its key binding |
 | C-h f       | describe-function   | find the documentation of a function form its name        |
 
+** Path variable
+M-x customize-variable RET exec-path RET
+
 * Emacs session
 
 | Key binding         | name of the command        | effect                              |
@@ -292,13 +295,15 @@ More key bindings at: https://www.gnu.org/software/emacs/manual/html_node/emacs/
 |                | org-sort                                    | sort entries (e.g. alphabetic order)                            |
 
 ** Exporting to latex/pdf
-| Key binding | name of the command                         | effect                                   |
-|-------------+---------------------------------------------+------------------------------------------|
-| M-L         | brice-org-open-corresponding-tex            | open corresponding latex file            |
-| M-j         | brice-org-export-to-pdf                     | export to pdf                            |
-| M-J         | brice-org-export-and-open-corresponding-pdf | export and open corresponding pdf file   |
-| C-c v       | brice-org-open-corresponding-pdf            | open corresponding pdf                   |
-|             |                                             |                                          |
+| Key binding | name of the command                         | effect                                     |
+|-------------+---------------------------------------------+--------------------------------------------|
+| M-L         | brice-org-run-latexmk                       | launch latexmk that compiles latex files   |
+| M-l         | brice-org-export-to-latex                   | export to latex                            |
+| M-j         | brice-org-org-open-corresponding-tex        | open corresponding tex file (for debuging) |
+| M-j         | brice-org-export-to-pdf                     | export to latex and compile (within emacs) |
+| M-J         | brice-org-export-and-open-corresponding-pdf | export and open corresponding pdf file     |
+| C-c v       | brice-org-open-corresponding-pdf            | open corresponding pdf                     |
+| C-c C-e     | org-export-dispatch                         | menu for choosing the export               |
 ** Templates
 
 | Key binding | name of the command | effect                                                       |
