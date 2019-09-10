@@ -69,7 +69,7 @@
 (global-set-key "\M-Q" '(lambda () (interactive) (mark-paragraph) (fill-region-as-paragraph (region-beginning) (region-end))))
 
 ;; marking text
-(global-set-key "\M-l" 'genome/mark-line)
+(global-set-key "\M-." 'genome/mark-line)
 (global-set-key (kbd "C-M-l") 'brice-copy-line)
 
 ;; go to the end of a function
@@ -201,7 +201,8 @@
 			 (define-key org-mode-map [(meta H)] 'brice-org-open-corresponding-tex)
 			 (define-key org-mode-map [(meta j)] 'brice-org-export-to-pdf)
 			 (define-key org-mode-map [(meta J)] 'brice-org-export-and-open-corresponding-pdf)
-			 (define-key org-mode-map [(meta L)] 'brice-org-export-to-latex)
+			 (define-key org-mode-map [(meta L)] 'brice-org-run-latexmk)
+			 (define-key org-mode-map [(meta l)] 'brice-org-export-to-latex)
 			 (define-key org-mode-map (kbd "\C-c v") 'brice-org-open-corresponding-preview)
 			 (define-key org-mode-map (kbd "\C-c V") 'brice-org-open-corresponding-pdf)
 			 (define-key org-mode-map [(control tab)] 'hide-subtree)

@@ -558,7 +558,15 @@ Je vous prie d'agréer, Madame, Monsieur, mes salutations distinguées.
 ?
 \\end{align*}
 #+END_EXPORT"))
-
+;;;; Latex: align
+(add-to-list
+ 'org-structure-template-alist
+ '("litem" 
+"#+BEGIN_EXPORT latex
+\\begin{itemize}
+\\item ?
+\\end{itemize}
+#+END_EXPORT"))
 ;;;; Latex: columns
 (add-to-list
  'org-structure-template-alist
