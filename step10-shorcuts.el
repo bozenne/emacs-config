@@ -170,6 +170,7 @@
 			(define-key c++-mode-map (kbd "\C-c s") 'brice-ess-source-rcpp)
 			(define-key c++-mode-map (kbd "M-æ") 'genome/ess-switch-to-R)
 			(define-key c++-mode-map (kbd "M-q") 'indent-region)
+			(define-key c++-mode-map (kbd "C-c M-p") 'brice-ess-packageSource-r)	    
 			))
 
 ;;; Python
