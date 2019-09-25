@@ -4,7 +4,7 @@
 (defun brice-ess-packageSource-r ()
   "Source a package using butils.base"
   (interactive)
-  (if (or (eq major-mode 'ess-mode)  (eq major-mode 'inferior-ess-mode))
+  (if (or (eq major-mode 'ess-mode)  (eq major-mode 'c++-mode))
 	  ;; (setq mylist (list "butils.base" "butils" "BuyseTest" "lavaSearch2" "riskRegression")
 	  (let ((mylist (list "butils.base" "butils" "BuyseTest" "lavaSearch2" "riskRegression")))
 		(let ((x (read-string "Enter a the name of the package:" nil nil mylist)))			  
