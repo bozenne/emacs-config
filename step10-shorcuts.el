@@ -202,7 +202,7 @@
 			 (define-key org-mode-map [(meta j)] 'brice-org-export-to-pdf)
 			 (define-key org-mode-map [(meta J)] 'brice-org-export-and-open-corresponding-pdf)
 			 (define-key org-mode-map [(meta L)] 'brice-org-run-latexmk)
-			 (define-key org-mode-map [(meta l)] 'brice-org-export-to-latex)
+			 (define-key org-mode-map [(meta l)] 'brice-org-save-and-export-to-latex)
 			 (define-key org-mode-map (kbd "\C-c v") 'brice-org-open-corresponding-preview)
 			 (define-key org-mode-map (kbd "\C-c V") 'brice-org-open-corresponding-pdf)
 			 (define-key org-mode-map [(control tab)] 'hide-subtree)

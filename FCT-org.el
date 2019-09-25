@@ -15,6 +15,16 @@
       (org-beamer-export-to-latex)
 	(org-latex-export-to-latex))
   )
+
+;;; export to latex
+(defun brice-org-save-and-export-to-latex (&optional arg)
+  "Save and export to latex the org document"
+  (interactive "p")
+  (save-current-buffer)
+  (brice-org-export-to-latex)
+  )
+
+  
 (defun brice-org-run-latexmk ()
   "Open eshell and run latexmk on current org file"
   (interactive)
