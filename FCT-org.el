@@ -95,11 +95,11 @@
   (TeX-view)
 )
 
-;;; miscelaneous
-(defun brice-org-remove-headlines (backend)
-  "Remove headlines with :no_title: tag.
-   From : https://emacs.stackexchange.com/questions/9492/is-it-possible-to-export-content-of-subtrees-without-their-headings"
-  (org-map-entries (lambda () (delete-region (point-at-bol) (point-at-eol)))
-                   "notitle"))
+;; ;;; miscelaneous
+;; (defun brice-org-remove-headlines (backend)
+;;   "Remove headlines with :no_title: tag.
+;;    From : https://emacs.stackexchange.com/questions/9492/is-it-possible-to-export-content-of-subtrees-without-their-headings"
+;;   (org-map-entries (lambda () (delete-region (point-at-bol) (point-at-eol)))
+;;                    "no_title"))
 
-(add-hook 'org-export-before-processing-hook #'brice-org-remove-headlines)
+;; (add-hook 'org-export-before-processing-hook #'brice-org-remove-headlines)
