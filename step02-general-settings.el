@@ -111,14 +111,6 @@
   :commands recentf-open-files)
 (recentf-mode 1)
 
-;;; Search
-(global-set-key "\C-cy" '(lambda ()
-                           (interactive)
-                           (popup-menu 'yank-menu)))
-
-(add-to-list 'load-path "~/packages/browser-kill-ring.el")
-(require 'browse-kill-ring)
-
 ;;; Dired
 ;; Collection of useful dired additions [does not seems to work]
 ;; (use-package dired-hacks-utils :ensure t)
