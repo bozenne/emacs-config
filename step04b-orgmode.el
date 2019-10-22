@@ -138,6 +138,12 @@
       org-stuck-projects '("+prj/DONE"
                            ("TODO" "TASK") ()))
 
+
+;; hide section titles
+;; https://emacs.stackexchange.com/questions/9492/is-it-possible-to-export-content-of-subtrees-without-their-headings
+(require 'ox-extra) ;; included in orgmode do not put use-package
+(ox-extras-activate '(ignore-headlines))
+
 ;;; manage tasks
 
 (require 'org-secretary)

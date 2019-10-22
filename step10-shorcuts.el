@@ -61,6 +61,12 @@
 (global-set-key "\M-y" 'genome/yank-or-pop)
 (global-set-key "\M-r" 'copy-region-as-kill)
 
+;; cycle
+(global-set-key "\C-cy" '(lambda ()
+                           (interactive)
+                           (popup-menu 'yank-menu)))
+
+
 ;; major-mode specific indentation
 (global-set-key "\M-q" 'genome/indent-paragraph)
 ;;(define-key R-minor-mode-map "\M-q" 'eg/indent-paragraph)
