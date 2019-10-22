@@ -44,6 +44,12 @@
 ** Path variable
 M-x customize-variable RET exec-path RET
 
+** Display
+| Key binding | name of the command | effect             |
+|-------------+---------------------+--------------------|
+| C-x C-+     | text-scale-adjust   | increase font size |
+| C-x C--     | text-scale-adjust   | decrease font size |
+
 * Emacs session
 
 | Key binding         | name of the command        | effect                              |

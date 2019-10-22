@@ -9,7 +9,7 @@
 	  (let ((mylist (list "butils.base" "butils" "BuyseTest" "lavaSearch2" "riskRegression")))
 		(let ((x (read-string "Enter a the name of the package:" nil nil mylist)))			  
 		  ;; (let ((x (read-string "Enter a the name of the package:" "butils.base")))			  
-		  (ess-eval-linewise (concat "butils.base:::sourcePackage(\"" x "\", c.code = TRUE)"))
+		  (ess-eval-linewise (concat "butils.base:::sourcePackage(\"" x "\", c.code = TRUE, trace = TRUE)"))
 		  )
 		)
 	((message "works only with .R files or R console)"))
@@ -158,6 +158,33 @@
       ((message "works only with .R files or R terminals)"))
     )
   )
+
+(defun brice-ess-script-object ()
+  "Convert R object to into text for a script"
+  (interactive)
+  (if (or (eq major-mode 'ess-mode)  (eq major-mode 'inferior-ess-mode))
+      (if (region-active-p)
+	  (let ((x (buffer-substring (region-beginning) (region-end))))
+	    (ess-eval-linewise (concat "butils::object2script(" x ", digit = 8)")))
+   	   (let ((x (read-string "Enter a the name of the object:")))
+	     (ess-eval-linewise (concat "butils::object2script(" x ", digit = 8)")))
+	   )
+      ((message "works only with .R files or R terminals)"))
+	  ))
+
+
+(defun brice-ess-str-object ()
+  "Display the structure of an R object"
+  (interactive)
+  (if (or (eq major-mode 'ess-mode)  (eq major-mode 'inferior-ess-mode))
+      (if (region-active-p)
+	  (let ((x (buffer-substring (region-beginning) (region-end))))
+	    (ess-eval-linewise (concat "str(" x ")")))
+   	   (let ((x (read-string "Enter a the name of the object:")))
+	     (ess-eval-linewise (concat "str(" x ")")))
+	   )
+      ((message "works only with .R files or R terminals)"))
+    ))
 
 ;;; shortcut
 (defun brice-ess-ggplot ()

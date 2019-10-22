@@ -46,6 +46,21 @@
 ;;; eldoc (display arguments in the minibuffer)
 (setq ess-use-eldoc nil) ;; disable eldoc because it slows down emacs too much
 
+;;; previous command
+;; recommanded in https://ess.r-project.org/Manual/ess.html
+ (eval-after-load "comint"
+   '(progn
+      (define-key comint-mode-map [up]
+        'comint-previous-matching-input-from-input)
+      (define-key comint-mode-map [down]
+        'comint-next-matching-input-from-input)
+
+      ;; also recommended for ESS use --
+      (setq comint-move-point-for-output 'others)
+      ;; somewhat extreme, almost disabling writing in *R*, *shell* buffers above prompt:
+      (setq comint-scroll-to-bottom-on-input 'this)
+      ))
+
 ;;; companie mode (alternative: auto completion)
 
 (setq ess-use-auto-complete t)
