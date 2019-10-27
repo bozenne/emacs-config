@@ -236,6 +236,21 @@
   )
   )
 
+
+(defun brice-setwd-currentBuffer ()
+  "Set working directory to the path to the current buffer"
+  (interactive)
+  (if (or (eq major-mode 'ess-mode)  (eq major-mode 'inferior-ess-mode))
+	  (progn 
+		(let (try path)
+		  (setq try (file-name-directory buffer-file-name))
+		  (setq path (read-string "path:" try))
+		  (ess-eval-linewise (concat "setwd(\"" path "\")"))
+		  ))
+	((message "works only with .R files or R terminals)"))
+    )
+  )
+
 ;;; data manipulation
 (defun brice-col-2-vector ()
   "Convert a column of data into an R vector ggplot"

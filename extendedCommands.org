@@ -142,6 +142,7 @@ M-x customize-variable RET exec-path RET
 | Q           | dired-do-find-regexp-and-replace   | search and replace in all marked files      |
 |             | find-grep-dired                    | search in files                             |
 |             | find-name-dired                    | search file by filename                     |
+|             | rgrep                              | search in files in all subdirectories       |
 | e           | dired-sort-extension               | sort files by extension                     |
 | C-c n       | dired-sort-name                    | sort files by name                          |
 | C-c t       | dired-sort-time                    | sort files by time                          |
