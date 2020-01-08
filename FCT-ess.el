@@ -91,7 +91,7 @@
   "Set revTraceback"
   (interactive)
   (if (or (eq major-mode 'ess-mode)  (eq major-mode 'inferior-ess-mode))
-      (ess-eval-linewise "options(error = function()revTraceback(max.lines = 5))")
+      (ess-eval-linewise "options(error = function(){butils.base::revTraceback(max.lines = 5)})")
       ((message "works only with .R files or R terminals)"))
   )
 )

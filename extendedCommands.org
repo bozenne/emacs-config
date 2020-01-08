@@ -345,6 +345,11 @@ More key bindings at: https://www.gnu.org/software/emacs/manual/html_node/emacs/
 | C-c C-v s   | org-babel-execute-subtree          | run all code blocks in the header                   |
 | C-c C-v c   | genome/org-babel-clear-all-results | remove the results of all code blocks in the buffer |
 
+** Bibtex
+| Key binding | name of the command           | effect                         |
+|-------------+-------------------------------+--------------------------------|
+| C-c ]       | org-ref-helm-insert-cite-link | menu to look for .bib citation |
+
 * Latex 
 | Key binding | name of the command                  | effect                 |
 |-------------+--------------------------------------+------------------------|

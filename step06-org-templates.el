@@ -297,7 +297,7 @@ bibliographystyle:apalike
 
 #+LATEX_HEADER: \\newcommandx\\ddpartial[3][1=,2=,3=]{
 #+LATEX_HEADER: 	\\ifthenelse{\\isempty{#3}}{
-#+LATEX_HEADER: 		\\frac{\\partial^{2} #1}{\\left( \\partial #2\\right)^2}
+#+LATEX_HEADER: 		\\frac{\\partial^{2} #1}{\\partial #2^2}
 #+LATEX_HEADER: 	}{
 #+LATEX_HEADER: 	\\frac{\\partial^2 #1}{\\partial #2\\partial #3}
 #+LATEX_HEADER: }

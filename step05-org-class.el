@@ -185,11 +185,11 @@
 	       ("\\subparagraph{%s}" . "\\subparagraph*{%s}")
 	       ))
 
-;;;; jrss article
+;;;; jss article
 (add-to-list 'org-latex-classes
-             `("jrss-article"
+             `("jss-article"
 	       ,(concat
-		 "\\documentclass[article]{statsoc}\n\n"
+		 "\\documentclass[article]{jss}\n\n"
 		 "[NO-DEFAULT-PACKAGES]"
 		 "[NO-PACKAGES]"
 		 "%%%% packages %%%%%"
