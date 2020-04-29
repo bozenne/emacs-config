@@ -30,10 +30,6 @@
 (require 'use-package)
 (setq use-package-verbose t)		
 
-;;; load package to avoid error when using functions/defining keys
-;; error: Symbol's value as variable is void: c++-mode-map
-(require 'cc-mode)
-
 ;;; load all list file from a directory
 (defun load-directory (dir)
   "from https://www.emacswiki.org/emacs/LoadingLispFiles"

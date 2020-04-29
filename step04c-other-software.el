@@ -7,7 +7,7 @@
 (setq gscholar-bibtex-default-source "Google Scholar")
 
 ;;; C++
-(use-package cc-mode :ensure t)
+(use-package cc-mode)
 
 ;; make the .h in c++ instead of c mode
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
