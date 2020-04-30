@@ -113,3 +113,14 @@
 ;;                    "no_title"))
 
 ;; (add-hook 'org-export-before-processing-hook #'brice-org-remove-headlines)
+
+;;; search only in math envir
+(defun latex-isearch-in-math ()
+  "From         : https://emacs.stackexchange.com/questions/56102/how-to-perform-incremental-search-inside-math-environments-in-tex-latex-document
+   Documentation: Call `isearch-forward' with `isearch-filter-predicate' set to filter out matches outside LaTeX math environments."
+  (interactive)
+  (let ((isearch-filter-predicate
+         (lambda (BEG END)
+           (save-excursion (save-match-data (goto-char BEG) (texmathp)))))
+        (case-fold-search nil))
+    (funcall 'isearch-forward)))
