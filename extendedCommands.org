@@ -421,6 +421,7 @@ Documentation: http://jr0cket.co.uk/2012/12/driving-git-with-emacs-pure-magic-wi
 | C-c c       | brice-ess-clone                             | duplicate code next line (gg <- gg +)                        |
 |             | ess-dump-object-into-edit-buffer            | open a new buffer and put the definition of the object in it |
 | c-c j       | brice-jump-to-function                      | jump to the function definition                              |
+| C-c C-e C-r | inferior-ess-r-reload-hook                  | restart R                                                    |
 
 * Email
 | Key binding | name of the command | effect                         |
