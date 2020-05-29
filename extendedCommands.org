@@ -421,6 +421,8 @@ Documentation: http://jr0cket.co.uk/2012/12/driving-git-with-emacs-pure-magic-wi
 | C-c c       | brice-ess-clone                             | duplicate code next line (gg <- gg +)                        |
 |             | ess-dump-object-into-edit-buffer            | open a new buffer and put the definition of the object in it |
 | c-c j       | brice-jump-to-function                      | jump to the function definition                              |
+| M-C-a       | beginning-of-defun                          | jump to the begining of the function definition              |
+| M-C-z       | end-of-defun                                | jump to the end of the function definition                   |
 
 * Email
 | Key binding | name of the command | effect                         |
