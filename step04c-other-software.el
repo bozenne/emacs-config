@@ -36,6 +36,9 @@
 (use-package latex)
 (use-package tex-site :ensure auctex)
 
+;;;; folding
+(add-hook 'TeX-mode-hook (lambda () (TeX-fold-mode 1)))
+
 ;;;; enable automatic latex compilation when saving
 (add-hook 'LaTeX-mode-hook
 	  '(lambda ()

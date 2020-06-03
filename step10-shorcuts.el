@@ -226,7 +226,8 @@
 ;;; Auctex
 (add-hook 'LaTeX-mode-hook
 		  '(lambda ()
-			 (define-key LaTeX-mode-map "\M-j" 'genome/latex-save-and-run)))
+			 (define-key LaTeX-mode-map "\M-j" 'genome/latex-save-and-run)
+			 (define-key LaTeX-mode-map [(meta L)] 'brice-tex-run-latexmk)))
 
 
 ;;; magit

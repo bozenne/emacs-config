@@ -661,7 +661,25 @@ boxcontent
 \\end{beamerboxesrounded}
 
 "))
+;;;; Latex: dag
+(add-to-list
+ 'org-structure-template-alist
+ '("Ldag" 
+"#+LaTeX_HEADER: \\RequirePackage{tikz}
+#+BEGIN_EXPORT latex
+\\begin{tikzpicture}
+    \\node[draw=none,fill=none] (W) at (-2,1) {W};
+    \\node[draw=none,fill=none] (X) at (-1,0) {X};
+    \\node[draw=none,fill=none] (Z) at (0,1) {Z};
+    \\node[draw=none,fill=none] (Y) at (1,0) {Y};
+    \\node[draw=none,fill=none] (V) at (2,1) {V};
 
+    \\path [->,very thick](W) edge node[left] {} (X);
+    \\path [->,very thick](Z) edge node[left] {} (X);
+    \\path [->,very thick](Z) edge node[left] {} (Y);
+    \\path [->,very thick](V) edge node[left] {} (Y);
+\\end{tikzpicture}
+"))
 ;;;; Latex: affiliations
 (add-to-list
  'org-structure-template-alist
