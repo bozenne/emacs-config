@@ -8,8 +8,6 @@
 	;; ("normalem" "ulem") ;; [default orgmode but clash with the changes packages] 
 	;;;; color
 	("" "color")
-	;;;; lists
-	("" "enumerate")
 	;;;; figures
 	("" "graphicx") ;; [default orgmode]
 	("" "grffile") ;; [default orgmode]

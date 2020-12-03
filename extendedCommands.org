@@ -181,11 +181,13 @@ More key bindings at: https://www.gnu.org/software/emacs/refcards/pdf/dired-ref.
 | window    | M-down   | M-up    |        |          |                | M-o          |
 sexp: balanced group of parentheses.
 
-| Key binding | name of the command | effect               |
-|-------------+---------------------+----------------------|
-| M-g         | goto-line           | go to line           |
-| C-o         | open-line           | add empty line below |
-| C-x C-o     |                     | remove line below    |
+| Key binding | name of the command | effect                            |
+|-------------+---------------------+-----------------------------------|
+| M-g         | goto-line           | go to line                        |
+| C-o         | open-line           | add empty line below              |
+| C-x C-o     |                     | remove line below                 |
+| C-x C-x     |                     | move back to anchor and highlight |
+| C-u C-<SPC> |                     | move back to anchor               |
 
 ** Highlight
 
@@ -424,6 +426,7 @@ Documentation: http://jr0cket.co.uk/2012/12/driving-git-with-emacs-pure-magic-wi
 | M-C-a       | beginning-of-defun                          | jump to the begining of the function definition              |
 | M-C-z       | end-of-defun                                | jump to the end of the function definition                   |
 | C-c C-e C-r | inferior-ess-r-reload-hook                  | restart R                                                    |
+| C-c C-p     | comint-previous-prompt                      | move to last prompt (in the R console)                       |
 
 * Email
 | Key binding | name of the command | effect                         |
@@ -458,3 +461,14 @@ documentation: https://www.masteringemacs.org/article/keeping-secrets-in-emacs-g
 |-------------+------------------------+-----------------------------------------------------------------------|
 |             | brice-photo-raw-to-png | After opening the shell and being in the appropriate folde            |
 |             |                        | Generate a command to convert all files to another format using ufraw |
+
+* ccache
+https://www.cygwin.com/install.html
+
+install on windows (https://github.com/nagayasu-shinya/ccache-win64)
+$ wget https://github.com/ccache/ccache/releases/download/v3.7.2/ccache-3.7.2.tar.gz
+$ tar zxvf ccache-3.7.2.tar.gz
+$ cd ccache-3.7.2/
+$ ./configure
+$ make
+$ make install

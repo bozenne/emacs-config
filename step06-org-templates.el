@@ -9,12 +9,24 @@
 "#+TITLE:
 #+Author: " user-full-name
 "\n # #+LaTeX_HEADER: \\institute{
-# #+LaTeX_HEADER: \\textsuperscript{1} Neurobiology Research Unit, University Hospital of Copenhagen, Rigshospitalet.
-# #+LaTeX_HEADER: \\and \\textsuperscript{2} Section of Biostatistics, Department of Public Health, University of Copenhagen.
+# #+LaTeX_HEADER: \\textsuperscript{1} Section of Biostatistics, Department of Public Health, University of Copenhagen
+# #+LaTeX_HEADER: \\and \\textsuperscript{2} Neurobiology Research Unit, University Hospital of Copenhagen, Rigshospitalet.
 # #+LaTeX_HEADER: }
 #+DATE: 
 #+EMAIL:" user-mail-address
 "\n\n
+
+# # add title in the footpage
+# #+LaTeX: \\addtocounter{framenumber}{-1}
+# #+LaTeX: \\setbeamertemplate{footline}{
+# #+LaTeX: \\vspace{-0.3cm}
+# #+LaTeX:   \\noindent\\makebox[\\textwidth][s]{
+# #+LaTeX:   \\hspace{5mm} \\usebeamerfont{title in head/foot}\\insertshorttitle \hfill
+# #+LaTeX:   \\usebeamercolor[fg]{structure} {\\small \\insertframenumber{} / \\inserttotalframenumber} \\hspace{5mm} 
+# #+LaTeX:   }
+# #+LaTeX:  \\vspace{0.3cm}
+# #+LaTeX: }
+
 * Introduction\n
 ** Part I\n
 *** First slide\n
@@ -85,6 +97,11 @@ bibliographystyle:apalike
 ** Display 
 #+LATEX_HEADER: \\RequirePackage{colortbl} % arrayrulecolor to mix colors
 
+# ## Change font
+# https://tex.stackexchange.com/questions/25249/how-do-i-use-a-particular-font-for-a-small-section-of-text-in-my-document
+#+LaTeX_HEADER: \\newenvironment{comment}{\\small \\color{gray}\\fontfamily{lmtt}\selectfont}{\\par}
+#+LaTeX_HEADER: \\newenvironment{activity}{\\color{orange}\\fontfamily{qzc}\\selectfont}{\\par}
+
 # ## valid and cross symbols
 #+LaTeX_HEADER: \\RequirePackage{pifont}
 #+LaTeX_HEADER: \\RequirePackage{relsize}
@@ -105,12 +122,12 @@ bibliographystyle:apalike
 #+LaTeX_HEADER: }
 
 ** Lists
-# # fix bug with beamer when specifying options for itemize
-# #  https://tex.stackexchange.com/questions/24371/does-enumitem-conflict-with-beamer-for-lists/24491#24491
-# #+LaTeX_HEADER: \\usepackage{enumitem}
-# #+LaTeX_HEADER: \\setitemize{label=\\usebeamerfont*{itemize item}%
-# #+LaTeX_HEADER: \\usebeamercolor[fg]{itemize item}
-# #+LaTeX_HEADER: \\usebeamertemplate{itemize item}}
+# fix bug with beamer when specifying options for itemize
+#  https://tex.stackexchange.com/questions/24371/does-enumitem-conflict-with-beamer-for-lists/24491#24491
+#+LaTeX_HEADER: \\usepackage{enumitem}
+#+LaTeX_HEADER: \\setitemize{label=\\usebeamerfont*{itemize item}%
+#+LaTeX_HEADER: \\usebeamercolor[fg]{itemize item}
+#+LaTeX_HEADER: \\usebeamertemplate{itemize item}}
 
 ** Image
 #+LATEX_HEADER: \\RequirePackage{epstopdf} % to be able to convert .eps to .pdf image files
@@ -196,13 +213,38 @@ bibliographystyle:apalike
 #+LaTeX_HEADER:\\renewcommand{\\baselinestretch}{1.1}
 #+LATEX_HEADER:\\geometry{top=1cm}
 
+# ## Change font
+# https://tex.stackexchange.com/questions/25249/how-do-i-use-a-particular-font-for-a-small-section-of-text-in-my-document
+#+LaTeX_HEADER: \\newenvironment{comment}{\\small \\color{gray}\\fontfamily{lmtt}\selectfont}{\\par}
+#+LaTeX_HEADER: \\newenvironment{activity}{\\color{orange}\\fontfamily{qzc}\\selectfont}{\\par}
+
 ** Image
 #+LATEX_HEADER: \\RequirePackage{epstopdf} % to be able to convert .eps to .pdf image files
 #+LATEX_HEADER: \\RequirePackage{capt-of} % 
 #+LATEX_HEADER: \\RequirePackage{caption} % newlines in graphics
+
+** List
+#+LATEX_HEADER: \\RequirePackage{enumitem} % better than enumerate
 "
 )))
-;;;; Referee report
+;;;; Latex appendix
+(add-to-list
+ 'org-structure-template-alist
+ `("LdAppendix" ,(concat
+"\\appendix
+\\titleformat{\\section}
+{\\normalfont\\Large\\bfseries}{Appendix~\\thesection}{1em}{}
+
+\\renewcommand{\\thefigure}{A\\arabic{figure}}
+\\renewcommand{\\thetable}{A\\arabic{table}}
+\\renewcommand{\\theequation}{A\\arabic{equation}}
+
+\\setcounter{figure}{0}    
+\\setcounter{table}{0}    
+\\setcounter{equation}{0}    
+"
+		  ))
+ )
 ;;;; Latex math
 (add-to-list
  'org-structure-template-alist

@@ -9,9 +9,9 @@
 
 Download all files and put them in a directory called *emacs-config*.
 
-Place this directory in the folder containing the *.emacs* file (=~/.= when doing C-x C-f).
+Place this directory in the folder containing the =.emacs= file (=~/.= when doing C-x C-f).
 
-Copy the following code at the begining of the .emacs file:
+Copy the following code at the begining of the =.emacs= file:
 #+BEGIN_SRC emacs-lisp :export code :eval ever
 ;;; load automatic config
 (setq user-full-name "my name")
@@ -48,6 +48,39 @@ In the second line, check that ="~/emacs-config"= is where you have put emacs-co
 Install the packages that are not automatically downloaded
 when launching emacs (e.g. using =list-packages=).
 
+** Windows user
+
+You may need to add to the =.emacs= file something like:
+#+BEGIN_SRC emacs-lisp :export code :eval ever
+;;; modification for windows
+;;;; path to external dependencies
+(setq explicit-shell-file-name "c:/cygwin64/bin/bash")
+(setq TeX-shell "c:/cygwin64/bin/bash")
+(setq org-export-allow-bind-keywords t)
+
+(setq TeX-view-program-list '(("SumatraPDF" "C://SumatraPDF//SumatraPDF.exe %o")))
+(setq TeX-view-program-selection '((output-pdf "SumatraPDF")
+  				   (output-dvi "Yap")))
+(put 'overwrite-mode 'disabled nil)
+
+;;;; update path variable
+(setenv "PATH"
+	(concat
+	 "C:\\Program Files\\R\\R-4.0.2\\bin\\x64" ";"
+	 "C:\\SumatraPDF" ";"
+	 "C:\\Program Files (x86)\\Aspell\\bin\\" ";"
+	 "C:\\unison" ";"
+	 "C:\\Program Files\\Putty" ";"
+	 "C:\\Program Files\\plink" ";"
+	 "C:\\Program Files\\MiKTeX 2.9\\miktex\\bin\\x64\\" ";"
+	 (getenv "PATH")
+	 )
+	)
+(setq-default inferior-R-program-name "C:\\Program Files\\R\\R-4.0.2\\bin\\Rterm.exe")
+(setq inferior-R-program-name "C:\\Program Files\\R\\R-4.0.2\\bin\\R")
+(add-hook 'ess-R-post-run-hook 'ess-execute-screen-options)
+#+END_SRC
+
 ** [Optional] Customization
 
 Set the font size to 120 by adding the following line
@@ -62,6 +95,12 @@ default emacs startup screen:
 ;;; File at startup
 (setq inhibit-startup-screen t) ;; dismiss startup screen
 (find-file "~/todo.org")
+#+END_SRC
+
+Remove the tool bar:
+#+BEGIN_SRC emacs-lisp :export code :eval ever
+;;; remove tool bar
+(tool-bar-mode -1)
 #+END_SRC
 
 Transfert to the agenda elements in =~/todo.org=:
@@ -203,9 +242,10 @@ and add in the =.emacs=:
 * Key binding
 See the file extendedCommands.org
 
-
 * Credit
 
 A major part of configuration comes from [[https://github.com/tagteam/emacs-genome][emacs-genome]] (thanks
 thomas!!!). In particular all the functions contained in the file
 =FCT-superman.el= are directly copied from emacs-genome.
+
+# https://github.com/alhassy/ElispCheatSheet/blob/master/CheatSheet.pdf
