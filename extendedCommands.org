@@ -407,7 +407,7 @@ Use ssh instead of passeword:
     + Open terminal
     + Go to the folder under git control
     + git remote set-url origin git@github.com:USERNAME/REPOSITORY.git
-    + very that git remove -v give something like orgin git@github.com:...
+    + very that git remote -v give something like origin git@github.com:...
 * R
 | Key binding | name of the command                         | effect                                                       |
 |-------------+---------------------------------------------+--------------------------------------------------------------|
