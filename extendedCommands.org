@@ -394,6 +394,20 @@ Do latex diff after opening the shell:
 
 Documentation: http://jr0cket.co.uk/2012/12/driving-git-with-emacs-pure-magic-with.html.html
                https://github.com/magit/magit/wiki/Cheatsheet
+
+Use ssh instead of passeword:
+- Generating a new SSH key (linux, https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
+    + Open terminal
+    + Type ssh-keygen -t ed25519 -C "your_email@example.com"
+    + ENTER ... 
+    + generate the ssh in ~/.ssh/
+    + add a file config containing: Host github.com \n  IdentitiesOnly yes \n  IdentityFile ~/.ssh/id_ed25519 (https://emacs.stackexchange.com/questions/30874/magit-how-to-use-ssh-key-rather-than-being-prompted-for-password)
+- Then add the key on your github account (https://github.com/settings/keys)
+- Then switch from https to ssh in the project (https://docs.github.com/en/free-pro-team@latest/github/using-git/changing-a-remotes-url)
+    + Open terminal
+    + Go to the folder under git control
+    + git remote set-url origin git@github.com:USERNAME/REPOSITORY.git
+    + very that git remove -v give something like orgin git@github.com:...
 * R
 | Key binding | name of the command                         | effect                                                       |
 |-------------+---------------------------------------------+--------------------------------------------------------------|
