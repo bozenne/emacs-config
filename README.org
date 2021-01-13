@@ -240,7 +240,7 @@ and add in the =.emacs=:
      smtpmail-debug-info t)
 #+END_SRC
 * Key binding
-See the file extendedCommands.org
+See the file [[https://github.com/bozenne/emacs-config/blob/master/extendedCommands.org][extendedCommands.org]]
 
 * Credit
 

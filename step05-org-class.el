@@ -74,13 +74,9 @@
 )
 
 ;; set-up of hyperref
-
 (setq  org-latex-hyperref-template
       "\\hypersetup{
  colorlinks=true,
- citecolor=[rgb]{0,0.5,0},
- urlcolor=[rgb]{0,0,0.5},
- linkcolor=[rgb]{0,0,0.5},
  pdfauthor={%a},
  pdftitle={%t},
  pdfkeywords={%k},

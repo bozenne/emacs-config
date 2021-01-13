@@ -12,8 +12,8 @@
 # #+LaTeX_HEADER: \\textsuperscript{1} Section of Biostatistics, Department of Public Health, University of Copenhagen
 # #+LaTeX_HEADER: \\and \\textsuperscript{2} Neurobiology Research Unit, University Hospital of Copenhagen, Rigshospitalet.
 # #+LaTeX_HEADER: }
-#+DATE: 
-#+EMAIL:" user-mail-address
+#+DATE: " (format-time-string "%Y-%m-%d")
+"#+EMAIL:" user-mail-address
 "\n\n
 
 # # add title in the footpage
@@ -30,9 +30,11 @@
 * Introduction\n
 ** Part I\n
 *** First slide\n
+xx
 \n\n
 
 * Reference :noexport:
+# help: https://gking.harvard.edu/files/natnotes2.pdf
 
 *** Reference
 :PROPERTIES:
@@ -54,7 +56,7 @@ bibliographystyle:apalike
 #+LANGUAGE:  en
 #+startup: beamer
 #+LaTeX_CLASS: beamer
-#+LaTeX_class_options: [table] 
+#+LaTeX_class_options: [11pt,table] 
 #+LaTeX_HEADER: \\subtitle{}
 #+LaTeX_HEADER: \\setbeamertemplate{footline}[frame number]
 #+LaTeX_HEADER: \\setbeamertemplate{navigation symbols}{}
@@ -62,46 +64,38 @@ bibliographystyle:apalike
 #+OPTIONS:   H:3 num:t 
 #+OPTIONS:   TeX:t LaTeX:t
 
-#+LATEX_HEADER: %
-#+LATEX_HEADER: %%%% specifications %%%%
-#+LATEX_HEADER: %
+** Display of the document
+# ## margins
+#+LATEX_HEADER:\\geometry{left=1cm}
 
-** Latex command
-#+LATEX_HEADER: \\usepackage{ifthen}
-#+LATEX_HEADER: \\usepackage{xifthen}
-#+LATEX_HEADER: \\usepackage{xargs}
-#+LATEX_HEADER: \\usepackage{xspace}
+** Theme
+#+BEAMER_THEME: Singapore [height=20pt]
 
-#+LATEX_HEADER: \\newcommand\\Rlogo{\\textbf{\\textsf{R}}\\xspace} % 
-
-** Notations
-
-** Code
-# Documentation at https://org-babel.readthedocs.io/en/latest/header-args/#results
-# :tangle (yes/no/filename) extract source code with org-babel-tangle-file, see http://orgmode.org/manual/Extracting-source-code.html 
-# :cache (yes/no)
-# :eval (yes/no/never)
-# :results (value/output/silent/graphics/raw/latex)
-# :export (code/results/none/both)
-#+PROPERTY: header-args :session *R* :tangle yes :cache no ## extra argument need to be on the same line as :session *R*
-
-# Code display:
-#+LATEX_HEADER: \\RequirePackage{fancyvrb}
-#+LATEX_HEADER: \\DefineVerbatimEnvironment{verbatim}{Verbatim}{fontsize=\\small,formatcom = {\\color[rgb]{0.5,0,0}}}
-
-# ## change font size input
-# ## #+ATTR_LATEX: :options basicstyle=\\ttfamily\\scriptsize
-# ## change font size output
-# ## \\RecustomVerbatimEnvironment{verbatim}{Verbatim}{fontsize=\\tiny,formatcom = {\\color[rgb]{0.5,0,0}}}
-
-** Display 
+** Color
+# # define new colors
 #+LATEX_HEADER: \\RequirePackage{colortbl} % arrayrulecolor to mix colors
+#+LaTeX_HEADER: \definecolor{myorange}{rgb}{1,0.2,0}
+#+LaTeX_HEADER: \definecolor{mypurple}{rgb}{0.7,0,8}
+#+LaTeX_HEADER: \definecolor{mycyan}{rgb}{0,0.6,0.6}
+#+LaTeX_HEADER: \newcommand{\lightblue}{blue!50!white}
+#+LaTeX_HEADER: \newcommand{\darkblue}{blue!80!black}
+#+LaTeX_HEADER: \newcommand{\darkgreen}{green!50!black}
+#+LaTeX_HEADER: \newcommand{\darkred}{red!50!black}
+#+LaTeX_HEADER: \definecolor{gray}{gray}{0.5}
 
-# ## Change font
+# # change the color of the links
+#+LaTeX_HEADER: \\hypersetup{
+#+LaTeX_HEADER:  citecolor=[rgb]{0,0.5,0},
+#+LaTeX_HEADER:  urlcolor=[rgb]{0,0,0.5},
+#+LaTeX_HEADER:  linkcolor=[rgb]{0,0,0.5},
+#+LaTeX_HEADER: }
+
+** Font
 # https://tex.stackexchange.com/questions/25249/how-do-i-use-a-particular-font-for-a-small-section-of-text-in-my-document
 #+LaTeX_HEADER: \\newenvironment{comment}{\\small \\color{gray}\\fontfamily{lmtt}\selectfont}{\\par}
 #+LaTeX_HEADER: \\newenvironment{activity}{\\color{orange}\\fontfamily{qzc}\\selectfont}{\\par}
 
+** Symbols
 # ## valid and cross symbols
 #+LaTeX_HEADER: \\RequirePackage{pifont}
 #+LaTeX_HEADER: \\RequirePackage{relsize}
@@ -121,10 +115,31 @@ bibliographystyle:apalike
 #+LaTeX_HEADER:   \\xspace
 #+LaTeX_HEADER: }
 
+# # R Software
+#+LATEX_HEADER: \\newcommand\\Rlogo{\\textbf{\\textsf{R}}\\xspace} % 
+
+** Code
+# Documentation at https://org-babel.readthedocs.io/en/latest/header-args/#results
+# :tangle (yes/no/filename) extract source code with org-babel-tangle-file, see http://orgmode.org/manual/Extracting-source-code.html 
+# :cache (yes/no)
+# :eval (yes/no/never)
+# :results (value/output/silent/graphics/raw/latex)
+# :export (code/results/none/both)
+#+PROPERTY: header-args :session *R* :tangle yes :cache no ## extra argument need to be on the same line as :session *R*
+
+# Code display:
+#+LATEX_HEADER: \\RequirePackage{fancyvrb}
+#+LATEX_HEADER: \\DefineVerbatimEnvironment{verbatim}{Verbatim}{fontsize=\\small,formatcom = {\\color[rgb]{0.5,0,0}}}
+
+# ## change font size input
+# ## #+ATTR_LATEX: :options basicstyle=\\ttfamily\\scriptsize
+# ## change font size output
+# ## \\RecustomVerbatimEnvironment{verbatim}{Verbatim}{fontsize=\\tiny,formatcom = {\\color[rgb]{0.5,0,0}}}
+
 ** Lists
+#+LaTeX_HEADER: \\usepackage{enumitem} % better than enumerate
 # fix bug with beamer when specifying options for itemize
 #  https://tex.stackexchange.com/questions/24371/does-enumitem-conflict-with-beamer-for-lists/24491#24491
-#+LaTeX_HEADER: \\usepackage{enumitem}
 #+LaTeX_HEADER: \\setitemize{label=\\usebeamerfont*{itemize item}%
 #+LaTeX_HEADER: \\usebeamercolor[fg]{itemize item}
 #+LaTeX_HEADER: \\usebeamertemplate{itemize item}}
@@ -150,8 +165,9 @@ bibliographystyle:apalike
 #+LaTeX_HEADER:   \\makebox[2em][l]{\\insertfootnotemark}\\footnotesize\\insertfootnotetext\\par%
 #+LaTeX_HEADER: } 
 
-** Theme
-#+BEAMER_THEME: Singapore [height=20pt]
+*** Inline latex
+# @@latex:any arbitrary LaTeX code@@
+
 "
 )))
 
@@ -161,13 +177,49 @@ bibliographystyle:apalike
  `("Ld" ,(concat
 "#+TITLE:
 #+Author: " user-full-name
+"\n # #+LaTeX_HEADER: \\institute{
+# #+LaTeX_HEADER: \\textsuperscript{1} Section of Biostatistics, Department of Public Health, University of Copenhagen
+# #+LaTeX_HEADER: \\and \\textsuperscript{2} Neurobiology Research Unit, University Hospital of Copenhagen, Rigshospitalet.
+# #+LaTeX_HEADER: }
+#+DATE: " (format-time-string "%Y-%m-%d")
+"#+EMAIL:" user-mail-address
 "\n\n
 
-# @@latex:any arbitrary LaTeX code@@
+* Introduction\n
+** Part I\n
+xx
 \n\n
 
+* Reference :noexport:
+# help: https://gking.harvard.edu/files/natnotes2.pdf
+
+#+BEGIN_EXPORT latex
+\\begingroup
+\\renewcommand{\\section}[2]{}
+#+END_EXPORT
+bibliographystyle:apalike
+[[bibliography:bibliography.bib]] 
+#+BEGIN_EXPORT latex
+\\endgroup
+#+END_EXPORT
+
+#+BEGIN_EXPORT LaTeX
+\appendix
+\titleformat{\section}
+{\normalfont\Large\bfseries}{Appendix~\thesection}{1em}{}
+
+\renewcommand{\thefigure}{\Alph{figure}}
+\renewcommand{\thetable}{\Alph{table}}
+\renewcommand{\theequation}{\Alph{equation}}
+
+\setcounter{figure}{0}    
+\setcounter{table}{0}    
+\setcounter{equation}{0}    
+
+\setcounter{page}{1}
+#+END_EXPORT
+
 * CONFIG :noexport:
-# #+LaTeX_HEADER:\\affil{Department of Biostatistics, University of Copenhagen, Copenhagen, Denmark}
 #+LANGUAGE:  en
 #+LaTeX_CLASS: org-article
 #+LaTeX_CLASS_OPTIONS: [12pt]
@@ -175,19 +227,63 @@ bibliographystyle:apalike
 #+OPTIONS:   H:3 num:t 
 #+OPTIONS:   TeX:t LaTeX:t
 
-#+LATEX_HEADER: %
-#+LATEX_HEADER: %%%% specifications %%%%
-#+LATEX_HEADER: %
+** Display of the document
+# ## space between lines
+#+LATEX_HEADER: \\RequirePackage{setspace} % to modify the space between lines - incompatible with footnote in beamer
+#+LaTeX_HEADER:\\renewcommand{\\baselinestretch}{1.1}
 
-** Latex command
-#+LATEX_HEADER: \\usepackage{ifthen}
-#+LATEX_HEADER: \\usepackage{xifthen}
-#+LATEX_HEADER: \\usepackage{xargs}
-#+LATEX_HEADER: \\usepackage{xspace}
+# ## margins
+#+LATEX_HEADER:\\geometry{top=1cm}
 
+# ## personalize the prefix in the name of the sections
+#+LaTeX_HEADER: \usepackage{titlesec}
+
+** Color
+# ## define new colors
+#+LATEX_HEADER: \\RequirePackage{colortbl} % arrayrulecolor to mix colors
+#+LaTeX_HEADER: \definecolor{myorange}{rgb}{1,0.2,0}
+#+LaTeX_HEADER: \definecolor{mypurple}{rgb}{0.7,0,8}
+#+LaTeX_HEADER: \definecolor{mycyan}{rgb}{0,0.6,0.6}
+#+LaTeX_HEADER: \newcommand{\lightblue}{blue!50!white}
+#+LaTeX_HEADER: \newcommand{\darkblue}{blue!80!black}
+#+LaTeX_HEADER: \newcommand{\darkgreen}{green!50!black}
+#+LaTeX_HEADER: \newcommand{\darkred}{red!50!black}
+#+LaTeX_HEADER: \definecolor{gray}{gray}{0.5}
+
+# ## change the color of the links
+#+LaTeX_HEADER: \\hypersetup{
+#+LaTeX_HEADER:  citecolor=[rgb]{0,0.5,0},
+#+LaTeX_HEADER:  urlcolor=[rgb]{0,0,0.5},
+#+LaTeX_HEADER:  linkcolor=[rgb]{0,0,0.5},
+#+LaTeX_HEADER: }
+
+** Font
+# https://tex.stackexchange.com/questions/25249/how-do-i-use-a-particular-font-for-a-small-section-of-text-in-my-document
+#+LaTeX_HEADER: \\newenvironment{comment}{\\small \\color{gray}\\fontfamily{lmtt}\selectfont}{\\par}
+#+LaTeX_HEADER: \\newenvironment{activity}{\\color{orange}\\fontfamily{qzc}\\selectfont}{\\par}
+
+** Symbols
+# ## valid and cross symbols
+#+LaTeX_HEADER: \\RequirePackage{pifont}
+#+LaTeX_HEADER: \\RequirePackage{relsize}
+#+LaTeX_HEADER: \\newcommand{\\Cross}{{\\raisebox{-0.5ex}%
+#+LaTeX_HEADER:		{\\relsize{1.5}\\ding{56}}}\\hspace{1pt} }
+#+LaTeX_HEADER: \\newcommand{\\Valid}{{\\raisebox{-0.5ex}%
+#+LaTeX_HEADER:		{\\relsize{1.5}\\ding{52}}}\\hspace{1pt} }
+#+LaTeX_HEADER: \\newcommand{\\CrossR}{ \\textcolor{red}{\\Cross} }
+#+LaTeX_HEADER: \\newcommand{\\ValidV}{ \\textcolor{green}{\\Valid} }
+
+# ## warning symbol
+#+LaTeX_HEADER: \\usepackage{stackengine}
+#+LaTeX_HEADER: \\usepackage{scalerel}
+#+LaTeX_HEADER: \\newcommand\\Warning[1][3ex]{%
+#+LaTeX_HEADER:   \\renewcommand\\stacktype{L}%
+#+LaTeX_HEADER:   \\scaleto{\\stackon[1.3pt]{\\color{red}$\\triangle$}{\\tiny\\bfseries !}}{#1}%
+#+LaTeX_HEADER:   \\xspace
+#+LaTeX_HEADER: }
+
+# # R Software
 #+LATEX_HEADER: \\newcommand\\Rlogo{\\textbf{\\textsf{R}}\\xspace} % 
-
-** Notations
 
 ** Code
 # Documentation at https://org-babel.readthedocs.io/en/latest/header-args/#results
@@ -207,24 +303,18 @@ bibliographystyle:apalike
 # ## change font size output
 # ## \\RecustomVerbatimEnvironment{verbatim}{Verbatim}{fontsize=\\tiny,formatcom = {\\color[rgb]{0.5,0,0}}}
 
-** Display 
-#+LATEX_HEADER: \\RequirePackage{colortbl} % arrayrulecolor to mix colors
-#+LATEX_HEADER: \\RequirePackage{setspace} % to modify the space between lines - incompatible with footnote in beamer
-#+LaTeX_HEADER:\\renewcommand{\\baselinestretch}{1.1}
-#+LATEX_HEADER:\\geometry{top=1cm}
-
-# ## Change font
-# https://tex.stackexchange.com/questions/25249/how-do-i-use-a-particular-font-for-a-small-section-of-text-in-my-document
-#+LaTeX_HEADER: \\newenvironment{comment}{\\small \\color{gray}\\fontfamily{lmtt}\selectfont}{\\par}
-#+LaTeX_HEADER: \\newenvironment{activity}{\\color{orange}\\fontfamily{qzc}\\selectfont}{\\par}
+** List
+#+LATEX_HEADER: \\RequirePackage{enumitem} % better than enumerate
 
 ** Image
 #+LATEX_HEADER: \\RequirePackage{epstopdf} % to be able to convert .eps to .pdf image files
 #+LATEX_HEADER: \\RequirePackage{capt-of} % 
 #+LATEX_HEADER: \\RequirePackage{caption} % newlines in graphics
 
-** List
-#+LATEX_HEADER: \\RequirePackage{enumitem} % better than enumerate
+*** Inline latex
+# @@latex:any arbitrary LaTeX code@@
+
+** Notations
 "
 )))
 ;;;; Latex appendix
@@ -654,88 +744,6 @@ Je vous prie d'agréer, Madame, Monsieur, mes salutations distinguées.
 "#+BEGIN_EXPORT latex
 \\[ ? \\]
 #+END_EXPORT"))
-
-;;;; Latex: bibliography
-(add-to-list
- 'org-structure-template-alist
- '("LbBiblio" 
-"* References
-:PROPERTIES:
-:BEAMER_OPT: fragile,allowframebreaks
-:END:  
-
-#+LaTeX: \\begingroup
-#+LaTeX: \\renewcommand{\\section}[2]{}
-bibliographystyle:apalike
-[[bibliography:bibliography.bib]]
-# help: https://gking.harvard.edu/files/natnotes2.pdf
-#+LaTeX: \\endgroup
-"))
-
-(add-to-list
- 'org-structure-template-alist
- '("LdBiblio" 
-"* References
-#+LaTeX: \\begingroup
-#+LaTeX: \\renewcommand{\\section}[2]{}
-bibliographystyle:apalike
-[[bibliography:bibliography.bib]]
-# help: https://gking.harvard.edu/files/natnotes2.pdf
-#+LaTeX: \\endgroup
-"))
-
-;;;; Latex: reference external document
-(add-to-list
- 'org-structure-template-alist
- '("Lxr" 
-"#+LaTeX_HEADER:\\usepackage{xr} %% read the .aux of the external file
-#+LaTeX_HEADER: \\externaldocument[prefix-]{mydocWithoutExtension}
-"))
-;;;; Latex: box
-(add-to-list
- 'org-structure-template-alist
- '("Lbox" 
-"#+LaTeX_HEADER: \\setbeamercolor{uppercol}{fg=black,bg=blue!35}
-#+LaTeX_HEADER: \\setbeamercolor{lowercol}{fg=black,bg=blue!10}
-\\begin{beamerboxesrounded}[upper=uppercol,lower=lowercol,shadow=true]
-{boxtitle} 
-boxcontent
-\\end{beamerboxesrounded}
-
-"))
-;;;; Latex: dag
-(add-to-list
- 'org-structure-template-alist
- '("Ldag" 
-"#+LaTeX_HEADER: \\RequirePackage{tikz}
-#+BEGIN_EXPORT latex
-\\begin{tikzpicture}
-    \\node[draw=none,fill=none] (W) at (-2,1) {W};
-    \\node[draw=none,fill=none] (X) at (-1,0) {X};
-    \\node[draw=none,fill=none] (Z) at (0,1) {Z};
-    \\node[draw=none,fill=none] (Y) at (1,0) {Y};
-    \\node[draw=none,fill=none] (V) at (2,1) {V};
-
-    \\path [->,very thick](W) edge node[left] {} (X);
-    \\path [->,very thick](Z) edge node[left] {} (X);
-    \\path [->,very thick](Z) edge node[left] {} (Y);
-    \\path [->,very thick](V) edge node[left] {} (Y);
-\\end{tikzpicture}
-"))
-;;;; Latex: affiliations
-(add-to-list
- 'org-structure-template-alist
- '("affiliations" 
-"#+AUTHOR:
-#+LATEX_HEADER:\\usepackage{authblk} % enable several affiliations (clash with beamer)
-#+LaTeX_HEADER:\\author[1,2]{Author A}
-#+LaTeX_HEADER:\\author[1]{Author B}
-#+LaTeX_HEADER:\\author[2]{Author C}
-#+LaTeX_HEADER:\\affil[1]{Affiliation A}
-#+LaTeX_HEADER:\\affil[2]{Affiliation B}
-"))
-
-
 
 ;;; R code
 ;;;; R hide code and result
