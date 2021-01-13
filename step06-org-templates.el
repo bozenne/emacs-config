@@ -6,26 +6,26 @@
 (add-to-list
  'org-structure-template-alist
  `("Lb" ,(concat
-"#+TITLE:
+"#+TITLE: My presentation ? 
 #+Author: " user-full-name
-"\n # #+LaTeX_HEADER: \\institute{
-# #+LaTeX_HEADER: \\textsuperscript{1} Section of Biostatistics, Department of Public Health, University of Copenhagen
-# #+LaTeX_HEADER: \\and \\textsuperscript{2} Neurobiology Research Unit, University Hospital of Copenhagen, Rigshospitalet.
-# #+LaTeX_HEADER: }
-#+DATE: " (format-time-string "%Y-%m-%d")
-"#+EMAIL:" user-mail-address
+"\n#+LaTeX_HEADER: \\institute{
+#+LaTeX_HEADER: \\textsuperscript{1} Section of Biostatistics, Department of Public Health, University of Copenhagen
+#+LaTeX_HEADER: \\and \\textsuperscript{2} Neurobiology Research Unit, University Hospital of Copenhagen, Rigshospitalet.
+#+LaTeX_HEADER: }
+#+DATE: " (format-time-string "%A, %d %B %Y")
+"\n#+EMAIL:" user-mail-address
 "\n\n
 
-# # add title in the footpage
-# #+LaTeX: \\addtocounter{framenumber}{-1}
-# #+LaTeX: \\setbeamertemplate{footline}{
-# #+LaTeX: \\vspace{-0.3cm}
-# #+LaTeX:   \\noindent\\makebox[\\textwidth][s]{
-# #+LaTeX:   \\hspace{5mm} \\usebeamerfont{title in head/foot}\\insertshorttitle \hfill
-# #+LaTeX:   \\usebeamercolor[fg]{structure} {\\small \\insertframenumber{} / \\inserttotalframenumber} \\hspace{5mm} 
-# #+LaTeX:   }
-# #+LaTeX:  \\vspace{0.3cm}
-# #+LaTeX: }
+# add title in the footpage (remember to comment lines in *config **Display of the document)
+#+LaTeX: \\addtocounter{framenumber}{-1}
+#+LaTeX: \\setbeamertemplate{footline}{
+#+LaTeX: \\vspace{-0.3cm}
+#+LaTeX:   \\noindent\\makebox[\\textwidth][s]{
+#+LaTeX:   \\hspace{5mm} \\usebeamerfont{title in head/foot}\\insertshorttitle \\hfill
+#+LaTeX:   \\usebeamercolor[fg]{structure} {\\small \\insertframenumber{} / \\inserttotalframenumber} \\hspace{5mm} 
+#+LaTeX:   }
+#+LaTeX:  \\vspace{0.3cm}
+ #+LaTeX: }
 
 * Introduction\n
 ** Part I\n
@@ -68,20 +68,33 @@ bibliographystyle:apalike
 # ## margins
 #+LATEX_HEADER:\\geometry{left=1cm}
 
+# ## page number
+#+LaTeX_HEADER: \\setbeamertemplate{footline}{} %% remove numbering
+# #+LaTeX_HEADER: \\setbeamerfont{footline}{size=\\small} %% increase size and 
+# #+LaTeX_HEADER: \\setbeamertemplate{footline}[frame number]{}
+# #+LaTeX_HEADER: \\setbeamercolor{footline}{fg=blue}
+
+# ## handout (i.e. animation-free: last slide)
+# #+LaTeX_CLASS_options: [handout]
+# #+LaTeX_HEADER: \\usepackage{pdfpages}
+# #+LaTeX_HEADER: \\mode<handout>{
+# #+LaTeX_HEADER: \\pdfpageuselayout{resize to}[a4paper, landscape]
+# #+LaTeX_HEADER: }
+
 ** Theme
 #+BEAMER_THEME: Singapore [height=20pt]
 
 ** Color
 # # define new colors
 #+LATEX_HEADER: \\RequirePackage{colortbl} % arrayrulecolor to mix colors
-#+LaTeX_HEADER: \definecolor{myorange}{rgb}{1,0.2,0}
-#+LaTeX_HEADER: \definecolor{mypurple}{rgb}{0.7,0,8}
-#+LaTeX_HEADER: \definecolor{mycyan}{rgb}{0,0.6,0.6}
-#+LaTeX_HEADER: \newcommand{\lightblue}{blue!50!white}
-#+LaTeX_HEADER: \newcommand{\darkblue}{blue!80!black}
-#+LaTeX_HEADER: \newcommand{\darkgreen}{green!50!black}
-#+LaTeX_HEADER: \newcommand{\darkred}{red!50!black}
-#+LaTeX_HEADER: \definecolor{gray}{gray}{0.5}
+#+LaTeX_HEADER: \\definecolor{myorange}{rgb}{1,0.2,0}
+#+LaTeX_HEADER: \\definecolor{mypurple}{rgb}{0.7,0,8}
+#+LaTeX_HEADER: \\definecolor{mycyan}{rgb}{0,0.6,0.6}
+#+LaTeX_HEADER: \\newcommand{\\lightblue}{blue!50!white}
+#+LaTeX_HEADER: \\newcommand{\\darkblue}{blue!80!black}
+#+LaTeX_HEADER: \\newcommand{\\darkgreen}{green!50!black}
+#+LaTeX_HEADER: \\newcommand{\\darkred}{red!50!black}
+#+LaTeX_HEADER: \\definecolor{gray}{gray}{0.5}
 
 # # change the color of the links
 #+LaTeX_HEADER: \\hypersetup{
@@ -90,10 +103,18 @@ bibliographystyle:apalike
 #+LaTeX_HEADER:  linkcolor=[rgb]{0,0,0.5},
 #+LaTeX_HEADER: }
 
+# beamer seems to ignore the citecolor so this is a solution
+# https://tex.stackexchange.com/questions/104290/beamer-ignores-citecolor-from-hyperref
+#+LaTeX_HEADER: \\let\\oldcite=\\cite                                                     
+#+LaTeX_HEADER: \\renewcommand{\\cite}[1]{\\textcolor[rgb]{0,0.5,0}{\\oldcite{#1}}}
+
 ** Font
 # https://tex.stackexchange.com/questions/25249/how-do-i-use-a-particular-font-for-a-small-section-of-text-in-my-document
-#+LaTeX_HEADER: \\newenvironment{comment}{\\small \\color{gray}\\fontfamily{lmtt}\selectfont}{\\par}
+#+LaTeX_HEADER: \\newenvironment{comment}{\\small \\color{gray}\\fontfamily{lmtt}\\selectfont}{\\par}
 #+LaTeX_HEADER: \\newenvironment{activity}{\\color{orange}\\fontfamily{qzc}\\selectfont}{\\par}
+
+# #+LaTeX_HEADER: \\newcommand\\comment[1]{ {\\small \\color{gray}\\fontfamily{lmtt}\\selectfont #1} }
+#+LaTeX_HEADER: \\newcommand\\highlight[1]{ {\\usebeamercolor[fg]{structure}\\textbf{\\selectfont #1}} }
 
 ** Symbols
 # ## valid and cross symbols
@@ -149,7 +170,7 @@ bibliographystyle:apalike
 #+LATEX_HEADER: \\RequirePackage{capt-of} % 
 #+LATEX_HEADER: \\RequirePackage{caption} % newlines in graphics
 
-*** Backup slides
+** Backup slides
 #+LATEX_HEADER: \\newcommand{\\backupbegin}{
 #+LATEX_HEADER:   \\newcounter{finalframe}
 #+LATEX_HEADER:   \\setcounter{finalframe}{\\value{framenumber}}
@@ -158,14 +179,14 @@ bibliographystyle:apalike
 #+LATEX_HEADER:   \\setcounter{framenumber}{\\value{finalframe}}
 #+LATEX_HEADER:}
 
-*** Footnotes
+** Footnotes
 #+LaTeX_HEADER: \\RequirePackage{hanging}
 #+LaTeX_HEADER: \\setbeamertemplate{footnote}{%
 #+LaTeX_HEADER:   \\hangpara{2em}{1}%
 #+LaTeX_HEADER:   \\makebox[2em][l]{\\insertfootnotemark}\\footnotesize\\insertfootnotetext\\par%
 #+LaTeX_HEADER: } 
 
-*** Inline latex
+** Inline latex
 # @@latex:any arbitrary LaTeX code@@
 
 "
@@ -175,14 +196,14 @@ bibliographystyle:apalike
 (add-to-list
  'org-structure-template-alist
  `("Ld" ,(concat
-"#+TITLE:
-#+Author: " user-full-name
-"\n # #+LaTeX_HEADER: \\institute{
-# #+LaTeX_HEADER: \\textsuperscript{1} Section of Biostatistics, Department of Public Health, University of Copenhagen
-# #+LaTeX_HEADER: \\and \\textsuperscript{2} Neurobiology Research Unit, University Hospital of Copenhagen, Rigshospitalet.
-# #+LaTeX_HEADER: }
-#+DATE: " (format-time-string "%Y-%m-%d")
-"#+EMAIL:" user-mail-address
+"#+TITLE: My document ?
+#+Author:
+#+LATEX_HEADER: \\RequirePackage{authblk}
+#+LaTeX_HEADER: \\author[1,2]{"user-full-name"}
+#+LaTeX_HEADER: \\affil[1]{Section of Biostatistics, Department of Public Health, University of Copenhagen}
+#+LaTeX_HEADER: \\affil[2]{Neurobiology Research Unit, University Hospital of Copenhagen, Rigshospitalet}
+#+DATE: " (format-time-string "%A, %d %B %Y")
+"\n#+EMAIL: " user-mail-address
 "\n\n
 
 * Introduction\n
@@ -204,19 +225,19 @@ bibliographystyle:apalike
 #+END_EXPORT
 
 #+BEGIN_EXPORT LaTeX
-\appendix
-\titleformat{\section}
-{\normalfont\Large\bfseries}{Appendix~\thesection}{1em}{}
+\\appendix
+\\titleformat{\\section}
+{\\normalfont\\Large\\bfseries}{}{1em}{Appendix~\\thesection:~}
 
-\renewcommand{\thefigure}{\Alph{figure}}
-\renewcommand{\thetable}{\Alph{table}}
-\renewcommand{\theequation}{\Alph{equation}}
+\\renewcommand{\\thefigure}{\\Alph{figure}}
+\\renewcommand{\\thetable}{\\Alph{table}}
+\\renewcommand{\\theequation}{\\Alph{equation}}
 
-\setcounter{figure}{0}    
-\setcounter{table}{0}    
-\setcounter{equation}{0}    
+\\setcounter{figure}{0}    
+\\setcounter{table}{0}    
+\\setcounter{equation}{0}    
 
-\setcounter{page}{1}
+\\setcounter{page}{1}
 #+END_EXPORT
 
 * CONFIG :noexport:
@@ -236,19 +257,19 @@ bibliographystyle:apalike
 #+LATEX_HEADER:\\geometry{top=1cm}
 
 # ## personalize the prefix in the name of the sections
-#+LaTeX_HEADER: \usepackage{titlesec}
+#+LaTeX_HEADER: \\usepackage{titlesec}
 
 ** Color
 # ## define new colors
 #+LATEX_HEADER: \\RequirePackage{colortbl} % arrayrulecolor to mix colors
-#+LaTeX_HEADER: \definecolor{myorange}{rgb}{1,0.2,0}
-#+LaTeX_HEADER: \definecolor{mypurple}{rgb}{0.7,0,8}
-#+LaTeX_HEADER: \definecolor{mycyan}{rgb}{0,0.6,0.6}
-#+LaTeX_HEADER: \newcommand{\lightblue}{blue!50!white}
-#+LaTeX_HEADER: \newcommand{\darkblue}{blue!80!black}
-#+LaTeX_HEADER: \newcommand{\darkgreen}{green!50!black}
-#+LaTeX_HEADER: \newcommand{\darkred}{red!50!black}
-#+LaTeX_HEADER: \definecolor{gray}{gray}{0.5}
+#+LaTeX_HEADER: \\definecolor{myorange}{rgb}{1,0.2,0}
+#+LaTeX_HEADER: \\definecolor{mypurple}{rgb}{0.7,0,8}
+#+LaTeX_HEADER: \\definecolor{mycyan}{rgb}{0,0.6,0.6}
+#+LaTeX_HEADER: \\newcommand{\\lightblue}{blue!50!white}
+#+LaTeX_HEADER: \\newcommand{\\darkblue}{blue!80!black}
+#+LaTeX_HEADER: \\newcommand{\\darkgreen}{green!50!black}
+#+LaTeX_HEADER: \\newcommand{\\darkred}{red!50!black}
+#+LaTeX_HEADER: \\definecolor{gray}{gray}{0.5}
 
 # ## change the color of the links
 #+LaTeX_HEADER: \\hypersetup{
@@ -259,7 +280,7 @@ bibliographystyle:apalike
 
 ** Font
 # https://tex.stackexchange.com/questions/25249/how-do-i-use-a-particular-font-for-a-small-section-of-text-in-my-document
-#+LaTeX_HEADER: \\newenvironment{comment}{\\small \\color{gray}\\fontfamily{lmtt}\selectfont}{\\par}
+#+LaTeX_HEADER: \\newenvironment{comment}{\\small \\color{gray}\\fontfamily{lmtt}\\selectfont}{\\par}
 #+LaTeX_HEADER: \\newenvironment{activity}{\\color{orange}\\fontfamily{qzc}\\selectfont}{\\par}
 
 ** Symbols
@@ -311,30 +332,13 @@ bibliographystyle:apalike
 #+LATEX_HEADER: \\RequirePackage{capt-of} % 
 #+LATEX_HEADER: \\RequirePackage{caption} % newlines in graphics
 
-*** Inline latex
+** Inline latex
 # @@latex:any arbitrary LaTeX code@@
 
 ** Notations
 "
 )))
-;;;; Latex appendix
-(add-to-list
- 'org-structure-template-alist
- `("LdAppendix" ,(concat
-"\\appendix
-\\titleformat{\\section}
-{\\normalfont\\Large\\bfseries}{Appendix~\\thesection}{1em}{}
 
-\\renewcommand{\\thefigure}{A\\arabic{figure}}
-\\renewcommand{\\thetable}{A\\arabic{table}}
-\\renewcommand{\\theequation}{A\\arabic{equation}}
-
-\\setcounter{figure}{0}    
-\\setcounter{table}{0}    
-\\setcounter{equation}{0}    
-"
-		  ))
- )
 ;;;; Latex math
 (add-to-list
  'org-structure-template-alist
@@ -356,6 +360,11 @@ bibliographystyle:apalike
 # #+LaTeX_HEADER: \\newtheorem{lemma}[theorem]{Lemma}
 
 *** Template for shortcut
+#+LATEX_HEADER: \\usepackage{ifthen}
+#+LATEX_HEADER: \\usepackage{xifthen}
+#+LATEX_HEADER: \\usepackage{xargs}
+#+LATEX_HEADER: \\usepackage{xspace}
+
 #+LATEX_HEADER: \\newcommand\\defOperator[7]{%
 #+LATEX_HEADER:	\\ifthenelse{\\isempty{#2}}{
 #+LATEX_HEADER:		\\ifthenelse{\\isempty{#1}}{#7{#3}#4}{#7{#3}#4 \\left#5 #1 \\right#6}
@@ -377,20 +386,20 @@ bibliographystyle:apalike
 #+LATEX_HEADER:	\\ifthenelse{\\equal{#2}{T}}{\\boldsymbol{#1}}{\\mathbf{#1}}
 #+LATEX_HEADER: }
 
-*** Shortcuts
-
 **** Probability
-#+LATEX_HEADER: \\newcommandx\\Cov[2][1=,2=]{\\defOperator{#1}{#2}{C}{ov}{\\lbrack}{\\rbrack}{\\mathbb}}
 #+LATEX_HEADER: \\newcommandx\\Esp[2][1=,2=]{\\defOperator{#1}{#2}{E}{}{\\lbrack}{\\rbrack}{\\mathbb}}
 #+LATEX_HEADER: \\newcommandx\\Prob[2][1=,2=]{\\defOperator{#1}{#2}{P}{}{\\lbrack}{\\rbrack}{\\mathbb}}
 #+LATEX_HEADER: \\newcommandx\\Qrob[2][1=,2=]{\\defOperator{#1}{#2}{Q}{}{\\lbrack}{\\rbrack}{\\mathbb}}
 #+LATEX_HEADER: \\newcommandx\\Var[2][1=,2=]{\\defOperator{#1}{#2}{V}{ar}{\\lbrack}{\\rbrack}{\\mathbb}}
+#+LATEX_HEADER: \\newcommandx\\Cov[2][1=,2=]{\\defOperator{#1}{#2}{C}{ov}{\\lbrack}{\\rbrack}{\\mathbb}}
 
 #+LATEX_HEADER: \\newcommandx\\Binom[2][1=,2=]{\\defOperator{#1}{#2}{B}{}{(}{)}{\\mathcal}}
 #+LATEX_HEADER: \\newcommandx\\Gaus[2][1=,2=]{\\defOperator{#1}{#2}{N}{}{(}{)}{\\mathcal}}
 #+LATEX_HEADER: \\newcommandx\\Wishart[2][1=,2=]{\\defOperator{#1}{#2}{W}{ishart}{(}{)}{\\mathcal}}
 
 #+LATEX_HEADER: \\newcommandx\\Likelihood[2][1=,2=]{\\defOperator{#1}{#2}{L}{}{(}{)}{\\mathcal}}
+#+LATEX_HEADER: \\newcommandx\\logLikelihood[2][1=,2=]{\\defOperator{#1}{#2}{\\
+ell}{}{(}{)}{}}
 #+LATEX_HEADER: \\newcommandx\\Information[2][1=,2=]{\\defOperator{#1}{#2}{I}{}{(}{)}{\\mathcal}}
 #+LATEX_HEADER: \\newcommandx\\Score[2][1=,2=]{\\defOperator{#1}{#2}{S}{}{(}{)}{\\mathcal}}
 
@@ -444,6 +453,9 @@ bibliographystyle:apalike
 #+LaTeX_HEADER: \\newcommand\\half{\\frac{1}{2}}
 #+LaTeX_HEADER: \\newcommand\\normMax[1]{\\left|\\left|#1\\right|\\right|_{max}}
 #+LaTeX_HEADER: \\newcommand\\normTwo[1]{\\left|\\left|#1\\right|\\right|_{2}}
+
+#+LATEX_HEADER: \\newcommand\\Veta{\\boldsymbol{\\eta}}
+#+LATEX_HEADER: \\newcommand\\VX{\\mathbf{X}}
 "
 )))
 
