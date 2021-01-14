@@ -398,8 +398,7 @@ bibliographystyle:apalike
 #+LATEX_HEADER: \\newcommandx\\Wishart[2][1=,2=]{\\defOperator{#1}{#2}{W}{ishart}{(}{)}{\\mathcal}}
 
 #+LATEX_HEADER: \\newcommandx\\Likelihood[2][1=,2=]{\\defOperator{#1}{#2}{L}{}{(}{)}{\\mathcal}}
-#+LATEX_HEADER: \\newcommandx\\logLikelihood[2][1=,2=]{\\defOperator{#1}{#2}{\\
-ell}{}{(}{)}{}}
+#+LATEX_HEADER: \\newcommandx\\logLikelihood[2][1=,2=]{\\defOperator{#1}{#2}{\\ell}{}{(}{)}{}}
 #+LATEX_HEADER: \\newcommandx\\Information[2][1=,2=]{\\defOperator{#1}{#2}{I}{}{(}{)}{\\mathcal}}
 #+LATEX_HEADER: \\newcommandx\\Score[2][1=,2=]{\\defOperator{#1}{#2}{S}{}{(}{)}{\\mathcal}}
 
