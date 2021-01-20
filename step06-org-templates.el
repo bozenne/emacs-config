@@ -258,6 +258,14 @@ bibliographystyle:apalike
 
 # ## personalize the prefix in the name of the sections
 #+LaTeX_HEADER: \\usepackage{titlesec}
+# ## fix bug in titlesec version
+# ##  https://tex.stackexchange.com/questions/299969/titlesec-loss-of-section-numbering-with-the-new-update-2016-03-15
+#+LaTeX_HEADER: \\usepackage{etoolbox}
+#+LaTeX_HEADER: 
+#+LaTeX_HEADER: \\makeatletter
+#+LaTeX_HEADER: \\patchcmd{\\ttlh@hang}{\\parindent\\z@}{\\parindent\\z@\\leavevmode}{}{}
+#+LaTeX_HEADER: \\patchcmd{\\ttlh@hang}{\\noindent}{}{}{}
+#+LaTeX_HEADER: \\makeatother
 
 ** Color
 # ## define new colors
