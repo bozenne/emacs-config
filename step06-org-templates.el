@@ -335,10 +335,16 @@ bibliographystyle:apalike
 ** List
 #+LATEX_HEADER: \\RequirePackage{enumitem} % better than enumerate
 
-** Image
+** Image and graphs
 #+LATEX_HEADER: \\RequirePackage{epstopdf} % to be able to convert .eps to .pdf image files
 #+LATEX_HEADER: \\RequirePackage{capt-of} % 
 #+LATEX_HEADER: \\RequirePackage{caption} % newlines in graphics
+
+#+LaTeX_HEADER: \\RequirePackage{tikz-cd} % graph
+# ## https://tools.ietf.org/doc/texlive-doc/latex/tikz-cd/tikz-cd-doc.pdf
+
+** Table
+#+LATEX_HEADER: \\RequirePackage{booktabs} % for nice lines in table (e.g. toprule, bottomrule, midrule, cmidrule)
 
 ** Inline latex
 # @@latex:any arbitrary LaTeX code@@
