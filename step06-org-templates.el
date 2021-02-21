@@ -258,6 +258,14 @@ bibliographystyle:apalike
 
 # ## personalize the prefix in the name of the sections
 #+LaTeX_HEADER: \\usepackage{titlesec}
+# ## fix bug in titlesec version
+# ##  https://tex.stackexchange.com/questions/299969/titlesec-loss-of-section-numbering-with-the-new-update-2016-03-15
+#+LaTeX_HEADER: \\usepackage{etoolbox}
+#+LaTeX_HEADER: 
+#+LaTeX_HEADER: \\makeatletter
+#+LaTeX_HEADER: \\patchcmd{\\ttlh@hang}{\\parindent\\z@}{\\parindent\\z@\\leavevmode}{}{}
+#+LaTeX_HEADER: \\patchcmd{\\ttlh@hang}{\\noindent}{}{}{}
+#+LaTeX_HEADER: \\makeatother
 
 ** Color
 # ## define new colors
@@ -327,10 +335,16 @@ bibliographystyle:apalike
 ** List
 #+LATEX_HEADER: \\RequirePackage{enumitem} % better than enumerate
 
-** Image
+** Image and graphs
 #+LATEX_HEADER: \\RequirePackage{epstopdf} % to be able to convert .eps to .pdf image files
 #+LATEX_HEADER: \\RequirePackage{capt-of} % 
 #+LATEX_HEADER: \\RequirePackage{caption} % newlines in graphics
+
+#+LaTeX_HEADER: \\RequirePackage{tikz-cd} % graph
+# ## https://tools.ietf.org/doc/texlive-doc/latex/tikz-cd/tikz-cd-doc.pdf
+
+** Table
+#+LATEX_HEADER: \\RequirePackage{booktabs} % for nice lines in table (e.g. toprule, bottomrule, midrule, cmidrule)
 
 ** Inline latex
 # @@latex:any arbitrary LaTeX code@@
@@ -398,8 +412,7 @@ bibliographystyle:apalike
 #+LATEX_HEADER: \\newcommandx\\Wishart[2][1=,2=]{\\defOperator{#1}{#2}{W}{ishart}{(}{)}{\\mathcal}}
 
 #+LATEX_HEADER: \\newcommandx\\Likelihood[2][1=,2=]{\\defOperator{#1}{#2}{L}{}{(}{)}{\\mathcal}}
-#+LATEX_HEADER: \\newcommandx\\logLikelihood[2][1=,2=]{\\defOperator{#1}{#2}{\\
-ell}{}{(}{)}{}}
+#+LATEX_HEADER: \\newcommandx\\logLikelihood[2][1=,2=]{\\defOperator{#1}{#2}{\\ell}{}{(}{)}{}}
 #+LATEX_HEADER: \\newcommandx\\Information[2][1=,2=]{\\defOperator{#1}{#2}{I}{}{(}{)}{\\mathcal}}
 #+LATEX_HEADER: \\newcommandx\\Score[2][1=,2=]{\\defOperator{#1}{#2}{S}{}{(}{)}{\\mathcal}}
 
