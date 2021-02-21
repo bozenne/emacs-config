@@ -81,6 +81,52 @@ R CMD BATCH BATCH_" filename ".R output/" filename "/$JOB_NAME-I-$SGE_TASK_ID.Ro
 				))))))))
   )
 
+;;; create .slurm file
+(defun brice-create-slurm-file ()
+  "Create a .slurm file"
+  (interactive)
+  (let ((currentPath default-directory))	
+	(let ((currentFile buffer-file-name))
+	  (if (not (null currentFile)) (setq currentFile (replace-regexp-in-string "BATCH_" "" (file-name-sans-extension (file-name-nondirectory currentFile)))))
+	  (let ((directory (read-string "Directory:" currentPath)))	  
+		(let ((filename (read-string "Enter the name of the .slurm file (without extension):" currentFile)))
+		  (let ((nJob (read-string "Enter the number of jobs:" "10")))
+			(let ((queue (read-string "Enter the queue [standard/long], long meaning >8h:" "standard")))
+			  (let ((nMemory (read-string "Enter the memory reserved for each job (in GB):" "1")))
+				(let ((filenameExt (concat "SUBM_" filename ".slurm" )))
+				  (find-file (concat directory filenameExt))
+				  (append-to-file (concat "#!/bin/bash
+
+#SBATCH --job-name=" filename "  # Job name
+#SBATCH --array=1-" nJob "     # Number of jobs
+#SBATCH --partition=" queue "    # Queue. Use long for run time >8h and standard otherwise
+#SBATCH --mem=" nMemory "G # Memory limit, e.g. reserve 1 GB memory 
+#SBATCH --output=output/" filename "/slurm-%x-%a-%J.out # Direct output to subdirectory
+#SBATCH --error=output/" filename "/slurm-%x-%a-%J.out # Same file for output and error
+
+R CMD BATCH --vanilla BATCH_" filename ".R output/" filename "/R-$SLURM_JOB_NAME-$SLURM_ARRAY_TASK_ID-$SLURM_JOB_ID.Rout
+
+## go to directory    ## cd " currentPath "
+## clean outputs      ## rm -r ./output/" filename "/*
+## clean results      ## rm -r ./Results/" filename "/*
+## submission command ## sbatch SUBM_" filename ".slurm
+
+## submission output  ## Submitted batch job 41537 (time using C-c t: XX/XX/XX X:XX) 
+
+## commands           ## squeue           : view current jobs 
+                      ## squeue -u id     : view current jobs for user id
+                      ## scancel          : delete the job with job id 1034 from the queue type
+                      ## sinfo            : view state of the queues
+                      ## sshare           : check own usage of the server
+
+## documentation      ## from SLURM: https://slurm.schedmd.com/pdfs/summary.pdf: key functions
+                      ##           : https://slurm.schedmd.com/sbatch.html (filename pattern)
+                      ## from KU   : https://hpc.ku.dk/documentation/slurm.html
+") nil filenameExt)
+				  ))))))))
+  (revert-buffer nil t)
+  )
+
 ;;; create BATCH.R file
 (defun brice-create-BATCH-R-file ()
   "Create a BATCH.R file"
@@ -88,19 +134,20 @@ R CMD BATCH BATCH_" filename ".R output/" filename "/$JOB_NAME-I-$SGE_TASK_ID.Ro
   (let ((currentPath default-directory))
 	(let ((directory (read-string "Directory:" currentPath)))	  
 	  (let ((filename (read-string "Enter the name of the .R file (without extension):" )))
-		(let ((filenameExt (concat "BATCH_" filename ".R" )))
-		  (find-file  (concat directory filenameExt))
-	(append-to-file (concat "
-# path <- \"" currentPath "\"
-# setwd(path)
-# source(\"" filenameExt "\")
+		  (let ((filenameExt (concat "BATCH_" filename ".R" )))
+			(find-file  (concat directory filenameExt))
+			(append-to-file (concat "## * Header 
+## path <- \"" currentPath "\"
+## setwd(path)
+## source(\"" filenameExt "\")
+## sbatch -a 1-1 -J '" filename"' --output=/dev/null --error=/dev/null R CMD BATCH --vanilla " filenameExt " /dev/null 
 
 rm(list = ls())
 gc()
 
 ## * seed
-iter_sim <- as.numeric(Sys.getenv(\"SGE_TASK_ID\"))
-n.iter_sim <- as.numeric(Sys.getenv(\"SGE_TASK_LAST\"))
+iter_sim <- as.numeric(Sys.getenv(\"SLURM_ARRAY_TASK_ID\"))
+n.iter_sim <- as.numeric(Sys.getenv(\"SLURM_ARRAY_TASK_COUNT\"))
 if(is.na(iter_sim)){iter_sim <- 1}
 if(is.na(n.iter_sim)){n.iter_sim <- 10}
 cat(\"iteration \",iter_sim,\" over \",n.iter_sim,\"\\n\",sep=\"\")
@@ -112,14 +159,20 @@ set.seed(iSeed)
 
 cat(\"seed: \",iSeed,\"\\n\")
 
-## * path
+## * prepare export
 path <- \".\"
 path.res <- file.path(path,\"Results\",\"" filename "\")
 if(dir.exists(path.res)==FALSE){
+    if(dir.exists(file.path(path,\"Results\"))==FALSE){
+    dir.create(file.path(path,\"Results\"))
+    }
     dir.create(path.res)
 }
 path.output <- file.path(path,\"output\",\"" filename "\")
 if(dir.exists(path.output)==FALSE){
+    if(dir.exists(file.path(path,\"output\"))==FALSE){
+    dir.create(file.path(path,\"output\"))
+    }
     dir.create(path.output)
 }
 
@@ -128,7 +181,7 @@ if(dir.exists(path.output)==FALSE){
 ## * settings
 n.sim <- 100
 
-## * job
+## * function to execute
 res <- NULL
 for(iSim in 1:n.sim){
     iRes <- data.frame(Y=rnorm(1))
@@ -140,7 +193,7 @@ for(iSim in 1:n.sim){
 ## * export
 saveRDS(res, file = file.path(path.res,paste0(\"simul_\",iter_sim,\".rds\")))
 
-## * display
+## * R version
 print(sessionInfo())
 
 ## * gather and process results
@@ -154,7 +207,8 @@ allRes.final <- butils::sinkDirectory(path."filename", string.exclude = \"tempo\
 }
 
 	") nil filenameExt)
-	))))
+			))))
+  (revert-buffer nil t)
   )
 
 
