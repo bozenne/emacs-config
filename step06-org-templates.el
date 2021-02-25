@@ -152,9 +152,14 @@ bibliographystyle:apalike
 #+LATEX_HEADER: \\RequirePackage{fancyvrb}
 #+LATEX_HEADER: \\DefineVerbatimEnvironment{verbatim}{Verbatim}{fontsize=\\small,formatcom = {\\color[rgb]{0.5,0,0}}}
 
-# ## change font size input
+# ## change font size input (global change)
+# ## doc: https://ctan.math.illinois.edu/macros/latex/contrib/listings/listings.pdf
+# #+LATEX_HEADER: \newskip\skipamount   \skipamount =6pt plus 0pt minus 6pt
+# #+LATEX_HEADER: \\lstdefinestyle{code-tiny}{basicstyle=\\ttfamily\\tiny, aboveskip = \skipamount, belowskip = \skipamount}
+# #+LATEX_HEADER: \\lstset{style=code-tiny}
+# ## change font size input (local change, put just before BEGIN_SRC)
 # ## #+ATTR_LATEX: :options basicstyle=\\ttfamily\\scriptsize
-# ## change font size output
+# ## change font size output (global change)
 # ## \\RecustomVerbatimEnvironment{verbatim}{Verbatim}{fontsize=\\tiny,formatcom = {\\color[rgb]{0.5,0,0}}}
 
 ** Lists
@@ -327,12 +332,17 @@ bibliographystyle:apalike
 #+LATEX_HEADER: \\RequirePackage{fancyvrb}
 #+LATEX_HEADER: \\DefineVerbatimEnvironment{verbatim}{Verbatim}{fontsize=\\small,formatcom = {\\color[rgb]{0.5,0,0}}}
 
-# ## change font size input
+# ## change font size input (global change)
+# ## doc: https://ctan.math.illinois.edu/macros/latex/contrib/listings/listings.pdf
+# #+LATEX_HEADER: \newskip\skipamount   \skipamount =6pt plus 0pt minus 6pt
+# #+LATEX_HEADER: \\lstdefinestyle{code-tiny}{basicstyle=\\ttfamily\\tiny, aboveskip = \skipamount, belowskip = \skipamount}
+# #+LATEX_HEADER: \\lstset{style=code-tiny}
+# ## change font size input (local change, put just before BEGIN_SRC)
 # ## #+ATTR_LATEX: :options basicstyle=\\ttfamily\\scriptsize
-# ## change font size output
+# ## change font size output (global change)
 # ## \\RecustomVerbatimEnvironment{verbatim}{Verbatim}{fontsize=\\tiny,formatcom = {\\color[rgb]{0.5,0,0}}}
 
-** List
+** Lists
 #+LATEX_HEADER: \\RequirePackage{enumitem} % better than enumerate
 
 ** Image and graphs

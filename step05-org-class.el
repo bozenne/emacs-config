@@ -44,30 +44,32 @@
 
 ;;; additionnal information in the header
 (setq brice-org-latex-listing-options-string
-      (concat "\\lstset{\n"
-	      "backgroundcolor=\\color{white},\n"
-	      "basewidth={0.5em,0.4em},\n"
-	      "basicstyle=\\ttfamily\\small,\n"            ;; the size of the fonts that are used for the code  
-	      "breakatwhitespace=false,\n"
-	      "breaklines=true,\n"                         ;; sets automatic line breaking
-	      "columns=fullflexible,\n"
-	      "commentstyle=\\color[rgb]{0.5,0,0.5},\n"
-	      "frame=single,\n"                            ;; adds a frame around the code
-	      "keepspaces=true,\n"
-              "keywordstyle=\\color{black},\n"
-	      "literate={~}{$\\sim$}{1},\n"
-	      "numbers=left,\n"
-	      "numbersep=10pt,\n"
-	      "numberstyle=\\ttfamily\\tiny\\color{gray},\n"
-	      "showspaces=false,\n"                        ;; show spaces adding particular underscores
-	      "showstringspaces=false,\n"
-	      "stepnumber=1,\n"
-	      "stringstyle=\\color[rgb]{0,.5,0},\n"        ;; string literal style
-	      "tabsize=4,\n"
-	      "xleftmargin=.23in,\n"
-	      "emph={anova,apply,class,coef,colnames,colNames,colSums,dim,dcast,for,ggplot,head,if,ifelse,is.na,lapply,list.files,library,logLik,melt,plot,require,rowSums,sapply,setcolorder,setkey,str,summary,tapply},\n" ;; <-,+,-,%*%,*,/,^,(,)
-              "emphstyle=\\color{blue}\n"
-              "}\n"))
+      (concat "\\lstdefinestyle{code-small}{
+backgroundcolor=\\color{white}, % background color for the code block
+basicstyle=\\ttfamily\\small, % font used to display the code
+commentstyle=\\color[rgb]{0.5,0,0.5}, % color used to display comments in the code
+keywordstyle=\\color{black}, % color used to highlight certain words in the code
+numberstyle=\\ttfamily\\tiny\\color{gray}, % color used to display the line numbers
+rulecolor=\\color{black}, % color of the frame
+stringstyle=\\color[rgb]{0,.5,0},  % color used to display strings in the code
+breakatwhitespace=false, % sets if automatic breaks should only happen at whitespace
+breaklines=true, % sets automatic line breaking
+columns=fullflexible,
+frame=single, % adds a frame around the code (non,leftline,topline,bottomline,lines,single,shadowbox)
+keepspaces=true, % % keeps spaces in text, useful for keeping indentation of code
+literate={~}{$\\sim$}{1}, % symbol properly display via latex
+numbers=none, % where to put the line-numbers; possible values are (none, left, right)
+numbersep=10pt, % how far the line-numbers are from the code
+showspaces=false,
+showstringspaces=false,
+stepnumber=1, % the step between two line-numbers. If it's 1, each line will be numbered
+tabsize=1,
+xleftmargin=0cm,
+emph={anova,apply,class,coef,colnames,colNames,colSums,dim,dcast,for,ggplot,head,if,ifelse,is.na,lapply,list.files,library,logLik,melt,plot,require,rowSums,sapply,setcolorder,setkey,str,summary,tapply},
+aboveskip = \\medskipamount, % define the space above displayed listings.
+belowskip = \\medskipamount, % define the space above displayed listings.
+lineskip = 0pt} % specifies additional space between lines in listings
+\\lstset{style=code-small}"))
 
 (setq brice-org-latex-common-header-string
       (concat brice-org-latex-listing-options-string)
