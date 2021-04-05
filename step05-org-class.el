@@ -213,4 +213,3 @@ lineskip = 0pt} % specifies additional space between lines in listings
 	       ("\\paragraph{%s}" . "\\paragraph*{%s}")
 	       ("\\subparagraph{%s}" . "\\subparagraph*{%s}")
 	       ))
- 

@@ -1,4 +1,5 @@
 ;;; Opening emacs
+;; generates somewhere a warning "Package cl is deprecated"
 
 ;; Start emacs in full screen ;;
 (custom-set-variables
@@ -15,19 +16,27 @@
 
 
 ;;; Encoding 
-(prefer-coding-system 'utf-8-unix)
-(setq default-file-name-coding-system 'utf-8-unix)
-(set-default-coding-systems 'utf-8-unix)
-(set-terminal-coding-system 'utf-8-unix)
-(set-keyboard-coding-system 'utf-8-unix)
-(set-selection-coding-system 'utf-8-unix)
+(prefer-coding-system 'utf-8)
+(setq default-file-name-coding-system 'utf-8)
+(set-default-coding-systems 'utf-8)
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
 ;; https://zhangda.wordpress.com/
 
 ;;; Parenthesis
 
 ;; highlight parenthesis
-(use-package powerline :ensure t)
-(powerline-default-theme)
+(use-package powerline
+  :init
+  (setq powerline-default-separator 'slant)
+  (setq powerline-gui-use-vcs-glyph 't)
+  (setq powerline-height 20)
+  (setq powerline-image-apple-rgb 't)
+  :config (powerline-default-theme))
+;;(use-package powerline :ensure t)
+;;(powerline-default-theme)
+;;(setq powerline-height 10)
+;;(powerline-vim-theme)
 
 ;; color parentesis
 (use-package rainbow-delimiters :ensure t)
@@ -55,12 +64,16 @@
 
 ;;; Theme
 (use-package moe-theme :ensure t)
-(add-to-list 'custom-theme-load-path "~/.emacs.d/moe-theme.el/")
-(add-to-list 'load-path "~/.emacs.d/moe-theme.el/")
 (powerline-moe-theme)
 ;;(setq moe-theme-highlight-buffer-id nil)
 (moe-dark)
-(moe-theme-set-color 'blue)
+(setq moe-theme-highlight-buffer-id t)
+(moe-theme-random-color)
+
+;; Resize titles (optional).
+(setq moe-theme-resize-markdown-title '(1.5 1.4 1.3 1.2 1.0 1.0))
+(setq moe-theme-resize-org-title '(1.5 1.4 1.3 1.2 1.1 1.0 1.0 1.0 1.0))
+(setq moe-theme-resize-rst-title '(1.5 1.4 1.3 1.2 1.1 1.0))
 
 ;;; Moving within files
 ;;;; Scrolling
@@ -130,9 +143,6 @@
 ;; move file from one window to another in direct mode ;;
 (setq dired-dwim-target t)
 ;; https://emacs.stackexchange.com/questions/5603/how-to-quickly-copy-move-file-in-emacs-dired
-
-;; sort file by type
-(use-package dired-sort :ensure t)
 
 ;; filter files dynamically by type
 (use-package dired-narrow

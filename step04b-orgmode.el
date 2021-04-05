@@ -26,14 +26,7 @@
 ;;    :config
 ;; )
 (add-to-list 'load-path (expand-file-name "packages/org-plus-contrib" path-emacs-config))
-;; (use-package org)
-(use-package org ;; from https://www.reddit.com/r/emacs/comments/5avfin/symbols_function_definition_is_void/
-  :ensure org-plus-contrib
-  :config
-  (org-reload)
-  ;; rest of my config
-  )
-
+(use-package org)
 (use-package org-agenda)
 (use-package org-clock)
 
@@ -68,7 +61,7 @@
 	 (R . t)
 	 (C . t)
 	 (gnuplot . t)
-	 (sh . t)
+	 (shell . t)
 	 (ledger . t)
 	 (org . t)
 	 (picolisp . t)

@@ -50,7 +50,13 @@ when launching emacs (e.g. using =list-packages=).
 
 ** Windows user
 
-You may need to add to the =.emacs= file something like:
+You may need to install additional software:
+- cygwin (https://www.cygwin.com/): for Unix-like terminal 
+- hunspell (https://lists.gnu.org/archive/html/help-gnu-emacs/2014-04/msg00030.html): for spell checking
+- strawberry perl (https://strawberryperl.com/): for perl, it is used by latexmk
+- latexmk via Miktex: to automatically regenerate latex files
+
+Then you may need to add to the =.emacs= file something like:
 #+BEGIN_SRC emacs-lisp :export code :eval ever
 ;;; modification for windows
 ;;;; path to external dependencies
@@ -63,23 +69,48 @@ You may need to add to the =.emacs= file something like:
   				   (output-dvi "Yap")))
 (put 'overwrite-mode 'disabled nil)
 
+;;;; update shell (use cygwin64)
+;; FROM: https://www.emacswiki.org/emacs/NTEmacsWithCygwin
+(let* ((cygwin-root "c:/cygwin64")
+       (cygwin-bin (concat cygwin-root "/bin")))
+  (when (and (eq 'windows-nt system-type)
+             (file-readable-p cygwin-root))
+
+    (setq exec-path (cons cygwin-bin exec-path))
+    (setenv "PATH" (concat cygwin-bin ";" (getenv "PATH")))
+
+    ;; By default use the Windows HOME.
+    ;; Otherwise, uncomment below to set a HOME
+    ;;      (setenv "HOME" (concat cygwin-root "/home/eric"))
+
+    ;; NT-emacs assumes a Windows shell. Change to bash.
+    (setq shell-file-name "bash")
+    (setenv "SHELL" shell-file-name) 
+    (setq explicit-shell-file-name shell-file-name) 
+
+    ;; This removes unsightly ^M characters that would otherwise
+    ;; appear in the output of java applications.
+    (add-hook 'comint-output-filter-functions 'comint-strip-ctrl-m)))
+
 ;;;; update path variable
 (setenv "PATH"
-	(concat
-	 "C:\\Program Files\\R\\R-4.0.2\\bin\\x64" ";"
-	 "C:\\SumatraPDF" ";"
-	 "C:\\Program Files (x86)\\Aspell\\bin\\" ";"
-	 "C:\\unison" ";"
-	 "C:\\Program Files\\Putty" ";"
-	 "C:\\Program Files\\plink" ";"
-	 "C:\\Program Files\\MiKTeX 2.9\\miktex\\bin\\x64\\" ";"
-	 (getenv "PATH")
-	 )
-	)
-(setq-default inferior-R-program-name "C:\\Program Files\\R\\R-4.0.2\\bin\\Rterm.exe")
-(setq inferior-R-program-name "C:\\Program Files\\R\\R-4.0.2\\bin\\R")
+ 	(concat
+ 	 "C:\\SumatraPDF" ";"
+ 	 "C:\\unison" ";"
+ 	 "C:\\hunspell\\bin" ";"
+ 	 "C:\\Program Files\\PuTTY" ";"
+ 	 "C:\\Program Files\\MiKTeX 2.9\\miktex\\bin\\x64\\" ";"
+ 	 (getenv "PATH")		;
+ 	 )
+ 	)
+(setq ispell-program-name "hunspell")
+
+;;;; R software
+(setq-default inferior-R-program-name "C:\\Program Files\\R\\R-4.0.3\\bin\\Rterm.exe")
+(setq inferior-R-program-name "C:\\Program Files\\R\\R-4.0.3\\bin\\R")
 (add-hook 'ess-R-post-run-hook 'ess-execute-screen-options)
 #+END_SRC
+
 
 ** [Optional] Customization
 
@@ -115,7 +146,7 @@ If you want to fully benefit from the functionnalities of orgmode
 (e.g. export document to pdf) you need to install:
 - latex (e.g. see https://miktex.org/) 
 - a pdf viewer (e.g. see https://okular.kde.org/).
-
+  
 ** [Optional] Emails
 
 *WARNING*: before trying anything, save all important emails outside the
@@ -239,6 +270,7 @@ and add in the =.emacs=:
      smtpmail-smtp-service 587
      smtpmail-debug-info t)
 #+END_SRC
+
 * Key binding
 See the file [[https://github.com/bozenne/emacs-config/blob/master/extendedCommands.org][extendedCommands.org]]
 

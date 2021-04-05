@@ -1,12 +1,13 @@
 ;;; load package
-(use-package header2 :ensure t)
+;; (add-hook 'emacs-lisp-mode-hook 'auto-make-header)
+;; (use-package header2 :ensure t)
+(load-file (expand-file-name "packages/header2.el" path-emacs-config))
 
 ;;; configure package as in emacs-genome
 (add-hook 'write-file-hooks 'auto-update-file-header)
-(autoload 'auto-make-header "header2")
-;;(add-hook 'emacs-lisp-mode-hook 'auto-make-header)
+;; (autoload 'auto-make-header "header2")
 (add-hook 'R-mode-hook 'auto-make-header)
-;;(add-hook 'org-mode-hook 'auto-make-header)
+;; (add-hook 'org-mode-hook 'auto-make-header)
 (setq header-date-format  "%b %e %Y (%R) ")
 
 
