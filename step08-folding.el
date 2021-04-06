@@ -3,7 +3,6 @@
 
 ;;; folding package
 (use-package folding :ensure t)
-(use-package fold-dwim-org :ensure t)
 
 (folding-add-to-marks-list 'mediawiki-mode "<!-- {{{" "<!-- }}}" t)
 (folding-add-to-marks-list 'ess-mode "# {{{" "# }}}" t)

@@ -14,8 +14,11 @@ Place this directory in the folder containing the =.emacs= file (=~/.= when doin
 Copy the following code at the begining of the =.emacs= file:
 #+BEGIN_SRC emacs-lisp :export code :eval ever
 ;;; load automatic config
+(package-initialize)
 (setq user-full-name "my name")
+(setq user-mail-adress "my.email@adress.com")
 (setq path-emacs-config "~/emacs-config")
+(setq path-emacs-snippet (concat path-emacs-config "/snippets"))
 
 (load-file (expand-file-name "step01-load-packages.el" path-emacs-config))
 (load-file (expand-file-name "step02-general-settings.el" path-emacs-config)) 
@@ -42,11 +45,16 @@ Copy the following code at the begining of the =.emacs= file:
 (load-file (expand-file-name "step10-shorcuts.el" path-emacs-config))
 #+END_SRC
 In the first line, replace ="my name"= by your name.
+In the second line, replace ="my.email@adress.com"= by your email adress.
+In the third line, check that ="~/emacs-config"= is where you have put emacs-config.
 
-In the second line, check that ="~/emacs-config"= is where you have put emacs-config.
-
-Install the packages that are not automatically downloaded
-when launching emacs (e.g. using =list-packages=).
+Normally emacs should take care of installing all dependencies
+(otherwise you can do it yourself using =list-packages=). However you
+will need to install =git= yourself, e.g. using
+#+BEGIN_SRC shell :export code :eval ever
+sudo apt update
+sudo apt install git
+#+END_SRC
 
 ** Windows user
 

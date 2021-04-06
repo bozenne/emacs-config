@@ -183,10 +183,10 @@
 ;;; Snippet
 
 (use-package yasnippet :ensure t)
+(setq yas-snippet-dirs '(path-emacs-snippet))
 (yas-global-mode 1)
 (use-package auto-yasnippet :ensure t)
 (use-package yasnippet-snippets :ensure t)
-(setq yas-snippet-dirs '(concat path-emacs-config "/yasnippets"))
 ;; (use-package r-autoyas :ensure t)
 ;; (setq yas-snippet-dirs
 ;;       '(expand-file-name "packages/yasnippet-ess/ess-mode" path-emacs-config)
@@ -217,6 +217,10 @@ auto-save-interval 200            ; number of keystrokes between auto-saves (def
 ;; paste: replace region
 (delete-selection-mode 1)
 ;; https://stackoverflow.com/questions/2627289/how-to-replace-a-region-in-emacs-with-yank-buffer-contents
+
+;; browse kill ring
+(use-package browse-kill-ring :ensure t)
+(use-package kill-ring-search :ensure t)
 
 ;; scroll to bottom of the consol after imput
 (setq comint-scroll-to-bottom-on-input t)
