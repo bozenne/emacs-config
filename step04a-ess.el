@@ -14,9 +14,9 @@
 ;; (add-hook 'ess-R-post-run-hook 'ess-execute-screen-options)
 
 ;;; _ is <- in 
-(setq ess-smart-S-assign-key "_")
-;;(ess-toggle-underscore nil) 
-
+;;  ess-cycle-assign for cycle between <- <<- =
+(define-key ess-r-mode-map ";" 'ess-insert-assign)
+(define-key inferior-ess-r-mode-map ";" 'ess-insert-assign)
 
 ;;; Do not load data or save envir
 (setq inferior-R-args "--no-restore-history --no-restore-data --no-save ")

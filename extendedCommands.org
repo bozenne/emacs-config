@@ -470,7 +470,6 @@ Use ssh instead of passeword:
 
 documentation: https://www.masteringemacs.org/article/keeping-secrets-in-emacs-gnupg-auth-sources
 
-
 * Photo 
 | Key binding | name of the command    | effect                                                                |
 |-------------+------------------------+-----------------------------------------------------------------------|
@@ -487,3 +486,6 @@ $ cd ccache-3.7.2/
 $ ./configure
 $ make
 $ make install
+* Ubuntu :noexport:
+- htop (cpus usage and memory usage)
+- sensors (temperature usage)
