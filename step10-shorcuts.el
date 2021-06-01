@@ -16,21 +16,12 @@
 (global-set-key [(meta f8)] 'genome/winner-cycle)
 (global-set-key [(shift f8)] 'genome/winner-cycle-backwards)
 ;; move from one window to another
-(global-set-key (kbd "M-<left>")  'windmove-left)
-(global-set-key (kbd "M-<right>") 'windmove-right)
-(global-set-key (kbd "M-<up>")    'windmove-up)
-(global-set-key (kbd "M-<down>")  'windmove-down)
+(global-set-key (kbd "M-S-<up>")  'windmove-up)
+(global-set-key (kbd "M-S-<down>")  'windmove-down)
+(global-set-key (kbd "M-S-<left>")  'windmove-left)
+(global-set-key (kbd "M-S-<right>")  'windmove-right)
 (global-set-key (kbd "M-,") 'other-frame)
-
 ;; necessary to specify for orgmode otherwise M-<left> is for moving one word
-(add-hook 'org-mode-hook 
-          (lambda ()
-	    (local-set-key (kbd "M-<left>")  'windmove-left)
-	    (local-set-key (kbd "M-<right>") 'windmove-right)
-	    (local-set-key (kbd "M-<up>")    'windmove-up)
-	    (local-set-key (kbd "M-<down>")  'windmove-down)
-	    )
-)
 
 ;; open a windows explorer at the path of the current buffer
 (global-set-key (kbd "<f9>") 'brice-open-directory-with-explorer)
@@ -103,8 +94,8 @@
 ;; move text up
 ;; (global-set-key (kbd "\C-\S-u") 'move-text-up)
 (global-set-key "\C-d" 'delete-char)
-(global-set-key (kbd "C-S-d") 'move-text-down)
-(global-set-key (kbd "C-S-u") 'move-text-up)
+(global-set-key (kbd "C-S-a") 'move-text-up) ;; above
+(global-set-key (kbd "C-S-b") 'move-text-down) ;; below
 
 ;;; Snippet
 (define-key yas-minor-mode-map (kbd "C-c k") 'yas-expand)
@@ -203,25 +194,29 @@
 (setq org-cycle-emulate-tab nil)
 
 (add-hook 'org-mode-hook
-		  '(lambda ()
-			 ;; complete on ess
-			 (add-to-list 'hippie-expand-try-functions-list (lambda (old) (ess-complete-object-name)))
-			 (define-key org-mode-map (kbd "C-<left>") 'org-table-move-column-left)
-			 (define-key org-mode-map (kbd "C-<right>") 'org-table-move-column-right)
-			 (define-key org-mode-map [(tab)] 'genome/org-tab)	    
-			 (define-key org-mode-map [(meta H)] 'brice-org-open-corresponding-tex)
-			 (define-key org-mode-map [(meta j)] 'brice-org-export-to-pdf)
-			 (define-key org-mode-map [(meta J)] 'brice-org-export-and-open-corresponding-pdf)
-			 (define-key org-mode-map [(meta L)] 'brice-org-run-latexmk)
-			 (define-key org-mode-map [(meta l)] 'brice-org-save-and-export-to-latex)
-			 (define-key org-mode-map (kbd "\C-c v") 'brice-org-open-corresponding-preview)
-			 (define-key org-mode-map (kbd "\C-c V") 'brice-org-open-corresponding-pdf)
-			 (define-key org-mode-map [(control tab)] 'hide-subtree)
-			 (define-key org-mode-map [(meta control i)] 'genome/org-indent)
-			 (define-key org-mode-map "_" 'genome/org-smart-underscore)
-			 (define-key org-mode-map (kbd "M-æ") 'genome/ess-switch-to-R)
-			 (define-key org-mode-map (kbd "\C-c \C-v c") 'genome/org-babel-clear-all-results)  
-			 ))
+	  '(lambda ()
+	     ;; complete on ess
+	     (add-to-list 'hippie-expand-try-functions-list (lambda (old) (ess-complete-object-name)))
+	     (define-key org-mode-map (kbd "C-<left>") 'org-table-move-column-left)
+	     (define-key org-mode-map (kbd "C-<right>") 'org-table-move-column-right)
+	     (define-key org-mode-map [(tab)] 'genome/org-tab)	    
+	     (define-key org-mode-map [(meta H)] 'brice-org-open-corresponding-tex)
+	     (define-key org-mode-map [(meta j)] 'brice-org-export-to-pdf)
+	     (define-key org-mode-map [(meta J)] 'brice-org-export-and-open-corresponding-pdf)
+	     (define-key org-mode-map [(meta L)] 'brice-org-run-latexmk)
+	     (define-key org-mode-map [(meta l)] 'brice-org-save-and-export-to-latex)
+	     (define-key org-mode-map (kbd "\C-c v") 'brice-org-open-corresponding-preview)
+	     (define-key org-mode-map (kbd "\C-c V") 'brice-org-open-corresponding-pdf)
+	     (define-key org-mode-map [(control tab)] 'hide-subtree)
+	     (define-key org-mode-map [(meta control i)] 'genome/org-indent)
+	     (define-key org-mode-map ";" 'ess-insert-assign)
+	     (define-key org-mode-map (kbd "M-æ") 'genome/ess-switch-to-R)
+	     (define-key org-mode-map (kbd "\C-c \C-v c") 'genome/org-babel-clear-all-results)  
+	     (define-key org-mode-map (kbd "M-S-<up>")  'windmove-up)
+	     (define-key org-mode-map (kbd "M-S-<down>")  'windmove-down)
+	     (define-key org-mode-map (kbd "M-S-<left>")  'windmove-left)
+	     (define-key org-mode-map (kbd "M-S-<right>")  'windmove-right)
+	     ))
 
 
 ;;; Auctex

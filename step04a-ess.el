@@ -21,18 +21,28 @@
 ;;; Do not load data or save envir
 (setq inferior-R-args "--no-restore-history --no-restore-data --no-save ")
 
+;;; Unique naming of R buffers
+;; https://stackoverflow.com/questions/4504244/how-can-i-switch-between-r-sessions-in-emacs-ess
+;; *R* instead of *R:mydirectory*
+(setq uniquify-buffer-name-style 'post-forward-angle-brackets)
+
 ;;; split window
 (add-hook 'ess-mode-hook
           (lambda()
             (setq-local split-width-threshold  9999)
             ))
 
+;; (setq display-buffer-alist
+;;        '(("^\\*R"
+;;           (display-buffer-in-previous-window display-buffer-use-some-frame)
+;;           (reusable-frames . nil))))
 ;;; help
 ;; the help is sent to a new window in html
 ;; (setq ess-help-own-frame 'one)
 ;; (setq inferior-ess-r-help-command "help(\"%s\", help_type=\"html\")\n")
+
 ;;; debuging
-(setq ess-use-tracebug nil)
+(setq ess-use-tracebug t)
 
 ;;; find function
 (use-package imenu-anywhere :ensure t)

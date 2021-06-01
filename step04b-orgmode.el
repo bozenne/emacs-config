@@ -25,10 +25,22 @@
 ;;    :pin org
 ;;    :config
 ;; )
-(add-to-list 'load-path (expand-file-name "packages/org-plus-contrib" path-emacs-config))
-(use-package org)
-(use-package org-agenda)
-(use-package org-clock)
+;; (add-to-list 'load-path (expand-file-name "packages/org-plus-contrib" path-emacs-config))
+(use-package org
+  :ensure org-plus-contrib
+  :config
+  (require 'ox-latex) ;; new class when export
+  (require 'ox-beamer) ;; new class when export
+  (require 'ox-md) ;; new class when export
+  (require 'ox-bibtex) ;; new class when export
+  (require 'ox-extra)
+  (ox-extras-activate '(ignore-headlines))) ;; hide section titles (https://emacs.stackexchange.com/questions/9492/is-it-possible-to-export-content-of-subtrees-without-their-headings)
+
+(require 'org-agenda)
+(require 'org-clock)
+(require 'org-secretary)
+
+(require 'org-tempo)  ;; use tab as before to trigger templates (org-insert-structure-template )
 
 ;;;; dynamic reference (e.g. citep:xx)
 (use-package org-ref :ensure t)
@@ -40,13 +52,7 @@
 ;; to \label{fig:1} instead of \label{orgparagraph1}
 (setq org-latex-prefer-user-labels t)
 
-;;;; enable new class
-(use-package ox-latex)
-(use-package ox-beamer)
-(use-package ox-bibtex)
-
 ;;;; export to markdown
-(use-package ox-md)
 (add-to-list 'load-path (expand-file-name "packages/orgmode-accessories" path-emacs-config))
 (require 'ox-ravel)
 
@@ -132,15 +138,8 @@
                            ("TODO" "TASK") ()))
 
 
-;; hide section titles
-;; https://emacs.stackexchange.com/questions/9492/is-it-possible-to-export-content-of-subtrees-without-their-headings
-(require 'ox-extra) ;; included in orgmode do not put use-package
-(ox-extras-activate '(ignore-headlines))
 
 ;;; manage tasks
-
-(require 'org-secretary)
-
 ;; If you want to keep track of stuck projects you should tag your
 ;; projects with :prj:, and define:
 
@@ -198,11 +197,6 @@
 ;; indent code blocks using TAB
 (setq org-src-tab-acts-natively t)
 
-;; enable to ignore heading when exporting
-(require 'ox-extra)
-(ox-extras-activate '(ignore-headlines))
-
-
 ;;; link with latex
 ;; https://github.com/jkitchin/org-ref/blob/master/org-ref.org (section latex export)
 (setq org-latex-pdf-process (list "latexmk -shell-escape -bibtex -f -pdf %f"))
@@ -219,3 +213,8 @@
     (replace-regexp-in-string "\\`\\\\[A-Za-z0-9]+" "\\\\textbf" contents)))
 
 (add-to-list 'org-export-filter-bold-functions 'my-beamer-bold)
+
+;;; lisp
+(org-babel-do-load-languages 'org-babel-load-languages '((lisp . t)))
+
+

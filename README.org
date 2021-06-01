@@ -55,6 +55,11 @@ will need to install =git= yourself, e.g. using
 sudo apt update
 sudo apt install git
 #+END_SRC
+as well as a few external dependencies, e.g.
+#+BEGIN_SRC shell :export code :eval ever
+sudo apt-get install texlive-full
+udo apt-get install latexmk
+#+END_SRC
 
 ** Windows user
 

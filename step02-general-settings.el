@@ -115,6 +115,8 @@
 ;; transpose frames
 (use-package transpose-frame :ensure t)
 
+(customize-set-variable 'display-buffer-base-action '(display-buffer-use-some-frame))
+
 ;;;; Bookmark
 
 ;; bookmark within orgmode
@@ -181,12 +183,11 @@
 (use-package popup-complete :ensure t)
 
 ;;; Snippet
-
 (use-package yasnippet :ensure t)
+(use-package yasnippet-snippets :ensure t)
+(use-package auto-yasnippet :ensure t)
 (setq yas-snippet-dirs '(path-emacs-snippet))
 (yas-global-mode 1)
-(use-package auto-yasnippet :ensure t)
-(use-package yasnippet-snippets :ensure t)
 ;; (use-package r-autoyas :ensure t)
 ;; (setq yas-snippet-dirs
 ;;       '(expand-file-name "packages/yasnippet-ess/ess-mode" path-emacs-config)

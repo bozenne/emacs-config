@@ -95,7 +95,7 @@
 )
 
 (defun brice-org-open-corresponding-preview (&optional arg)
-  "Open preview of the file file"
+  "Open preview of the file"
   (interactive "p")
   (let ((target (concat (file-name-sans-extension (buffer-file-name)) ".tex")))
      (if (file-exists-p target)

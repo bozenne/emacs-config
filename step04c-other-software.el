@@ -99,6 +99,9 @@
 ;;;; latex diff
 (use-package latexdiff :ensure t)
 
+;;; lisp
+(use-package slime :ensure t)
+
 ;;; stan
 (use-package stan-mode :ensure t)
 (use-package stan-snippets :ensure t)
