@@ -26,21 +26,9 @@
 ;;    :config
 ;; )
 ;; (add-to-list 'load-path (expand-file-name "packages/org-plus-contrib" path-emacs-config))
-(use-package org
-  :ensure org-plus-contrib
-  :config
-  (require 'ox-latex) ;; new class when export
-  (require 'ox-beamer) ;; new class when export
-  (require 'ox-md) ;; new class when export
-  (require 'ox-bibtex) ;; new class when export
-  (require 'ox-extra)
-  (ox-extras-activate '(ignore-headlines))) ;; hide section titles (https://emacs.stackexchange.com/questions/9492/is-it-possible-to-export-content-of-subtrees-without-their-headings)
-
-(require 'org-agenda)
-(require 'org-clock)
-(require 'org-secretary)
-
-(require 'org-tempo)  ;; use tab as before to trigger templates (org-insert-structure-template )
+(use-package org)
+(use-package org-agenda)
+(use-package org-clock)
 
 ;;;; dynamic reference (e.g. citep:xx)
 (use-package org-ref :ensure t)
@@ -53,8 +41,10 @@
 (setq org-latex-prefer-user-labels t)
 
 ;;;; export to markdown
-(add-to-list 'load-path (expand-file-name "packages/orgmode-accessories" path-emacs-config))
-(require 'ox-ravel)
+(use-package ox-md)
+;; (add-to-list 'load-path (expand-file-name "packages/orgmode-accessories" path-emacs-config))
+;; (require 'ox-ravel)
+>>>>>>> 3af7de4 (rm org-plus-contrib)
 
 ;;; enable to execute languages in orgmode
 (if(string-equal system-type "windows-nt")
