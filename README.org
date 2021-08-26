@@ -5,7 +5,43 @@
 
 * Installation
 
-** basic version
+** Emacs
+The official installation guide for emacs can be found at
+https://www.gnu.org/software/emacs/download.html.
+
+Note: windows user may find convenient to first install MSYS2
+(https://www.msys2.org/) to have a linux-like interface, e.g. use
+=pacman -S mingw-w64-x86_64-emacs= to install emacs.
+  
+** External dependencies
+
+*Linux*: normally emacs should take care of installing all
+dependencies (otherwise you can do it yourself using
+=list-packages=). However you will need to install =git= yourself,
+e.g. using:
+#+BEGIN_SRC shell :export code :eval ever
+sudo apt update
+sudo apt install git
+#+END_SRC
+
+as well as latex:
+#+BEGIN_SRC shell :export code :eval ever
+sudo apt-get install texlive-full
+sudo apt-get install latexmk
+#+END_SRC
+and a pdf viewer like okular (https://okular.kde.org/) or sumatraPDF (https://www.sumatrapdfreader.org/free-pdf-reader).
+
+
+*Windows*: you will need to install several additional software:
+- miktex (https://miktex.org/) for latex
+- latexmk via miktex (to automatically regenerate latex files)
+- hunspell (https://sourceforge.net/projects/ezwinports/files/hunspell-1.3.2-3-w32-bin.zip/download) for spell checking
+- perl (https://strawberryperl.com/): it is used by latexmk as well as some R packages
+- git (https://gitforwindows.org/): it is used by magit. 
+  
+* Link emacs to the proposed configuration
+
+** Basic version
 
 Download all files and put them in a directory called *emacs-config*.
 
@@ -48,84 +84,7 @@ In the first line, replace ="my name"= by your name.
 In the second line, replace ="my.email@adress.com"= by your email adress.
 In the third line, check that ="~/emacs-config"= is where you have put emacs-config.
 
-Normally emacs should take care of installing all dependencies
-(otherwise you can do it yourself using =list-packages=). However you
-will need to install =git= yourself, e.g. using
-#+BEGIN_SRC shell :export code :eval ever
-sudo apt update
-sudo apt install git
-#+END_SRC
-as well as a few external dependencies, e.g.
-#+BEGIN_SRC shell :export code :eval ever
-sudo apt-get install texlive-full
-udo apt-get install latexmk
-#+END_SRC
-
-** Windows user
-
-You may need to install additional software:
-- cygwin (https://www.cygwin.com/): for Unix-like terminal 
-- hunspell (https://lists.gnu.org/archive/html/help-gnu-emacs/2014-04/msg00030.html): for spell checking
-- strawberry perl (https://strawberryperl.com/): for perl, it is used by latexmk
-- latexmk via Miktex: to automatically regenerate latex files
-
-Then you may need to add to the =.emacs= file something like:
-#+BEGIN_SRC emacs-lisp :export code :eval ever
-;;; modification for windows
-;;;; path to external dependencies
-(setq explicit-shell-file-name "c:/cygwin64/bin/bash")
-(setq TeX-shell "c:/cygwin64/bin/bash")
-(setq org-export-allow-bind-keywords t)
-
-(setq TeX-view-program-list '(("SumatraPDF" "C://SumatraPDF//SumatraPDF.exe %o")))
-(setq TeX-view-program-selection '((output-pdf "SumatraPDF")
-  				   (output-dvi "Yap")))
-(put 'overwrite-mode 'disabled nil)
-
-;;;; update shell (use cygwin64)
-;; FROM: https://www.emacswiki.org/emacs/NTEmacsWithCygwin
-(let* ((cygwin-root "c:/cygwin64")
-       (cygwin-bin (concat cygwin-root "/bin")))
-  (when (and (eq 'windows-nt system-type)
-             (file-readable-p cygwin-root))
-
-    (setq exec-path (cons cygwin-bin exec-path))
-    (setenv "PATH" (concat cygwin-bin ";" (getenv "PATH")))
-
-    ;; By default use the Windows HOME.
-    ;; Otherwise, uncomment below to set a HOME
-    ;;      (setenv "HOME" (concat cygwin-root "/home/eric"))
-
-    ;; NT-emacs assumes a Windows shell. Change to bash.
-    (setq shell-file-name "bash")
-    (setenv "SHELL" shell-file-name) 
-    (setq explicit-shell-file-name shell-file-name) 
-
-    ;; This removes unsightly ^M characters that would otherwise
-    ;; appear in the output of java applications.
-    (add-hook 'comint-output-filter-functions 'comint-strip-ctrl-m)))
-
-;;;; update path variable
-(setenv "PATH"
- 	(concat
- 	 "C:\\SumatraPDF" ";"
- 	 "C:\\unison" ";"
- 	 "C:\\hunspell\\bin" ";"
- 	 "C:\\Program Files\\PuTTY" ";"
- 	 "C:\\Program Files\\MiKTeX 2.9\\miktex\\bin\\x64\\" ";"
- 	 (getenv "PATH")		;
- 	 )
- 	)
-(setq ispell-program-name "hunspell")
-
-;;;; R software
-(setq-default inferior-R-program-name "C:\\Program Files\\R\\R-4.0.3\\bin\\Rterm.exe")
-(setq inferior-R-program-name "C:\\Program Files\\R\\R-4.0.3\\bin\\R")
-(add-hook 'ess-R-post-run-hook 'ess-execute-screen-options)
-#+END_SRC
-
-
-** [Optional] Customization
+** Customization
 
 Set the font size to 120 by adding the following line
 #+BEGIN_SRC emacs-lisp :export code :eval ever
@@ -153,13 +112,72 @@ Transfert to the agenda elements in =~/todo.org=:
 (setq org-agenda-files (list "~/todo.org")
 #+END_SRC
 
-** [Optional] Generate and open .pdf documents
+** Modifications for Windows
 
-If you want to fully benefit from the functionnalities of orgmode
-(e.g. export document to pdf) you need to install:
-- latex (e.g. see https://miktex.org/) 
-- a pdf viewer (e.g. see https://okular.kde.org/).
-  
+Add to the =.emacs= file something like:
+#+BEGIN_SRC emacs-lisp :export code :eval ever
+;;; modification for windows
+
+;;;; shell
+;; https://www.gnu.org/software/emacs/manual/html_node/efaq-w32/Using-shell.html
+(setq explicit-shell-file-name "c:/cygwin64/bin/bash")
+(setq TeX-shell "c:/cygwin64/bin/bash")
+(setq org-export-allow-bind-keywords t)
+
+;; FROM: https://www.emacswiki.org/emacs/NTEmacsWithCygwin
+(let* ((cygwin-root "c:/cygwin64")
+       (cygwin-bin (concat cygwin-root "/bin")))
+  (when (and (eq 'windows-nt system-type)
+             (file-readable-p cygwin-root))
+
+    (setq exec-path (cons cygwin-bin exec-path))
+    (setenv "PATH" (concat cygwin-bin ";" (getenv "PATH")))
+
+    ;; By default use the Windows HOME.
+    ;; Otherwise, uncomment below to set a HOME
+    ;;      (setenv "HOME" (concat cygwin-root "/home/eric"))
+
+    ;; NT-emacs assumes a Windows shell. Change to bash.
+    (setq shell-file-name "bash")
+    (setenv "SHELL" shell-file-name) 
+    (setq explicit-shell-file-name shell-file-name) 
+
+    ;; This removes unsightly ^M characters that would otherwise
+    ;; appear in the output of java applications.
+    (add-hook 'comint-output-filter-functions 'comint-strip-ctrl-m)))
+
+;;;; path to external dependencies
+(setq org-export-allow-bind-keywords t)
+
+(setq TeX-view-program-list '(("SumatraPDF" "C://Users//hpl802//AppData//Local//SumatraPDF//SumatraPDF.exe %o")))
+(setq TeX-view-program-selection '((output-pdf "SumatraPDF")
+           			(output-dvi "Yap")))
+(put 'overwrite-mode 'disabled nil)
+
+;;;; update path variable
+(setenv "PATH"
+ 	(concat
+ 	 "C:\\unison" ";"
+ 	 "C:\\hunspell" ";"
+     "C:\\strawberry\\perl\\bin" ";"
+ 	 "C:\\Program Files\\SymatraPDF" ";" 	 
+ 	 "C:\\Program Files\\PuTTY" ";"
+ 	 "C:\\Program Files\\MiKTeX 2.9\\miktex\\bin\\x64\\" ";"
+ 	 (getenv "PATH")		;
+ 	 )
+ 	)
+
+;;;; R software
+(setq-default inferior-R-program-name "C:\\Program Files\\R\\R-4.1.1\\bin\\x64\\Rterm.exe")
+
+;;;; spell checker
+(setq ispell-program-name "hunspell")
+(setq ispell-local-dictionary "en_GB")
+;; (ispell-find-hunspell-dictionaries)
+#+END_SRC
+
+
+
 ** [Optional] Emails
 
 *WARNING*: before trying anything, save all important emails outside the

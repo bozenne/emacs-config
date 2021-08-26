@@ -1,6 +1,6 @@
-;;; Pretty fontification of source code blocks
+;; Pretty fontification of source code blocks
 ;; needs to be defined before requiring Org (http://orgmode.org/worg/org-contrib/babel/examples/fontify-src-code-blocks.html)
-(defface org-block-begin-line
+(defface org-block-begin-line		;
   '((t (:underline "#A7A6AA" :foreground "#008ED1" :background "#EAEAFF")))
   "Face used for the line delimiting the begin of source blocks.")
 
@@ -40,11 +40,16 @@
 ;; to \label{fig:1} instead of \label{orgparagraph1}
 (setq org-latex-prefer-user-labels t)
 
+;;;; export to latex
+(use-package ox-latex)
+
+;;;; export to beamer
+(use-package ox-beamer)
+
 ;;;; export to markdown
 (use-package ox-md)
 ;; (add-to-list 'load-path (expand-file-name "packages/orgmode-accessories" path-emacs-config))
 ;; (require 'ox-ravel)
->>>>>>> 3af7de4 (rm org-plus-contrib)
 
 ;;; enable to execute languages in orgmode
 (if(string-equal system-type "windows-nt")

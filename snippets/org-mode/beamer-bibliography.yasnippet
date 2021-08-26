@@ -1,0 +1,15 @@
+# -*- mode: snippet -*-
+# name: beamer bibliography
+# key: Bbiblio
+# --
+* References
+:PROPERTIES:
+:BEAMER_OPT: fragile,allowframebreaks
+:END:  
+#+LaTeX: \\begingroup
+#+LaTeX: \\renewcommand{\\section}[2]{}
+bibliographystyle:apalike
+[[bibliography:bibliography.bib]]
+# help: https://gking.harvard.edu/files/natnotes2.pdf
+#+LaTeX: \\endgroup
+$0

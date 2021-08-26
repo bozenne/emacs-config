@@ -1,0 +1,80 @@
+# -*- mode: snippet -*-
+# name: tikz LVM
+# key: tikzLVM
+# --
+#+TITLE:
+#+Author: 
+#+BEGIN_EXPORT latex
+\\begin{preview}
+\\begin{tikzpicture}[auto]
+% endogenous variables
+		\\tikzstyle{every node} = [NodeData, draw=\\darkblue]
+			\\node (Y1) at (-5, 3) {$Region_1$};
+			\\node (Y2) at (-5, 0) {$Region_2$};
+			\\node (Y3) at (-5, -3) {$Region_3$};
+% latent variables
+		\\tikzstyle{every node} = [NodeLV]
+			\\node (eta)[minimum size=2cm] at (0, 0) [draw]{\\Large $\\eta_{5HT4}$};
+% exogeneous variable
+		\\tikzstyle{every node} = [NodeData=green, draw=\\darkgreen]
+			\\node (X1) at (5, 1.5) {Age};
+			\\node (X2) at (5, -1.5) {Gene 1};
+% loading
+         	\\tikzstyle{every node} = [,]
+                \\foreach \\to/\\from/\\legend in {Y1/eta/1, Y2/eta/1, Y3/eta/1, eta/X1/}	
+                \\draw [GrayArrow] (\\from) -- node[LegendArrow]{\\Large \\legend} (\\to);
+% regression
+                \\foreach \\to/\\from/\\legend in {eta/X2/$\\gamma_1$}	
+                \\draw [BlackArrow, dashed] (\\from) -- node[LegendArrow]{\\Large \\legend} (\\to);
+% intercept
+                \\draw [GrayArrow] (-6.5, 2.6) -- node[LegendArrow, below]{\\Large $0$} (-5.7, 2.6);
+                \\draw [BlackArrow, dashed] (-6.5, -0.4) -- node[LegendArrow, below]{\\Large $\\nu_2$} (-5.7, -0.4);
+%                \\draw [GrayArrow] (-6.5, -3.4) -- node[LegendArrow, below]{} (-5.7, -3.4);
+% variance
+\\draw [GrayArrow,stealth-stealth] (Y1.north) arc [radius=0.5, start angle=10, end angle = 250]  node[midway, above]{\\Large $\\sigma^2$};
+\\draw [GrayArrow,stealth-stealth] (Y2.north) arc [radius=0.5, start angle=10, end angle = 250]  node[midway, above]{\\Large $\\sigma^2$};
+\\draw [GrayArrow,stealth-stealth] (Y3.north) arc [radius=0.5, start angle=10, end angle = 250]  node[midway, above]{\\Large $\\sigma^2$};
+\\end{tikzpicture}
+\\end{preview}
+#+END_EXPORT
+* CONFIG :noexport:
+#+LANGUAGE:  en
+#+LaTeX_CLASS: org-article
+#+OPTIONS:   title:t author:t toc:nil todo:t 
+#+OPTIONS:   TeX:t LaTeX:t
+** Latex packages
+#+LaTeX_HEADER: %
+#+LaTeX_HEADER: %%%% additional packages %%%%
+#+LaTeX_HEADER: %
+#+LaTeX_HEADER:\\usepackage[pdftex,active,tightpage]{preview} % to get standalone diagram
+#+LaTeX_HEADER:%\\setlength\\PreviewBorder{2mm} % use to add a border around the image
+** Latex command
+#+LaTeX_HEADER: %
+#+LaTeX_HEADER: %%%% additional latex commands %%%%
+#+LaTeX_HEADER: %
+#+LaTeX_HEADER: \\newcommand{\\lightblue}{blue!50!white}
+#+LaTeX_HEADER: \\newcommand{\\darkblue}{blue!80!black}
+#+LaTeX_HEADER: \\newcommand{\\darkgreen}{green!50!black}
+#+LaTeX_HEADER: \\newcommand{\\darkred}{red!50!black}
+#+LaTeX_HEADER: \\definecolor{gray}{gray}{0.5}
+** Tikz 
+#+LATEX_HEADER: \\RequirePackage{tikz}
+#+LATEX_HEADER: \\RequirePackage{tkz-euclide} % for working with euclidean grids
+#+LATEX_HEADER: \\usetikzlibrary{arrows} % various types of arrows
+#+LATEX_HEADER: \\usetikzlibrary{shapes} % various shapes for nodes
+#+LATEX_HEADER: \\usetikzlibrary{positioning} % relative positionning of nodes
+#+LATEX_HEADER: \\usetikzlibrary{shadows}
+#+LATEX_HEADER: \\usetikzlibrary{backgrounds,fit,calc}
+#+LATEX_HEADER: \\tikzset{YellowArrow/.style={line width=2pt, ->,  >=latex, yellow}}
+#+LATEX_HEADER: \\tikzset{GrayArrow/.style={line width=2pt, ->,  >=latex, gray}}
+#+LATEX_HEADER: \\tikzset{BlackArrow/.style={line width=2pt, ->,  >=latex, black}}
+#+LATEX_HEADER: \\tikzset{DoubleBlackArrow/.style={line width=2pt, <->,  >=latex, black}}
+#+LATEX_HEADER: \\tikzset{BlueArrow/.style={line width=2pt, ->,  >=latex, \\darkblue}}
+#+LATEX_HEADER: \\tikzset{BlueCov/.style={line width=2pt, <->,  >=latex, \\darkblue}}
+#+LATEX_HEADER: \\tikzset{RedArrow/.style={line width=2pt,->,  >=latex, \\darkred}}
+#+LATEX_HEADER: \\tikzset{GreenArrow/.style={line width=2pt,->,  >=latex, \\darkgreen}}
+#+LATEX_HEADER: \\tikzset{LegendArrow/.style={midway,#1,scale=1.25},
+#+LATEX_HEADER:     	LegendArrow/.default={above}}
+#+LATEX_HEADER: \\tikzset{NodeLV/.style={circle, fill=blue!30, very thick, fill=red!30, draw=\\darkred}}
+#+LATEX_HEADER: \\tikzset{NodeData/.style={rectangle, minimum width=1cm,minimum height=1cm, rounded corners=2pt,  very thick, fill=#1!30,draw=#1},
+#+LATEX_HEADER: 	NodeData/.default={blue}}

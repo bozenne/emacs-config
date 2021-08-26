@@ -56,3 +56,19 @@
 ;; https://stat.ethz.ch/pipermail/ess-help/2007-June/004140.html
 ;; https://stackoverflow.com/questions/14941429/structuring-a-statistical-analysis-with-r-using-emacs-ess
 ;; https://www.emacswiki.org/emacs/FoldingMode
+
+
+(use-package yasnippet)
+(yas-global-mode 1)
+(yas/initialize)
+;; Make TAB the yas trigger key in the org-mode-hook and enable flyspell mode and autofill                                                                     
+(add-hook 'org-mode-hook
+          (lambda ()
+            ;; yasnippet                                                        
+            (make-variable-buffer-local 'yas/trigger-key)
+            (org-set-local 'yas/trigger-key [tab])
+            (define-key yas/keymap [tab] 'yas/next-field-group)
+            ;; flyspell mode for spell checking everywhere                      
+;;            (flyspell-mode 1)                                                 
+            ;; auto-fill mode on                                                
+            (auto-fill-mode 1)))

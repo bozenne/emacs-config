@@ -1,0 +1,113 @@
+# -*- mode: snippet -*-
+# name: beamer template
+# key: Btemplate
+# --
+#+TITLE: $0
+#+Author: 
+\n # #+LaTeX_HEADER: \\institute{
+# #+LaTeX_HEADER: \\textsuperscript{1} Neurobiology Research Unit, University Hospital of Copenhagen, Rigshospitalet.
+# #+LaTeX_HEADER: \\and \\textsuperscript{2} Section of Biostatistics, Department of Public Health, University of Copenhagen.
+# #+LaTeX_HEADER: }
+#+DATE: 
+#+EMAIL:
+\n\n
+* Introduction\n
+** Part I\n
+*** First slide\n
+\n\n
+* Reference :noexport:
+*** Reference
+:PROPERTIES:
+:BEAMER_OPT: fragile,allowframebreaks
+:END:  
+#+BEGIN_EXPORT latex
+\\begingroup
+\\renewcommand{\\section}[2]{}
+#+END_EXPORT
+bibliographystyle:apalike
+[[bibliography:bibliography.bib]] 
+#+BEGIN_EXPORT latex
+\\endgroup
+#+END_EXPORT
+* CONFIG :noexport:
+#+LANGUAGE:  en
+#+startup: beamer
+#+LaTeX_CLASS: beamer
+#+LaTeX_class_options: [table] 
+#+LaTeX_HEADER: \\subtitle{}
+#+LaTeX_HEADER: \\setbeamertemplate{footline}[frame number]
+#+LaTeX_HEADER: \\setbeamertemplate{navigation symbols}{}
+#+OPTIONS:   title:t author:t toc:nil todo:nil
+#+OPTIONS:   H:3 num:t 
+#+OPTIONS:   TeX:t LaTeX:t
+#+LATEX_HEADER: %
+#+LATEX_HEADER: %%%% specifications %%%%
+#+LATEX_HEADER: %
+** Latex command
+#+LATEX_HEADER: \\usepackage{ifthen}
+#+LATEX_HEADER: \\usepackage{xifthen}
+#+LATEX_HEADER: \\usepackage{xargs}
+#+LATEX_HEADER: \\usepackage{xspace}
+#+LATEX_HEADER: \\newcommand\\Rlogo{\\textbf{\\textsf{R}}\\xspace} % 
+** Notations
+** Code
+# Documentation at https://org-babel.readthedocs.io/en/latest/header-args/#results
+# :tangle (yes/no/filename) extract source code with org-babel-tangle-file, see http://orgmode.org/manual/Extracting-source-code.html 
+# :cache (yes/no)
+# :eval (yes/no/never)
+# :results (value/output/silent/graphics/raw/latex)
+# :export (code/results/none/both)
+#+PROPERTY: header-args :session *R* :tangle yes :cache no ## extra argument need to be on the same line as :session *R*
+# Code display:
+#+LATEX_HEADER: \\RequirePackage{fancyvrb}
+#+LATEX_HEADER: \\DefineVerbatimEnvironment{verbatim}{Verbatim}{fontsize=\\small,formatcom = {\\color[rgb]{0.5,0,0}}}
+# ## change font size input
+# ## #+ATTR_LATEX: :options basicstyle=\\ttfamily\\scriptsize
+# ## change font size output
+# ## \\RecustomVerbatimEnvironment{verbatim}{Verbatim}{fontsize=\\tiny,formatcom = {\\color[rgb]{0.5,0,0}}}
+** Display 
+#+LATEX_HEADER: \\RequirePackage{colortbl} % arrayrulecolor to mix colors
+# ## valid and cross symbols
+#+LaTeX_HEADER: \\RequirePackage{pifont}
+#+LaTeX_HEADER: \\RequirePackage{relsize}
+#+LaTeX_HEADER: \\newcommand{\\Cross}{{\\raisebox{-0.5ex}%
+#+LaTeX_HEADER:		{\\relsize{1.5}\\ding{56}}}\\hspace{1pt} }
+#+LaTeX_HEADER: \\newcommand{\\Valid}{{\\raisebox{-0.5ex}%
+#+LaTeX_HEADER:		{\\relsize{1.5}\\ding{52}}}\\hspace{1pt} }
+#+LaTeX_HEADER: \\newcommand{\\CrossR}{ \\textcolor{red}{\\Cross} }
+#+LaTeX_HEADER: \\newcommand{\\ValidV}{ \\textcolor{green}{\\Valid} }
+# ## warning symbol
+#+LaTeX_HEADER: \\usepackage{stackengine}
+#+LaTeX_HEADER: \\usepackage{scalerel}
+#+LaTeX_HEADER: \\newcommand\\Warning[1][3ex]{%
+#+LaTeX_HEADER:   \\renewcommand\\stacktype{L}%
+#+LaTeX_HEADER:   \\scaleto{\\stackon[1.3pt]{\\color{red}$\\triangle$}{\\tiny\\bfseries !}}{#1}%
+#+LaTeX_HEADER:   \\xspace
+#+LaTeX_HEADER: }
+** Lists
+# # fix bug with beamer when specifying options for itemize
+# #  https://tex.stackexchange.com/questions/24371/does-enumitem-conflict-with-beamer-for-lists/24491#24491
+# #+LaTeX_HEADER: \\usepackage{enumitem}
+# #+LaTeX_HEADER: \\setitemize{label=\\usebeamerfont*{itemize item}%
+# #+LaTeX_HEADER: \\usebeamercolor[fg]{itemize item}
+# #+LaTeX_HEADER: \\usebeamertemplate{itemize item}}
+** Image
+#+LATEX_HEADER: \\RequirePackage{epstopdf} % to be able to convert .eps to .pdf image files
+#+LATEX_HEADER: \\RequirePackage{capt-of} % 
+#+LATEX_HEADER: \\RequirePackage{caption} % newlines in graphics
+*** Backup slides
+#+LATEX_HEADER: \\newcommand{\\backupbegin}{
+#+LATEX_HEADER:   \\newcounter{finalframe}
+#+LATEX_HEADER:   \\setcounter{finalframe}{\\value{framenumber}}
+#+LATEX_HEADER: }
+#+LATEX_HEADER: \\newcommand{\\backupend}{
+#+LATEX_HEADER:   \\setcounter{framenumber}{\\value{finalframe}}
+#+LATEX_HEADER:}
+*** Footnotes
+#+LaTeX_HEADER: \\RequirePackage{hanging}
+#+LaTeX_HEADER: \\setbeamertemplate{footnote}{%
+#+LaTeX_HEADER:   \\hangpara{2em}{1}%
+#+LaTeX_HEADER:   \\makebox[2em][l]{\\insertfootnotemark}\\footnotesize\\insertfootnotetext\\par%
+#+LaTeX_HEADER: } 
+** Theme
+#+BEAMER_THEME: Singapore [height=20pt]

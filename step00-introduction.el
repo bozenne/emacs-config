@@ -1,5 +1,5 @@
 ;;; check path-emacs-config
-(if (not (boundp 'path-emacs-config) )
+(if (not (boundp 'path-emacs-config) )	;
     (let ((mess "Cannot load emacs-config: Variable path-emacs-config not defined \n
                  Consider adding (setq path-emacs-config '~/path-emacs-config/') to your init file (e.g., ~/.emacs"))
       (pop-to-buffer "*EG load error*")

@@ -14,7 +14,6 @@
 ;; remember buffers for next time emacs will be opened ;;
 (global-auto-revert-mode 1)
 
-
 ;;; Encoding 
 (prefer-coding-system 'utf-8)
 (setq default-file-name-coding-system 'utf-8)

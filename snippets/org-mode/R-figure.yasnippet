@@ -1,0 +1,13 @@
+# -*- mode: snippet -*-
+# name: R figure
+# key: Rfigure
+# --
+# # see https://orgmode.org/worg/org-contrib/babel/languages/ob-doc-R.html for more arguments
+# #+header: :width 4 :height 4 :R-dev-args bg=\\"lightgrey\\" 
+#+BEGIN_SRC R :results graphics :file %file :exports results :session *R* :cache no
+$0
+#+END_SRC
+#+name: fig:1
+#+ATTR_LATEX: :width 0.7\\textwidth
+#+CAPTION:
+

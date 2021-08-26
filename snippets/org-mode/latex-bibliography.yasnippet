@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: latex bibliography
+# key: Lbiblio
+# --
+* References
+#+LaTeX: \\begingroup
+#+LaTeX: \\renewcommand{\\section}[2]{}
+bibliographystyle:apalike
+[[bibliography:bibliography.bib]]
+# help: https://gking.harvard.edu/files/natnotes2.pdf
+#+LaTeX: \\endgroup
+$0
