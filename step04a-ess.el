@@ -32,10 +32,15 @@
             (setq-local split-width-threshold  9999)
             ))
 
-;; (setq display-buffer-alist
-;;        '(("^\\*R"
-;;           (display-buffer-in-previous-window display-buffer-use-some-frame)
-;;           (reusable-frames . nil))))
+;;(setq display-buffer-alist
+;;      '(("^\\*R"
+;;         (display-buffer-reuse-window display-buffer-pop-up-frame)
+;;         (reusable-frames . 0))))
+(setq display-buffer-alist
+      '(("^\\*R" . ((display-buffer-same-window) (inhibit-same-window . nil)))
+        ("\\.R$" . ((display-buffer-same-window) (inhibit-same-window . nil)))))
+
+
 ;;; help
 ;; the help is sent to a new window in html
 ;; (setq ess-help-own-frame 'one)

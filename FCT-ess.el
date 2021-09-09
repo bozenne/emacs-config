@@ -303,3 +303,42 @@
     )
   )
   
+;;; start R
+(defun brice-start-R ()
+  "Start R in current frame"
+  (interactive)
+  (if (eq major-mode 'ess-r-mode)
+      (progn
+	(setq display-buffer-alist
+	      '(("^\\*R"
+		 (display-buffer-reuse-window display-buffer-pop-up-frame)
+		 (reusable-frames . nil))))
+
+	(R)
+	(setq display-buffer-alist
+	      '(("^\\*R"
+		 (display-buffer-reuse-window display-buffer-pop-up-frame)
+		 (reusable-frames . 0))))
+
+	)
+    )
+  )
+
+;;; name argumument
+(defun brice-ess-name-argument ()
+  "Add the name of an argument in a function"
+  (interactive)
+  (if (or (eq major-mode 'ess-r-mode)  (eq major-mode 'inferior-ess-mode))
+      (if (region-active-p)
+	  (let ((x (buffer-substring-no-properties (region-beginning) (region-end))))
+	    (delete-region (region-beginning) (region-end))
+	    (let ((y (s-split "\\," x)))
+	      ;; (require 'subr-x)
+	      (let ((yy (mapcar (lambda (n) (concat (string-trim n) " = " (string-trim n))) y)))
+		(insert (mapconcat 'identity yy ", ")))))
+   	(let ((x (read-string "Enter a the name of the argument:")))
+	  (insert (concat x "=" x )))
+	)
+    (message "works only with .R files or R terminals")
+    )
+  )
