@@ -134,7 +134,7 @@
 ;; ignore uninteresting files in dired
 (require 'dired-x)
 (setq-default dired-omit-files-p t)
-(setq dired-omit-files "^.+~$\\|^.+#$\\|^\\...+$\\|\\.fls$\\|\\.log$\\|\\.nav$\\|\\.out$\\|\\.snm$\\|\\.soc$\\|\\.synctex.gz$\\|\\.fdb_latexmk$\\|\\.tar.gz$")
+(setq dired-omit-files "^.+~$\\|^.+#$\\|^\\...+$\\|\\.fls$\\|\\.log$\\|\\.nav$\\|\\.out$\\|\\.loc$\\|\\.snm$\\|\\.soc$\\|\\.synctex.gz$\\|\\.fdb_latexmk$\\|\\.tar.gz$")
 ;; ^.+~$ : any file with at least one character ending with ~ (version)
 ;; \\| or
 ;; ^.+~$ : any file with at least one character ending with # (unsaved file)
