@@ -43,6 +43,14 @@
 ;;;; export to latex
 (use-package ox-latex)
 
+;; https://emacs.stackexchange.com/questions/9492/is-it-possible-to-export-content-of-subtrees-without-their-headings/17677#17677
+;; require to install org-plus-contrib first
+;; (require 'package)
+;; (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
+;;(use-package org :ensure org-plus-contrib)
+(use-package ox-extra)
+(ox-extras-activate '(ignore-headlines))
+
 ;;;; export to beamer
 (use-package ox-beamer)
 
