@@ -153,30 +153,42 @@
 
 
 ;; color in dired (HTML color codes group)
-(use-package dired-rainbow :ensure t)
+(use-package dired-rainbow
+  :config
+  (progn
+    (dired-rainbow-define R "#329EE8" ("R" "r"))
+    (dired-rainbow-define tex "#B3CCFF" ("tex"))
+    (dired-rainbow-define org "#9370DB" ("org"))
+    (dired-rainbow-define pdf "#51d88a" ("pdf")) ;; #ACE1AF
+    (dired-rainbow-define bibliography "#4dc0b5" ("bib")) 
+    (dired-rainbow-define html "#eb5286" ("css" "less" "sass" "scss" "htm" "html" "jhtm" "mht" "eml" "mustache" "xhtml"))
+    (dired-rainbow-define xml "#f2d024" ("xml" "xsd" "xsl" "xslt" "wsdl" "bib" "json" "msg" "pgn" "rss" "yaml" "yml" "rdata"))
+    (dired-rainbow-define document "#ffed4a" ("docm" "doc" "docx" "odb" "odt" "pdb" "ps" "rtf" "djvu" "epub" "odp" "ppt" "pptx"))
+    (dired-rainbow-define vc "#0074d9" ("git" "gitignore" "gitattributes" "gitmodules"))
+    )) 
+;; (use-package dired-rainbow :ensure t)
 
-(defconst dired-R-file-extensions
-  '("R" "r")
-  "Dired R files extensions")
-(dired-rainbow-define R "#329EE8" dired-R-file-extensions)
+;; (defconst dired-R-file-extensions
+;;   '("R" "r")
+;;   "Dired R files extensions")
+;; (dired-rainbow-define R "#329EE8" dired-R-file-extensions)
 
-(defconst dired-tex-file-extensions
-  '("tex")
-  "Dired tex file extensions")
-(dired-rainbow-define tex "#B3CCFF" dired-tex-file-extensions)
+;; (defconst dired-tex-file-extensions
+;;   '("tex")
+;;   "Dired tex file extensions")
+;; (dired-rainbow-define tex "#B3CCFF" dired-tex-file-extensions)
 
-(defconst dired-org-file-extensions
-  '("org")
-  "Dired org file extensions")
-(dired-rainbow-define org "#9370DB" dired-org-file-extensions)
+;; (defconst dired-org-file-extensions
+;;   '("org")
+;;   "Dired org file extensions")
+;; (dired-rainbow-define org "#9370DB" dired-org-file-extensions)
 
-(defconst dired-pdf-file-extensions
-  '("pdf")
-  "Dired pdf file extensions")
-(dired-rainbow-define pdf "#ACE1AF" dired-pdf-file-extensions)
+;; (defconst dired-pdf-file-extensions
+;;   '("pdf")
+;;   "Dired pdf file extensions")
+;; (dired-rainbow-define pdf "#ACE1AF" dired-pdf-file-extensions)
 
 ;;; Completion
-
 (use-package hippie-exp :commands hippie-expand)
 (use-package auto-complete :ensure t)
 (use-package popup-complete :ensure t)

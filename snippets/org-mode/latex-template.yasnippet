@@ -63,6 +63,12 @@
 #+LaTeX_HEADER:   \\scaleto{\\stackon[1.3pt]{\\color{red}$\\triangle$}{\\tiny\\bfseries !}}{#1}%
 #+LaTeX_HEADER:   \\xspace
 #+LaTeX_HEADER: }
+# # change the color of the links
+#+LaTeX_HEADER: \\hypersetup{
+#+LaTeX_HEADER:  citecolor=[rgb]{0,0.5,0},
+#+LaTeX_HEADER:  urlcolor=[rgb]{0,0,0.5},
+#+LaTeX_HEADER:  linkcolor=[rgb]{0,0,0.5},
+#+LaTeX_HEADER: }
 ** Image
 #+LATEX_HEADER: \\RequirePackage{epstopdf} % to be able to convert .eps to .pdf image files
 #+LATEX_HEADER: \\RequirePackage{capt-of} % 

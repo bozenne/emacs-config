@@ -67,6 +67,12 @@ bibliographystyle:apalike
 # ## \\RecustomVerbatimEnvironment{verbatim}{Verbatim}{fontsize=\\tiny,formatcom = {\\color[rgb]{0.5,0,0}}}
 ** Display 
 #+LATEX_HEADER: \\RequirePackage{colortbl} % arrayrulecolor to mix colors
+#+MACRO: color @@latex:{\\color{$1}@@$2@@latex:}@@
+# ## Change font
+# https://tex.stackexchange.com/questions/25249/how-do-i-use-a-particular-font-for-a-small-section-of-text-in-my-document
+#+LaTeX_HEADER: \\newenvironment{activity}{\\color{purple}\\fontfamily{qzc}\\selectfont}{\\par}
+#+LaTeX_HEADER: \\newcommand\\myhighlight[1]{ {\\usebeamercolor[fg]{structure}\\textbf{\\selectfont #1}}}
+#+LaTeX_HEADER: \\newcommand\\mynote[1]{ {\\color{gray}\\small #1}}
 # ## valid and cross symbols
 #+LaTeX_HEADER: \\RequirePackage{pifont}
 #+LaTeX_HEADER: \\RequirePackage{relsize}
@@ -84,13 +90,19 @@ bibliographystyle:apalike
 #+LaTeX_HEADER:   \\scaleto{\\stackon[1.3pt]{\\color{red}$\\triangle$}{\\tiny\\bfseries !}}{#1}%
 #+LaTeX_HEADER:   \\xspace
 #+LaTeX_HEADER: }
+# # change the color of the links
+#+LaTeX_HEADER: \\hypersetup{
+#+LaTeX_HEADER:  citecolor=[rgb]{0,0.5,0},
+#+LaTeX_HEADER:  urlcolor=[rgb]{0,0,0.5},
+#+LaTeX_HEADER:  linkcolor=[rgb]{0,0,0.5},
+#+LaTeX_HEADER: }
 ** Lists
-# # fix bug with beamer when specifying options for itemize
-# #  https://tex.stackexchange.com/questions/24371/does-enumitem-conflict-with-beamer-for-lists/24491#24491
-# #+LaTeX_HEADER: \\usepackage{enumitem}
-# #+LaTeX_HEADER: \\setitemize{label=\\usebeamerfont*{itemize item}%
-# #+LaTeX_HEADER: \\usebeamercolor[fg]{itemize item}
-# #+LaTeX_HEADER: \\usebeamertemplate{itemize item}}
+# fix bug with beamer when specifying options for itemize
+#  https://tex.stackexchange.com/questions/24371/does-enumitem-conflict-with-beamer-for-lists/24491#24491
+#+LaTeX_HEADER: \\usepackage{enumitem}
+#+LaTeX_HEADER: \\setitemize{label=\\usebeamerfont*{itemize item}%
+#+LaTeX_HEADER: \\usebeamercolor[fg]{itemize item}
+#+LaTeX_HEADER: \\usebeamertemplate{itemize item}}
 ** Image
 #+LATEX_HEADER: \\RequirePackage{epstopdf} % to be able to convert .eps to .pdf image files
 #+LATEX_HEADER: \\RequirePackage{capt-of} % 
