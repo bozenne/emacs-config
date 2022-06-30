@@ -109,9 +109,12 @@ M-x customize-variable RET exec-path RET
 
 * File manager
 
-| Key binding | name of the command | effect             |
-|-------------+---------------------+--------------------|
-| C-x C-f     |                     | open/create a file |
+| Key binding      | name of the command | effect                       |
+|------------------+---------------------+------------------------------|
+| C-x C-f          |                     | open/create a file           |
+| C-x <RET> f unix |                     | convert end of line to LF    |
+| C-x <RET> f mac  |                     | convert end of line to CR    |
+| C-x <RET> f dos  |                     | convert end of line to CR+LF |
 
 ** Bookmark
 
@@ -155,7 +158,8 @@ M-x customize-variable RET exec-path RET
 | /           | dired-narrow                       | filter files by regexpr                     |
 | ^           | dired-up-directory                 | mode to parent directory                    |
 
-More key bindings at: https://www.gnu.org/software/emacs/refcards/pdf/dired-ref.pdf
+More key bindings at:
+https://www.gnu.org/software/emacs/refcards/pdf/dired-ref.pdf
 
 ** Back to OS
 
