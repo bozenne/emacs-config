@@ -86,7 +86,7 @@ M-x customize-variable RET exec-path RET
 |-------------+---------------------+------------------------------------------------|
 | M-o         | other-window        | move to another window (clockwise)             |
 | M-O         |                     | move to another window (anti-clockwise)        |
-| M-m         | other-frame         | move to another frame                          |
+| M-;         | other-frame         | move to another frame                          |
 | M-<left>    | windmove-left       | move to the window on the left                 |
 | M-<right>   | windmove-right      | move to the window on the right                |
 | M-<up>      | windmove-up         | move to the window on the up                   |
@@ -175,7 +175,7 @@ More key bindings at: https://www.gnu.org/software/emacs/refcards/pdf/dired-ref.
 | sentence  | M-a      | (M-e)   |        |          |                |              |
 | paragraph | M-a      |         |        |          |                |              |
 | sexp      | M-C-p    | M-C-n   |        |          |                |              |
-| function  |          |         |        | M-C-a    | M-C-e or M-C-z |              |
+| function  |          |         |        | M-C-a    |M-C-z     |              |
 | screen    | C-v      | M-v     | C-l    | M-<      | M->            | C-M-v        |
 | buffer    | M-p      | M-n     |        |          |                |              |
 | window    | M-down   | M-up    |        |          |                | M-o          |

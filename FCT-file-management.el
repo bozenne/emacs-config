@@ -107,21 +107,27 @@ R CMD BATCH BATCH_" filename ".R output/" filename "/$JOB_NAME-I-$SGE_TASK_ID.Ro
 R CMD BATCH --vanilla BATCH_" filename ".R output/" filename "/R-$SLURM_JOB_NAME-$SLURM_ARRAY_TASK_ID-$SLURM_JOB_ID.Rout
 
 ## go to directory    ## cd " currentPath "
+                      ## cd /projects/biostat01/people/hpl802/" (replace-regexp-in-string "^x:/" "" currentPath) "
 ## clean outputs      ## rm -r ./output/" filename "/*
 ## clean results      ## rm -r ./Results/" filename "/*
 ## submission command ## sbatch SUBM_" filename ".slurm
 
 ## submission output  ## Submitted batch job 41537 (time using C-c t: XX/XX/XX X:XX) 
 
+## init               ## module module load gcc/11.2.0 R/4.1.2
+                      ## cat .bash_profile (in the root directory on the server to visualize the current configuration)
+                      ## vi .bash_profile (in the root directory on the server to modify the current configuration)
+
 ## commands           ## squeue           : view current jobs 
                       ## squeue -u id     : view current jobs for user id
                       ## scancel          : delete the job with job id 1034 from the queue type
                       ## sinfo            : view state of the queues
                       ## sshare           : check own usage of the server
-
+                        
 ## documentation      ## from SLURM: https://slurm.schedmd.com/pdfs/summary.pdf: key functions
                       ##           : https://slurm.schedmd.com/sbatch.html (filename pattern)
                       ## from KU   : https://hpc.ku.dk/documentation/slurm.html
+                      ##           : https://github.com/aejensen/computing-biostat-ucph/blob/main/README.md
 ") nil filenameExt)
 				  ))))))))
   (revert-buffer nil t)

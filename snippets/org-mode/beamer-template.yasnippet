@@ -97,12 +97,12 @@ bibliographystyle:apalike
 #+LaTeX_HEADER:  linkcolor=[rgb]{0,0,0.5},
 #+LaTeX_HEADER: }
 ** Lists
-# fix bug with beamer when specifying options for itemize
 #  https://tex.stackexchange.com/questions/24371/does-enumitem-conflict-with-beamer-for-lists/24491#24491
 #+LaTeX_HEADER: \\usepackage{enumitem}
-#+LaTeX_HEADER: \\setitemize{label=\\usebeamerfont*{itemize item}%
+#+LaTeX_HEADER: \\setitemize{label=\\usebeamerfont*{itemize item}% fix bug with beamer when specifying options for itemize
 #+LaTeX_HEADER: \\usebeamercolor[fg]{itemize item}
 #+LaTeX_HEADER: \\usebeamertemplate{itemize item}}
+#+LaTeX_HEADER: \\setlist[enumerate]{label=\arabic*.}
 ** Image
 #+LATEX_HEADER: \\RequirePackage{epstopdf} % to be able to convert .eps to .pdf image files
 #+LATEX_HEADER: \\RequirePackage{capt-of} % 

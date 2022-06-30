@@ -218,6 +218,32 @@
     )
   )
 
+(defun brice-ess-ggtheme ()
+  "Add theme to a ggplot object"
+  (interactive)
+  (if (eq major-mode 'ess-r-mode)
+      (if (region-active-p)
+	  (let ((x (buffer-substring (region-beginning) (region-end))))
+	    (next-line)
+	    (insert (concat x " <- " x " + theme(text = element_text(size=15),
+                             axis.line = element_line(size = 1),
+                             axis.ticks = element_line(size = 1),
+                             axis.ticks.length=unit(.25, \"cm\"),
+                             legend.position = \"bottom\")
+                     "))
+	    )
+	(let ((x (read-string "Enter a the name of the object:")))
+	  (insert (concat x " <- " x " + theme(text = element_text(size=15),
+                             axis.line = element_line(size = 1),
+                             axis.ticks = element_line(size = 1),
+                             axis.ticks.length=unit(.25, \"cm\"),
+                             legend.position = \"bottom\")
+                   ")))
+	)
+    (message "works only with .R files or R terminals")
+    )
+  )
+
 (defun brice-ess-clone ()
   "Duplicate left hand side and right hand side"
   (interactive)
