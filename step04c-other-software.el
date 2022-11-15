@@ -6,6 +6,26 @@
 (use-package gscholar-bibtex :ensure t)
 (setq gscholar-bibtex-default-source "Google Scholar")
 
+
+(defun brice-doiTObib (doi)
+ "From         : https://www.anghyflawn.net/blog/2014/emacs-give-a-doi-get-a-bibtex-entry/
+  Documentation: Get a BibTeX entry from the DOI"
+ (interactive "MDOI: ")
+ (let ((url-mime-accept-string "text/bibliography;style=bibtex"))
+   (with-current-buffer 
+     (url-retrieve-synchronously 
+       (format "http://dx.doi.org/%s" 
+       	(replace-regexp-in-string "http://dx.doi.org/" "" doi)))
+     (switch-to-buffer (current-buffer))
+     (goto-char (point-max))
+     (setq bibtex-entry 
+     	  (buffer-substring 
+          	(string-match "@" (buffer-string))
+              (point)))
+     (kill-buffer (current-buffer))))
+ (insert (decode-coding-string bibtex-entry 'utf-8))
+ (bibtex-fill-entry))
+
 ;;; C++
 (use-package cc-mode)
 
