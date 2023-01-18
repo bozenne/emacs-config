@@ -53,6 +53,12 @@
 
 ;;; debuging
 (setq ess-use-tracebug t)
+(setq ess-r-package-auto-set-evaluation-env nil) ;; https://stat.ethz.ch/pipermail/ess-help/2016-August/011049.html
+;; > You can set `ess-r-package-auto-activate` to nil to prevent the mode
+;; > from auto loading. If you just want to prevent automatic namespaced
+;; > evaluation within packages you can set
+;; > `ess-r-package-auto-set-evaluation-env` to nil. And to do the latter
+;; > manually, C-c C-t C-s.
 
 ;;; find function
 (use-package imenu-anywhere :ensure t)

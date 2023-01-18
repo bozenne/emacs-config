@@ -209,6 +209,9 @@
 ;; do not remove .aux  because needed when using the xr package to refer to external tex file
 (setq org-latex-logfiles-extensions (quote ("bcf" "blg" "soc" "fdb_latexmk" "fff" "fls" "figlist" "idx" "lof" "nav" "out" "ptc" "run.xml")))
 
+;; faithfull indentation of R code when exporting to latex
+(setq org-src-preserve-indentation t)
+
 ;;; export *txt* as bold instead of alert
 ;; https://orgmode.org/worg/exporters/beamer/ox-beamer.html#export-filters
 (defun my-beamer-bold (contents backend info)

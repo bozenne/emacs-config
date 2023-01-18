@@ -300,7 +300,7 @@
 
 ;;; data manipulation
 (defun brice-col-2-vector ()
-  "Convert a column of data into an R vector ggplot"
+  "Convert a column of data into an R vector"
   (interactive)
   (if (or (eq major-mode 'ess-r-mode)  (eq major-mode 'inferior-ess-mode))	  
 	  (progn

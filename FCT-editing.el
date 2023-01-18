@@ -69,6 +69,7 @@
    From: https://www.emacswiki.org/emacs/CopyingWholeLines"
   (interactive)                 ; permit invocation in minibuffer
   (insert (format-time-string "%A %y-%m-%d at %H:%M")))
+
 ;;; brice-flyspell-save-word
 (defun brice-flyspell-save-word ()
   "Doc: do not correct this word but save it in the dictionary'. 
