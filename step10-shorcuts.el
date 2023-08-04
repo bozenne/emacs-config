@@ -138,6 +138,8 @@
             (define-key ess-mode-map (kbd "\C-c c") 'brice-ess-clone)
             (define-key ess-mode-map (kbd "\C-c D") 'brice-ess-dim-object)
             (define-key ess-mode-map (kbd "\C-c h") 'brice-ess-head-object)
+            (define-key ess-mode-map (kbd "\C-c t") 'brice-ess-tail-object)
+            (define-key ess-mode-map (kbd "\C-c T") 'brice-ess-traceback)
 	    (define-key ess-mode-map (kbd "\C-c j") 'brice-jump-to-function)
             (define-key ess-mode-map (kbd "\C-c n") 'brice-ess-names-object)
             (define-key ess-mode-map (kbd "\C-c m") 'brice-ess-browser-and-source-r)

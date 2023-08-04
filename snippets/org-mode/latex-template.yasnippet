@@ -23,7 +23,6 @@
 #+LATEX_HEADER: \\usepackage{xifthen}
 #+LATEX_HEADER: \\usepackage{xargs}
 #+LATEX_HEADER: \\usepackage{xspace}
-#+LATEX_HEADER: \\newcommand\\Rlogo{\\textbf{\\textsf{R}}\\xspace} % 
 ** Notations
 ** Code
 # Documentation at https://org-babel.readthedocs.io/en/latest/header-args/#results
@@ -73,6 +72,40 @@
 #+LATEX_HEADER: \\RequirePackage{epstopdf} % to be able to convert .eps to .pdf image files
 #+LATEX_HEADER: \\RequirePackage{capt-of} % 
 #+LATEX_HEADER: \\RequirePackage{caption} % newlines in graphics
+#+LATEX_HEADER: \\RequirePackage{tikz}
+# ## R logo
+#+LATEX_HEADER:\\definecolor{grayR}{HTML}{8A8990}
+#+LATEX_HEADER:\\definecolor{grayL}{HTML}{C4C7C9}
+#+LATEX_HEADER:\\definecolor{blueM}{HTML}{1F63B5}
+#+LATEX_HEADER: \\newcommand{\\Rlogo}[1][0.07]{
+#+LATEX_HEADER: \\begin{tikzpicture}[scale=#1]
+#+LATEX_HEADER: \\shade [right color=grayR,left color=grayL,shading angle=60] 
+#+LATEX_HEADER: (-3.55,0.3) .. controls (-3.55,1.75) 
+#+LATEX_HEADER: and (-1.9,2.7) .. (0,2.7) .. controls (2.05,2.7)  
+#+LATEX_HEADER: and (3.5,1.6) .. (3.5,0.3) .. controls (3.5,-1.2) 
+#+LATEX_HEADER: and (1.55,-2) .. (0,-2) .. controls (-2.3,-2) 
+#+LATEX_HEADER: and (-3.55,-0.75) .. cycle;
+#+LATEX_HEADER: 
+#+LATEX_HEADER: \\fill[white] 
+#+LATEX_HEADER: (-2.15,0.2) .. controls (-2.15,1.2) 
+#+LATEX_HEADER: and (-0.7,1.8) .. (0.5,1.8) .. controls (2.2,1.8) 
+#+LATEX_HEADER: and (3.1,1.2) .. (3.1,0.2) .. controls (3.1,-0.75) 
+#+LATEX_HEADER: and (2.4,-1.45) .. (0.5,-1.45) .. controls (-1.1,-1.45) 
+#+LATEX_HEADER: and (-2.15,-0.7) .. cycle;
+#+LATEX_HEADER: 
+#+LATEX_HEADER: \\fill[blueM] 
+#+LATEX_HEADER: (1.75,1.25) -- (-0.65,1.25) -- (-0.65,-2.75) -- (0.55,-2.75) -- (0.55,-1.15) -- 
+#+LATEX_HEADER: (0.95,-1.15)  .. controls (1.15,-1.15) 
+#+LATEX_HEADER: and (1.5,-1.9) .. (1.9,-2.75) -- (3.25,-2.75)  .. controls (2.2,-1) 
+#+LATEX_HEADER: and (2.5,-1.2) .. (1.8,-0.95) .. controls (2.6,-0.9) 
+#+LATEX_HEADER: and (2.85,-0.35) .. (2.85,0.2) .. controls (2.85,0.7) 
+#+LATEX_HEADER: and (2.5,1.2) .. cycle;
+#+LATEX_HEADER: 
+#+LATEX_HEADER: \\fill[white]  (1.4,0.4) -- (0.55,0.4) -- (0.55,-0.3) -- (1.4,-0.3).. controls (1.75,-0.3) 
+#+LATEX_HEADER: and (1.75,0.4) .. cycle;
+#+LATEX_HEADER: 
+#+LATEX_HEADER: \\end{tikzpicture}
+#+LATEX_HEADER: }
 ** List
 #+LATEX_HEADER: \\RequirePackage{enumitem} % to be able to convert .eps to .pdf image files
 ** Color

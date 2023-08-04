@@ -295,17 +295,19 @@ More key bindings at: https://www.gnu.org/software/emacs/manual/html_node/emacs/
 * Orgmode
 ** General
 
-| Key binding    | name of the command                         | effect                                                          |
-|----------------+---------------------------------------------+-----------------------------------------------------------------|
-| C-u C-c C-e    |                                             | Change an environment                                           |
-|                | org-do-demote                               | Demote headline by one level (e.g. * -> **)                     |
-| C-c C-e        | org-export-dispatch                         | Insert an environment                                           |
-| C-c c          |                                             | Refresh the local setup (must be done in the header section)    |
-|                | gscholar-bibtex                             | Use google scholar to find bibtex citations for a given article |
-|                | org-do-promote                              | promote headline by one level (e.g. ** -> *)                    |
-| M-q            | genome/indent-paragraph                     | reformat a paragrah                                             |
-| C-x f <number> | set-fill-column                             | set the margin when reformating paragraph (default 70)          |
-|                | org-sort                                    | sort entries (e.g. alphabetic order)                            |
+| Key binding    | name of the command     | effect                                                          |
+|----------------+-------------------------+-----------------------------------------------------------------|
+| C-u C-c C-e    |                         | Change an environment                                           |
+|                | org-do-demote           | Demote headline by one level (e.g. * -> **)                     |
+| C-c C-e        | org-export-dispatch     | Insert an environment                                           |
+| C-c c          |                         | Refresh the local setup (must be done in the header section)    |
+|                | gscholar-bibtex         | Use google scholar to find bibtex citations for a given article |
+|                | org-do-promote          | promote headline by one level (e.g. ** -> *)                    |
+| M-q            | genome/indent-paragraph | reformat a paragrah                                             |
+| C-x f <number> | set-fill-column         | set the margin when reformating paragraph (default 70)          |
+|                | org-sort                | sort entries (e.g. alphabetic order)                            |
+| C-x n n        | narrow-to-region        | restrict the buffer to a region                                 |
+| C-x n w        | widen                   | restaure the buffer                                             |
 
 ** Exporting to latex/pdf
 | Key binding | name of the command                         | effect                                     |
@@ -350,7 +352,8 @@ More key bindings at: https://www.gnu.org/software/emacs/manual/html_node/emacs/
 | C-c C-v b   | org-babel-execute-buffer           | run all code blocks of the buffer                   |
 | C-c C-v s   | org-babel-execute-subtree          | run all code blocks in the header                   |
 | C-c C-v c   | genome/org-babel-clear-all-results | remove the results of all code blocks in the buffer |
-| C-c C-v n   | org-babel-next-src-block | next code block |
+| C-c C-v n   | org-babel-next-src-block           | next code block                                     |
+| C-c C-v p   | org-babel-previous-src-block       | previous code block                                 |
 
 ** Bibtex
 | Key binding | name of the command           | effect                         |

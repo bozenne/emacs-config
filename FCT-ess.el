@@ -96,8 +96,17 @@
   (interactive)
   (if (or (eq major-mode 'ess-r-mode)  (eq major-mode 'inferior-ess-mode))
       (ess-eval-linewise "options(error = function(){butils.base::revTraceback(max.lines = 5)})")
-      (message "works only with .R files or R terminals")
+    (message "works only with .R files or R terminals")
+    )
   )
+
+(defun brice-ess-traceback ()
+  "Run traceback in console"
+  (interactive)
+  (if (or (eq major-mode 'ess-r-mode)  (eq major-mode 'inferior-ess-mode))
+      (ess-eval-linewise "traceback()")
+    (message "works only with .R files or R terminals")
+    )
 )
 
 ;;;; imenu
@@ -135,6 +144,19 @@
       )
   )
   
+(defun brice-ess-tail-object ()
+  "Display the last lines of an R object"
+  (interactive)
+  (if (or (eq major-mode 'ess-r-mode)  (eq major-mode 'inferior-ess-mode))
+      (if (region-active-p)
+	  (let ((x (buffer-substring (region-beginning) (region-end))))
+	    (ess-eval-linewise (concat "tail(" x ")")))
+   	   (let ((x (read-string "Enter a the name of the object:")))
+	     (ess-eval-linewise (concat "tail(" x ")")))
+	   )
+      (message "works only with .R files or R terminals")
+      )
+  )
 
 (defun brice-ess-dim-object ()
   "Display the dimension of an R object"
