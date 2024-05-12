@@ -208,8 +208,8 @@ path <- \"" currentPath "\"
 setwd(path)
 
 path."filename" <- file.path(\"Results\",\""filename"\")
-allRes.tempo <- butils::sinkDirectory(path."filename", string.keep = \"tempo\")
-allRes.final <- butils::sinkDirectory(path."filename", string.exclude = \"tempo\")
+allRes.tempo <- butils.base::sinkDirectory(path."filename", string.keep = \"tempo\")
+allRes.final <- butils.base::sinkDirectory(path."filename", string.exclude = \"tempo\")
 }
 
 	") nil filenameExt)
