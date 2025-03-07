@@ -54,10 +54,23 @@
 ;;;; export to beamer
 (use-package ox-beamer)
 
-;;;; export to markdown
+
+
+;;;; export to Sweave/markdown
 (use-package ox-md)
 ;; (add-to-list 'load-path (expand-file-name "packages/orgmode-accessories" path-emacs-config))
 ;; (require 'ox-ravel)
+(load-file (expand-file-name "packages/ox-ravel.el" path-emacs-config))
+
+;;;; work with markdown
+(use-package markdown-mode
+  :ensure t
+  :mode ("README\\.md\\'" . gfm-mode)
+  :init (setq markdown-command "multimarkdown")
+  :bind (:map markdown-mode-map
+              ("C-c C-e" . markdown-do)))
+
+
 
 ;;; enable to execute languages in orgmode
 (if(string-equal system-type "windows-nt")

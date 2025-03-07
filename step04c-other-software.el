@@ -35,7 +35,8 @@
 ;;; docview
 ;; continuous scrolling over pages in doc view
 (setq doc-view-continuous t)
-;; ;;; polymode (rmarkdown in r)
+
+;;; polymode (rmarkdown in r)
 ;; (require 'poly-R)
 ;; (require 'poly-markdown)
 ;; (add-to-list 'auto-mode-alist '("\\.md" . poly-markdown-mode))
